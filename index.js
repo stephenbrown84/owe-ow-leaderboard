@@ -1,13 +1,14 @@
 var cool = require('cool-ascii-faces');
-var owAPIReq = require('request');
-var cors = require('cors');
+var Client = require('node-rest-client').Client;
+var client = new Client();
+
 var express = require('express');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
-app.use(cors);
+//app.use(cors);
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
@@ -22,6 +23,11 @@ app.get('/cool', function(request, response) {
 });
 
 app.get('/stats', function (request, response) {
+    client.get("https://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
+        response.send(data);
+    });
+
+    /*
     owAPIReq({ url: 'https://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/', json: true }, function (err, res, json) {
         if (!err && res.statusCode == 200) {
             var info = JSON.parse(json)
@@ -32,6 +38,7 @@ app.get('/stats', function (request, response) {
             response.send("WTF HAPPEND " + err);
         }
     });
+    */
 });
 
 app.get('/times', function(request, response) {
