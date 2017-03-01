@@ -25,7 +25,7 @@ app.get('/stats', function (request, response) {
     //// Retrieve all stats, including heroes details 
     owjs
         .getAll('pc', 'us', 'Zaralus-1670')
-        .then((data) => response.send(data));
+        .then((data) => response.send(data.competitive.heroes.eliminations_per_life));
 
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
