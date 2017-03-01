@@ -23,7 +23,7 @@ app.get('/cool', function(request, response) {
 });
 
 app.get('/stats', function (request, response) {
-    client.get("https://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
+    client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
         response.send(data);
     });
 
