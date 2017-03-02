@@ -24,7 +24,6 @@ app.get('/cool', function(request, response) {
 const BATTLE_TAGS = ['Zaralus-1670', 'Nuuga-1351', 'MegaArcon-1653'];
 const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
 
-const allStats = {};
 app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
