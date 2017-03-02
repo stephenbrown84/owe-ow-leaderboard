@@ -28,7 +28,7 @@ const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
 function getOWStats(pos) {
     if (pos < BATTLE_TAGS.length) {
         owjs
-            .getAll('pc', 'us', battleTag)
+            .getAll('pc', 'us', BATTLE_TAGS[pos])
             .then((data) => { stats.addPlayerStats(BATTLE_TAGS[pos].slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos]) })
     }
     else {
