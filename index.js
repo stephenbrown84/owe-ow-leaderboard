@@ -42,6 +42,7 @@ function getOWStats(battleTag, response, pos) {
         for (var i = 0; i < HERO_NAMES.length; i++) {
             out += "<p> " + HERO_NAMES_FRIENDLY[i] + ": " + stats.getBestPlayerFor(HERO_NAMES[i]) + "</p>";
         }
+        response.send(out);
     }
 }
 
