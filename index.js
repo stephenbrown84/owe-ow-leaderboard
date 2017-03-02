@@ -22,7 +22,7 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-const BATTLE_TAGS = ['Zaralus-1670', 'Nuuga-1351', 'MegaArcon-1653'];
+const BATTLE_TAGS = ['Zaralus-1670']//, 'Nuuga-1351', 'MegaArcon-1653'];
 const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
 
 app.get('/stats', function (request, response) {
@@ -36,8 +36,8 @@ app.get('/stats', function (request, response) {
     }
     
 
-    console.log(stats.compare('Zaralus', 'Nuuga', 'pharah').toString());
-    response.send(stats.compare('Zaralus','Nuuga', 'pharah').toString());
+    console.log(stats.compare('Zaralus', 'Nuuga', 'pharah'));
+    response.send(stats.compare('Zaralus','Nuuga', 'pharah'));
 
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
