@@ -19,7 +19,7 @@ Stats.prototype.getBestPlayerFor = function (hero) {
     var winner = keys[0];
 
     for (var i=1; i < keys.length; i++) {
-        if (this.compare(keys[i - 1], keys[i], hero) < 0)
+        if (this.compare(winner, keys[i], hero) < 0)
             winner = keys[i];
     }
     return winner;

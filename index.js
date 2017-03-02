@@ -6,7 +6,7 @@ var app = express();
 
 var initData = require('./test.json');
 var Stats = require('./stats');
-var stats = new Stats(initData);
+//var stats = new Stats(initData);
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -24,17 +24,17 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-/*
 const BATTLE_TAGS = ['Nemisari-1767', 'noj-1818', 'MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670'];
 const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'd.va', 'symmetra'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'McCree', 'Winston',
     'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra'];
-*/
 
+/*
 const BATTLE_TAGS = ['noj-1818', 'Nuuga-1351'];
 const HERO_NAMES = [ 'ana'];
 const HERO_NAMES_FRIENDLY = ['Ana'];
+*/
 
 function getOWStats(battleTag, response, pos) {
 
