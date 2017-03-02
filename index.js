@@ -33,7 +33,7 @@ function getOWStats(battleTag, response, pos) {
             .then((data) => { stats.addPlayerStats(battleTag.slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos], response, pos) })
     }
     else {
-        response.send(stats.compare('Zaralus', 'Nuuga', 'pharah'));
+        response.send(stats.compare('Zaralus', 'Nuuga', 'pharah').toString());
     }
 }
 
