@@ -40,7 +40,7 @@ function getOWStats(battleTag, response, pos) {
 app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
-    getOWStats(BATTLE_TAGS[pos], response, 0);
+    getOWStats(BATTLE_TAGS[0], response, 0);
     
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
