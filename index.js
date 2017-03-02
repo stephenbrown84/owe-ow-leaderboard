@@ -25,12 +25,12 @@ app.get('/cool', function(request, response) {
 const BATTLE_TAGS = ['MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670'];
 const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
 
-function getOWStats(battleTag, response) {
+function getOWStats(battleTag, response, pos) {
 
     if (pos < BATTLE_TAGS.length) {
         owjs
             .getAll('pc', 'us', battleTag)
-            .then((data) => { stats.addPlayerStats(battleTag.slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos], response) })
+            .then((data) => { stats.addPlayerStats(battleTag.slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos], response, pos) })
     }
     else {
         response.send(stats.compare('Zaralus', 'Nuuga', 'pharah'));
@@ -40,8 +40,7 @@ function getOWStats(battleTag, response) {
 app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
-    var pos = 0;
-    getOWStats(BATTLE_TAGS[pos]);
+    getOWStats(BATTLE_TAGS[pos], response, 0);
     
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
