@@ -25,7 +25,10 @@ app.get('/cool', function(request, response) {
 });
 
 const BATTLE_TAGS = ['MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670'];
-const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
+const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
+    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'd.va', 'symmetra'];
+const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'McCree', 'Winston',
+    'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra'];
 
 function getOWStats(battleTag, response, pos) {
 
@@ -35,10 +38,10 @@ function getOWStats(battleTag, response, pos) {
             .then((data) => { stats.addPlayerStats(battleTag.slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos], response, pos) })
     }
     else {
-        if (stats.compare('Zaralus', 'Nuuga', 'pharah') > 0)
+        if (stats.compare('Zaralus', 'MegaArcon', 'pharah') > 0)
             response.send("Zaralus");
         else
-            response.send("Nuuga");
+            response.send("MegaArcon");
     }
 }
 
@@ -46,11 +49,19 @@ app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
     //getOWStats(BATTLE_TAGS[0], response, 0);
-    
-    if (stats.compare('Zaralus', 'Nuuga', 'pharah') > 0)
-        response.send("Zaralus");
-    else
-        response.send("Nuuga");
+
+    var out = "";
+    for (var i=0; i < HERO_NAMES.length; i++) {
+        out += "<p> " + HERO_NAMES_FRIENDLY[i] + ": " + stats.getBestPlayerFor(HERO_NAMES[i]) + "</p>";
+        /*
+        if (stats.compare('Zaralus', 'MegaArcon', HERO_NAMES[i]) > 0)
+            out += "Zaralus";
+        else
+            out += "MegaArcon";
+            */
+    }
+
+    response.send(out);
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
         response.send(data);
