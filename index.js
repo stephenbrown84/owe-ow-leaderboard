@@ -35,7 +35,7 @@ app.get('/stats', function (request, response) {
     }
     
 
-    response.send(allStats.Zaralus);
+    response.send(allStats);
 
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
