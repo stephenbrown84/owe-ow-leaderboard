@@ -42,7 +42,7 @@ Stats.prototype.compare = function (player1, player2, hero) {
 
     var total_ratio = (elimn_per_life_ratio + weapon_accuracy_ratio + solo_kills_ratio + objective_kills_ratio) / 4.0;
 
-    consloe.log(player1);
+    console.log(player1);
     console.log(palyer2);
     console.log(total_ratio.toString());
 
