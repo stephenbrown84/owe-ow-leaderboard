@@ -11,8 +11,8 @@ function Stats() {
 }
 
 Stats.prototype.addPlayerStats = function (friendlyName, data) {
-    console.dir(data);
     this.allStats[friendlyName] = data;
+    console.dir(this.allStats);
 }
 
 Stats.prototype.compare = function (player1, player2, hero) {
