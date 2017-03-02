@@ -20,14 +20,22 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
+var BATTLE_TAGS = ['Zaralus-1670', 'Nuuga-1351', 'MegaArcon-1653'];
+var HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
+
+var allStats = {};
 app.get('/stats', function (request, response) {
 
-    //// Retrieve all stats, including heroes details 
-    owjs
-        .getAll('pc', 'us', 'Zaralus-1670')
-        .then((data) => function (data) {
-            response.send(data.competitive.heroes.reaper.eliminations.toString())
-        });
+    //// Retrieve all stats, including heroes details
+    for (var i = 0; i < BATTLE_TAGS.length; i++) {
+        var friendlyName = BATTLE_TAGS[i].slice(0, -5);
+        owjs
+        .getAll('pc', 'us', BATTLE_TAGS[i])
+        .then((data) => allStats[friendlyName] = data);
+    }
+    
+
+    response.send(allStats.Zaralus);
 
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
