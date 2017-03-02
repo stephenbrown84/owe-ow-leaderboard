@@ -36,7 +36,7 @@ app.get('/stats', function (request, response) {
     }
     
 
-    response.send(stats.compare('Zaralus','Nuuga', 'pharah').toString());
+    response.send(stats.compare('Zaralus','Nuuga', 'pharah'));
 
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
