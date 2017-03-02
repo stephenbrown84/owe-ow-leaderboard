@@ -25,18 +25,22 @@ app.get('/cool', function(request, response) {
 const BATTLE_TAGS = ['MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670'];
 const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
 
+function getOWStats(pos) {
+    if (pos < BATTLE_TAGS.length) {
+        owjs
+            .getAll('pc', 'us', battleTag)
+            .then((data) => { stats.addPlayerStats(BATTLE_TAGS[pos].slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos]) })
+    }
+    else {
+        console.log(stats.compare('Zaralus', 'Nuuga', 'pharah'));
+        response.send(stats.compare('Zaralus', 'Nuuga', 'pharah'));
+    }
+}
+
 app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
-    for (var i = 0; i < BATTLE_TAGS.length; i++) {
-        owjs
-        .getAll('pc', 'us', BATTLE_TAGS[i])
-        .then((data) => stats.addPlayerStats(BATTLE_TAGS[i].slice(0, -5), data));
-    }
-    
-
-    console.log(stats.compare('Zaralus', 'Nuuga', 'pharah'));
-    response.send(stats.compare('Zaralus','Nuuga', 'pharah'));
+    getOWStats(0);
 
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
