@@ -12,10 +12,10 @@ function Stats() {
 
 Stats.prototype.addPlayerStats = function (friendlyName, data) {
     this.allStats[friendlyName] = data;
-    console.dir(this.allStats);
 }
 
 Stats.prototype.compare = function (player1, player2, hero) {
+    console.dir(this.allStats);
     return this.allStats;
         /*
         if (this.allStats[player1].competitive.heroes[hero].eliminations > this.allStats[player2].competitive.heroes[hero].eliminations)
