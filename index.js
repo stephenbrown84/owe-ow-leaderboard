@@ -4,6 +4,7 @@ var owjs = require('overwatch-js');
 var express = require('express');
 var app = express();
 var Stats = require('./stats');
+var stats = new Stats();
 
 app.set('port', (process.env.PORT || 5000));
 
