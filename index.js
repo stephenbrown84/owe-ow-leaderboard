@@ -26,17 +26,18 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
+/*
 const BATTLE_TAGS = ['noj-1818', 'MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767'];
 const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'd.va', 'symmetra'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'McCree', 'Winston',
     'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra'];
+    */
 
-/*
-const BATTLE_TAGS = ['noj-1818', 'Nuuga-1351'];
+const BATTLE_TAGS = ['noj-1818', 'MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767'];
+//const BATTLE_TAGS = ['noj-1818', 'Nuuga-1351'];
 const HERO_NAMES = [ 'ana'];
 const HERO_NAMES_FRIENDLY = ['Ana'];
-*/
 
 function getOWStats(battleTag, response, pos) {
 
