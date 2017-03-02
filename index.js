@@ -29,10 +29,9 @@ app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
     for (var i = 0; i < BATTLE_TAGS.length; i++) {
-        var friendlyName = BATTLE_TAGS[i].slice(0, -5);
         owjs
         .getAll('pc', 'us', BATTLE_TAGS[i])
-        .then((data) => stats.addPlayerStats(friendlyName, data));
+        .then((data) => stats.addPlayerStats(BATTLE_TAGS[i].slice(0, -5), data));
     }
     
 
