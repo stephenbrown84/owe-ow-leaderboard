@@ -1,6 +1,6 @@
 'use strict';
 
-function Stats() {
+var Stats = function() {
     //const BATTLE_TAGS = ['Zaralus-1670', 'Nuuga-1351', 'MegaArcon-1653'];
     //const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
 
@@ -23,4 +23,4 @@ Stats.prototype.compare = function (player1, player2, hero) {
         */
 }
 
-exports.Stats = Stats;
+module.exports = Stats;
