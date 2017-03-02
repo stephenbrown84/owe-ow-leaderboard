@@ -3,6 +3,7 @@ var owjs = require('overwatch-js');
 
 var express = require('express');
 var app = express();
+var Stats = require('./stats');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -20,10 +21,10 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-var BATTLE_TAGS = ['Zaralus-1670', 'Nuuga-1351', 'MegaArcon-1653'];
-var HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
+const BATTLE_TAGS = ['Zaralus-1670', 'Nuuga-1351', 'MegaArcon-1653'];
+const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
 
-var allStats = {};
+const allStats = {};
 app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
@@ -31,11 +32,11 @@ app.get('/stats', function (request, response) {
         var friendlyName = BATTLE_TAGS[i].slice(0, -5);
         owjs
         .getAll('pc', 'us', BATTLE_TAGS[i])
-        .then((data) => allStats[friendlyName] = data);
+        .then((data) => Stats.addPlayerStats(friendlyName, data));
     }
     
 
-    response.send(allStats);
+    response.send(Stats.compare('Zaralus','Nuuga', 'pharah').toString());
 
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
