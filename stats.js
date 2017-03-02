@@ -40,7 +40,7 @@ Stats.prototype.compare = function (player1, player2, hero) {
     var objective_kills_ratio = player1Hero.objective_kills_average / (player1Hero.objective_kills_average + player2Hero.objective_kills_average);
 
 
-    var total_ratio = (elimn_per_life_ratio + weapon_accuracy_ratio + solo_kills_ratio + objective_kills_ratio) / 4;
+    var total_ratio = (elimn_per_life_ratio + weapon_accuracy_ratio + solo_kills_ratio + objective_kills_ratio) / 4.0;
 
     if (total_ratio > 0.5)
         return 1;

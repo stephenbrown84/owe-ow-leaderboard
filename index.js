@@ -24,7 +24,7 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-const BATTLE_TAGS = ['MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670', 'noj-1818', 'Nemisari-1474'];
+const BATTLE_TAGS = ['noj-1818', 'MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670'];
 const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'd.va', 'symmetra'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'McCree', 'Winston',
