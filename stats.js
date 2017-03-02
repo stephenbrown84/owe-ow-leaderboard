@@ -8,6 +8,8 @@ module.exports = function () {
     this.allStats = {};
 
     this.addPlayerStats = function (friendlyName, data) {
+        console.log(friendlyName);
+        console.dir(data);
         this.allStats[friendlyName] = data;
     }
 
