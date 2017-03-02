@@ -7,6 +7,8 @@ var app = express();
 var initData = require('./test.json');
 var Stats = require('./stats');
 //var stats = new Stats(initData);
+var stats = new Stats({});
+
 
 app.set('port', (process.env.PORT || 5000));
 
