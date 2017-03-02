@@ -3,8 +3,10 @@ var owjs = require('overwatch-js');
 
 var express = require('express');
 var app = express();
+
+var initData = require('./test.json');
 var Stats = require('./stats');
-var stats = new Stats();
+var stats = new Stats(initData);
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -43,7 +45,7 @@ function getOWStats(battleTag, response, pos) {
 app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
-    getOWStats(BATTLE_TAGS[0], response, 0);
+    //getOWStats(BATTLE_TAGS[0], response, 0);
     
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {

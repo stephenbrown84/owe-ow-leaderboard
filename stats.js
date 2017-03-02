@@ -2,11 +2,11 @@
 
 module.exports = Stats;
 
-function Stats() {
+function Stats(initData) {
     //const BATTLE_TAGS = ['Zaralus-1670', 'Nuuga-1351', 'MegaArcon-1653'];
     //const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
 
-    this.allStats = {};
+    this.allStats = initData;
 
 }
 
