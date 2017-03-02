@@ -34,7 +34,7 @@ const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junk
     'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra'];
     */
 
-const BATTLE_TAGS = ['noj-1818', 'MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767'];
+const BATTLE_TAGS = ['MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767', 'noj-1818'];
 //const BATTLE_TAGS = ['noj-1818', 'Nuuga-1351'];
 const HERO_NAMES = [ 'ana'];
 const HERO_NAMES_FRIENDLY = ['Ana'];
