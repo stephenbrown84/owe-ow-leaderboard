@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function () {
+    var self = this;
 
     //const BATTLE_TAGS = ['Zaralus-1670', 'Nuuga-1351', 'MegaArcon-1653'];
     const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
@@ -8,11 +9,11 @@ module.exports = function () {
     this.allStats = {};
 
     this.addPlayerStats = function (friendlyName, data) {
-        this.allStats[friendlyName] = data;
+        self.allStats[friendlyName] = data;
     }
 
     this.compare = function (player1, player2, hero) {
-        return this.allStats[player1];
+        return self.allStats[player1];
         /*
         if (allStats[player1].competitive.heroes[hero].eliminations > allStats[player2].competitive.heroes[hero].eliminations)
             return 1;
