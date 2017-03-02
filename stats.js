@@ -11,13 +11,10 @@ module.exports = function () {
     }
 
     this.compare = function (player1, player2, hero) {
-        return this.allStats;
-        /*
         if (allStats[player1].competitive.heroes[hero].eliminations > allStats[player2].competitive.heroes[hero].eliminations)
             return 1;
         else if (allStats[player1].competitive.heroes[hero].eliminations < allStats[player2].competitive.heroes[hero].eliminations)
             return -1;
         return 0;
-        */
     }
 }
