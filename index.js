@@ -30,13 +30,13 @@ app.get('/stats', function (request, response) {
     //// Retrieve all stats, including heroes details
     for (var i = 0; i < BATTLE_TAGS.length; i++) {
         var friendlyName = BATTLE_TAGS[i].slice(0, -5);
-        console.log(BATTLE_TAGS[i]);
         owjs
         .getAll('pc', 'us', BATTLE_TAGS[i])
         .then((data) => stats.addPlayerStats(friendlyName, data));
     }
     
 
+    console.log(stats.compare('Zaralus', 'Nuuga', 'pharah'));
     response.send(stats.compare('Zaralus','Nuuga', 'pharah'));
 
     /*

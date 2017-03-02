@@ -8,13 +8,11 @@ module.exports = function () {
     this.allStats = {};
 
     this.addPlayerStats = function (friendlyName, data) {
-        console.log(friendlyName);
-        console.dir(data);
         this.allStats[friendlyName] = data;
     }
 
     this.compare = function (player1, player2, hero) {
-        return this.allStats;
+        return this.allStats[player1];
         /*
         if (allStats[player1].competitive.heroes[hero].eliminations > allStats[player2].competitive.heroes[hero].eliminations)
             return 1;
