@@ -1,6 +1,6 @@
 'use strict';
 
-var Stats = function() {
+function Stats() {
     //const BATTLE_TAGS = ['Zaralus-1670', 'Nuuga-1351', 'MegaArcon-1653'];
     //const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76'];
 
@@ -8,13 +8,11 @@ var Stats = function() {
 }
 
 Stats.prototype.addPlayerStats = function (friendlyName, data) {
-    var self = this;
-    self.allStats[friendlyName] = data;
+    this.allStats[friendlyName] = data;
 }
 
 Stats.prototype.compare = function (player1, player2, hero) {
-    var self = this;
-    return self.allStats;
+    return this.allStats;
         /*
         if (allStats[player1].competitive.heroes[hero].eliminations > allStats[player2].competitive.heroes[hero].eliminations)
             return 1;
