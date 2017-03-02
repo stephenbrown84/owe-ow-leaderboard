@@ -13,6 +13,7 @@ Stats.prototype.addPlayerStats = function (friendlyName, data) {
 }
 
 Stats.prototype.compare = function (player1, player2, hero) {
+    var self = this;
     return self.allStats[player1];
         /*
         if (allStats[player1].competitive.heroes[hero].eliminations > allStats[player2].competitive.heroes[hero].eliminations)
