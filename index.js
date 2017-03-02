@@ -32,7 +32,7 @@ app.get('/stats', function (request, response) {
         var friendlyName = BATTLE_TAGS[i].slice(0, -5);
         owjs
         .getAll('pc', 'us', BATTLE_TAGS[i])
-        .then((data) => Stats.addPlayerStats(friendlyName, data));
+        .then((data) => stats.addPlayerStats(friendlyName, data));
     }
     
 
