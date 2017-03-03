@@ -1,5 +1,3 @@
 {
-  "directory": "public/lib/",
-  "proxy":"http://nhqgate.hq-ac.prv:80",
-  "https-proxy":"http://nhqgate.hq-ac.prv:80"
+  "directory": "public/lib/"
 }
