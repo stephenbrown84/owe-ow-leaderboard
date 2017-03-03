@@ -29,9 +29,9 @@ Stats.prototype.compare = function (player1, player2, hero) {
     var player1Hero = this.allStats[player1].quickplay.heroes[hero];
     var player2Hero = this.allStats[player2].quickplay.heroes[hero];
 
-    if (!player1)
+    if (!player1Hero)
         return -1;
-    else if (!player2)
+    else if (!player2Hero)
         return 1;
 
     var elimn_per_life_ratio = player1Hero.eliminations_per_life / (player1Hero.eliminations_per_life + player2Hero.eliminations_per_life);
