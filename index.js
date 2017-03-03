@@ -46,18 +46,21 @@ function getOWStats(battleTag, response, pos) {
             .then((data) => { stats.addPlayerStats(battleTag.slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos], response, pos) })
     }
     else {
+        response.send(stats.getAllStats());
+        /*
         var out = "";
         for (var i = 0; i < HERO_NAMES.length; i++) {
             out += "<p> " + HERO_NAMES_FRIENDLY[i] + ": " + stats.getBestPlayerFor(HERO_NAMES[i]) + "</p>";
         }
         response.send(out);
+        */
     }
 }
 
 app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
-    //getOWStats(BATTLE_TAGS[0], response, 0);
+    getOWStats(BATTLE_TAGS[0], response, 0);
     response.send(stats.getAllStats());
 
     /*
