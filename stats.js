@@ -35,12 +35,12 @@ Stats.prototype.compare = function (player1, player2, hero) {
         return 1;
 
     var elimn_per_life_ratio = player1Hero.eliminations_per_life / (player1Hero.eliminations_per_life + player2Hero.eliminations_per_life);
-    var weapon_accuracy_ratio = player1Hero.weapon_accuracy / (player1Hero.weapon_accuracy + player2Hero.weapon_accuracy);
+    //var weapon_accuracy_ratio = player1Hero.weapon_accuracy / (player1Hero.weapon_accuracy + player2Hero.weapon_accuracy);
     var solo_kills_ratio = player1Hero.solo_kills_average / (player1Hero.solo_kills_average + player2Hero.solo_kills_average);
     var objective_kills_ratio = player1Hero.objective_kills_average / (player1Hero.objective_kills_average + player2Hero.objective_kills_average);
 
 
-    var total_ratio = (elimn_per_life_ratio + weapon_accuracy_ratio + solo_kills_ratio + objective_kills_ratio) / 4.0;
+    var total_ratio = (elimn_per_life_ratio + solo_kills_ratio + objective_kills_ratio) / 3.0;
 
     console.log(hero);
     console.log(player1 + " vs " + player2);
