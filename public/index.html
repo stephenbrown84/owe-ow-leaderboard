@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="app" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>OWE Leaderboard</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.18/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/0.1.0/ng-google-chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="./core.js"></script>
+</head>
+<body ng-controller="GenericChartCtrl">
+    <select ng-model="currentHero"
+            ng-options="hero as hero.label for hero in heroes track by hero.id"
+            ng-change="loadChart()">
+    </select>
+    <div google-chart chart="myChartObject" style="height:600px; width:100%;"></div>
+</body>
+</html>

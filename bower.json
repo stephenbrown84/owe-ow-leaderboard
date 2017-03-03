@@ -1,0 +1,10 @@
+{
+  "name": "owe_leaderboard",
+  "version": "0.0.1",
+  "authors": [
+    "Stephen Brown <setphen.brown@hrsdc-rhdcc.gc.ca>"
+  ],
+  "dependencies": {
+    "angular-google-chart": "~0.1.0"
+  }
+}

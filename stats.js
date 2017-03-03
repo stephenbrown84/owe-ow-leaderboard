@@ -103,8 +103,6 @@ Stats.prototype.compare = function (player1, player2, hero) {
     var ratios = [];
 
     ratios.push(getAttr(player1Hero, 'eliminations_per_life') / (getAttr(player1Hero, 'eliminations_per_life') + getAttr(player2Hero, 'eliminations_per_life')));
-    //var weapon_accuracy_ratio = player1Hero.weapon_accuracy / (player1Hero.weapon_accuracy + player2Hero.weapon_accuracy);
-    //ratios.push(getAttr(player1Hero, 'solo_kills_average') / (getAttr(player1Hero, 'solo_kills_average') + getAttr(player2Hero, 'solo_kills_average')));
     ratios.push(getAttr(player1Hero, 'objective_kills_average') / (getAttr(player1Hero, 'objective_kills_average') + getAttr(player2Hero, 'objective_kills_average')));
     ratios.push(getAttr(player1Hero, 'healing_done_average') / (getAttr(player1Hero, 'healing_done_average') + getAttr(player2Hero, 'healing_done_average')));
     ratios.push(getAttr(player1Hero, 'self_healing_average') / (getAttr(player1Hero, 'self_healing_average') + getAttr(player2Hero, 'self_healing_average')));
