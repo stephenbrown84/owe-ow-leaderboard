@@ -1,5 +1,5 @@
 var cool = require('cool-ascii-faces');
-var owjs = require('overwatch-js');
+var owjs = require('./overwatch-js');
 
 var express = require('express');
 var app = express();
