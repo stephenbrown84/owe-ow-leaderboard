@@ -156,8 +156,15 @@ angular.module("app", ["googlechart"])
         var keys = Object.keys($scope.data[hero][0])
         for (var i = 1; i < keys.length; i++) {
             $scope.myChartObject.data.rows[i - 1].c[0].v = keys[i];
-            $scope.myChartObject.data.rows[i - 1].c[1].v = $scope.data[hero][0][keys[i]];
-            $scope.myChartObject.data.rows[i - 1].c[2].v = $scope.data[hero][1][keys[i]];
+            var value1 = $scope.data[hero][0][keys[i]];
+            var value2 = $scope.data[hero][1][keys[i]];
+
+            if ((value1 > 100) || (value2 > 100)) {
+                value1 = value1 / 100;
+                value2 = value2 / 100;
+            }
+            $scope.myChartObject.data.rows[i - 1].c[1].v = value1;
+            $scope.myChartObject.data.rows[i - 1].c[2].v = value2;
         }
     }
 
