@@ -159,7 +159,11 @@ angular.module("app", ["googlechart"])
             var value1 = $scope.data[hero][0][keys[i]];
             var value2 = $scope.data[hero][1][keys[i]];
 
-            if ((value1 > 100) || (value2 > 100)) {
+            if ((value1 > 1000) || (value2 > 1000)) {
+                value1 = value1 / 1000;
+                value2 = value2 / 1000;
+            }
+            else if ((value1 > 100) || (value2 > 100)) {
                 value1 = value1 / 100;
                 value2 = value2 / 100;
             }
