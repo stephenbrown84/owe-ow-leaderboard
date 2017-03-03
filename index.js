@@ -57,7 +57,8 @@ function getOWStats(battleTag, response, pos) {
 app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
-    getOWStats(BATTLE_TAGS[0], response, 0);
+    //getOWStats(BATTLE_TAGS[0], response, 0);
+    response.send(stats.getAllStats());
 
     /*
     var out = "";
