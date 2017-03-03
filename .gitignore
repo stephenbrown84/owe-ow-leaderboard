@@ -1,5 +1,6 @@
 # Node build artifacts
 node_modules
+public/lib
 npm-debug.log
 
 # Local development
