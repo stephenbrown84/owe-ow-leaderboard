@@ -38,40 +38,49 @@ const HERO_NAMES = [ 'ana'];
 const HERO_NAMES_FRIENDLY = ['Ana'];
 */
 
-function getOWStats(battleTag, response, pos) {
+function getOWStats(battleTag, pos) {
 
     if (pos < BATTLE_TAGS.length) {
         owjs
             .getAll('pc', 'us', battleTag)
             .then((data) => { stats.addPlayerStats(battleTag.slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos], response, pos) })
     }
+    /*
     else {
-        response.send(stats.getAllStats());
-        /*
+        //response.send(stats.getAllStats());
+
         var out = "";
         for (var i = 0; i < HERO_NAMES.length; i++) {
             out += "<p> " + HERO_NAMES_FRIENDLY[i] + ": " + stats.getBestPlayerFor(HERO_NAMES[i]) + "</p>";
         }
         response.send(out);
-        */
     }
+    */
+}
+
+function refreshOWStats() {
+    stats = new Stats({});
+    getOWStats(BATTLE_TAGS[0], 0);
 }
 
 app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
-    getOWStats(BATTLE_TAGS[0], response, 0);
+    //getOWStats(BATTLE_TAGS[0], response, 0);
     //response.send(stats.getAllStats());
 
-    /*
+
     var out = "";
     for (var i=0; i < HERO_NAMES.length; i++) {
-        out += "<p> " + HERO_NAMES_FRIENDLY[i] + ": " + stats.getBestPlayerFor(HERO_NAMES[i]) + "</p>";
-
+        var bestPlayers = stats.getStatsOfBestTwoPlayersFor(HERO_NAMES[i]);
+        //out += "<p> " + HERO_NAMES_FRIENDLY[i] + ": " + stats.getBestPlayerFor(HERO_NAMES[i]) + "</p>";
+        out += "<h2>" + HERO_NAMES_FRIENDLY[i] + ": " + bestPlayers[0].name + "</h2>";
+        out += "<div><p><b>1st Place</b></p>" + JSON.stringify(bestPlayers[0], null, 2) + "</div>"
+        out += "<div><p><b>2nd Place</b></p>" + JSON.stringify(bestPlayers[1], null, 2) + "</div>"
     }
 
     response.send(out);
-    */
+
     /*
     client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
         response.send(data);
@@ -99,7 +108,9 @@ app.get('/times', function(request, response) {
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+    console.log('Node app is running on port', app.get('port'));
+    refreshOWStats();
+    setInterval(refreshOWStats, 600000);
 });
 
 

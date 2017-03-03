@@ -17,6 +17,21 @@ function getAttr(playerHero, attr) {
         return playerHero[attr];
 }
 
+function getPlayerHeroStatsFor(playerName, playerHero) {
+
+    var winnerObj = {
+        name: playerName,
+        eliminations_per_life: getAttr(playerHero, 'eliminations_per_life'),
+        objective_kills_average: getAttr(playerHero, 'objective_kills_average'),
+        healing_done_average: getAttr(playerHero, 'healing_done_average'),
+        self_healing_average: getAttr(playerHero, 'self_healing_average'),
+        final_blows_average: getAttr(playerHero, 'final_blows_average'),
+        damage_blocked_average: getAttr(playerHero, 'damage_blocked_average')
+    }
+
+    return winnerObj;
+}
+
 Stats.prototype.addPlayerStats = function (friendlyName, data) {
     this.allStats[friendlyName] = data;
 }
@@ -32,6 +47,36 @@ Stats.prototype.getBestPlayerFor = function (hero) {
     return winner;
 }
 
+Stats.prototype.getStatsOfBestPlayerFor = function (hero) {
+    var keys = Object.keys(this.allStats);
+    var winner = keys[0];
+
+    for (var i = 1; i < keys.length; i++) {
+        if (this.compare(winner, keys[i], hero) < 0)
+            winner = keys[i];
+    }
+
+    var playerHero = this.allStats[winner].quickplay.heroes[hero];
+    return getPlayerHeroStatsFor(winner, playerHero);
+}
+
+Stats.prototype.getStatsOfBestTwoPlayersFor = function (hero) {
+    var keys = Object.keys(this.allStats);
+    var winner = keys[0];
+    var secondPlace = keys[1];
+
+    for (var i = 1; i < keys.length; i++) {
+        if (this.compare(winner, keys[i], hero) < 0) {
+            secondPlace = winner;
+            winner = keys[i];
+        }    
+    }
+
+    var winnerPlayerHero = this.allStats[winner].quickplay.heroes[hero];
+    var secondPlacePlayerHero = this.allStats[secondPlace].quickplay.heroes[hero];
+    return [getPlayerHeroStatsFor(winner, winnerPlayerHero), getPlayerHeroStatsFor(secondPlace, secondPlacePlayerHero)];
+}
+
 Stats.prototype.getAllStats = function () {
     return this.allStats;
 }
@@ -45,23 +90,30 @@ Stats.prototype.compare = function (player1, player2, hero) {
     else if (!player2Hero)
         return 1;
 
-    ratios = [];
+    var ratios = [];
 
     ratios.push(getAttr(player1Hero, 'eliminations_per_life') / (getAttr(player1Hero, 'eliminations_per_life') + getAttr(player2Hero, 'eliminations_per_life')));
     //var weapon_accuracy_ratio = player1Hero.weapon_accuracy / (player1Hero.weapon_accuracy + player2Hero.weapon_accuracy);
-    ratios.push(getAttr(player1Hero, 'solo_kills_average') / (getAttr(player1Hero, 'solo_kills_average') + getAttr(player2Hero, 'solo_kills_average')));
+    //ratios.push(getAttr(player1Hero, 'solo_kills_average') / (getAttr(player1Hero, 'solo_kills_average') + getAttr(player2Hero, 'solo_kills_average')));
     ratios.push(getAttr(player1Hero, 'objective_kills_average') / (getAttr(player1Hero, 'objective_kills_average') + getAttr(player2Hero, 'objective_kills_average')));
+    ratios.push(getAttr(player1Hero, 'healing_done_average') / (getAttr(player1Hero, 'healing_done_average') + getAttr(player2Hero, 'healing_done_average')));
+    ratios.push(getAttr(player1Hero, 'self_healing_average') / (getAttr(player1Hero, 'self_healing_average') + getAttr(player2Hero, 'self_healing_average')));
+    ratios.push(getAttr(player1Hero, 'final_blows_average') / (getAttr(player1Hero, 'final_blows_average') + getAttr(player2Hero, 'final_blows_average')));
+    ratios.push(getAttr(player1Hero, 'damage_blocked_average') / (getAttr(player1Hero, 'damage_blocked_average') + getAttr(player2Hero, 'damage_blocked_average')));
 
     var count = 0;
+    var total = 0;
     for (var i = 0; i < ratios.length; i++) {
-        if (!isNaN(ratios[i]))
+        if (!isNaN(ratios[i])) {
+            total += ratios[i];
             count++;
+        }
     }
 
     if (count == 0)
         return player1;
 
-    var total_ratio = (elimn_per_life_ratio + solo_kills_ratio + objective_kills_ratio) / count;
+    var total_ratio = total / count;
 
     console.log(hero);
     console.log(player1 + " vs " + player2);
