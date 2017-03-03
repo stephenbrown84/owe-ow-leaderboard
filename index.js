@@ -43,7 +43,7 @@ function getOWStats(battleTag, pos) {
     if (pos < BATTLE_TAGS.length) {
         owjs
             .getAll('pc', 'us', battleTag)
-            .then((data) => { stats.addPlayerStats(battleTag.slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos], response, pos) })
+            .then((data) => { stats.addPlayerStats(battleTag.slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos], pos) })
     }
     /*
     else {
