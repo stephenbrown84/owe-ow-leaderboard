@@ -63,13 +63,23 @@ Stats.prototype.getStatsOfBestPlayerFor = function (hero) {
 Stats.prototype.getStatsOfBestTwoPlayersFor = function (hero) {
     var keys = Object.keys(this.allStats);
     var winner = keys[0];
-    var secondPlace = keys[1];
 
     for (var i = 1; i < keys.length; i++) {
         if (this.compare(winner, keys[i], hero) < 0) {
-            secondPlace = winner;
             winner = keys[i];
         }    
+    }
+
+    var secondPlace = keys[0];
+    if (keys[0] == winner)
+        secondPlace = keys[1];
+
+    for (var i = 1; i < keys.length; i++) {
+        if (keys[i] == winner)
+            continue;
+        if (this.compare(secondPlace, keys[i], hero) < 0) {
+            secondPlace = keys[i];
+        }
     }
 
     var winnerPlayerHero = this.allStats[winner].quickplay.heroes[hero];
