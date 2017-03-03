@@ -24,7 +24,7 @@ function getPlayerHeroStatsFor(playerName, playerHero) {
         eliminations_per_life: getAttr(playerHero, 'eliminations_per_life'),
         objective_kills_average: getAttr(playerHero, 'objective_kills_average'),
         healing_done_average: getAttr(playerHero, 'healing_done_average'),
-        self_healing_average: getAttr(playerHero, 'self_healing_average'),
+        damage_done_average: getAttr(playerHero, 'damage_done_average'),
         final_blows_average: getAttr(playerHero, 'final_blows_average'),
         damage_blocked_average: getAttr(playerHero, 'damage_blocked_average')
     }
