@@ -26,9 +26,12 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-const BATTLE_TAGS = ['MegaArcon-1653', 'noj-1818', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767'];
+const BATTLE_TAGS = ['MegaArcon-1653', 'noj-1818', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767',
+    'Isoulle-1235', 'Lawbringer-11174', 'Nick-15366', 'Dirtnapper-1628'];
 const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'd.va', 'symmetra'];
+const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
+    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'McCree', 'Winston',
     'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra'];
 
@@ -43,7 +46,7 @@ function getOWStats(battleTag, pos) {
     if (pos < BATTLE_TAGS.length) {
         owjs
             .getAll('pc', 'us', battleTag)
-            .then((data) => { stats.addPlayerStats(battleTag.slice(0, -5), data); pos++; getOWStats( BATTLE_TAGS[pos], pos) })
+            .then((data) => { stats.addPlayerStats(battleTag.slice(0, battleTag.indexOf('-')), data); pos++; getOWStats( BATTLE_TAGS[pos], pos) })
     }
     /*
     else {
@@ -99,11 +102,21 @@ app.get('/stats', function (request, response) {
     */
 });
 
-app.get('/stats/raw', function (request, response) {
+app.get('/stats/raw/quickplay', function (request, response) {
 
     var data = {};
     for (var i = 0; i < HERO_NAMES.length; i++) {
-        data[HERO_NAMES[i]] = stats.getStatsOfBestTwoPlayersFor(HERO_NAMES[i]);
+        data[HERO_NAMES_CLEAN[i]] = stats.getStatsOfBestTwoPlayersFor(HERO_NAMES[i], false);
+    }
+
+    response.send(data);
+});
+
+app.get('/stats/raw/competitive', function (request, response) {
+
+    var data = {};
+    for (var i = 0; i < HERO_NAMES.length; i++) {
+        data[HERO_NAMES_CLEAN[i]] = stats.getStatsOfBestTwoPlayersFor(HERO_NAMES[i], true);
     }
 
     response.send(data);

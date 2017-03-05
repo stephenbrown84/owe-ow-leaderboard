@@ -12,10 +12,17 @@
     <script src="./core.js"></script>
 </head>
 <body ng-controller="GenericChartCtrl">
+    <label>Hero: </label>
     <select ng-model="currentHero"
-            ng-options="hero as hero.label for hero in heroes track by hero.id"
-            ng-change="loadChart()">
+            ng-options="hero as hero.label for hero in heroOptions track by hero.id">
     </select>
-    <div google-chart chart="myChartObject" style="height:600px; width:100%;"></div>
+    <label>Play Mode: </label>
+    <select ng-model="selectedMode"
+            ng-options="mode as mode.label for mode in modes track by mode.id"
+            ng-change="loadPlayMode()">
+    </select>
+
+    <div ng-repeat="h in heroes" google-chart chart="myChartObject_{{h.id}}" ng-show="shouldShow(h.id)" style="height:350px; width:100%;">
+    </div>
 </body>
 </html>
