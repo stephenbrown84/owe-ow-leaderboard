@@ -90,6 +90,11 @@ angular.module("app", ["googlechart"])
             id: 'symmetra',
             label: 'Symmetra'
         }
+        ,
+        {
+            id: 'zarya',
+            label: 'Zarya'
+        }
     ];
 
     $scope.modes = [
