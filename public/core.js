@@ -141,7 +141,7 @@ angular.module("app", ["googlechart"])
 
         $scope["myChartObject_" + hero] = {};
         $scope["myChartObject_" + hero].data = $scope.initChartData();
-        $scope["myChartObject_" + hero].type = "BarChart";
+        $scope["myChartObject_" + hero].type = "ColumnChart";
         $scope["myChartObject_" + hero].options = {title : hero};
 
         $scope["myChartObject_" + hero].data.cols[1].label = $scope.data[hero][0].name
