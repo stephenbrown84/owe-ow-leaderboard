@@ -25,7 +25,7 @@ let OverwatchProvider = function() {
 
     String.prototype.cast = function() {
         var multiplier = 1;
-        if (this.toUpperCase().indexOf('HOURS') > 0)
+        if (this.toUpperCase().indexOf('HOUR') > 0)
             multiplier = 60;
 
         var val = this.replace(/,/g,'');

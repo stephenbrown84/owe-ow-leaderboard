@@ -117,15 +117,10 @@ angular.module("app", ["googlechart"])
     $scope.quickplayData;
     $scope.competitiveData;
     $scope.data;
-    $http({ method: 'GET', url: '/stats/quickplay' }).success(function (data, status, headers, config) {
-        $scope.quickplayData = data;
-        $scope.data = data;
-        $http({ method: 'GET', url: '/stats/competitive' }).success(function (data, status, headers, config) {
-            $scope.competitiveData = data;
-            $scope.loadCharts();
-
-        });
-
+    $http({ method: 'GET', url: '/stats/sorted' }).success(function (data, status, headers, config) {
+        $scope.quickplayData = data.quickplay;
+        $scope.competitiveData = data.competitive;
+        $scope.data = data.quickplay;
     });
 
     $scope.loadPlayMode = function() {
@@ -144,13 +139,15 @@ angular.module("app", ["googlechart"])
         $scope["myChartObject_" + hero].type = "ColumnChart";
         $scope["myChartObject_" + hero].options = {title : hero};
 
+        if ($scope.data[hero].length < 2) return;
+
         $scope["myChartObject_" + hero].data.cols[1].label = $scope.data[hero][0].name
         $scope["myChartObject_" + hero].data.cols[2].label = $scope.data[hero][1].name
-        var keys = Object.keys($scope.data[hero][0])
+        var keys = Object.keys($scope.data[hero][0]['stats'])
         for (var i = 1; i < keys.length; i++) {
             $scope["myChartObject_" + hero].data.rows[i - 1].c[0].v = keys[i];
-            var value1 = $scope.data[hero][0][keys[i]];
-            var value2 = $scope.data[hero][1][keys[i]];
+            var value1 = $scope.data[hero][0]['stats'][keys[i]];
+            var value2 = $scope.data[hero][1]['stats'][keys[i]];
 
             if ((value1 > 1000) || (value2 > 1000)) {
                 value1 = value1 / 1000;

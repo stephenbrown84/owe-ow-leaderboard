@@ -6,8 +6,8 @@ var app = express();
 
 var initData = require('./test.json');
 var Stats = require('./stats');
-//var stats = new Stats(initData);
-var stats = new Stats({});
+var stats = new Stats(initData);
+//var stats = new Stats({});
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -123,7 +123,11 @@ app.get('/stats/competitive', function (request, response) {
 });
 
 app.get('/stats/raw', function (request, response) {
-    response.send(stats.getAllStats());
+    response.send(stats.getCalculatedStats());
+});
+
+app.get('/stats/sorted', function (request, response) {
+    response.send(stats.getSortedStats());
 });
 
 app.get('/times', function(request, response) {
@@ -136,8 +140,8 @@ app.get('/times', function(request, response) {
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
-    refreshOWStats();
-    setInterval(refreshOWStats, 600000);
+    //refreshOWStats();
+    //setInterval(refreshOWStats, 600000);
 });
 
 

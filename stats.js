@@ -1,4 +1,5 @@
 'use strict';
+var StatsEngine = require('./statsengine');
 
 module.exports = Stats;
 
@@ -130,6 +131,16 @@ Stats.prototype.getAllStats = function () {
     return this.allStats;
 }
 
+Stats.prototype.getCalculatedStats = function () {
+    var statsEngine = new StatsEngine(this.allStats);
+    return statsEngine.getCalculatedStats();
+}
+
+Stats.prototype.getSortedStats = function () {
+    var statsEngine = new StatsEngine(this.allStats);
+    return statsEngine.getSortedStats();
+}
+
 Stats.prototype.compare = function (player1, player2, hero, isCompetitive) {
     var player1Hero, player2Hero;
 
@@ -153,6 +164,10 @@ Stats.prototype.compare = function (player1, player2, hero, isCompetitive) {
         return 1;
 
     // Both players should have at least 1 hour of game play to use for the hero
+    console.log(player1 + " " + hero);
+    console.log(getAttr(player1Hero, 'time_played'));
+    console.log(player2 + " " + hero);
+    console.log(getAttr(player2Hero, 'time_played'));
     if (getAttr(player1Hero, 'time_played') < 60)
         return -1;
     else if (getAttr(player2Hero, 'time_played') < 60)
