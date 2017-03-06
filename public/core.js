@@ -117,10 +117,10 @@ angular.module("app", ["googlechart"])
     $scope.quickplayData;
     $scope.competitiveData;
     $scope.data;
-    $http({ method: 'GET', url: '/stats/raw/quickplay' }).success(function (data, status, headers, config) {
+    $http({ method: 'GET', url: '/stats/quickplay' }).success(function (data, status, headers, config) {
         $scope.quickplayData = data;
         $scope.data = data;
-        $http({ method: 'GET', url: '/stats/raw/competitive' }).success(function (data, status, headers, config) {
+        $http({ method: 'GET', url: '/stats/competitive' }).success(function (data, status, headers, config) {
             $scope.competitiveData = data;
             $scope.loadCharts();
 

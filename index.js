@@ -102,7 +102,7 @@ app.get('/stats', function (request, response) {
     */
 });
 
-app.get('/stats/raw/quickplay', function (request, response) {
+app.get('/stats/quickplay', function (request, response) {
 
     var data = {};
     for (var i = 0; i < HERO_NAMES.length; i++) {
@@ -112,7 +112,7 @@ app.get('/stats/raw/quickplay', function (request, response) {
     response.send(data);
 });
 
-app.get('/stats/raw/competitive', function (request, response) {
+app.get('/stats/competitive', function (request, response) {
 
     var data = {};
     for (var i = 0; i < HERO_NAMES.length; i++) {
@@ -120,6 +120,10 @@ app.get('/stats/raw/competitive', function (request, response) {
     }
 
     response.send(data);
+});
+
+app.get('/stats/raw', function (request, response) {
+    return stats.getAllStats();
 });
 
 app.get('/times', function(request, response) {
