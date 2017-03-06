@@ -123,7 +123,7 @@ app.get('/stats/competitive', function (request, response) {
 });
 
 app.get('/stats/raw', function (request, response) {
-    return stats.getAllStats();
+    response.send(stats.getAllStats());
 });
 
 app.get('/times', function(request, response) {
@@ -131,7 +131,7 @@ app.get('/times', function(request, response) {
     var times = process.env.TIMES || 5
     for (i=0; i < times; i++)
       result += i + ' ';
-  response.send(result);
+    response.send(result);
 });
 
 app.listen(app.get('port'), function() {
