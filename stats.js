@@ -152,6 +152,12 @@ Stats.prototype.compare = function (player1, player2, hero, isCompetitive) {
     else if (!player2Hero)
         return 1;
 
+    // Both players should have at least 1 hour of game play to use for the hero
+    if (getAttr(player1Hero, 'time_played') < 60)
+        return -1;
+    else if (getAttr(player2Hero, 'time_played') < 60)
+        return 1;
+
     var ratios = [];
 
     ratios.push(getAttr(player1Hero, 'eliminations_per_life') / (getAttr(player1Hero, 'eliminations_per_life') + getAttr(player2Hero, 'eliminations_per_life')));

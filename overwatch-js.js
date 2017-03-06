@@ -24,7 +24,13 @@ let OverwatchProvider = function() {
     }
 
     String.prototype.cast = function() {
-        return  this.indexOf('.') > 0 ? parseFloat(this) : parseInt(this.replace(/,/g,''));
+        var multiplier = 1;
+        if (this.indexOf('HOURS') > 0)
+            multiplier = 60;
+
+        var val = this.replace(/,/g,'');
+        var num = this.indexOf('.') > 0 ? parseFloat(val) : parseInt(val);
+        return num * multiplier;
     }
 
     let getUrl = (platform, region, tag) => {
@@ -77,7 +83,7 @@ let OverwatchProvider = function() {
             _.each($(`#${gametype} [data-category-id="${map.value}"]`), (slide) => {
                 var e = $(slide);
                 _.each(e.find('tbody > tr'), (stat) => {
-                    stats[map.name][stat.children[0].children[0].data.sanitize()] = stat.children[1].children[0].data.replace(',','').cast();
+                    stats[map.name][stat.children[0].children[0].data.sanitize()] = stat.children[1].children[0].data.cast();
                 });
             });
 
