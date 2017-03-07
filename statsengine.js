@@ -4,8 +4,8 @@ const util = require('util');
 module.exports = StatsEngine;
 
 
-const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
-    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'd.va', 'symmetra', 'zarya'];
+const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
+    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya'];
 const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'McCree', 'Winston',
@@ -248,7 +248,7 @@ StatsEngine.prototype.calculateStats = function (playMode) {
     }
 
 
-    console.log(util.inspect(this.sortedStats, { showHidden: false, depth: null }));
+    //console.log(util.inspect(this.sortedStats, { showHidden: false, depth: null }));
 
     //console.dir(this.heroTotals['quickplay']['d.va']['eliminations_per_life']);
     //console.log(util.inspect(this.heroTotals, { showHidden: false, depth: null }));

@@ -6,8 +6,8 @@ var app = express();
 
 var initData = require('./test.json');
 var Stats = require('./stats');
-var stats = new Stats(initData);
-//var stats = new Stats({});
+//var stats = new Stats(initData);
+var stats = new Stats({});
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -18,9 +18,15 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+/*
 app.get('/', function(request, response) {
-  response.render('pages/index');
+    console.log(count);
+    if (isReady())
+        response.render('pages/index');
+    else
+        response.send("Not Ready. Please refresh.")
 });
+*/
 
 app.get('/cool', function(request, response) {
   response.send(cool());
@@ -28,8 +34,8 @@ app.get('/cool', function(request, response) {
 
 const BATTLE_TAGS = ['NorthernYeti-1308', 'MegaArcon-1653', 'noj-1818', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767',
     'Isoulle-1235', 'Lawbringer-11174', 'Nick-15366', 'Dirtnapper-1628', 'Suracis-1355'];
-const HERO_NAMES = ['pharah', 'reaper', 'soldier:_76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
-    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'd.va', 'symmetra', 'zarya'];
+const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
+    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya'];
 const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'McCree', 'Winston',
@@ -41,12 +47,20 @@ const HERO_NAMES = [ 'ana'];
 const HERO_NAMES_FRIENDLY = ['Ana'];
 */
 
+var count = 0;
+function isReady() {
+    if (count == BATTLE_TAGS.length)
+        return true;
+    else
+        return false;
+}
+
 function getOWStats(battleTag, pos) {
 
     if (pos < BATTLE_TAGS.length) {
         owjs
             .getAll('pc', 'us', battleTag)
-            .then((data) => { stats.addPlayerStats(battleTag.slice(0, battleTag.indexOf('-')), data); pos++; getOWStats( BATTLE_TAGS[pos], pos) })
+            .then((data) => { stats.addPlayerStats(battleTag.slice(0, battleTag.indexOf('-')), data); pos++; count++; getOWStats( BATTLE_TAGS[pos], pos) })
     }
     /*
     else {
@@ -62,6 +76,7 @@ function getOWStats(battleTag, pos) {
 }
 
 function refreshOWStats() {
+    count = 0;
     stats = new Stats({});
     getOWStats(BATTLE_TAGS[0], 0);
 }
@@ -123,11 +138,16 @@ app.get('/stats/competitive', function (request, response) {
 });
 
 app.get('/stats/raw', function (request, response) {
-    response.send(stats.getCalculatedStats());
+    response.send(stats.getAllStats());
 });
 
 app.get('/stats/sorted', function (request, response) {
-    response.send(stats.getSortedStats());
+    if (isReady()) {
+        response.send(stats.getSortedStats());
+    }
+    else {
+        response.send({});
+    }
 });
 
 app.get('/times', function(request, response) {
@@ -140,8 +160,8 @@ app.get('/times', function(request, response) {
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
-    //refreshOWStats();
-    //setInterval(refreshOWStats, 600000);
+    refreshOWStats();
+    setInterval(refreshOWStats, 600000);
 });
 
 

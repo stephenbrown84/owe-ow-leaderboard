@@ -23,6 +23,10 @@ let OverwatchProvider = function() {
         return this.trim().replace(" - ", "_").replace(/\s/g, "_").toLowerCase();
     }
 
+    String.prototype.sanitizeHeroName = function() {
+        return this.trim().toLowerCase().replace(":", "").replace(" ", "").replace(".","").replace("ö","o").replace("ú","");
+    }
+
     String.prototype.cast = function() {
         var multiplier = 1;
         if (this.toUpperCase().indexOf('HOUR') > 0)
@@ -70,7 +74,7 @@ let OverwatchProvider = function() {
         var heroesMap = [];
         var stats = {};
         _.each($(`#${gametype} > .career-stats-section option`), (item) => {
-            heroesMap.push({ name : item.attribs['option-id'].toLowerCase().sanitize(), value : item.attribs['value'] });
+            heroesMap.push({ name : item.attribs['option-id'].toLowerCase().sanitizeHeroName(), value : item.attribs['value'] });
 
             if(overallOnly)
                 return false;

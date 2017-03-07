@@ -116,7 +116,7 @@ angular.module("app", ["googlechart"])
 
     $scope.quickplayData;
     $scope.competitiveData;
-    $scope.data;
+    $scope.data = null;
     $http({ method: 'GET', url: '/stats/sorted' }).success(function (data, status, headers, config) {
         $scope.quickplayData = data.quickplay;
         $scope.competitiveData = data.competitive;
@@ -124,12 +124,18 @@ angular.module("app", ["googlechart"])
     });
 
     $scope.loadPlayMode = function() {
+        if (!$scope.isDataReady()) return;
         $scope.data = $scope[$scope.selectedMode.id + 'Data'];
         $scope.loadCharts();
     }
 
     $scope.shouldShow = function(hero) {
-        return ($scope.currentHero.id === 'all') || ($scope.currentHero.id === hero);
+        return ($scope.currentHero.id === 'all') || (($scope.currentHero.id === hero) && ($scope["myChartObject_" + hero].hasData));
+    }
+
+    $scope.isDataReady = function() {
+        if ($scope.data) return true;
+        return false;
     }
 
     $scope.loadChart = function (hero) {
@@ -138,16 +144,33 @@ angular.module("app", ["googlechart"])
         $scope["myChartObject_" + hero].data = $scope.initChartData();
         $scope["myChartObject_" + hero].type = "ColumnChart";
         $scope["myChartObject_" + hero].options = {title : hero};
+        $scope["myChartObject_" + hero].hasData = true;
 
-        if ($scope.data[hero].length < 2) return;
+        if (!(hero in $scope.data)) {
+            $scope["myChartObject_" + hero].hasData = false;
+            return;
+        }
 
-        $scope["myChartObject_" + hero].data.cols[1].label = $scope.data[hero][0].name
-        $scope["myChartObject_" + hero].data.cols[2].label = $scope.data[hero][1].name
+        if ($scope.data[hero].length > 0)
+            $scope["myChartObject_" + hero].data.cols[1].label = $scope.data[hero][0].name
+        else
+            $scope["myChartObject_" + hero].data.cols[1].label = "N/A";
+
+        if ($scope.data[hero].length > 1)
+            $scope["myChartObject_" + hero].data.cols[2].label = $scope.data[hero][1].name
+        else
+            $scope["myChartObject_" + hero].data.cols[2].label = "N/A";
+
         var keys = Object.keys($scope.data[hero][0]['stats'])
         for (var i = 1; i < keys.length; i++) {
             $scope["myChartObject_" + hero].data.rows[i - 1].c[0].v = keys[i];
-            var value1 = $scope.data[hero][0]['stats'][keys[i]];
-            var value2 = $scope.data[hero][1]['stats'][keys[i]];
+            var value1 = 0;
+            if ($scope.data[hero].length > 0)
+                value1 = $scope.data[hero][0]['stats'][keys[i]];
+
+            var value2 = 0;
+            if ($scope.data[hero].length > 1)
+                var value2 = $scope.data[hero][1]['stats'][keys[i]];
 
             if ((value1 > 1000) || (value2 > 1000)) {
                 value1 = value1 / 1000;
@@ -172,53 +195,55 @@ angular.module("app", ["googlechart"])
         return {
             "cols": [
                 { id: "t", label: "Pharah", type: "string" },
-                { id: "s", label: "1st Place", type: "number" },
-                { id: "t", label: "2nd Place", type: "number" }
+                { id: "s", label: "N/A", type: "number" },
+                { id: "t", label: "N/A", type: "number" }
             ], "rows": [
                 {
                     c: [
-                        { v: "Mushrooms" },
-                        { v: 3 },
-                        { v: 3 }
+                        { v: "" },
+                        { v: 0 },
+                        { v: 0 }
                     ]
                 },
                 {
                     c: [
-                        { v: "Onions" },
-                        { v: 31 },
-                        { v: 3 }
+                        { v: "" },
+                        { v: 0 },
+                        { v: 0 }
                     ]
                 },
                 {
                     c: [
-                        { v: "Olives" },
-                        { v: 31 },
-                        { v: 3 }
+                        { v: "" },
+                        { v: 0 },
+                        { v: 0 }
                     ]
                 },
                 {
                     c: [
-                        { v: "Zucchini" },
-                        { v: 1 },
-                        { v: 3 }
+                        { v: "" },
+                        { v: 0 },
+                        { v: 0 }
                     ]
                 },
                 {
                     c: [
-                        { v: "Pepperoni" },
-                        { v: 2 },
-                        { v: 3 }
+                        { v: "" },
+                        { v: 0 },
+                        { v: 0 }
                     ]
                 },
                 {
                     c: [
-                        { v: "Pepperoni" },
-                        { v: 2 },
-                        { v: 3 }
+                        { v: "" },
+                        { v: 0 },
+                        { v: 0 }
                     ]
                 }
             ]
         };
     }
+
+    //$scope.loadPlayMode();
 
 });
