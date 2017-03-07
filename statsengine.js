@@ -33,12 +33,12 @@ function StatsEngine(initData) {
 
 function getImportantFieldsFor(hero) {
     var fields = [
-        {name: 'eliminations_per_life', required: true},
-        {name: 'objective_kills_average', required: true},
-        {name: 'healing_done_average', required: false},
-        {name: 'damage_done_average', required: true},
-        {name: 'final_blows_average', required: true},
-        {name: 'damage_blocked_average', required: false}
+        {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', required: true},
+        {name: 'objective_kills_average', prettyName: 'Objective Kills Average', required: true},
+        {name: 'healing_done_average', prettyName: 'Healing Done Average', required: false},
+        {name: 'damage_done_average', prettyName: 'Damage Done Average', required: true},
+        {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true},
+        {name: 'damage_blocked_average', prettyName: 'Damage Blocked Average', required: false}
     ];
 
     return fields;

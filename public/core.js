@@ -138,6 +138,21 @@ angular.module("app", ["googlechart"])
         return false;
     }
 
+    $scope.fillOutMissingData = function(data) {
+        var count = data.length;
+        for (var i=(count); i < 2; i++) {
+            data.push({});
+            data[i].name = "N/A";
+            data[i].overall = 0.0;
+            data[i].stats = {};
+
+            var keys = Object.keys(data[0].stats);
+            for (var j = 0; j < keys.length; j++) {
+                data[i].stats[keys] = 0.0;
+            }
+        }
+    }
+
     $scope.loadChart = function (hero) {
 
         $scope["myChartObject_" + hero] = {};
@@ -151,37 +166,34 @@ angular.module("app", ["googlechart"])
             return;
         }
 
-        if ($scope.data[hero].length > 0)
-            $scope["myChartObject_" + hero].data.cols[1].label = $scope.data[hero][0].name
-        else
-            $scope["myChartObject_" + hero].data.cols[1].label = "N/A";
+        //$scope.fillOutMissingData($scope.data[hero]);
 
-        if ($scope.data[hero].length > 1)
-            $scope["myChartObject_" + hero].data.cols[2].label = $scope.data[hero][1].name
-        else
-            $scope["myChartObject_" + hero].data.cols[2].label = "N/A";
+        for (var i=0; i < $scope.data[hero].length; i++) {
+            $scope["myChartObject_" + hero].data.cols.push({
+                id: "s", label: $scope.data[hero][i].name, type: "number"
+            });
 
-        var keys = Object.keys($scope.data[hero][0]['stats'])
-        for (var i = 1; i < keys.length; i++) {
-            $scope["myChartObject_" + hero].data.rows[i - 1].c[0].v = keys[i];
-            var value1 = 0;
-            if ($scope.data[hero].length > 0)
-                value1 = $scope.data[hero][0]['stats'][keys[i]];
+            var keys = Object.keys($scope.data[hero][i]['stats'])
+            for (var j = 1; j < keys.length; j++) {
+                $scope["myChartObject_" + hero].data.rows[j - 1].c[0].v = keys[j].replace(/_/g, ' ');
+                var values = [];
+                values.push($scope.data[hero][i]['stats'][keys[j]])
 
-            var value2 = 0;
-            if ($scope.data[hero].length > 1)
-                var value2 = $scope.data[hero][1]['stats'][keys[i]];
+                /*
+                if ((value1 > 1000) || (value2 > 1000)) {
+                    value1 = value1 / 1000;
+                    value2 = value2 / 1000;
+                }
+                else if ((value1 > 100) || (value2 > 100)) {
+                    value1 = value1 / 100;
+                    value2 = value2 / 100;
+                }
+                */
 
-            if ((value1 > 1000) || (value2 > 1000)) {
-                value1 = value1 / 1000;
-                value2 = value2 / 1000;
+                for (var k=0; k < values.length; k++) {
+                    $scope["myChartObject_" + hero].data.rows[j - 1].c.push({v : values[k]});
+                }
             }
-            else if ((value1 > 100) || (value2 > 100)) {
-                value1 = value1 / 100;
-                value2 = value2 / 100;
-            }
-            $scope["myChartObject_" + hero].data.rows[i - 1].c[1].v = value1;
-            $scope["myChartObject_" + hero].data.rows[i - 1].c[2].v = value2;
         }
     }
 
@@ -194,50 +206,36 @@ angular.module("app", ["googlechart"])
     $scope.initChartData = function() {
         return {
             "cols": [
-                { id: "t", label: "Pharah", type: "string" },
-                { id: "s", label: "N/A", type: "number" },
-                { id: "t", label: "N/A", type: "number" }
+                { id: "t", label: "Pharah", type: "string" }
             ], "rows": [
                 {
                     c: [
-                        { v: "" },
-                        { v: 0 },
-                        { v: 0 }
+                        { v: "" }
                     ]
                 },
                 {
                     c: [
-                        { v: "" },
-                        { v: 0 },
-                        { v: 0 }
+                        { v: "" }
                     ]
                 },
                 {
                     c: [
-                        { v: "" },
-                        { v: 0 },
-                        { v: 0 }
+                        { v: "" }
                     ]
                 },
                 {
                     c: [
-                        { v: "" },
-                        { v: 0 },
-                        { v: 0 }
+                        { v: "" }
                     ]
                 },
                 {
                     c: [
-                        { v: "" },
-                        { v: 0 },
-                        { v: 0 }
+                        { v: "" }
                     ]
                 },
                 {
                     c: [
-                        { v: "" },
-                        { v: 0 },
-                        { v: 0 }
+                        { v: "" }
                     ]
                 }
             ]
