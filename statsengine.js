@@ -211,7 +211,7 @@ function getImportantFieldsFor(hero) {
             { name: 'healing_done_average', required: true },
             { name: 'defensive_assists_average', required: true },
             { name: 'offensive_assists_average', required: true },
-            { name: 'enemies_slept_average', required: false },
+            { name: 'enemies_slept_average', required: true },
             { name: 'nano_boost_assists_average', required: true }
         ];
     }
@@ -283,9 +283,9 @@ function getImportantFieldsFor(hero) {
             { name: 'damage_done_average', required: true },
             { name: 'final_blows_average', required: true },
             { name: 'damage_blocked_average', required: true },
-            { name: 'sentry_turret_kills_average', required: true },
-            { name: 'players_teleported_average', required: true },
-            { name: "teleporter_uptime_average", required: true }
+            { name: 'sentry_turret_kills_average', required: false },
+            { name: 'players_teleported_average', required: false },
+            { name: "teleporter_uptime_average", required: false }
         ];
     }
     else if (hero == 'zarya') {
@@ -331,10 +331,10 @@ function getImportantFieldsFor(hero) {
         fields = [
             {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', required: true},
             {name: 'objective_kills_average', prettyName: 'Objective Kills Average', required: true},
-            {name: 'healing_done_average', prettyName: 'Healing Done Average', required: false},
+            { name: 'healing_done_average', prettyName: 'Healing Done Average', required: true },
             {name: 'damage_done_average', prettyName: 'Damage Done Average', required: true},
             {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true },
-            {name: 'damage_blocked_average', prettyName: 'Damage Blocked Average', required: false}
+            { name: 'damage_blocked_average', prettyName: 'Damage Blocked Average', required: true }
         ];
     }
 
@@ -388,15 +388,15 @@ StatsEngine.prototype.updateHeroTotal = function (hero, playMode, fieldName, her
     }
 
     var amt = getAttr(heroStats, fieldName);
+
+    //if ((hero =='ana') && (playMode == 'competitive')) console.log("SEE ME: " + playMode + ": " + hero + ": " + util.inspect(heroStats, { showHidden: false, depth: null }) + ": " + amt);
     if (amt <= 0.0) return;
 
     if (!(fieldName in this.heroTotals[playMode][hero])) {
         this.heroTotals[playMode][hero][fieldName] = { total: 0.0, count: 0 };
     }
-    else {
-        this.heroTotals[playMode][hero][fieldName].total += amt;
-        this.heroTotals[playMode][hero][fieldName].count += 1;
-    }
+    this.heroTotals[playMode][hero][fieldName].total += amt;
+    this.heroTotals[playMode][hero][fieldName].count += 1;
 }
 
 function compareByOverall(a, b) {
@@ -437,8 +437,20 @@ StatsEngine.prototype.setHeroPercentageForFieldForPlayer = function (player, her
     }
 
     var amt = getAttr(heroStats, fieldName);
+
+    //console.log(fieldName + "   " + amt);
+    /*
+    if ((player.toLowerCase() == 'nuuga') && (hero == 'ana')) {
+        console.log(player + ": " + playMode + ": " + hero + ": " + fieldName + "   " + amt);
+        console.log(this.heroTotals[playMode][hero][fieldName].total);
+        console.log(this.heroTotals[playMode][hero][fieldName].count);
+        console.log("-------");
+
+    }
+    */
     if (amt <= 0.0) return;
 
+    
     if (!(fieldName in this.calculatedStats[playMode][player][hero])) {
         this.calculatedStats[playMode][player][hero][fieldName] = 0.0;
     }
@@ -504,7 +516,9 @@ StatsEngine.prototype.calculateStats = function (playMode) {
 
             var heroStats = this.getHeroStatsFor(keys[j], playMode, hero);
             for (var k = 0; k < heroFields.length; k++) {
-                if (hasRequiredFieldsForHero(heroStats, hero)) {
+                //if ((keys[j].toLowerCase() == 'nuuga') &&(hero == 'ana')) console.log("SEE ME: " + playMode + ": " + hero + ": " + util.inspect(heroStats, { showHidden: false, depth: null }));
+                if (hasRequiredFieldsForHero(heroStats, hero) && hasEnoughTimePlayed(heroStats, hero)) {
+                    //if ((keys[j].toLowerCase() == 'nuuga') && (hero == 'ana')) console.log("SEE ME: " + playMode + ": " + hero + ": " + util.inspect(heroStats, { showHidden: false, depth: null }));
                     this.updateHeroTotal(hero, playMode, heroFields[k].name, heroStats);
                 }
             }
