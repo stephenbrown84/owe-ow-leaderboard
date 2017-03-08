@@ -32,6 +32,13 @@ let OverwatchProvider = function() {
         if (this.toUpperCase().indexOf('HOUR') > 0)
             multiplier = 60;
 
+        var indColon = this.indexOf(':');
+        if (indColon > 0) {
+            var mins = parseInt(this.slice(0,indColon));
+            var secs = parseInt(this.slice(indColon+1));
+            return (mins*60) + secs;
+        }
+
         var val = this.replace(/,/g,'');
         var num = this.indexOf('.') > 0 ? parseFloat(val) : parseInt(val);
         return num * multiplier;

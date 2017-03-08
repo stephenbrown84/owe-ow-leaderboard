@@ -71,7 +71,8 @@ function getImportantFieldsFor(hero) {
             {name: 'eliminations_per_life', required: true},
             {name: 'objective_kills_average',  required: true},
             {name: 'eliminations_average', required: true},
-            {name: 'damage_done_average', required: true},
+            { name: 'damage_done_average', required: true },
+            { name: 'objective_time_average', required: true },
             {name: 'fire_strike_kills_average', required: true},
             {name: 'earthshatter_kills_average', required: true},
             {name: 'final_blows_average', required: true},
@@ -95,7 +96,8 @@ function getImportantFieldsFor(hero) {
             {name: 'eliminations_average', required: true},
             {name: 'damage_done_average', required: true},
             {name: 'final_blows_average', required: true},
-            {name: 'self_healing_average', prettyName: 'Self Healing Average', required: true},
+            {name: 'self_healing_average', prettyName: 'Self Healing Average', required: true },
+            { name: 'objective_time_average', required: true },
             {name: 'enemies_frozen_average', required: true},
             {name: 'blizzard_kills_average', required: true}
         ];
@@ -146,13 +148,192 @@ function getImportantFieldsFor(hero) {
             {name: 'dragonblade_kills_average', required: true}
         ];
     }
+    else if (hero == 'winston') {
+        fields = [
+            {name: 'eliminations_per_life', required: true},
+            {name: 'objective_kills_average',  required: true},
+            {name: 'eliminations_average', required: true},
+            {name: 'damage_done_average', required: true},
+            {name: 'final_blows_average', required: true},
+            {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true },
+            {name: 'players_knocked_back_average', required: true },
+            {name: 'primal_rage_kills_average', required: true}
+        ];
+    }
+    else if (hero == 'roadhog') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'objective_time_average', required: true },
+            { name: 'self_healing_average', required: true },
+            { name: 'enemies_hooked_average', required: true },
+            { name: 'whole_hog_kills_average', required: true }
+        ];
+    }
+    else if (hero == 'zenyatta') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'healing_done_average', required: true },
+            { name: 'transcendence_healing_best', required: true },
+            { name: 'defensive_assists_average', required: true },
+            { name: 'offensive_assists_average', required: true }
+        ];
+    }
+    else if (hero == 'mercy') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'self_healing_average', required: true },
+            { name: 'healing_done_average', required: true },
+            { name: 'defensive_assists_average', required: true },
+            { name: 'offensive_assists_average', required: true },
+            { name: 'players_resurrected_average', required: true }
+        ];
+    }
+    else if (hero == 'ana') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'self_healing_average', required: true },
+            { name: 'healing_done_average', required: true },
+            { name: 'defensive_assists_average', required: true },
+            { name: 'offensive_assists_average', required: true },
+            { name: 'enemies_slept_average', required: false },
+            { name: 'nano_boost_assists_average', required: true }
+        ];
+    }
+    else if (hero == 'sombra') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'offensive_assists_average', required: true },
+            { name: "enemies_emp'd_average", required: true },
+            { name: 'enemies_hacked_average', required: true }
+        ];
+    }
+    else if (hero == 'bastion') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'healing_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'sentry_kills_average', required: true },
+            { name: "recon_kills_average", required: true },
+            { name: 'tank_kills_average', required: true }
+        ];
+    }
+    else if (hero == 'hanzo') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'recon_assist_most_in_game', required: true },
+            { name: "scatter_arrow_kills_average", required: true },
+            { name: 'dragonstrike_kills_average', required: true }
+        ];
+    }
+    else if (hero == 'widowmaker') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'recon_assists_average', required: true },
+            { name: "venom_mine_kills_average", required: true }
+        ];
+    }
+    else if (hero == 'dva') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'objective_time_average', required: true },
+            { name: 'damage_blocked_average', required: true },
+            { name: "self-destruct_kills_average", required: true }
+        ];
+    }
+    else if (hero == 'symmetra') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'damage_blocked_average', required: true },
+            { name: 'sentry_turret_kills_average', required: true },
+            { name: 'players_teleported_average', required: true },
+            { name: "teleporter_uptime_average", required: true }
+        ];
+    }
+    else if (hero == 'zarya') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'objective_time_average', required: true },
+            { name: 'damage_blocked_average', required: true },
+            { name: 'lifetime_average_energy', required: true },
+            { name: "projected_barriers_applied_average", required: true }
+        ];
+    }
+    else if (hero == 'lucio') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'objective_time_average', required: true },
+            { name: 'healing_done_average', required: true },
+            { name: 'self_healing_average', required: true },
+            { name: "defensive_assists_average", required: true },
+            { name: 'sound_barriers_provided_average', required: true }
+        ];
+    }
+    else if (hero == 'torbjorn') {
+        fields = [
+            { name: 'eliminations_per_life', required: true },
+            { name: 'objective_kills_average', required: true },
+            { name: 'eliminations_average', required: true },
+            { name: 'damage_done_average', required: true },
+            { name: 'final_blows_average', required: true },
+            { name: 'turret_kills_average', required: true },
+            { name: "armor_packs_created_average", required: true },
+            { name: 'molten_core_kills_average', required: true }
+        ];
+    }
     else {
         fields = [
             {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', required: true},
             {name: 'objective_kills_average', prettyName: 'Objective Kills Average', required: true},
             {name: 'healing_done_average', prettyName: 'Healing Done Average', required: false},
             {name: 'damage_done_average', prettyName: 'Damage Done Average', required: true},
-            {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true},
+            {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true },
             {name: 'damage_blocked_average', prettyName: 'Damage Blocked Average', required: false}
         ];
     }
@@ -262,7 +443,6 @@ StatsEngine.prototype.setHeroPercentageForFieldForPlayer = function (player, her
         this.calculatedStats[playMode][player][hero][fieldName] = 0.0;
     }
 
-    //console.log(hero + " " + fieldName);
     var total = this.heroTotals[playMode][hero][fieldName].total;
     var count = this.heroTotals[playMode][hero][fieldName].count;
     this.calculatedStats[playMode][player][hero][fieldName] = amt / (total / count);

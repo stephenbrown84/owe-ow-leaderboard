@@ -193,14 +193,13 @@ angular.module("app", ["googlechart"])
         }
 
         //$scope["myChartObject_" + playMode + "_" + hero].show = (playMode == 'quickplay');
+        $scope["myChartObject_" + playMode + "_" + hero].options = {};
+        $scope["myChartObject_" + playMode + "_" + hero].options.title = hero;
 
         if (!$scope["myChartObject_" + playMode + "_" + hero].hasData)
             return;
 
-        $scope["myChartObject_" + playMode + "_" + hero].options = {
-            title : hero,
-            colors: $scope.getColorOrder(hero)
-        };
+        $scope["myChartObject_" + playMode + "_" + hero].options.colors = $scope.getColorOrder(hero);
 
         //$scope.fillOutMissingData($scope.data[hero]);
         var barCount = $scope.maxNumOfPlayers;
