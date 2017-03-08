@@ -176,7 +176,7 @@ angular.module("app", ["googlechart"])
             else if (player == 'Nemisari')
                 colors.push('#FAA43A');
             else if (player == 'Lawbringer')
-                colors.push('#F15854')
+                colors.push('#FFE135')
             else if (player == 'Nick')
                 colors.push('#B2912F')
             else if(player == 'Dirtnapper')
