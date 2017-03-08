@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15eb918f-c838-4ddf-b462-23127897c2ca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/overwatch-js.js" afterPath="$PROJECT_DIR$/overwatch-js.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/core.js" afterPath="$PROJECT_DIR$/public/core.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statsengine.js" afterPath="$PROJECT_DIR$/statsengine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.json" afterPath="$PROJECT_DIR$/test.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,8 +28,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="111" lean-forward="false" selection-start-line="25" selection-start-column="111" selection-end-line="25" selection-end-column="111" />
+            <state relative-caret-position="595">
+              <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -38,8 +40,8 @@
       <file leaf-file-name="overwatch-js.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/overwatch-js.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="-209">
+              <caret line="25" column="52" lean-forward="true" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -48,8 +50,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="75" column="6" lean-forward="true" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="6" />
+            <state relative-caret-position="510">
+              <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -58,7 +60,7 @@
       <file leaf-file-name="stats.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1589">
+            <state relative-caret-position="-260">
               <caret line="139" column="21" lean-forward="true" selection-start-line="139" selection-start-column="21" selection-end-line="139" selection-end-column="21" />
               <folding />
             </state>
@@ -68,8 +70,8 @@
       <file leaf-file-name="statsengine.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/statsengine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2414">
-              <caret line="38" column="89" lean-forward="true" selection-start-line="38" selection-start-column="89" selection-end-line="38" selection-end-column="89" />
+            <state relative-caret-position="187">
+              <caret line="11" column="135" lean-forward="false" selection-start-line="11" selection-start-column="135" selection-end-line="11" selection-end-column="135" />
               <folding />
             </state>
           </provider>
@@ -78,11 +80,13 @@
       <file leaf-file-name="core.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1411">
-              <caret line="173" column="38" lean-forward="true" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
+            <state relative-caret-position="731">
+              <caret line="209" column="0" lean-forward="true" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="e#222#1899#0" expanded="false" />
+                <element signature="e#146#1975#0" expanded="false" />
+                <element signature="e#7509#8373#0" expanded="false" />
+                <element signature="e#8418#9583#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -103,6 +107,7 @@
       <find>TEST</find>
       <find>loadCharts</find>
       <find>console.log</find>
+      <find>HERO_NAMES</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,11 +119,11 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/stats.js" />
         <option value="$PROJECT_DIR$/results.json" />
+        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/overwatch-js.js" />
         <option value="$PROJECT_DIR$/statsengine.js" />
-        <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/public/core.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/core.js" />
       </list>
     </option>
   </component>
@@ -132,7 +137,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="277" />
+    <option name="x" value="260" />
+    <option name="y" value="7" />
     <option name="width" value="1400" />
     <option name="height" value="983" />
   </component>
@@ -249,18 +255,18 @@
       <option name="presentableId" value="Default" />
       <updated>1488595601921</updated>
       <workItem from="1488595604112" duration="27588000" />
-      <workItem from="1488845230773" duration="16686000" />
+      <workItem from="1488845230773" duration="19665000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44274000" />
+    <option name="totallyTimeSpent" value="47253000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="277" y="0" width="1400" height="983" extended-state="0" />
+    <frame x="260" y="7" width="1400" height="983" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15968208" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15968208" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -306,7 +312,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/public/core.js</url>
+          <line>2</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -327,7 +341,9 @@
           <caret line="155" column="39" lean-forward="true" selection-start-line="155" selection-start-column="39" selection-end-line="155" selection-end-column="39" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#222#1899#0" expanded="false" />
+            <element signature="e#146#1975#0" expanded="false" />
+            <element signature="e#7509#8373#0" expanded="false" />
+            <element signature="e#8418#9583#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -358,33 +374,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/statsengine.js">
+    <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2414">
-          <caret line="38" column="89" lean-forward="true" selection-start-line="38" selection-start-column="89" selection-end-line="38" selection-end-column="89" />
+        <state relative-caret-position="510">
+          <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/overwatch-js.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="-209">
+          <caret line="25" column="52" lean-forward="true" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
+    <entry file="file://$PROJECT_DIR$/statsengine.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="75" column="6" lean-forward="true" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="6" />
+        <state relative-caret-position="187">
+          <caret line="11" column="135" lean-forward="false" selection-start-line="11" selection-start-column="135" selection-end-line="11" selection-end-column="135" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1589">
+        <state relative-caret-position="-260">
           <caret line="139" column="21" lean-forward="true" selection-start-line="139" selection-start-column="21" selection-end-line="139" selection-end-column="21" />
           <folding />
         </state>
@@ -392,8 +408,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="111" lean-forward="false" selection-start-line="25" selection-start-column="111" selection-end-line="25" selection-end-column="111" />
+        <state relative-caret-position="595">
+          <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -402,11 +418,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="173" column="38" lean-forward="true" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
+        <state relative-caret-position="731">
+          <caret line="209" column="0" lean-forward="true" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#222#1899#0" expanded="false" />
+            <element signature="e#146#1975#0" expanded="false" />
+            <element signature="e#7509#8373#0" expanded="false" />
+            <element signature="e#8418#9583#0" expanded="false" />
           </folding>
         </state>
       </provider>

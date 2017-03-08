@@ -1,9 +1,6 @@
 /* global angular */
 angular.module("app", ["googlechart"])
 .controller("GenericChartCtrl", function ($http, $scope) {
-    $scope.myChartObject = {};
-
-    $scope.myChartObject.type = "BarChart";
 
     $scope.heroOptions =  [
         {
@@ -94,6 +91,14 @@ angular.module("app", ["googlechart"])
         {
             id: 'zarya',
             label: 'Zarya'
+        },
+        {
+            id: 'lucio',
+            label: 'Lucio'
+        },
+        {
+            id: 'torbjorn',
+            label: 'Torbjorn'
         }
     ];
 
@@ -131,7 +136,7 @@ angular.module("app", ["googlechart"])
     }
 
     $scope.shouldShow = function(hero) {
-        return ($scope.currentHero.id === 'all') || (($scope.currentHero.id === hero) && ($scope["myChartObject_" + hero].hasData));
+        return ($scope.currentHero.id === 'all') || (($scope.currentHero.id === hero) && ($scope["myChartObject_" + $scope.selectedMode() + "_" + hero].hasData));
     }
 
     $scope.isDataReady = function() {
@@ -189,19 +194,24 @@ angular.module("app", ["googlechart"])
     }
 
     $scope.loadChart = function (hero) {
+        var playMode = $scope.selectedMode.id;
 
-        $scope["myChartObject_" + hero] = {};
-        $scope["myChartObject_" + hero].data = $scope.initChartData();
-        $scope["myChartObject_" + hero].type = "ColumnChart";
-        $scope["myChartObject_" + hero].hasData = true;
+        $scope["myChartObject_" + playMode + "_" + hero] = {};
+        $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initChartData();
+        $scope["myChartObject_" + playMode + "_" + hero].type = "ColumnChart";
+        $scope["myChartObject_" + playMode + "_" + hero].hasData = true;
 
         if (!(hero in $scope.data)) {
-            $scope["myChartObject_" + hero].hasData = false;
-            //$scope["myChartObject_" + hero] = {};
-            return;
+            $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
+            $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
         }
 
-        $scope["myChartObject_" + hero].options = {
+        $scope["myChartObject_" + playMode + "_" + hero].show = ($scope.currentHero.id === 'all') || (($scope.currentHero.id === hero) && ($scope["myChartObject_" + $scope.selectedMode() + "_" + hero].hasData))
+
+        if (!$scope["myChartObject_" + playMode + "_" + hero].hasData)
+            return;
+
+        $scope["myChartObject_" + playMode + "_" + hero].options = {
             title : hero,
             colors: $scope.getColorOrder(hero)
         };
@@ -212,13 +222,13 @@ angular.module("app", ["googlechart"])
             barCount = $scope.data[hero].length;
 
         for (var i=0; i < barCount; i++) {
-            $scope["myChartObject_" + hero].data.cols.push({
+            $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
                 id: "s", label: $scope.data[hero][i].name, type: "number"
             });
 
             var keys = Object.keys($scope.data[hero][i]['stats'])
             for (var j = 1; j < keys.length; j++) {
-                $scope["myChartObject_" + hero].data.rows[j - 1].c[0].v = keys[j].replace(/_/g, ' ');
+                $scope["myChartObject_" + playMode + "_" + hero].data.rows[j - 1].c[0].v = keys[j].replace(/_/g, ' ');
                 var values = [];
                 values.push($scope.data[hero][i]['stats'][keys[j]])
 
@@ -234,7 +244,7 @@ angular.module("app", ["googlechart"])
                 */
 
                 for (var k=0; k < values.length; k++) {
-                    $scope["myChartObject_" + hero].data.rows[j - 1].c.push({v : values[k]});
+                    $scope["myChartObject_" + playMode + "_" + hero].data.rows[j - 1].c.push({v : values[k]});
                 }
             }
         }
@@ -245,6 +255,10 @@ angular.module("app", ["googlechart"])
             $scope.loadChart($scope.heroes[i].id);
         }
     }
+
+    $scope.init = function () {
+        $scope.loadPlayMode();
+    };
 
     $scope.initChartData = function() {
         return {
@@ -279,6 +293,52 @@ angular.module("app", ["googlechart"])
                 {
                     c: [
                         { v: "" }
+                    ]
+                }
+            ]
+        };
+    }
+
+    $scope.initDummyChartData = function() {
+        return {
+            "cols": [
+                { id: "t", label: "Pharah", type: "string" },
+                { id: "t", label: "Dummy", type: "number" }
+            ], "rows": [
+                {
+                    c: [
+                        { v: "dummy" },
+                        { v: "0"}
+                    ]
+                },
+                {
+                    c: [
+                        { v: "dummy" },
+                        { v: "0"}
+                    ]
+                },
+                {
+                    c: [
+                        { v: "dummy" },
+                        { v: "0"}
+                    ]
+                },
+                {
+                    c: [
+                        { v: "dummy" },
+                        { v: "0"}
+                    ]
+                },
+                {
+                    c: [
+                        { v: "dummy" },
+                        { v: "0"}
+                    ]
+                },
+                {
+                    c: [
+                        { v: "dummy" },
+                        { v: "0"}
                     ]
                 }
             ]

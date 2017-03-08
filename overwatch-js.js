@@ -24,7 +24,7 @@ let OverwatchProvider = function() {
     }
 
     String.prototype.sanitizeHeroName = function() {
-        return this.trim().toLowerCase().replace(":", "").replace(" ", "").replace(".","").replace("ö","o").replace("ú","");
+        return this.trim().toLowerCase().replace(":", "").replace(" ", "").replace(".","").replace("ö","o").replace("ú","u");
     }
 
     String.prototype.cast = function() {
