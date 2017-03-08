@@ -109,6 +109,7 @@ angular.module("app", ["googlechart"])
     ];
 
     $scope.selectedMode = $scope.modes[0];
+    $scope.maxNumOfPlayers = 6;
 
     $scope.heroes = $scope.heroOptions.slice(1);
 
@@ -153,22 +154,64 @@ angular.module("app", ["googlechart"])
         }
     }
 
+    $scope.getColorOrder = function(hero) {
+        var colors = [];
+        for (var i=0; i < $scope.data[hero].length; i++) {
+            var player = $scope.data[hero][i].name;
+            if (player == 'Zaralus')
+                colors.push('#F17CB0');
+            else if(player =='NorthernYeti')
+                colors.push('#4D4D4D');
+            else if (player == 'MegaArcon')
+                colors.push('#B276B2');
+            else if (player == 'noj')
+                colors.push('#5DA5DA');
+            else if (player == 'Nuuga')
+                colors.push('#60BD68');
+            else if (player == 'Nemisari')
+                colors.push('#FAA43A');
+            else if (player == 'Lawbringer')
+                colors.push('#F15854')
+            else if (player == 'Nick')
+                colors.push('#B2912F')
+            else if(player == 'Dirtnapper')
+                colors.push('grey');
+            else if(player == 'Isoulle')
+                colors.push('#DECF3F');
+            else if(player == 'Suracis')
+                colors.push('red');
+            else
+                colors.push('black');
+        }
+        console.log(colors);
+        return colors;
+        //return ['red', 'blue'];
+    }
+
     $scope.loadChart = function (hero) {
 
         $scope["myChartObject_" + hero] = {};
         $scope["myChartObject_" + hero].data = $scope.initChartData();
         $scope["myChartObject_" + hero].type = "ColumnChart";
-        $scope["myChartObject_" + hero].options = {title : hero};
         $scope["myChartObject_" + hero].hasData = true;
 
         if (!(hero in $scope.data)) {
             $scope["myChartObject_" + hero].hasData = false;
+            //$scope["myChartObject_" + hero] = {};
             return;
         }
 
-        //$scope.fillOutMissingData($scope.data[hero]);
+        $scope["myChartObject_" + hero].options = {
+            title : hero,
+            colors: $scope.getColorOrder(hero)
+        };
 
-        for (var i=0; i < $scope.data[hero].length; i++) {
+        //$scope.fillOutMissingData($scope.data[hero]);
+        var barCount = $scope.maxNumOfPlayers;
+        if ( barCount > $scope.data[hero].length)
+            barCount = $scope.data[hero].length;
+
+        for (var i=0; i < barCount; i++) {
             $scope["myChartObject_" + hero].data.cols.push({
                 id: "s", label: $scope.data[hero][i].name, type: "number"
             });

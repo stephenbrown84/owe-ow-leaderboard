@@ -23,6 +23,8 @@
             ng-change="loadPlayMode()">
     </select>
 
+        Max Players: <input type="number" ng-model="maxNumOfPlayers" ng-change="loadPlayMode()" min="1" max="12"/>
+
     <div ng-repeat="h in heroes" google-chart chart="myChartObject_{{h.id}}" ng-show="shouldShow(h.id)" style="height:350px; width:100%;">
     </div>
     </div>
