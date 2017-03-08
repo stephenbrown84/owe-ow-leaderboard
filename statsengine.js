@@ -353,7 +353,7 @@ function getRequiredFieldsFor(hero) {
 }
 
 function hasEnoughTimePlayed(heroStats, hero) {
-    return ('time_played' in heroStats) && (getAttr(heroStats, 'time_played') > 10);
+    return ('time_played' in heroStats) && (getAttr(heroStats, 'time_played') > 20);
 }
 
 function hasRequiredFieldsForHero(heroStats, hero) {
