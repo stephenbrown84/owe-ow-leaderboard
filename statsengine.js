@@ -32,14 +32,130 @@ function StatsEngine(initData) {
 }
 
 function getImportantFieldsFor(hero) {
-    var fields = [
-        {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', required: true},
-        {name: 'objective_kills_average', prettyName: 'Objective Kills Average', required: true},
-        {name: 'healing_done_average', prettyName: 'Healing Done Average', required: false},
-        {name: 'damage_done_average', prettyName: 'Damage Done Average', required: true},
-        {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true},
-        {name: 'damage_blocked_average', prettyName: 'Damage Blocked Average', required: false}
-    ];
+    var fields;
+    if (hero == 'pharah') {
+        fields = [
+            {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', required: true},
+            {name: 'objective_kills_average', prettyName: 'Objective Kills Average', required: true},
+            {name: 'eliminations_average', prettyName: 'Eliminations Average', required: true},
+            {name: 'damage_done_average', prettyName: 'Damage Done Average', required: true},
+            {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true},
+            {name: 'barrage_kills_average', prettyName: 'Barrage Kills Average', required: true}
+        ];
+    }
+    else if (hero == 'reaper') {
+        fields = [
+            {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', required: true},
+            {name: 'objective_kills_average', prettyName: 'Objective Kills Average', required: true},
+            {name: 'eliminations_average', prettyName: 'Eliminations Average', required: true},
+            {name: 'damage_done_average', prettyName: 'Damage Done Average', required: true},
+            {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true},
+            {name: 'death_blossom_kills_average', prettyName: 'Death Blossom Kills Average', required: true}
+        ];
+    }
+    else if (hero == 'soldier76') {
+        fields = [
+            {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', required: true},
+            {name: 'objective_kills_average', prettyName: 'Objective Kills Average', required: true},
+            {name: 'eliminations_average', prettyName: 'Eliminations Average', required: true},
+            {name: 'healing_done_average', prettyName: 'Healing Done Average', required: true},
+            {name: 'self_healing_average', prettyName: 'Self Healing Average', required: true},
+            {name: 'damage_done_average', prettyName: 'Damage Done Average', required: true},
+            {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true},
+            {name: 'helix_rockets_kills_average', prettyName: 'Helix Rockets Kills Average', required: true},
+            {name: 'tactical_visor_kills_average', prettyName: 'Tactical Visor Kills Average', required: true},
+        ];
+    }
+    else if (hero == 'reinhardt') {
+        fields = [
+            {name: 'eliminations_per_life', required: true},
+            {name: 'objective_kills_average',  required: true},
+            {name: 'eliminations_average', required: true},
+            {name: 'damage_done_average', required: true},
+            {name: 'fire_strike_kills_average', required: true},
+            {name: 'earthshatter_kills_average', required: true},
+            {name: 'final_blows_average', required: true},
+            {name: 'damage_blocked_average', required: true}
+        ];
+    }
+    else if (hero == 'junkrat') {
+        fields = [
+            {name: 'eliminations_per_life', required: true},
+            {name: 'objective_kills_average',  required: true},
+            {name: 'eliminations_average', required: true},
+            {name: 'damage_done_average', required: true},
+            {name: 'final_blows_average', required: true},
+            {name: 'rip-tire_kills_average', required: true}
+        ];
+    }
+    else if (hero == 'mei') {
+        fields = [
+            {name: 'eliminations_per_life', required: true},
+            {name: 'objective_kills_average',  required: true},
+            {name: 'eliminations_average', required: true},
+            {name: 'damage_done_average', required: true},
+            {name: 'final_blows_average', required: true},
+            {name: 'self_healing_average', prettyName: 'Self Healing Average', required: true},
+            {name: 'enemies_frozen_average', required: true},
+            {name: 'blizzard_kills_average', required: true}
+        ];
+    }
+    else if (hero == 'tracer') {
+        fields = [
+            {name: 'eliminations_per_life', required: true},
+            {name: 'objective_kills_average',  required: true},
+            {name: 'eliminations_average', required: true},
+            {name: 'damage_done_average', required: true},
+            {name: 'final_blows_average', required: true},
+            {name: 'self_healing_average', required: true},
+            {name: 'pulse_bombs_attached_average', required: true},
+            {name: 'pulse_bomb_kills_average', required: true}
+        ];
+    }
+    else if (hero == 'genji') {
+        fields = [
+            {name: 'eliminations_per_life', required: true},
+            {name: 'objective_kills_average',  required: true},
+            {name: 'eliminations_average', required: true},
+            {name: 'damage_done_average', required: true},
+            {name: 'final_blows_average', required: true},
+            {name: 'damage_reflected_average', required: true},
+            {name: 'dragonblade_kills_average', required: true}
+        ];
+    }
+    else if (hero == 'mccree') {
+        fields = [
+            {name: 'eliminations_per_life', required: true},
+            {name: 'objective_kills_average',  required: true},
+            {name: 'eliminations_average', required: true},
+            {name: 'damage_done_average', required: true},
+            {name: 'final_blows_average', required: true},
+            {name: 'fan_the_hammer_kills_average', required: true},
+            {name: 'deadeye_kills_average', required: true}
+        ];
+    }
+    else if (hero == 'genji') {
+        fields = [
+            {name: 'eliminations_per_life', required: true},
+            {name: 'objective_kills_average',  required: true},
+            {name: 'eliminations_average', required: true},
+            {name: 'damage_done_average', required: true},
+            {name: 'final_blows_average', required: true},
+            {name: 'pulse_bomb_attached_average_average', required: true},
+            {name: 'damage_reflected_average', required: true},
+            {name: 'dragonblade_kills_average', required: true}
+        ];
+    }
+    else {
+        fields = [
+            {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', required: true},
+            {name: 'objective_kills_average', prettyName: 'Objective Kills Average', required: true},
+            {name: 'healing_done_average', prettyName: 'Healing Done Average', required: false},
+            {name: 'damage_done_average', prettyName: 'Damage Done Average', required: true},
+            {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true},
+            {name: 'damage_blocked_average', prettyName: 'Damage Blocked Average', required: false}
+        ];
+    }
 
     return fields;
 }

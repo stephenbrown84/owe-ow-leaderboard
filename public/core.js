@@ -123,25 +123,10 @@ angular.module("app", ["googlechart"])
     $scope.quickplayData;
     $scope.competitiveData;
     $scope.data = null;
-    $http({ method: 'GET', url: '/stats/sorted' }).success(function (data, status, headers, config) {
-        $scope.quickplayData = data.quickplay;
-        $scope.competitiveData = data.competitive;
-        $scope.data = data.quickplay;
-    });
-
-    $scope.loadPlayMode = function() {
-        if (!$scope.isDataReady()) return;
-        $scope.data = $scope[$scope.selectedMode.id + 'Data'];
-        $scope.loadCharts();
-    }
+    $scope.isDataReady = false;
 
     $scope.shouldShow = function(hero) {
-        return ($scope.currentHero.id === 'all') || (($scope.currentHero.id === hero) && ($scope["myChartObject_" + $scope.selectedMode() + "_" + hero].hasData));
-    }
-
-    $scope.isDataReady = function() {
-        if ($scope.data) return true;
-        return false;
+        return ($scope.currentHero.id === 'all') || (($scope.currentHero.id === hero) && ($scope["myChartObject_" + $scope.selectedMode.id + "_" + hero].hasData));
     }
 
     $scope.fillOutMissingData = function(data) {
@@ -166,7 +151,7 @@ angular.module("app", ["googlechart"])
             if (player == 'Zaralus')
                 colors.push('#F17CB0');
             else if(player =='NorthernYeti')
-                colors.push('#4D4D4D');
+                colors.push('sienna');
             else if (player == 'MegaArcon')
                 colors.push('#B276B2');
             else if (player == 'noj')
@@ -182,19 +167,18 @@ angular.module("app", ["googlechart"])
             else if(player == 'Dirtnapper')
                 colors.push('grey');
             else if(player == 'Isoulle')
-                colors.push('#DECF3F');
+                colors.push('lightblue');
             else if(player == 'Suracis')
-                colors.push('red');
+                colors.push('tomato');
             else
                 colors.push('black');
         }
-        console.log(colors);
+        //console.log(colors);
         return colors;
         //return ['red', 'blue'];
     }
 
-    $scope.loadChart = function (hero) {
-        var playMode = $scope.selectedMode.id;
+    $scope.loadChart = function (hero, playMode) {
 
         $scope["myChartObject_" + playMode + "_" + hero] = {};
         $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initChartData();
@@ -206,7 +190,7 @@ angular.module("app", ["googlechart"])
             $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
         }
 
-        $scope["myChartObject_" + playMode + "_" + hero].show = ($scope.currentHero.id === 'all') || (($scope.currentHero.id === hero) && ($scope["myChartObject_" + $scope.selectedMode() + "_" + hero].hasData))
+        //$scope["myChartObject_" + playMode + "_" + hero].show = (playMode == 'quickplay');
 
         if (!$scope["myChartObject_" + playMode + "_" + hero].hasData)
             return;
@@ -221,14 +205,20 @@ angular.module("app", ["googlechart"])
         if ( barCount > $scope.data[hero].length)
             barCount = $scope.data[hero].length;
 
+        // Set up column labels
+        var keys = Object.keys($scope.data[hero][0]['stats'])
+        for (var j = 0; j < keys.length; j++) {
+            $scope["myChartObject_" + playMode + "_" + hero].data.rows.push({c: [{v: ""}]});
+            $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c[0].v = keys[j].replace(/_/g, ' ');
+        }
+
+        // Set up number data
         for (var i=0; i < barCount; i++) {
             $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
                 id: "s", label: $scope.data[hero][i].name, type: "number"
             });
 
-            var keys = Object.keys($scope.data[hero][i]['stats'])
-            for (var j = 1; j < keys.length; j++) {
-                $scope["myChartObject_" + playMode + "_" + hero].data.rows[j - 1].c[0].v = keys[j].replace(/_/g, ' ');
+            for (var j = 0; j < keys.length; j++) {;
                 var values = [];
                 values.push($scope.data[hero][i]['stats'][keys[j]])
 
@@ -244,27 +234,60 @@ angular.module("app", ["googlechart"])
                 */
 
                 for (var k=0; k < values.length; k++) {
-                    $scope["myChartObject_" + playMode + "_" + hero].data.rows[j - 1].c.push({v : values[k]});
+                    $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({v : values[k]});
                 }
             }
         }
     }
 
-    $scope.loadCharts = function () {
+    $scope.loadCharts = function (playMode) {
+        $scope.data = $scope[playMode + 'Data'];
         for (var i=0; i < $scope.heroes.length; i++) {
-            $scope.loadChart($scope.heroes[i].id);
+            $scope.loadChart($scope.heroes[i].id, playMode);
+        }
+    }
+
+    $scope.loadAllCharts = function() {
+        $scope.loadCharts('competitive');
+        $scope.loadCharts('quickplay');
+        $scope.loadPlayMode();
+    }
+
+    $scope.loadPlayMode = function () {
+        for (var i=0; i < $scope.heroes.length; i++) {
+            var hero = $scope.heroes[i];
+            $scope["myChartObject_" + $scope.selectedMode.id + "_" + hero.id].show = $scope.shouldShow(hero.id);
         }
     }
 
     $scope.init = function () {
-        $scope.loadPlayMode();
+        $scope.getDataFromServer();
     };
+
+    $scope.getDataFromServer = function() {
+        $http({ method: 'GET', url: '/stats/sorted' }).success(function (data, status, headers, config) {
+            if (Object.keys(data) < 1){
+                setTimeout($scope.getDataFromServer, 2000);
+                return;
+            }
+            $scope.quickplayData = data.quickplay;
+            $scope.competitiveData = data.competitive;
+            $scope.loadAllCharts();
+            $scope.isDataReady = true;
+        });
+    }
 
     $scope.initChartData = function() {
         return {
             "cols": [
                 { id: "t", label: "Pharah", type: "string" }
             ], "rows": [
+                /*
+                {
+                    c: [
+                        { v: "" }
+                    ]
+                },
                 {
                     c: [
                         { v: "" }
@@ -295,6 +318,7 @@ angular.module("app", ["googlechart"])
                         { v: "" }
                     ]
                 }
+                */
             ]
         };
     }

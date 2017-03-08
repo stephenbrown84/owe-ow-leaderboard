@@ -12,10 +12,11 @@
     <script src="./core.js"></script>
 </head>
 <body ng-controller="GenericChartCtrl" data-ng-init="init()">
-    <div ng-show="isDataReady()">
+    <div ng-show="isDataReady">
     <label>Hero: </label>
     <select ng-model="currentHero"
-            ng-options="hero as hero.label for hero in heroOptions track by hero.id">
+            ng-options="hero as hero.label for hero in heroOptions track by hero.id"
+            ng-change="loadPlayMode()">
     </select>
     <label>Play Mode: </label>
     <select ng-model="selectedMode"
@@ -23,14 +24,14 @@
             ng-change="loadPlayMode()">
     </select>
 
-        Max Players: <input type="number" ng-model="maxNumOfPlayers" ng-change="loadPlayMode()" min="1" max="12"/>
+        Max Players: <input type="number" ng-model="maxNumOfPlayers" ng-change="loadAllCharts()" min="1" max="12"/>
 
     <div ng-repeat="h in heroes" google-chart chart="myChartObject_{{selectedMode.id}}_{{h.id}}" ng-show="myChartObject_{{selectedMode.id}}_{{h.id}}.show" style="height:350px; width:100%;">
     </div>
     </div>
 
-    <div ng-hide="isDataReady()">
-        <p>Data not ready. Please refresh page.</p>
+    <div ng-hide="isDataReady">
+        <p>Data not ready. Please wait a minute and your data will arrive automagically...</p>
     </div>
 </body>
 </html>
