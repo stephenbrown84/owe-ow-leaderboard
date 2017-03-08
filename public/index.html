@@ -24,10 +24,11 @@
             ng-change="loadPlayMode()">
     </select>
 
-        Max Players: <input type="number" ng-model="maxNumOfPlayers" ng-change="loadAllCharts()" min="1" max="12"/>
+        Max Players: <input type="number" ng-model="maxNumOfPlayers" ng-change="loadPlayMode()" min="1" max="12"/>
 
-    <div ng-repeat="h in heroes" google-chart chart="myChartObject_{{selectedMode.id}}_{{h.id}}" ng-show="myChartObject_{{selectedMode.id}}_{{h.id}}.show" style="height:350px; width:100%;">
-    </div>
+    <div ng-repeat="h in heroes" google-chart chart="myChartObject_quickplay_{{h.id}}" ng-show="myChartObject_quickplay_{{h.id}}.show" style="height:350px; width:100%;"></div>
+    <div ng-repeat="h in heroes" google-chart chart="myChartObject_competitive_{{h.id}}" ng-show="myChartObject_competitive_{{h.id}}.show" style="height:350px; width:100%;"></div>
+
     </div>
 
     <div ng-hide="isDataReady">

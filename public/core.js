@@ -114,7 +114,7 @@ angular.module("app", ["googlechart"])
     ];
 
     $scope.selectedMode = $scope.modes[0];
-    $scope.maxNumOfPlayers = 6;
+    $scope.maxNumOfPlayers = 4;
 
     $scope.heroes = $scope.heroOptions.slice(1);
 
@@ -125,8 +125,8 @@ angular.module("app", ["googlechart"])
     $scope.data = null;
     $scope.isDataReady = false;
 
-    $scope.shouldShow = function(hero) {
-        return ($scope.currentHero.id === 'all') || (($scope.currentHero.id === hero) && ($scope["myChartObject_" + $scope.selectedMode.id + "_" + hero].hasData));
+    $scope.shouldShow = function(hero, playMode) {
+        return ($scope.selectedMode.id == playMode) && $scope["myChartObject_" + $scope.selectedMode.id + "_" + hero].hasData && (($scope.currentHero.id === 'all') || ($scope.currentHero.id === hero));
     }
 
     $scope.fillOutMissingData = function(data) {
@@ -180,7 +180,9 @@ angular.module("app", ["googlechart"])
 
     $scope.loadChart = function (hero, playMode) {
 
-        $scope["myChartObject_" + playMode + "_" + hero] = {};
+        if (!(("myChartObject_" + playMode + "_" + hero) in $scope))
+            $scope["myChartObject_" + playMode + "_" + hero] = {};
+
         $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initChartData();
         $scope["myChartObject_" + playMode + "_" + hero].type = "ColumnChart";
         $scope["myChartObject_" + playMode + "_" + hero].hasData = true;
@@ -254,9 +256,13 @@ angular.module("app", ["googlechart"])
     }
 
     $scope.loadPlayMode = function () {
+        $scope.loadCharts($scope.selectedMode.id);
         for (var i=0; i < $scope.heroes.length; i++) {
             var hero = $scope.heroes[i];
-            $scope["myChartObject_" + $scope.selectedMode.id + "_" + hero.id].show = $scope.shouldShow(hero.id);
+            if (("myChartObject_quickplay_" + hero.id) in $scope)
+                $scope["myChartObject_quickplay_" + hero.id].show = $scope.shouldShow(hero.id, 'quickplay');
+            if (("myChartObject_competitive_" + hero.id) in $scope)
+                $scope["myChartObject_competitive_" + hero.id].show = $scope.shouldShow(hero.id, 'competitive');
         }
     }
 
@@ -272,7 +278,7 @@ angular.module("app", ["googlechart"])
             }
             $scope.quickplayData = data.quickplay;
             $scope.competitiveData = data.competitive;
-            $scope.loadAllCharts();
+            $scope.loadPlayMode();
             $scope.isDataReady = true;
         });
     }
@@ -368,7 +374,5 @@ angular.module("app", ["googlechart"])
             ]
         };
     }
-
-    //$scope.loadPlayMode();
 
 });
