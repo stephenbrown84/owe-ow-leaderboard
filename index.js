@@ -6,11 +6,14 @@ var app = express();
 
 var initData = require('./test.json');
 var Stats = require('./stats');
-var stats = new Stats(initData);
-//var stats = new Stats({});
 
 var env = process.env.NODE_ENV || 'development';
 
+var stats;
+if (env !== 'release')
+    stats = new Stats(initData);
+else
+    stats = new Stats({});
 
 app.set('port', (process.env.PORT || 5000));
 
