@@ -155,9 +155,8 @@ function getImportantFieldsFor(hero) {
             {name: 'eliminations_average', required: true},
             {name: 'damage_done_average', required: true},
             {name: 'final_blows_average', required: true},
-            {name: 'final_blows_average', prettyName: 'Final Blows Average', required: true },
-            {name: 'players_knocked_back_average', required: true },
-            {name: 'primal_rage_kills_average', required: true}
+            {name: 'players_knocked_back_average', required: false },
+            {name: 'primal_rage_kills_average', required: false}
         ];
     }
     else if (hero == 'roadhog') {
@@ -259,8 +258,8 @@ function getImportantFieldsFor(hero) {
             { name: 'eliminations_average', required: true },
             { name: 'damage_done_average', required: true },
             { name: 'final_blows_average', required: true },
-            { name: 'recon_assists_average', required: true },
-            { name: "venom_mine_kills_average", required: true }
+            { name: 'recon_assists_average', required: false },
+            { name: "venom_mine_kills_average", required: false }
         ];
     }
     else if (hero == 'dva') {
