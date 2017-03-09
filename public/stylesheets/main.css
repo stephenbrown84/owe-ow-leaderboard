@@ -25,3 +25,17 @@
     .jumbotron .lang-logo img {
       max-width: 100%; }
 
+.card-hero-icon {
+  width: 48px;
+  height: 60px;
+  background: #ccc;
+  background-size: cover;
+  background-position: center;
+  border-radius: 3px;
+  margin: 2px;
+  display: inline-block;
+}
+
+h2 {
+  color: #FAA02E;
+}

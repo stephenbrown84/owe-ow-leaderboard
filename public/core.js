@@ -125,6 +125,11 @@ angular.module("app", ["googlechart"])
     $scope.data = null;
     $scope.isDataReady = false;
 
+    $scope.setCurrentHero = function(h) {
+        $scope.currentHero = h;
+        $scope.loadPlayMode();
+    }
+
     $scope.shouldShow = function(hero, playMode) {
         return ($scope.selectedMode.id == playMode) && $scope["myChartObject_" + $scope.selectedMode.id + "_" + hero].hasData && (($scope.currentHero.id === 'all') || ($scope.currentHero.id === hero));
     }
