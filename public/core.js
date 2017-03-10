@@ -223,7 +223,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         $scope["myChartObject_" + playMode + "_" + hero].type = "ColumnChart";
         $scope["myChartObject_" + playMode + "_" + hero].hasData = true;
 
-        if (!(hero in $scope.data)) {
+        if (!$scope.data || !(hero in $scope.data)) {
             $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
             $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
         }
@@ -298,10 +298,16 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         $scope.loadCharts($scope.selectedMode.id);
         for (var i=0; i < $scope.heroes.length; i++) {
             var hero = $scope.heroes[i];
-            if (("myChartObject_quickplay_" + hero.id) in $scope)
-                $scope["myChartObject_quickplay_" + hero.id].show = $scope.shouldShow(hero.id, 'quickplay');
-            if (("myChartObject_competitive_" + hero.id) in $scope)
-                $scope["myChartObject_competitive_" + hero.id].show = $scope.shouldShow(hero.id, 'competitive');
+
+            if (!(("myChartObject_quickplay_" + hero.id) in $scope)) {
+                $scope["myChartObject_quickplay_" + hero.id] = {};
+            }
+            if (!(("myChartObject_competitive_" + hero.id) in $scope)) {
+                $scope["myChartObject_competitive_" + hero.id] = {};
+            }
+                
+            $scope["myChartObject_quickplay_" + hero.id].show = $scope.shouldShow(hero.id, 'quickplay');
+            $scope["myChartObject_competitive_" + hero.id].show = $scope.shouldShow(hero.id, 'competitive');
         }
     }
 
