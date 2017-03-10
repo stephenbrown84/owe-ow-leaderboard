@@ -1,11 +1,20 @@
 /* global angular */
-angular.module("app", ["googlechart"])
+angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 .controller("GenericChartCtrl", function ($http, $scope) {
 
     $scope.heroOptions =  [
         {
             id: 'all',
             label: 'All Heroes'
+        },
+        {
+            id: 'genji',
+            label: 'Genji'
+        },
+
+        {
+            id: 'mccree',
+            label: 'McCree'
         },
         {
             id: 'pharah',
@@ -20,52 +29,12 @@ angular.module("app", ["googlechart"])
             label: 'Soldier76'
         },
         {
-            id: 'reinhardt',
-            label: 'Reinhardt'
-        },
-        {
-            id: 'junkrat',
-            label: 'Junkrat'
-        },
-        {
-            id: 'mei',
-            label: 'Mei'
+            id: 'sombra',
+            label: 'Sombra'
         },
         {
             id: 'tracer',
             label: 'Tracer'
-        },
-        {
-            id: 'genji',
-            label: 'Genji'
-        },
-        {
-            id: 'mccree',
-            label: 'McCree'
-        },
-        {
-            id: 'winston',
-            label: 'Winston'
-        },
-        {
-            id: 'roadhog',
-            label: 'Roadhog'
-        },
-        {
-            id: 'zenyatta',
-            label: 'Zenyatta'
-        },
-        {
-            id: 'mercy',
-            label: 'Mercy'
-        },
-        {
-            id: 'ana',
-            label: 'Ana'
-        },
-        {
-            id: 'sombra',
-            label: 'Sombra'
         },
         {
             id: 'bastion',
@@ -76,6 +45,18 @@ angular.module("app", ["googlechart"])
             label: 'Hanzo'
         },
         {
+            id: 'junkrat',
+            label: 'Junkrat'
+        },
+        {
+            id: 'mei',
+            label: 'Mei'
+        },
+        {
+            id: 'torbjorn',
+            label: 'Torbjorn'
+        },
+        {
             id: 'widowmaker',
             label: 'Widowmaker'
         },
@@ -84,21 +65,40 @@ angular.module("app", ["googlechart"])
             label: 'D.Va'
         },
         {
-            id: 'symmetra',
-            label: 'Symmetra'
-        }
-        ,
+            id: 'reinhardt',
+            label: 'Reinhardt'
+        },
+        {
+            id: 'roadhog',
+            label: 'Roadhog'
+        },
+        {
+            id: 'winston',
+            label: 'Winston'
+        },
         {
             id: 'zarya',
             label: 'Zarya'
+        },
+        {
+            id: 'ana',
+            label: 'Ana'
         },
         {
             id: 'lucio',
             label: 'Lucio'
         },
         {
-            id: 'torbjorn',
-            label: 'Torbjorn'
+            id: 'mercy',
+            label: 'Mercy'
+        },
+        {
+            id: 'zenyatta',
+            label: 'Zenyatta'
+        },
+        {
+            id: 'symmetra',
+            label: 'Symmetra'
         }
     ];
 
@@ -113,8 +113,39 @@ angular.module("app", ["googlechart"])
         }
     ];
 
+    $scope.slider = {
+        minValue: 1,
+        maxValue: 4,
+        options: {
+            floor: 1,
+            ceil: 12,
+            step: 1,
+            showTicksValues: true,
+            translate: function (value) {
+                if (isNaN(value))
+                    return 'NaN'
+                else if (value == 1)
+                    return value + '<b>st</b>';
+                else if (value == 2)
+                    return value + '<b>nd</b>';
+                else if (value == 3)
+                    return value + '<b>rd</b>';
+                else
+                    return value + '<b>th</b>';
+            }
+        }
+    };
+
+    $scope.$watch('slider.minValue', function () {
+        $scope.loadPlayMode();
+    });
+
+    $scope.$watch('slider.maxValue', function () {
+        $scope.loadPlayMode();
+    });
+
     $scope.selectedMode = $scope.modes[0];
-    $scope.maxNumOfPlayers = 4;
+    //$scope.maxNumOfPlayers = 4;
 
     $scope.heroes = $scope.heroOptions.slice(1);
 
@@ -149,9 +180,9 @@ angular.module("app", ["googlechart"])
         }
     }
 
-    $scope.getColorOrder = function(hero) {
+    $scope.getColorOrder = function(hero, minBarCount, maxBarCount) {
         var colors = [];
-        for (var i=0; i < $scope.data[hero].length; i++) {
+        for (var i = minBarCount - 1; i < maxBarCount; i++) {
             var player = $scope.data[hero][i].name;
             if (player == 'Zaralus')
                 colors.push('#F17CB0');
@@ -200,16 +231,20 @@ angular.module("app", ["googlechart"])
         //$scope["myChartObject_" + playMode + "_" + hero].show = (playMode == 'quickplay');
         $scope["myChartObject_" + playMode + "_" + hero].options = {};
         $scope["myChartObject_" + playMode + "_" + hero].options.title = hero;
+        $scope["myChartObject_" + playMode + "_" + hero].options.chartArea = { 'left': '5%' };
+        $scope["myChartObject_" + playMode + "_" + hero].options.legend = { 'position': 'right' };
+
 
         if (!$scope["myChartObject_" + playMode + "_" + hero].hasData)
             return;
 
-        $scope["myChartObject_" + playMode + "_" + hero].options.colors = $scope.getColorOrder(hero);
+        //$scope.fillOutMissingData($scope.data[hero])
+        var maxbarCount = $scope.slider.maxValue;
+        var minbarCount = $scope.slider.minValue;
+        if (maxbarCount > $scope.data[hero].length)
+            maxbarCount = $scope.data[hero].length;
 
-        //$scope.fillOutMissingData($scope.data[hero]);
-        var barCount = $scope.maxNumOfPlayers;
-        if ( barCount > $scope.data[hero].length)
-            barCount = $scope.data[hero].length;
+        $scope["myChartObject_" + playMode + "_" + hero].options.colors = $scope.getColorOrder(hero, minbarCount, maxbarCount);
 
         // Set up column labels
         var keys = Object.keys($scope.data[hero][0]['stats'])
@@ -219,7 +254,7 @@ angular.module("app", ["googlechart"])
         }
 
         // Set up number data
-        for (var i=0; i < barCount; i++) {
+        for (var i = minbarCount - 1; i < maxbarCount; i++) {
             $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
                 id: "s", label: $scope.data[hero][i].name, type: "number"
             });
@@ -275,15 +310,18 @@ angular.module("app", ["googlechart"])
     };
 
     $scope.getDataFromServer = function() {
-        $http({ method: 'GET', url: '/stats/sorted' }).success(function (data, status, headers, config) {
-            if (Object.keys(data) < 1){
+        $http({ method: 'GET', url: '/stats/sorted' }).then(function successCallback(response) {
+            if (Object.keys(response.data) < 1) {
                 setTimeout($scope.getDataFromServer, 2000);
                 return;
             }
-            $scope.quickplayData = data.quickplay;
-            $scope.competitiveData = data.competitive;
+            $scope.quickplayData = response.data.quickplay;
+            $scope.competitiveData = response.data.competitive;
             $scope.loadPlayMode();
             $scope.isDataReady = true;
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
         });
     }
 

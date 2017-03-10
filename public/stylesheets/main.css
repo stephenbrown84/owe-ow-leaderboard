@@ -25,6 +25,10 @@
     .jumbotron .lang-logo img {
       max-width: 100%; }
 
+body {
+    background-color: #FFE135;
+}
+
 .card-hero-icon {
   width: 48px;
   height: 60px;
@@ -38,4 +42,23 @@
 
 h2 {
   color: #FAA02E;
+}
+
+#placementSliderDiv {
+    width: 30%;
+    display: inline-block;
+}
+
+.card-hero-for-graph {
+    width: 75px;
+    height: 300px;
+    background: #ccc;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.graph-div {
+    display: inline-block;
 }

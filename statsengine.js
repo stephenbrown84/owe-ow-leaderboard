@@ -246,9 +246,9 @@ function getImportantFieldsFor(hero) {
             { name: 'eliminations_average', required: true },
             { name: 'damage_done_average', required: true },
             { name: 'final_blows_average', required: true },
-            { name: 'recon_assist_most_in_game', required: true },
-            { name: "scatter_arrow_kills_average", required: true },
-            { name: 'dragonstrike_kills_average', required: true }
+            { name: 'recon_assist_most_in_game', required: false },
+            { name: "scatter_arrow_kills_average", required: false },
+            { name: 'dragonstrike_kills_average', required: false }
         ];
     }
     else if (hero == 'widowmaker') {

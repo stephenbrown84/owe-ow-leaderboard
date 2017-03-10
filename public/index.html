@@ -5,31 +5,53 @@
     <meta charset="utf-8" />
     <title>OWE Leaderboard</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.css" />
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.18/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.18/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.18/angular-sanitize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/0.1.0/ng-google-chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
+    <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
 
     <script src="./core.js"></script>
+
+    <!--<script src="./lib/angularjs-slider/dist/rzslider.js"></script>-->
 </head>
 <body ng-controller="GenericChartCtrl" data-ng-init="init()">
     <h2>OWE Leaderboard - Alpha 0.0.2.1</h2>
-    <div ng-repeat="h in heroOptions" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
-
-
     <div ng-show="isDataReady">
-    <label>Hero: </label>
-    <label>Play Mode: </label>
-    <select ng-model="selectedMode"
-            ng-options="mode as mode.label for mode in modes track by mode.id"
-            ng-change="loadPlayMode()">
-    </select>
+        <div ng-repeat="h in heroOptions" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
 
+
+        <div>
+            <label>Play Mode: </label>
+            <select ng-model="selectedMode"
+                    ng-options="mode as mode.label for mode in modes track by mode.id"
+                    ng-change="loadPlayMode()"></select>
+            <label>Show Places:</label>
+            <div id="placementSliderDiv">
+                <rzslider rz-slider-model="slider.minValue"
+                          rz-slider-high="slider.maxValue"
+                          rz-slider-options="slider.options"
+                          rz-slider-tpl-url="rzSliderTemplates/dualPlacementSlider.html"></rzslider>
+            </div>
+        </div>
+        <!--
         Max Players: <input type="number" ng-model="maxNumOfPlayers" ng-change="loadPlayMode()" min="1" max="12"/>
+            -->
+        <div ng-repeat="h in heroes">
+            <div>
+                <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-show="myChartObject_quickplay_{{h.id}}.show"></div>
+                <div class="graph-div" google-chart chart="myChartObject_quickplay_{{h.id}}" ng-show="myChartObject_quickplay_{{h.id}}.show" style="height:300px; width:90%"></div>
+            </div>
+            <div>
+                <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-show="myChartObject_competitive_{{h.id}}.show"></div>
+                <div class="graph-div" google-chart chart="myChartObject_competitive_{{h.id}}" ng-show="myChartObject_competitive_{{h.id}}.show" style="height:300px; width:90%"></div>
+            </div>
+        </div>
 
-    <div ng-repeat="h in heroes" google-chart chart="myChartObject_quickplay_{{h.id}}" ng-show="myChartObject_quickplay_{{h.id}}.show" style="height:350px; width:100%;"></div>
-    <div ng-repeat="h in heroes" google-chart chart="myChartObject_competitive_{{h.id}}" ng-show="myChartObject_competitive_{{h.id}}.show" style="height:350px; width:100%;"></div>
 
     </div>
 

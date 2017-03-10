@@ -5,6 +5,7 @@
     "Stephen Brown <setphen.brown@hrsdc-rhdcc.gc.ca>"
   ],
   "dependencies": {
-    "angular-google-chart": "~0.1.0"
+    "angular-google-chart": "~0.1.0",
+    "angularjs-slider": "^6.1.0"
   }
 }
