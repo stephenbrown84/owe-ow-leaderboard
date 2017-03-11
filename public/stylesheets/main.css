@@ -40,6 +40,40 @@ body {
   display: inline-block;
 }
 
+.img-circle-container {
+    width: 48px;
+    height: 60px;
+    margin: 2px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.img-circle-card {
+    position: relative;
+    left: 4px;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    background-size: 30px 30px;
+    background: #ccc;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.img-circle {
+    /*
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    vertical-align: middle;
+    border-style: solid;
+    border-width: 2px;
+    */
+}
+
 h2 {
   color: #FAA02E;
 }

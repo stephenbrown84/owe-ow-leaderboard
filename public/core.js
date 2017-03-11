@@ -2,103 +2,135 @@
 angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 .controller("GenericChartCtrl", function ($http, $scope, $timeout) {
 
+    $scope.ROLES = {
+        OFFENSE: 'OFFENSE',
+        TANK: 'TANK',
+        DEFENSE: 'DEFENSE',
+        SUPPORT: 'SUPPORT'
+    }
+
     $scope.heroOptions =  [
         {
             id: 'all',
-            label: 'All Heroes'
+            label: 'All Heroes',
+            role: $scope.ROLES.OFFENSE
         },
         {
             id: 'genji',
-            label: 'Genji'
+            label: 'Genji',
+            role: $scope.ROLES.OFFENSE
         },
 
         {
             id: 'mccree',
-            label: 'McCree'
+            label: 'McCree',
+            role: $scope.ROLES.OFFENSE
         },
         {
             id: 'pharah',
-            label: 'Pharah'
+            label: 'Pharah',
+            role: $scope.ROLES.OFFENSE
         },
         {
             id: 'reaper',
-            label: 'Reaper'
+            label: 'Reaper',
+            role: $scope.ROLES.OFFENSE
         },
         {
             id: 'soldier76',
-            label: 'Soldier76'
+            label: 'Soldier76',
+            role: $scope.ROLES.OFFENSE
         },
         {
             id: 'sombra',
-            label: 'Sombra'
+            label: 'Sombra',
+            role: $scope.ROLES.OFFENSE
         },
         {
             id: 'tracer',
-            label: 'Tracer'
+            label: 'Tracer',
+            role: $scope.ROLES.OFFENSE
         },
         {
             id: 'bastion',
-            label: 'Bastion'
+            label: 'Bastion',
+            role: $scope.ROLES.DEFENSE
+
         },
         {
             id: 'hanzo',
-            label: 'Hanzo'
+            label: 'Hanzo',
+            role: $scope.ROLES.DEFENSE
         },
         {
             id: 'junkrat',
-            label: 'Junkrat'
+            label: 'Junkrat',
+            role: $scope.ROLES.DEFENSE
         },
         {
             id: 'mei',
-            label: 'Mei'
+            label: 'Mei',
+            role: $scope.ROLES.DEFENSE
         },
         {
             id: 'torbjorn',
-            label: 'Torbjorn'
+            label: 'Torbjorn',
+            role: $scope.ROLES.DEFENSE
         },
         {
             id: 'widowmaker',
-            label: 'Widowmaker'
+            label: 'Widowmaker',
+            role: $scope.ROLES.DEFENSE
         },
         {
             id: 'dva',
-            label: 'D.Va'
+            label: 'D.Va',
+            role: $scope.ROLES.TANK
         },
         {
             id: 'reinhardt',
-            label: 'Reinhardt'
+            label: 'Reinhardt',
+            role: $scope.ROLES.TANK
         },
         {
             id: 'roadhog',
-            label: 'Roadhog'
+            label: 'Roadhog',
+            role: $scope.ROLES.TANK
         },
         {
             id: 'winston',
-            label: 'Winston'
+            label: 'Winston',
+            role: $scope.ROLES.TANK
         },
         {
             id: 'zarya',
-            label: 'Zarya'
+            label: 'Zarya',
+            role: $scope.ROLES.TANK
         },
         {
             id: 'ana',
-            label: 'Ana'
+            label: 'Ana',
+            role: $scope.ROLES.SUPPORT
         },
         {
             id: 'lucio',
-            label: 'Lucio'
+            label: 'Lucio',
+            role: $scope.ROLES.SUPPORT
         },
         {
             id: 'mercy',
-            label: 'Mercy'
+            label: 'Mercy',
+            role: $scope.ROLES.SUPPORT
         },
         {
             id: 'zenyatta',
-            label: 'Zenyatta'
+            label: 'Zenyatta',
+            role: $scope.ROLES.SUPPORT
         },
         {
             id: 'symmetra',
-            label: 'Symmetra'
+            label: 'Symmetra',
+            role: $scope.ROLES.SUPPORT
         }
     ];
 

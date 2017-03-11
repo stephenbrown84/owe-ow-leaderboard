@@ -21,8 +21,16 @@
 </head>
 <body ng-controller="GenericChartCtrl" data-ng-init="init()">
     <h2>OWE Leaderboard - Alpha 0.0.2.2</h2>
-    <uib-tabset ng-show="isDataReady">
-        <div ng-repeat="h in heroOptions" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+    <div ng-show="isDataReady">
+        <div class="card-hero-icon" style="background-image:url('imgs/heroes/{{heroOptions[0].id}}.png')" ng-click="setCurrentHero(heroOptions[0])"></div>
+        <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/offense-icon.png')"></div></div>
+        <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+        <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/defense-icon.png')"></div></div>
+        <div ng-repeat="h in heroes | filter:{role: ROLES.DEFENSE}" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+        <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/tank-icon.png')"></div></div>
+        <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+        <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/support-icon.png')"></div></div>
+        <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
 
         <div>
             <label>Show Places:</label>
