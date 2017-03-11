@@ -1,6 +1,6 @@
 /* global angular */
 angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
-.controller("GenericChartCtrl", function ($http, $scope) {
+.controller("GenericChartCtrl", function ($http, $scope, $timeout) {
 
     $scope.heroOptions =  [
         {
@@ -121,19 +121,38 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             ceil: 12,
             step: 1,
             showTicksValues: true,
-            translate: function (value) {
+            translate: function(value) {
                 if (isNaN(value))
                     return 'NaN'
                 else if (value == 1)
-                    return value + '<b>st</b>';
+                    return value + '<sup>st</sup>';
                 else if (value == 2)
-                    return value + '<b>nd</b>';
+                    return value + '<sup>nd</sup>';
                 else if (value == 3)
-                    return value + '<b>rd</b>';
+                    return value + '<sup>rd</sup>';
                 else
-                    return value + '<b>th</b>';
+                    return value + '<sup>th</sup>';
             }
         }
+    };
+
+    $scope.getPlaceForNum = function(value) {
+        if (isNaN(value))
+            return 'NaN'
+        else if (value == 1)
+            return value + 'st';
+        else if (value == 2)
+            return value + 'nd';
+        else if (value == 3)
+            return value + 'rd';
+        else
+            return value + 'th';
+    }
+
+    $scope.refreshSlider = function () {
+        $timeout(function () {
+            $scope.$broadcast('rzSliderForceRender');
+        });
     };
 
     $scope.$watch('slider.minValue', function () {
@@ -162,7 +181,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
     }
 
     $scope.shouldShow = function(hero, playMode) {
-        return ($scope.selectedMode.id == playMode) && $scope["myChartObject_" + $scope.selectedMode.id + "_" + hero].hasData && (($scope.currentHero.id === 'all') || ($scope.currentHero.id === hero));
+        return ($scope.selectedMode.id == playMode) && (($scope.currentHero.id === 'all') || ($scope.currentHero.id === hero));
     }
 
     $scope.fillOutMissingData = function(data) {
@@ -244,6 +263,12 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         if (maxbarCount > $scope.data[hero].length)
             maxbarCount = $scope.data[hero].length;
 
+        if (minbarCount > maxbarCount) {
+            $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
+            $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
+            return;
+        }
+
         $scope["myChartObject_" + playMode + "_" + hero].options.colors = $scope.getColorOrder(hero, minbarCount, maxbarCount);
 
         // Set up column labels
@@ -256,7 +281,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         // Set up number data
         for (var i = minbarCount - 1; i < maxbarCount; i++) {
             $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
-                id: "s", label: $scope.data[hero][i].name, type: "number"
+                id: "s", label: ($scope.data[hero][i].name + ' (' + $scope.getPlaceForNum(i+1) + ')'), type: "number"
             });
 
             for (var j = 0; j < keys.length; j++) {;
@@ -311,6 +336,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         }
     }
 
+    $scope.changeActivePlayMode = function (ind) {
+        $scope.selectedMode = $scope.modes[ind];
+        $scope.loadPlayMode();
+    }
+
     $scope.init = function () {
         $scope.getDataFromServer();
     };
@@ -325,6 +355,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             $scope.competitiveData = response.data.competitive;
             $scope.loadPlayMode();
             $scope.isDataReady = true;
+            $scope.refreshSlider();
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -335,45 +366,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         return {
             "cols": [
                 { id: "t", label: "Pharah", type: "string" }
-            ], "rows": [
-                /*
-                {
-                    c: [
-                        { v: "" }
-                    ]
-                },
-                {
-                    c: [
-                        { v: "" }
-                    ]
-                },
-                {
-                    c: [
-                        { v: "" }
-                    ]
-                },
-                {
-                    c: [
-                        { v: "" }
-                    ]
-                },
-                {
-                    c: [
-                        { v: "" }
-                    ]
-                },
-                {
-                    c: [
-                        { v: "" }
-                    ]
-                },
-                {
-                    c: [
-                        { v: "" }
-                    ]
-                }
-                */
-            ]
+            ], "rows": []
         };
     }
 
