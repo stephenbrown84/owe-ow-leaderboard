@@ -3,6 +3,8 @@
 <html ng-app="app" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>OWE Leaderboard</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -20,18 +22,32 @@
     <!--<script src="./lib/angularjs-slider/dist/rzslider.js"></script>-->
 </head>
 <body ng-controller="GenericChartCtrl" data-ng-init="init()">
+<div class="container">
     <h2>OWE Leaderboard - Alpha 0.0.2.2</h2>
     <div ng-show="isDataReady">
-        <div class="card-hero-icon" style="background-image:url('imgs/heroes/{{heroOptions[0].id}}.png')" ng-click="setCurrentHero(heroOptions[0])"></div>
-        <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/offense-icon.png')"></div></div>
-        <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
-        <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/defense-icon.png')"></div></div>
-        <div ng-repeat="h in heroes | filter:{role: ROLES.DEFENSE}" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
-        <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/tank-icon.png')"></div></div>
-        <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
-        <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/support-icon.png')"></div></div>
-        <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" class="card-hero-icon" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+        <div class="row col-lg-12">
+            <div class="hero-role-group">
+                <div ng-class="heroClasses[heroOptions[0].id]" style="background-image:url('imgs/heroes/{{heroOptions[0].id}}.png')" ng-click="setCurrentHero(heroOptions[0])"></div>
+                <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/offense-icon.png')"></div></div>
+                <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+            </div>
+            <div class="hero-role-group">
+                <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/defense-icon.png')"></div></div>
+                <div ng-repeat="h in heroes | filter:{role: ROLES.DEFENSE}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+            </div>
+        </div>
+        <div class="row col-lg-12">
+            <div class="hero-role-group">
+                <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/tank-icon.png')"></div></div>
+                <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+            </div>
+            <div class="hero-role-group">
+                <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/support-icon.png')"></div></div>
+                <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+            </div>
+        </div>
 
+        <div class="row col-lg-12">
         <div>
             <label>Show Places:</label>
             <div id="placementSliderDiv">
@@ -82,5 +98,7 @@
     <div ng-hide="isDataReady">
         <p>Data not ready. Please wait a minute and your data will arrive automagically...</p>
     </div>
+    </div>
+</div>
 </body>
 </html>

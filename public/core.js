@@ -133,6 +133,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             role: $scope.ROLES.SUPPORT
         }
     ];
+    $scope.heroes = $scope.heroOptions.slice(1);
 
     $scope.modes = [
         {
@@ -168,6 +169,12 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         }
     };
 
+    $scope.heroClasses = {}
+
+    $scope.isCurrentHero = function(h) {
+        return ($scope.currentHero.id == h);
+    };
+
     $scope.getPlaceForNum = function(value) {
         if (isNaN(value))
             return 'NaN'
@@ -198,10 +205,6 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
     $scope.selectedMode = $scope.modes[0];
     //$scope.maxNumOfPlayers = 4;
 
-    $scope.heroes = $scope.heroOptions.slice(1);
-
-    $scope.currentHero = $scope.heroOptions[0];
-
     $scope.quickplayData;
     $scope.competitiveData;
     $scope.data = null;
@@ -209,7 +212,15 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
     $scope.setCurrentHero = function(h) {
         $scope.currentHero = h;
+        $scope.clearHeroClasses();
+        $scope.heroClasses[h.id] = 'card-hero-icon-selected';
         $scope.loadPlayMode();
+    }
+
+    $scope.clearHeroClasses = function() {
+        for (var i=0; i < $scope.heroOptions.length; i++) {
+            $scope.heroClasses[$scope.heroOptions[i].id] = 'card-hero-icon';
+        }
     }
 
     $scope.shouldShow = function(hero, playMode) {
@@ -374,6 +385,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
     }
 
     $scope.init = function () {
+        $scope.currentHero = $scope.heroOptions[0];
+        $scope.clearHeroClasses();
+
         $scope.getDataFromServer();
     };
 

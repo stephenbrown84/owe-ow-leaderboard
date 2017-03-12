@@ -26,7 +26,22 @@
       max-width: 100%; }
 
 body {
-    background-color: #E8E8E8;
+    /*background-color: #C0C0C0;*/
+    background-image: url("../imgs/grey-background.jpg");
+}
+
+.card-hero-icon-selected {
+    width: 48px;
+    height: 60px;
+    background: #83F52C;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    border-color: #83F52C;
+    border-style: solid;
+    border-width: 4px;
+    margin: 2px;
+    display: inline-block;
 }
 
 .card-hero-icon {
@@ -35,7 +50,7 @@ body {
   background: #ccc;
   background-size: cover;
   background-position: center;
-  border-radius: 3px;
+  border-radius: 10px;
   margin: 2px;
   display: inline-block;
 }
@@ -55,7 +70,6 @@ body {
     width: 40px;
     height: 40px;
     vertical-align: middle;
-    background-size: 30px 30px;
     background: #ccc;
     background-size: cover;
     background-position: center;
@@ -83,13 +97,17 @@ h2 {
     display: inline-block;
 }
 
+.hero-role-group {
+    display: inline-block;
+}
+
 .card-hero-for-graph {
     width: 75px;
     height: 300px;
     background: #ccc;
     background-size: cover;
     background-position: center;
-    border-radius: 3px;
+    border-radius: 15px;
     display: inline-block;
 }
 
