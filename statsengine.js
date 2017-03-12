@@ -490,7 +490,12 @@ StatsEngine.prototype.addOverallForPlayerForHero = function (player, hero, playM
     }
 
     if (!(player in this.sortedStats[playMode][hero])) {
-        this.sortedStats[playMode][hero].push({ name: player, 'overall': overallAmt, 'stats': this.calculatedStats[playMode][player][hero] });
+        // Add in time played for all results stats
+        var heroStats = this.getHeroStatsFor(player, playMode, hero);
+        var time_played = getAttr(heroStats,'time_played');
+
+        this.sortedStats[playMode][hero].push({ name: player, 'overall': overallAmt, 'time_played': time_played,
+            'stats': this.calculatedStats[playMode][player][hero] });
     }
 
 }
@@ -547,6 +552,7 @@ StatsEngine.prototype.calculateStats = function (playMode) {
             if ((keys[j] in this.calculatedStats[playMode]) && (hero in this.calculatedStats[playMode][keys[j]])) {
                 var calculatedHeroStats = this.calculatedStats[playMode][keys[j]][hero];
                 this.setHeroPercentageOverallForPlayer(keys[j], hero, playMode, calculatedHeroStats);
+
             }
         }
     }

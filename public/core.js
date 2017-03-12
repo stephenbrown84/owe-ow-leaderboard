@@ -188,6 +188,12 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             return value + 'th';
     }
 
+    $scope.getTimePlayedString = function(value) {
+        var hours = Math.floor(value/60);
+        var mins = value - (hours*60);
+        return hours + 'h ' + mins + 'm';
+    }
+
     $scope.refreshSlider = function () {
         $timeout(function () {
             $scope.$broadcast('rzSliderForceRender');
@@ -324,10 +330,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         // Set up number data
         for (var i = minbarCount - 1; i < maxbarCount; i++) {
             $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
-                id: "s", label: ($scope.data[hero][i].name + ' (' + $scope.getPlaceForNum(i+1) + ')'), type: "number"
+                id: "s", label: ($scope.data[hero][i].name + ' (' + $scope.getTimePlayedString($scope.data[hero][i]['time_played']) + ')'), type: "number"
             });
 
-            for (var j = 0; j < keys.length; j++) {;
+            for (var j = 0; j < keys.length; j++) {
+
                 var values = [];
                 values.push($scope.data[hero][i]['stats'][keys[j]])
 
