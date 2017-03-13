@@ -475,13 +475,14 @@ StatsEngine.prototype.setHeroPercentageOverallForPlayer = function (player, hero
     var count = 0;
     for (var i=0; i < heroFields.length; i++) {
         if (heroFields[i].name in this.calculatedStats[playMode][player][hero]) {
-            overallAmt += this.calculatedStats[playMode][player][hero][heroFields[i].name];
+            overallAmt += this.calculatedStats[playMode][player][hero][heroFields[i].name]['relative'];
             count += 1;
         }    
     }
     overallAmt = overallAmt / count;
 
-    this.calculatedStats[playMode][player][hero]['OVERALL'] = overallAmt;
+    this.calculatedStats[playMode][player][hero]['OVERALL']['relative'] = overallAmt;
+    this.calculatedStats[playMode][player][hero]['OVERALL']['actual'] = overallAmt;
     this.addOverallForPlayerForHero(player, hero, playMode, overallAmt);
 }
 
