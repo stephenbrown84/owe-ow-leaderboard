@@ -281,8 +281,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
                     colors.push('purple');
                 }
                 else {
-                    if (maxbarCount !== $scope.data[hero].length) {
-                        maxbarCount += 1;
+                    if (maxBarCount !== $scope.data[hero].length) {
+                        maxBarCount += 1;
                     }
                 }
                     
