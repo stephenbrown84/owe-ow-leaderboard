@@ -344,6 +344,14 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
             for (var j = 0; j < keys.length; j++) {
 
+                var relValue = $scope.data[hero][i]['stats'][keys[j]]['relative'];
+                var actValue = $scope.data[hero][i]['stats'][keys[j]]['actual'];
+
+                $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: relValue });
+                $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, actValue) });
+
+                /*
+
                 var relValues = [];
                 relValues.push($scope.data[hero][i]['stats'][keys[j]]['relative']);
 
@@ -355,6 +363,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
                     $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, actValues[k])});
 
                 }
+                */
             }
         }
     }
