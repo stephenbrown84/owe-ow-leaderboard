@@ -277,7 +277,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             else if(player == 'Suracis')
                 colors.push('tomato');
             else if (player == 'Seagull')
-                colors.push('purple');
+                if ($scope.seagullAllowedModel)
+                    colors.push('purple');
             else
                 colors.push('black');
         }
