@@ -337,6 +337,8 @@ function getImportantFieldsFor(hero) {
         ];
     }
 
+    fields.push({ name: 'win_percentage', prettyName: 'Win Percentage', required: false })
+
     return fields;
 }
 

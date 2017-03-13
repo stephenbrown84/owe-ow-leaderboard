@@ -373,7 +373,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
                 var actValue = $scope.data[hero][i]['stats'][keys[j]]['actual'];
 
                 $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: relValue });
-                $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, actValue) });
+                $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, keys[j], actValue) });
 
                 /*
 
@@ -393,11 +393,13 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         }
     }
 
-    $scope.createHTMLTooltip = function (name, value) {
+    $scope.createHTMLTooltip = function (playName, fieldName, value) {
         value = value.toFixed(2);
-        if (value > 100)
+        if ((value > 100) || (fieldName == 'win_percentage'))
             value = Math.floor(value);
-        return '' + name + ': \n' + value.toString()//.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (fieldName == 'win_percentage')
+            value = value.toString() + '%';
+        return '' + playName + ': \n' + value.toString()//.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
     $scope.loadCharts = function (playMode) {
