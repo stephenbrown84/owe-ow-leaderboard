@@ -481,8 +481,7 @@ StatsEngine.prototype.setHeroPercentageOverallForPlayer = function (player, hero
     }
     overallAmt = overallAmt / count;
 
-    this.calculatedStats[playMode][player][hero]['OVERALL']['relative'] = overallAmt;
-    this.calculatedStats[playMode][player][hero]['OVERALL']['actual'] = overallAmt;
+    this.calculatedStats[playMode][player][hero]['OVERALL'] = { 'relative': overallAmt, 'actual': overallAmt };
     this.addOverallForPlayerForHero(player, hero, playMode, overallAmt);
 }
 
