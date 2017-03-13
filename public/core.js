@@ -301,6 +301,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         $scope["myChartObject_" + playMode + "_" + hero].options.title = hero;
         $scope["myChartObject_" + playMode + "_" + hero].options.chartArea = { 'left': '5%' };
         $scope["myChartObject_" + playMode + "_" + hero].options.legend = { 'position': 'right' };
+        $scope["myChartObject_" + playMode + "_" + hero].options.tooltip = { 'isHTML': true };
+        $scope["myChartObject_" + playMode + "_" + hero].options.vAxis = {format:'#%'};
+
 
 
         if (!$scope["myChartObject_" + playMode + "_" + hero].hasData)
@@ -326,14 +329,6 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             // Data Column
             $scope["myChartObject_" + playMode + "_" + hero].data.rows.push({c: [{v: ""}]});
             $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c[0].v = keys[j].replace(/_/g, ' ');
-
-            //$scope["myChartObject_" + playMode + "_" + hero].data.rows.push([]);
-            //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j][0] = keys[j].replace(/_/g, ' ');
-
-
-            // Annotation Column
-            //$scope["myChartObject_" + playMode + "_" + hero].data.rows.push({ c: [{ v: "" }] });
-            //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c[0].v = "Test Annotation";
         }
 
         // Set up number data
@@ -342,8 +337,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
                 id: "s", label: ($scope.data[hero][i].name + ' (' + $scope.getTimePlayedString($scope.data[hero][i]['time_played']) + ')'), type: "number"
             });
 
+
             $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
-                role: 'tooltip', type: "string"
+                role: 'tooltip', type: "string", p: { 'html': true }
             });
 
             for (var j = 0; j < keys.length; j++) {
@@ -356,11 +352,18 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
                 for (var k = 0; k < relValues.length; k++) {
                     $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: relValues[k] });
-                    $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: actValues[k].toString() });
-                    //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].push(values[k]);
+                    $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, actValues[k])});
+
                 }
             }
         }
+    }
+
+    $scope.createHTMLTooltip = function (name, value) {
+        value = value.toFixed(2);
+        if (value > 100)
+            value = Math.floor(value);
+        return '' + name + ': \n' + value.toString()//.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
     $scope.loadCharts = function (playMode) {
