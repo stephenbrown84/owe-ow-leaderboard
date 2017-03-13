@@ -277,8 +277,15 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             else if(player == 'Suracis')
                 colors.push('tomato');
             else if (player == 'Seagull')
-                if ($scope.seagullAllowedModel)
+                if ($scope.seagullAllowedModel) {
                     colors.push('purple');
+                }
+                else {
+                    if (maxbarCount !== $scope.data[hero].length) {
+                        maxbarCount += 1;
+                    }
+                }
+                    
             else
                 colors.push('black');
         }
