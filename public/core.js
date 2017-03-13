@@ -333,7 +333,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             return;
         }
 
-        if (!$scope.seagullAllowedModel && ($scope.data[hero].length == 1) && ($scope.data[hero].name == 'Seagull')) {
+        if (!$scope.seagullAllowedModel && ($scope.data[hero].length == 1) && ($scope.data[hero][0].name == 'Seagull')) {
             $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
             $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
             return;
