@@ -31,7 +31,7 @@ function StatsEngine(initData) {
     };
 }
 
-function getImportantFieldsFor(hero) {
+function getImportantFieldsFor(hero, playMode) {
     var fields;
     if (hero == 'pharah') {
         fields = [
@@ -337,13 +337,15 @@ function getImportantFieldsFor(hero) {
         ];
     }
 
-    fields.push({ name: 'win_percentage', prettyName: 'Win Percentage', required: false })
+    if (playMode == 'competitive') {
+        fields.push({ name: 'win_percentage', prettyName: 'Win Percentage', required: false })
+    }
 
     return fields;
 }
 
-function getRequiredFieldsFor(hero) {
-    var impFields = getImportantFieldsFor(hero);
+function getRequiredFieldsFor(hero, playMode) {
+    var impFields = getImportantFieldsFor(hero, playMode);
     var reqFields = [];
     for (var i=0; i < impFields.length; i++) {
         if (impFields[i].required)
@@ -357,8 +359,8 @@ function hasEnoughTimePlayed(heroStats, hero) {
     return ('time_played' in heroStats) && (getAttr(heroStats, 'time_played') > 20);
 }
 
-function hasRequiredFieldsForHero(heroStats, hero) {
-    var reqFields = getRequiredFieldsFor(hero);
+function hasRequiredFieldsForHero(heroStats, hero, playMode) {
+    var reqFields = getRequiredFieldsFor(hero, playMode);
     for (var i = 0; i < reqFields.length; i++) {
         if (!(reqFields[i].name in heroStats)) {
             return false;
@@ -422,7 +424,7 @@ StatsEngine.prototype.initializeAllFieldsForPlayer = function (player, playMode,
 
     this.calculatedStats[playMode][player][hero] = {};
 
-    var impFields = getImportantFieldsFor(hero);
+    var impFields = getImportantFieldsFor(hero, playMode);
     for (var i = 0; i < impFields.length; i++) {
         this.calculatedStats[playMode][player][hero][impFields[i].name] = { 'relative': 0.0, 'actual': 0.0 };
     }
@@ -471,7 +473,7 @@ StatsEngine.prototype.setHeroPercentageOverallForPlayer = function (player, hero
         this.calculatedStats[playMode][player][hero] = {};
     }
 
-    var heroFields = getImportantFieldsFor(hero);
+    var heroFields = getImportantFieldsFor(hero, playMode);
 
     var overallAmt = 0.0;
     var count = 0;
@@ -514,7 +516,7 @@ StatsEngine.prototype.calculateStats = function (playMode) {
     for (var i = 0; i < HERO_NAMES.length; i++) {
 
         var hero = HERO_NAMES[i];
-        var heroFields = getImportantFieldsFor(hero);
+        var heroFields = getImportantFieldsFor(hero, playMode);
 
         // Do up hero totals
         for (var j = 0; j < keys.length; j++) {
@@ -524,7 +526,7 @@ StatsEngine.prototype.calculateStats = function (playMode) {
             var heroStats = this.getHeroStatsFor(keys[j], playMode, hero);
             for (var k = 0; k < heroFields.length; k++) {
                 //if ((keys[j].toLowerCase() == 'nuuga') &&(hero == 'ana')) console.log("SEE ME: " + playMode + ": " + hero + ": " + util.inspect(heroStats, { showHidden: false, depth: null }));
-                if (hasRequiredFieldsForHero(heroStats, hero) && hasEnoughTimePlayed(heroStats, hero)) {
+                if (hasRequiredFieldsForHero(heroStats, hero, playMode) && hasEnoughTimePlayed(heroStats, hero)) {
                     //if ((keys[j].toLowerCase() == 'nuuga') && (hero == 'ana')) console.log("SEE ME: " + playMode + ": " + hero + ": " + util.inspect(heroStats, { showHidden: false, depth: null }));
                     this.updateHeroTotal(hero, playMode, heroFields[k].name, heroStats);
                 }
@@ -537,7 +539,7 @@ StatsEngine.prototype.calculateStats = function (playMode) {
                 continue;
 
             var heroStats = this.getHeroStatsFor(keys[j], playMode, hero);
-            if (!hasRequiredFieldsForHero(heroStats, hero) || !hasEnoughTimePlayed(heroStats, hero)) continue;
+            if (!hasRequiredFieldsForHero(heroStats, hero, playMode) || !hasEnoughTimePlayed(heroStats, hero)) continue;
 
             //if ((playMode == 'competitive') && (keys[j] == 'NorthernYeti')) console.log(util.inspect(heroStats, { showHidden: false, depth: null }) + " " + hero);
 
