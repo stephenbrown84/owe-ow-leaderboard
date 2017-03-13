@@ -422,8 +422,7 @@ StatsEngine.prototype.initializeAllFieldsForPlayer = function (player, playMode,
 
     var impFields = getImportantFieldsFor(hero);
     for (var i = 0; i < impFields.length; i++) {
-        this.calculatedStats[playMode][player][hero][impFields[i].name]['relative'] = 0.0;
-        this.calculatedStats[playMode][player][hero][impFields[i].name]['actual'] = 0.0;
+        this.calculatedStats[playMode][player][hero][impFields[i].name] = { 'relative': 0.0, 'actual': 0.0 };
     }
 }
 
