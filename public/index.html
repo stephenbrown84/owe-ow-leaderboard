@@ -56,6 +56,10 @@
                           rz-slider-options="slider.options"
                           rz-slider-tpl-url="rzSliderTemplates/dualPlacementSlider.html"></rzslider>
             </div>
+            <label>
+                Include Seagull?
+                <input type="checkbox" ng-model="seagullAllowedModel" ng-click="loadPlayMode()">
+            </label>
         </div>
         <!--
         Max Players: <input type="number" ng-model="maxNumOfPlayers" ng-change="loadPlayMode()" min="1" max="12"/>

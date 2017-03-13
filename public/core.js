@@ -171,6 +171,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
     $scope.heroClasses = {}
 
+    $scope.seagullAllowedModel = true;
+
     $scope.isCurrentHero = function(h) {
         return ($scope.currentHero.id == h);
     };
@@ -274,6 +276,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
                 colors.push('lightblue');
             else if(player == 'Suracis')
                 colors.push('tomato');
+            else if (player == 'Seagull')
+                colors.push('purple');
             else
                 colors.push('black');
         }
@@ -333,6 +337,13 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
         // Set up number data
         for (var i = minbarCount - 1; i < maxbarCount; i++) {
+            if (!$scope.seagullAllowedModel && $scope.data[hero][i].name == 'Seagull') {
+                if (maxbarCount !== $scope.data[hero].length) {
+                    maxbarCount += 1;
+                } 
+                continue;
+            }
+
             $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
                 id: "s", label: ($scope.data[hero][i].name + ' (' + $scope.getTimePlayedString($scope.data[hero][i]['time_played']) + ')'), type: "number"
             });
