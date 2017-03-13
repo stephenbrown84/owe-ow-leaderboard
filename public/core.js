@@ -171,7 +171,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
     $scope.heroClasses = {}
 
-    $scope.seagullAllowedModel = true;
+    $scope.seagullAllowedModel = false;
 
     $scope.isCurrentHero = function(h) {
         return ($scope.currentHero.id == h);
@@ -321,6 +321,12 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             maxbarCount = $scope.data[hero].length;
 
         if (minbarCount > maxbarCount) {
+            $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
+            $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
+            return;
+        }
+
+        if (!$scope.seagullAllowedModel && ($scope.data[hero].length == 1) && ($scope.data[hero].name == 'Seagull')) {
             $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
             $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
             return;
