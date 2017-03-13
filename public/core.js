@@ -323,8 +323,17 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         // Set up column labels
         var keys = Object.keys($scope.data[hero][0]['stats'])
         for (var j = 0; j < keys.length; j++) {
+            // Data Column
             $scope["myChartObject_" + playMode + "_" + hero].data.rows.push({c: [{v: ""}]});
             $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c[0].v = keys[j].replace(/_/g, ' ');
+
+            //$scope["myChartObject_" + playMode + "_" + hero].data.rows.push([]);
+            //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j][0] = keys[j].replace(/_/g, ' ');
+
+
+            // Annotation Column
+            //$scope["myChartObject_" + playMode + "_" + hero].data.rows.push({ c: [{ v: "" }] });
+            //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c[0].v = "Test Annotation";
         }
 
         // Set up number data
@@ -333,24 +342,22 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
                 id: "s", label: ($scope.data[hero][i].name + ' (' + $scope.getTimePlayedString($scope.data[hero][i]['time_played']) + ')'), type: "number"
             });
 
+            $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
+                role: 'tooltip', type: "string"
+            });
+
             for (var j = 0; j < keys.length; j++) {
 
-                var values = [];
-                values.push($scope.data[hero][i]['stats'][keys[j]])
+                var relValues = [];
+                relValues.push($scope.data[hero][i]['stats'][keys[j]]['relative']);
 
-                /*
-                if ((value1 > 1000) || (value2 > 1000)) {
-                    value1 = value1 / 1000;
-                    value2 = value2 / 1000;
-                }
-                else if ((value1 > 100) || (value2 > 100)) {
-                    value1 = value1 / 100;
-                    value2 = value2 / 100;
-                }
-                */
+                var actValues = [];
+                actValues.push($scope.data[hero][i]['stats'][keys[j]]['actual']);
 
-                for (var k=0; k < values.length; k++) {
-                    $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({v : values[k]});
+                for (var k = 0; k < relValues.length; k++) {
+                    $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: relValues[k] });
+                    $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: actValues[k].toString() });
+                    //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].push(values[k]);
                 }
             }
         }

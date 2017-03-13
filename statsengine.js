@@ -451,12 +451,13 @@ StatsEngine.prototype.setHeroPercentageForFieldForPlayer = function (player, her
 
     
     if (!(fieldName in this.calculatedStats[playMode][player][hero])) {
-        this.calculatedStats[playMode][player][hero][fieldName] = 0.0;
+        this.calculatedStats[playMode][player][hero][fieldName] = {};
     }
 
     var total = this.heroTotals[playMode][hero][fieldName].total;
     var count = this.heroTotals[playMode][hero][fieldName].count;
-    this.calculatedStats[playMode][player][hero][fieldName] = amt / (total / count);
+    this.calculatedStats[playMode][player][hero][fieldName]['relative'] = amt / (total / count);
+    this.calculatedStats[playMode][player][hero][fieldName]['actual'] = amt;
 }
 
 StatsEngine.prototype.setHeroPercentageOverallForPlayer = function (player, hero, playMode, calculatedHeroStats) {
