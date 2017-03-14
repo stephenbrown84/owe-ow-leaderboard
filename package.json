@@ -15,6 +15,7 @@
     "ejs": "2.3.3",
     "express": "4.13.3",
     "overwatch-js": "^1.2.0",
+    "request-light": "^0.2.0",
     "util": "^0.10.3"
   },
   "repository": {
