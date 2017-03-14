@@ -331,9 +331,17 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         // Set up column labels
         var keys = Object.keys($scope.data[hero][0]['stats'])
         for (var j = 0; j < keys.length; j++) {
+            var weight = ''
+            console.log(keys[j]);
+            console.log($scope.data[hero][0]['fields'][keys[j]]);
+            if (keys[j].toLocaleLowerCase() !== 'overall') {
+                weight = $scope.data[hero][0]['fields'][keys[j]].weight.toString();
+                weight = '(' + weight + ')';
+            }
+
             // Data Column
-            $scope["myChartObject_" + playMode + "_" + hero].data.rows.push({c: [{v: ""}]});
-            $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c[0].v = keys[j].replace(/_/g, ' ');
+            $scope["myChartObject_" + playMode + "_" + hero].data.rows.push({ c: [{ v: "" }] });
+            $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c[0].v = keys[j].replace(/_/g, ' ') + weight;
         }
 
         // Set up number data
@@ -399,14 +407,20 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         }
     }
 
+    /*
     $scope.changeActivePlayMode = function (ind) {
+        $scope.isDataReady = false;
         $scope.selectedMode = $scope.modes[ind];
         $scope.loadPlayMode();
     }
+    */
 
     $scope.init = function () {
-        $scope.currentHero = $scope.heroOptions[0];
         $scope.clearHeroClasses();
+
+        $scope.isDataReady = false;
+        $scope.selectedMode = $scope.modes[0];
+        $scope.currentHero = $scope.heroOptions[0];
 
         $scope.getDataFromServer();
     };
@@ -420,6 +434,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
                 setTimeout($scope.getDataFromServer, 2000);
                 return;
             }
+
             $scope.quickplayData = responses[0].data.quickplay;
             $scope.competitiveData = responses[0].data.competitive;
             $scope.loadPlayMode();
@@ -427,8 +442,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             $scope.clanMembers = responses[1].data;
             $scope.selectedClanMember = $scope.clanMembers[0];
 
-            $scope.isDataReady = true;
             $scope.refreshSlider();
+
+            $scope.isDataReady = true;
         }, function errorCallback(responses) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

@@ -39,7 +39,7 @@ const HERO_NAMES_FRIENDLY = ['Ana'];
 
 var count = 0;
 function isReady() {
-    if (env !== 'release')
+    if ((env !== 'release') && (env !== 'devproxy'))
         return true;
     if (count == BATTLE_TAGS.length)
         return true;
@@ -157,7 +157,7 @@ app.get('/times', function(request, response) {
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
     console.log(env);
-    if (env == 'release') {
+    if ((env == 'release') || (env == 'devproxy')) {
         refreshOWStats();
         setInterval(refreshOWStats, 600000);
     }
