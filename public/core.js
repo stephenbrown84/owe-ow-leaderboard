@@ -275,17 +275,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             else if(player == 'Isoulle')
                 colors.push('lightblue');
             else if(player == 'Suracis')
-                colors.push('tomato');
-            else if (player == 'Seagull')
-                if ($scope.seagullAllowedModel) {
-                    colors.push('purple');
-                }
-                else {
-                    if (maxBarCount !== $scope.data[hero].length) {
-                        maxBarCount += 1;
-                    }
-                }
-                    
+                colors.push('tomato');         
             else
                 colors.push('black');
         }
@@ -333,12 +323,6 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             return;
         }
 
-        if (!$scope.seagullAllowedModel && ($scope.data[hero].length == 1) && ($scope.data[hero][0].name == 'Seagull')) {
-            $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
-            $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
-            return;
-        }
-
         $scope["myChartObject_" + playMode + "_" + hero].options.colors = $scope.getColorOrder(hero, minbarCount, maxbarCount);
 
         // Set up column labels
@@ -351,12 +335,6 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
         // Set up number data
         for (var i = minbarCount - 1; i < maxbarCount; i++) {
-            if (!$scope.seagullAllowedModel && $scope.data[hero][i].name == 'Seagull') {
-                if (maxbarCount !== $scope.data[hero].length) {
-                    maxbarCount += 1;
-                } 
-                continue;
-            }
 
             $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
                 id: "s", label: ($scope.data[hero][i].name + ' (' + $scope.getTimePlayedString($scope.data[hero][i]['time_played']) + ')'), type: "number"
@@ -375,20 +353,6 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
                 $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: relValue });
                 $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, keys[j], actValue) });
 
-                /*
-
-                var relValues = [];
-                relValues.push($scope.data[hero][i]['stats'][keys[j]]['relative']);
-
-                var actValues = [];
-                actValues.push($scope.data[hero][i]['stats'][keys[j]]['actual']);
-
-                for (var k = 0; k < relValues.length; k++) {
-                    $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: relValues[k] });
-                    $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, actValues[k])});
-
-                }
-                */
             }
         }
     }

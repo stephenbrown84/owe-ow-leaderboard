@@ -8,7 +8,7 @@
  **/
 
 const cheerio = require('cheerio');
-const rp = require('request-promise');
+const rp = require('request-light');
 const _ = require('lodash/core');
 
 const url = 'https://playoverwatch.com/en-us/career/';
@@ -125,11 +125,11 @@ let OverwatchProvider = function() {
 
     self.getAll = (platform, region, tag, overallOnly) => {
         var baseurl = getUrl(platform, region, tag);
-        return rp(baseurl).then((context) => {
+        return rp.xhr({url: baseurl}).then((context) => {
 
             var result = {};
             var promises = [];
-            const $ = cheerio.load(context);
+            const $ = cheerio.load(context.responseText);
 
             //// Getting profile
             var p = new Promise((resolve, reject) => {
@@ -163,12 +163,12 @@ let OverwatchProvider = function() {
 
     self.search = (username) => {
         var options = {
-            uri: getSearchUrl(username),
-            json: true 
+            url: getSearchUrl(username),
+            //json: true 
         };
 
-        return rp(options).then((datas) => {
-            _.each(datas, (player) => {
+        return rp.xhr(options).then((datas) => {
+            _.each(datas.responseText, (player) => {
                 var i = player.careerLink.split('/');
                 player.platform = i[1];
                 player.region = i[2];
@@ -176,7 +176,7 @@ let OverwatchProvider = function() {
                 player.level = player.level % 100;
             });
 
-            return datas;
+            return datas.responseText;
         })
         .catch(handle);
     }

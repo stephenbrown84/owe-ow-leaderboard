@@ -1,4 +1,9 @@
-var cool = require('cool-ascii-faces');
+var globalTunnel = require('global-tunnel');
+globalTunnel.initialize({
+    host: 'http://nhqgate.hq-ac.prv',
+    port: 80
+});
+
 var owjs = require('./overwatch-js');
 
 var express = require('express');
@@ -23,21 +28,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-/*
- app.get('/', function(request, response) {
- console.log(count);
- if (isReady())
- response.render('pages/index');
- else
- response.send("Not Ready. Please refresh.")
- });
- */
-
-app.get('/cool', function(request, response) {
-  response.send(cool());
-});
-
-const BATTLE_TAGS = ['Seagull-1894', 'NorthernYeti-1308', 'MegaArcon-1653', 'noj-1818', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767',
+const BATTLE_TAGS = ['NorthernYeti-1308', 'MegaArcon-1653', 'noj-1818', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767',
     'Isoulle-1235', 'Lawbringer-11174', 'Nick-15366', 'Dirtnapper-1628', 'Suracis-1355', 'WiseOldGamer-1346'];
 const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya'];
