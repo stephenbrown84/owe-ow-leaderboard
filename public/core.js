@@ -332,8 +332,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         var keys = Object.keys($scope.data[hero][0]['stats'])
         for (var j = 0; j < keys.length; j++) {
             var weight = ''
-            console.log(keys[j]);
-            console.log($scope.data[hero][0]['fields'][keys[j]]);
+            //console.log(keys[j]);
+            //console.log($scope.data[hero][0]['fields'][keys[j]]);
             if (keys[j].toLocaleLowerCase() !== 'overall') {
                 weight = $scope.data[hero][0]['fields'][keys[j]].weight.toString();
                 weight = '(' + weight + ')';
@@ -407,13 +407,10 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         }
     }
 
-    /*
     $scope.changeActivePlayMode = function (ind) {
-        $scope.isDataReady = false;
         $scope.selectedMode = $scope.modes[ind];
         $scope.loadPlayMode();
     }
-    */
 
     $scope.init = function () {
         $scope.clearHeroClasses();
