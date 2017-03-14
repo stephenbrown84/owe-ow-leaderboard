@@ -1,6 +1,6 @@
 /* global angular */
 angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
-.controller("GenericChartCtrl", function ($http, $scope, $timeout) {
+.controller("GenericChartCtrl", function ($http, $scope, $timeout, $q) {
 
     $scope.ROLES = {
         OFFENSE: 'OFFENSE',
@@ -145,6 +145,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             label: 'Competitive'
         }
     ];
+
+    $scope.clanMembers = [];
+    $scope.selectedClanMember = '';
 
     $scope.slider = {
         minValue: 1,
@@ -408,18 +411,25 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         $scope.getDataFromServer();
     };
 
-    $scope.getDataFromServer = function() {
-        $http({ method: 'GET', url: '/stats/sorted' }).then(function successCallback(response) {
-            if (Object.keys(response.data) < 1) {
+    $scope.getDataFromServer = function () {
+        var reqPromise1 = $http({ method: 'GET', url: '/stats/sorted' });
+        var reqPromise2 = $http({ method: 'GET', url: '/clan/members' });
+
+        $q.all([reqPromise1, reqPromise2]).then(function successCallback(responses) {
+            if (Object.keys(responses[0].data) < 1) {
                 setTimeout($scope.getDataFromServer, 2000);
                 return;
             }
-            $scope.quickplayData = response.data.quickplay;
-            $scope.competitiveData = response.data.competitive;
+            $scope.quickplayData = responses[0].data.quickplay;
+            $scope.competitiveData = responses[0].data.competitive;
             $scope.loadPlayMode();
+
+            $scope.clanMembers = responses[1].data;
+            $scope.selectedClanMember = $scope.clanMembers[0];
+
             $scope.isDataReady = true;
             $scope.refreshSlider();
-        }, function errorCallback(response) {
+        }, function errorCallback(responses) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });

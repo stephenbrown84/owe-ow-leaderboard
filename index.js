@@ -6,10 +6,10 @@ var app = express();
 var initData = require('./test.json');
 var Stats = require('./stats');
 
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'dev';
 
 var stats;
-if (env !== 'release')
+if ((env !== 'release') && (env !== 'devproxy'))
     stats = new Stats(initData);
 else
     stats = new Stats({});
@@ -72,6 +72,10 @@ function refreshOWStats() {
     stats = new Stats({});
     getOWStats(BATTLE_TAGS[0], 0);
 }
+
+app.get('/clan/members', function (request, response) {
+    response.send(BATTLE_TAGS);
+});
 
 app.get('/stats', function (request, response) {
 
