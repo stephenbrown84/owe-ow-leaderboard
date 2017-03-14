@@ -1,9 +1,3 @@
-var globalTunnel = require('global-tunnel');
-globalTunnel.initialize({
-    host: 'http://nhqgate.hq-ac.prv',
-    port: 80
-});
-
 var owjs = require('./overwatch-js');
 
 var express = require('express');
