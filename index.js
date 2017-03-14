@@ -1,4 +1,4 @@
-var owjs = require('./overwatch-js');
+var owjs = require('overwatch-js');
 
 var express = require('express');
 var app = express();
