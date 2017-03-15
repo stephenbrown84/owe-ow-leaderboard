@@ -30,63 +30,104 @@ body {
     background-image: url("../imgs/grey-background.jpg");
 }
 
-.card-hero-icon-selected {
-    width: 48px;
-    height: 60px;
-    background: #83F52C;
-    background-size: cover;
-    background-position: center;
-    border-radius: 15px;
-    border-color: #83F52C;
-    border-style: solid;
-    border-width: 4px;
-    margin: 2px;
-    display: inline-block;
+@media screen and (max-width:768px) {
+        .card-hero-icon-selected {
+        width: 24px;
+        height: 30px;
+        background: #83F52C;
+        background-size: cover;
+        background-position: center;
+        border-radius: 15px;
+        border-color: #83F52C;
+        border-style: solid;
+        border-width: 2px;
+        margin: 2px;
+        display: inline-block;
+    }
+
+    .card-hero-icon {
+      width: 24px;
+      height: 30px;
+      background: #ccc;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      margin: 2px;
+      display: inline-block;
+    }
+
+    .img-circle-container {
+        width: 24px;
+        height: 30px;
+        margin: 2px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .img-circle-card {
+        position: relative;
+        left: 2px;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        background: #ccc;
+        background-size: cover;
+        background-position: center;
+        border-radius: 50%;
+        display: inline-block;
+    }
 }
 
-.card-hero-icon {
-  width: 48px;
-  height: 60px;
-  background: #ccc;
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-  margin: 2px;
-  display: inline-block;
+@media screen and (min-width:768px) {
+      .card-hero-icon-selected {
+        width: 48px;
+        height: 60px;
+        background: #83F52C;
+        background-size: cover;
+        background-position: center;
+        border-radius: 15px;
+        border-color: #83F52C;
+        border-style: solid;
+        border-width: 4px;
+        margin: 2px;
+        display: inline-block;
+    }
+
+    .card-hero-icon {
+      width: 48px;
+      height: 60px;
+      background: #ccc;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      margin: 2px;
+      display: inline-block;
+    }
+
+    .img-circle-container {
+        width: 48px;
+        height: 60px;
+        margin: 2px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .img-circle-card {
+        position: relative;
+        left: 4px;
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+        background: #ccc;
+        background-size: cover;
+        background-position: center;
+        border-radius: 50%;
+        display: inline-block;
+    }
 }
 
-.img-circle-container {
-    width: 48px;
-    height: 60px;
-    margin: 2px;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.img-circle-card {
-    position: relative;
-    left: 4px;
-    top: 10px;
-    width: 40px;
-    height: 40px;
-    vertical-align: middle;
-    background: #ccc;
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.img-circle {
-    /*
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    vertical-align: middle;
-    border-style: solid;
-    border-width: 2px;
-    */
-}
 
 h2 {
   color: #FAA02E;
@@ -101,16 +142,6 @@ h2 {
     display: inline-block;
 }
 
-.card-hero-for-graph {
-    width: 75px;
-    height: 300px;
-    background: #ccc;
-    background-size: cover;
-    background-position: center;
-    border-radius: 15px;
-    display: inline-block;
-}
-
 .insufficent-data-img {
     width: 637px;
     height: 300px;
@@ -121,10 +152,25 @@ h2 {
     display: inline-block;
 }
 
-.graph-div {
+/* Graphs CSS */
+.data-row {
+    width: 100%;
+    height: 305px;
+}
+
+.card-hero-for-graph {
+    width: 5%;
+    height: 300px;
+    background: #ccc;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
     display: inline-block;
 }
 
-.data-row {
-    height: 305px;
+.graph-div {
+    display: inline-block;
+    width: 90%;
+    height: 300px;
 }
+
