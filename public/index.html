@@ -99,7 +99,7 @@
                         </div>
                     </uib-tab>
 
-                    <uib-tab index="0" heading="Competitive" select="changeActivePlayMode(1)">
+                    <uib-tab index="1" heading="Competitive" select="changeActivePlayMode(1)">
                         <div ng-repeat="h in heroes">
                             <div class="data-row" ng-show="(selectedMode.id=='competitive') && myChartObject_competitive_{{h.id}}.show">
                                 <div ng-if="this['myChartObject_competitive_' + h.id].hasData">
