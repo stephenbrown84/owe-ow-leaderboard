@@ -87,7 +87,9 @@
                     <uib-tab index="0" heading="Quick Play" select="changeActivePlayMode(0)">
                         <div ng-repeat="h in heroes">
                             <div class="data-row" ng-show="(selectedMode.id=='quickplay') && myChartObject_quickplay_{{h.id}}.show">
-                                <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div> 
+                                <div class="card-mask">
+                                    <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div> 
+                                </div>
                                 <div ng-if="this['myChartObject_quickplay_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_quickplay_{{h.id}}"></div>
                                 <div ng-hide="myChartObject_quickplay_{{h.id}}.hasData" class="insufficent-data-img" style="background-image:url('imgs/insufficient-data.jpg')"></div>
                             </div>
