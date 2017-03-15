@@ -87,14 +87,9 @@
                     <uib-tab index="0" heading="Quick Play" select="changeActivePlayMode(0)">
                         <div ng-repeat="h in heroes">
                             <div class="data-row" ng-show="(selectedMode.id=='quickplay') && myChartObject_quickplay_{{h.id}}.show">
-                                <div ng-if="this['myChartObject_quickplay_' + h.id].hasData">
-                                    <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div>
-                                    <div class="graph-div" google-chart chart="myChartObject_quickplay_{{h.id}}"></div>
-                                </div>
-                                <div ng-hide="myChartObject_quickplay_{{h.id}}.hasData">
-                                    <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div>
-                                    <div class="insufficent-data-img" style="background-image:url('imgs/insufficient-data.jpg')"></div>
-                                </div>
+                                <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div> 
+                                <div ng-if="this['myChartObject_quickplay_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_quickplay_{{h.id}}"></div>
+                                <div ng-hide="myChartObject_quickplay_{{h.id}}.hasData" class="insufficent-data-img" style="background-image:url('imgs/insufficient-data.jpg')"></div>
                             </div>
                         </div>
                     </uib-tab>
@@ -102,14 +97,9 @@
                     <uib-tab index="1" heading="Competitive" select="changeActivePlayMode(1)">
                         <div ng-repeat="h in heroes">
                             <div class="data-row" ng-show="(selectedMode.id=='competitive') && myChartObject_competitive_{{h.id}}.show">
-                                <div ng-if="this['myChartObject_competitive_' + h.id].hasData">
-                                    <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div>
-                                    <div class="graph-div" google-chart chart="myChartObject_competitive_{{h.id}}"></div>
-                                </div>
-                                <div ng-hide="myChartObject_competitive_{{h.id}}.hasData">
-                                    <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div>
-                                    <div class="insufficent-data-img" style="background-image:url('imgs/insufficient-data.jpg')"></div>
-                                </div>
+                                <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div>
+                                <div ng-if="this['myChartObject_competitive_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_competitive_{{h.id}}"></div>
+                                <div ng-hide="myChartObject_competitive_{{h.id}}.hasData" class="insufficent-data-img" style="background-image:url('imgs/insufficient-data.jpg')"></div>
                             </div>
                         </div>
                     </uib-tab>
