@@ -36,7 +36,6 @@
 .tab-content{padding:5px}
 .nav-tabs > li  {width:20%; text-align:center;}
 .card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }
-body{ background: #EDECEC; padding:50px}
 
 @media all and (max-width:724px){
 .nav-tabs > li > a > span {display:none;}	
@@ -44,8 +43,7 @@ body{ background: #EDECEC; padding:50px}
 }
 
 body {
-    background-image: url("../imgs/grey-background.jpg");
-    background-size:contain;
+    background-image: url("../imgs/grey2-background.jpg");
 }
 
 .row {
@@ -222,7 +220,8 @@ h2 {
     width: 85%;
     text-align: center;
     vertical-align: top;
-    line-height: 100px;        /* the same as your div height */
+    font-size: 2em;
+    line-height: 300px;        /* the same as your div height */
 }
 
 .graph-div {
