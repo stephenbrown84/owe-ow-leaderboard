@@ -91,19 +91,19 @@
                                     <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div> 
                                 </div>
                                 <div ng-if="this['myChartObject_quickplay_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_quickplay_{{h.id}}"></div>
-                                <div ng-hide="myChartObject_quickplay_{{h.id}}.hasData" class="insufficent-data-img" style="background-image:url('imgs/insufficient-data.jpg')"></div>
+                                <div ng-hide="myChartObject_quickplay_{{h.id}}.hasData" class="insufficent-data-div">Insufficient Data</div>
                             </div>
                         </div>
                     </uib-tab>
 
                     <uib-tab index="1" heading="Competitive" select="changeActivePlayMode(1)">
-                        <div ng-repeat="h in heroes">
+                        <div ng-repeat="h in heroes" ng-hide="(currentHero.id=='all') && !this['myChartObject_competitive_' + h.id].hasData">
                             <div class="data-row" ng-show="(selectedMode.id=='competitive') && myChartObject_competitive_{{h.id}}.show">
                                 <div class="card-mask">
                                     <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div>
                                 </div>
                                 <div ng-if="this['myChartObject_competitive_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_competitive_{{h.id}}"></div>
-                                <div ng-hide="myChartObject_competitive_{{h.id}}.hasData" class="insufficent-data-img" style="background-image:url('imgs/insufficient-data.jpg')"></div>
+                                <div ng-hide="myChartObject_competitive_{{h.id}}.hasData" class="insufficent-data-div">Insufficient Data</div>
                             </div>
                         </div>
                     </uib-tab>

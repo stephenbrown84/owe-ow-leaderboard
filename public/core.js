@@ -180,6 +180,13 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         return ($scope.currentHero.id == h);
     };
 
+    $scope.getDataRowClass = function(hasData) {
+        if (hasData)
+            return 'data-row';
+        else
+            return 'data-row-empty';
+    };
+
     $scope.getPlaceForNum = function(value) {
         if (isNaN(value))
             return 'NaN'
@@ -417,7 +424,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
         $scope.isDataReady = false;
         $scope.selectedMode = $scope.modes[0];
-        $scope.currentHero = $scope.heroOptions[0];
+        $scope.setCurrentHero($scope.heroOptions[0]);
 
         $scope.getDataFromServer();
     };

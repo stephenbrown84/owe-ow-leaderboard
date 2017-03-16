@@ -163,15 +163,26 @@ h2 {
     width: 100%;
 }
 
+/*
+.data-row-empty {
+    background: white none repeat scroll 0 0;
+    border-radius: 15px;
+    height: 100px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transform: skewX(25rad) translate(15px, 0px);
+    width: 100%;
+}
+*/
+
 .card-mask {
     display: inline-block;
     height: 100%;
     overflow: hidden;
-    width: 10%;
+    width: 8%;
 }
 
 .card-hero-for-graph {
-    width: 5%;
     height: 100%;
     background: #ccc;
     background-size: cover;
@@ -182,10 +193,20 @@ h2 {
     width: 150%;
 }
 
+.insufficent-data-div {
+    display: inline-block;
+    height: 100%;
+    /*transform: skewX(-25rad) translate(5%, 0px);*/
+    width: 85%;
+    text-align: center;
+    vertical-align: top;
+    line-height: 100px;        /* the same as your div height */
+}
+
 .graph-div {
     display: inline-block;
     height: 100%;
     transform: skewX(-25rad) translate(5%, 0px);
-    width: 85%;
+    width: 87%;
 }
 
