@@ -141,6 +141,12 @@ Stats.prototype.getSortedStats = function () {
     return statsEngine.getSortedStats();
 }
 
+Stats.prototype.isReady = function() {
+    if (Object.keys(this.allStats).length < 1)
+        return false;
+    return true;
+}
+
 Stats.prototype.compare = function (player1, player2, hero, isCompetitive) {
     var player1Hero, player2Hero;
 

@@ -67,7 +67,7 @@ function getOWStats(battleTag, pos) {
     } else {
         stats = new Stats(freshRawData);
         fs.writeFile('ow_stats.json', JSON.stringify(freshRawData), (err) => {
-            if (err) throw err;
+            if (err) console.log("Unable to save ow_stats.json!");
             console.log('ow_stats.json was saved');
         });
     }
@@ -167,7 +167,12 @@ app.get('/stats/raw', function (request, response) {
 });
 
 app.get('/stats/sorted', function (request, response) {
-    response.send(stats.getSortedStats())
+    if (stats.isReady()) {
+        response.send(stats.getSortedStats())
+    }
+    else {
+        response.send({});
+    }
     /*
     if (isReady()) {
         response.send(stats.getSortedStats());
@@ -191,6 +196,7 @@ app.listen(app.get('port'), function() {
     console.log(env);
     initOWStats();
     if ((env == 'release') || (env == 'devproxy')) {
+        refreshOWStats();
         setInterval(refreshOWStats, 600000);
     }
 });
