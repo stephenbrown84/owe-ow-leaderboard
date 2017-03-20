@@ -437,7 +437,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
         $q.all([reqPromise1, reqPromise2]).then(function successCallback(responses) {
             if (Object.keys(responses[0].data) < 1) {
-                setTimeout($scope.getDataFromServer, 2000);
+                setTimeout($scope.getDataFromServer, 250);
                 return;
             }
 
