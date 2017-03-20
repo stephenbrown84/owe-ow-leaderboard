@@ -586,3 +586,11 @@ StatsEngine.prototype.getCalculatedStats = function () {
     //console.log(this.heroTotals);
     return this.calculatedStats;
 }
+
+StatsEngine.prototype.getRawStats = function () {
+    return this.rawStats;
+}
+
+StatsEngine.prototype.isReady = function() {
+    return (Object.keys(this.rawStats).length > 0);
+}

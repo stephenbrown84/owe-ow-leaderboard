@@ -5,7 +5,7 @@ var express = require('express');
 var app = express();
 
 var initData = require('./test.json');
-var Stats = require('./stats');
+var Stats = require('./statsengine');
 
 var env = process.env.NODE_ENV || 'dev';
 
@@ -90,22 +90,11 @@ function initOWStats() {
     } 
 }
 
-/*
-function loadOWStatsFromLocalFile() {
-    fs.writeFile("ow_stats.json", stats.getAllStats(), function(err) {
-        if(err) {
-            return console.log(err);
-        }
-
-        console.log("The file was saved!");
-    }); 
-}
-*/
-
 app.get('/clan/members', function (request, response) {
     response.send(BATTLE_TAGS);
 });
 
+/*
 app.get('/stats', function (request, response) {
 
     //// Retrieve all stats, including heroes details
@@ -124,23 +113,8 @@ app.get('/stats', function (request, response) {
 
     response.send(out);
 
-    /*
-    client.get("http://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/", function (data, res) {
-        response.send(data);
-    });
-
-    owAPIReq({ url: 'https://api.lootbox.eu/pc/us/Zaralus-1670/competitive/hero/Pharah/', json: true }, function (err, res, json) {
-        if (!err && res.statusCode == 200) {
-            var info = JSON.parse(json)
-            // do more stuff
-            response.send(info);
-        }
-        else {
-            response.send("WTF HAPPEND " + err);
-        }
-    });
-    */
 });
+
 
 app.get('/stats/quickplay', function (request, response) {
 
@@ -161,9 +135,10 @@ app.get('/stats/competitive', function (request, response) {
 
     response.send(data);
 });
+*/
 
 app.get('/stats/raw', function (request, response) {
-    response.send(stats.getAllStats());
+    response.send(stats.getRawStats());
 });
 
 app.get('/stats/sorted', function (request, response) {
@@ -173,22 +148,6 @@ app.get('/stats/sorted', function (request, response) {
     else {
         response.send({});
     }
-    /*
-    if (isReady()) {
-        response.send(stats.getSortedStats());
-    }
-    else {
-        response.send({});
-    }
-    */
-});
-
-app.get('/times', function(request, response) {
-    var result = ''
-    var times = process.env.TIMES || 5
-    for (i=0; i < times; i++)
-      result += i + ' ';
-    response.send(result);
 });
 
 app.listen(app.get('port'), function() {
