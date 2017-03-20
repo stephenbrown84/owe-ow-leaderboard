@@ -9,11 +9,13 @@ var Stats = require('./statsengine');
 
 var env = process.env.NODE_ENV || 'dev';
 
+/*
 var stats;
 if ((env !== 'release') && (env !== 'devproxy'))
     stats = new Stats(initData);
 else
     stats = new Stats({});
+*/
 
 app.set('port', (process.env.PORT || 5000));
 
