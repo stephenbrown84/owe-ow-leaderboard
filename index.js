@@ -1,4 +1,5 @@
 var owjs = require('overwatch-js');
+var fs = require('fs');
 
 var express = require('express');
 var app = express();
@@ -38,6 +39,10 @@ const HERO_NAMES_FRIENDLY = ['Ana'];
 */
 
 var count = 0;
+var freshRawData = {};
+var currData = {};
+
+/*
 function isReady() {
     if ((env !== 'release') && (env !== 'devproxy'))
         return true;
@@ -46,32 +51,56 @@ function isReady() {
     else
         return false;
 }
+*/
 
 function getOWStats(battleTag, pos) {
 
     if (pos < BATTLE_TAGS.length) {
         owjs
             .getAll('pc', 'us', battleTag)
-            .then((data) => { stats.addPlayerStats(battleTag.slice(0, battleTag.indexOf('-')), data); pos++; count++; getOWStats( BATTLE_TAGS[pos], pos) })
+            .then((data) => {
+                freshRawData[battleTag.slice(0, battleTag.indexOf('-'))] = data;
+                pos++;
+                count++;
+                getOWStats(BATTLE_TAGS[pos], pos);
+            });
+    } else {
+        stats = new Stats(freshRawData);
+        fs.writeFile('ow_stats.json', JSON.stringify(freshRawData), (err) => {
+            if (err) throw err;
+            console.log('ow_stats.json was saved');
+        });
     }
-    /*
-    else {
-        //response.send(stats.getAllStats());
-
-        var out = "";
-        for (var i = 0; i < HERO_NAMES.length; i++) {
-            out += "<p> " + HERO_NAMES_FRIENDLY[i] + ": " + stats.getBestPlayerFor(HERO_NAMES[i]) + "</p>";
-        }
-        response.send(out);
-    }
-    */
 }
 
 function refreshOWStats() {
     count = 0;
-    stats = new Stats({});
+    freshRawData = {};
     getOWStats(BATTLE_TAGS[0], 0);
 }
+
+function initOWStats() {
+    try {
+        fs.accessSync("ow_stats.json", fs.constants.R_OK);
+        stats = new Stats(JSON.parse(fs.readFileSync('ow_stats.json', 'utf8')));
+        console.log("Read ow_stats.json and loaded it.");
+    } catch (e) {
+        stats = new Stats({});
+        refreshOWStats();
+    } 
+}
+
+/*
+function loadOWStatsFromLocalFile() {
+    fs.writeFile("ow_stats.json", stats.getAllStats(), function(err) {
+        if(err) {
+            return console.log(err);
+        }
+
+        console.log("The file was saved!");
+    }); 
+}
+*/
 
 app.get('/clan/members', function (request, response) {
     response.send(BATTLE_TAGS);
@@ -138,12 +167,15 @@ app.get('/stats/raw', function (request, response) {
 });
 
 app.get('/stats/sorted', function (request, response) {
+    response.send(stats.getSortedStats())
+    /*
     if (isReady()) {
         response.send(stats.getSortedStats());
     }
     else {
         response.send({});
     }
+    */
 });
 
 app.get('/times', function(request, response) {
@@ -157,8 +189,8 @@ app.get('/times', function(request, response) {
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
     console.log(env);
+    initOWStats();
     if ((env == 'release') || (env == 'devproxy')) {
-        refreshOWStats();
         setInterval(refreshOWStats, 600000);
     }
 });
