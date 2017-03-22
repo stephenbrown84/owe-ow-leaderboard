@@ -5,11 +5,11 @@ module.exports = StatsEngine;
 
 
 const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
-    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn'];
+    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn', 'orisa'];
 const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
-    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn'];
+    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn', 'orisa'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'McCree', 'Winston',
-    'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn'];
+    'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn', 'Orisa'];
 
 
 //const HERO_NAMES = ['pharah' ];
@@ -17,18 +17,7 @@ const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junk
 
 function StatsEngine(initData) {
     this.rawStats = initData;
-    this.calculatedStats = {
-        quickplay: {},
-        competitive: {}
-    };
-    this.sortedStats = {
-        quickplay: {},
-        competitive: {}
-    }
-    this.heroTotals = {
-        quickplay : {},
-        competitive : {}
-    };
+    this.resetStats();
 }
 
 function getDictioanryOfImportantFieldsFor(hero, playMode) {
@@ -321,6 +310,18 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'molten_core_kills_average', weight: 1.2, required: true }
         ];
     }
+    else if (hero == 'orisa') {
+        fields = [
+            { name: 'eliminations_per_life', weight: 1.0, required: true },
+            { name: 'objective_time_average', weight: 1.0, required: true },
+            { name: 'eliminations_average', weight: 1.0, required: true },
+            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'final_blows_average', weight: 1.2, required: true },
+            { name: 'damage_blocked_average', weight: 1.2, required: true },
+            { name: 'offensive_assists_average', weight: 1.2, required: true },
+            { name: 'damage_amplified_average', weight: 1.5, required: true }
+        ];
+    }
     else {
         fields = [
             {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
@@ -351,7 +352,7 @@ function getRequiredFieldsFor(hero, playMode) {
 }
 
 function hasEnoughTimePlayed(heroStats, hero) {
-    return ('time_played' in heroStats) && (getAttr(heroStats, 'time_played') > 20);
+    return ('time_played' in heroStats) && (getAttr(heroStats, 'time_played') > 19);
 }
 
 function hasRequiredFieldsForHero(heroStats, hero, playMode) {
@@ -406,6 +407,21 @@ function compareByOverall(a, b) {
     }
     // a must be equal to b
     return 0;
+}
+
+StatsEngine.prototype.resetStats = function() {
+    this.calculatedStats = {
+        quickplay: {},
+        competitive: {}
+    };
+    this.sortedStats = {
+        quickplay: {},
+        competitive: {}
+    }
+    this.heroTotals = {
+        quickplay : {},
+        competitive : {}
+    };
 }
 
 StatsEngine.prototype.initializeAllFieldsForPlayer = function (player, playMode, hero) {
@@ -505,6 +521,7 @@ StatsEngine.prototype.addOverallForPlayerForHero = function (player, hero, playM
 }
 
 StatsEngine.prototype.calculateAllStats = function () {
+    this.resetStats();
     this.calculateStats('quickplay');
     this.calculateStats('competitive');
 }
