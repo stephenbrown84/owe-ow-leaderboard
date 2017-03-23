@@ -231,7 +231,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_average', weight: 1.0, required: true },
             { name: 'damage_done_average', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.5, required: true },
-            { name: 'recon_assist_most_in_game', weight: 1.0, required: false },
+            { name: 'recon_assists_most_in_game', weight: 1.0, required: false },
             { name: "scatter_arrow_kills_average", weight: 1.5, required: false },
             { name: 'dragonstrike_kills_average', weight: 1.2, required: false }
         ];
@@ -243,7 +243,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_average', weight: 1.0, required: true },
             { name: 'damage_done_average', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 2.0, required: true },
-            { name: 'recon_assists_average', weight: 1.0, required: false },
+            { name: 'recon_assists_most_in_game', weight: 1.0, required: false },
             { name: "venom_mine_kills_average", weight: 1.0, required: false }
         ];
     }
