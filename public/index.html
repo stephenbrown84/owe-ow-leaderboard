@@ -26,21 +26,21 @@
         <div class="row col-lg-12">
             <div class="hero-role-group">
                 <div ng-class="heroClasses[heroOptions[0].id]" style="background-image:url('imgs/heroes/{{heroOptions[0].id}}.png')" ng-click="setCurrentHero(heroOptions[0])"></div>
-                <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/offense-icon.png')"></div></div>
+                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.OFFENSE]" style="background-image:url('imgs/offense-icon.png')" ng-click="setCurrentClass(ROLES.OFFENSE)"></div></div>
                 <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
             </div>
             <div class="hero-role-group">
-                <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/defense-icon.png')"></div></div>
+                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.DEFENSE]" style="background-image:url('imgs/defense-icon.png')" ng-click="setCurrentClass(ROLES.DEFENSE)"></div></div>
                 <div ng-repeat="h in heroes | filter:{role: ROLES.DEFENSE}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
             </div>
         </div>
         <div class="row col-lg-12">
             <div class="hero-role-group">
-                <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/tank-icon.png')"></div></div>
+                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.TANK]" style="background-image:url('imgs/tank-icon.png')" ng-click="setCurrentClass(ROLES.TANK)"></div></div>
                 <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
             </div>
             <div class="hero-role-group">
-                <div class="img-circle-container"><div class="img-circle-card" style="background-image:url('imgs/support-icon.png')"></div></div>
+                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.SUPPORT]" style="background-image:url('imgs/support-icon.png')" ng-click="setCurrentClass(ROLES.SUPPORT)"></div></div>
                 <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
             </div>
         </div>

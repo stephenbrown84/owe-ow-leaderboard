@@ -6,7 +6,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         OFFENSE: 'OFFENSE',
         TANK: 'TANK',
         DEFENSE: 'DEFENSE',
-        SUPPORT: 'SUPPORT'
+        SUPPORT: 'SUPPORT',
+        ALL: 'ALL'
     }
 
     $scope.heroOptions =  [
@@ -164,7 +165,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             showTicksValues: true,
             translate: function(value) {
                 if (isNaN(value))
-                    return 'NaN'
+                    return 'NaN';
                 else if (value == 1)
                     return value + '<sup>st</sup>';
                 else if (value == 2)
@@ -177,7 +178,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         }
     };
 
-    $scope.heroClasses = {}
+    $scope.heroClasses = {};
+    $scope.roleClasses = {};
 
     $scope.seagullAllowedModel = false;
 
@@ -232,11 +234,29 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
     $scope.competitiveData;
     $scope.data = null;
     $scope.isDataReady = false;
+    $scope.currentHeroClass = $scope.ROLES.ALL;
 
     $scope.setCurrentHero = function(h) {
         $scope.currentHero = h;
+        $scope.currentHeroClass = h.role;
         $scope.clearHeroClasses();
+        $scope.clearRoleClasses();
         $scope.heroClasses[h.id] = 'card-hero-icon-selected';
+        $scope.loadPlayMode();
+    }
+
+    $scope.setCurrentClass = function(c) {
+        $scope.currentHero = null;
+        $scope.currentHeroClass = c;
+        $scope.clearHeroClasses();
+        $scope.clearRoleClasses();
+        $scope.roleClasses[c] = 'img-circle-card-selected';
+        for (var i =0; i < $scope.heroes.length; i++) {
+            var h = $scope.heroes[i];
+            if (h.role === c) {
+                $scope.heroClasses[h.id] = 'card-hero-icon-selected';
+            }
+        }
         $scope.loadPlayMode();
     }
 
@@ -246,8 +266,20 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         }
     }
 
+    $scope.clearRoleClasses = function() {
+        var keys = Object.keys($scope.ROLES);
+        for (var i=0; i < keys.length; i++) {
+            $scope.roleClasses[$scope.ROLES[keys[i]]] = 'img-circle-card';
+        }
+    }
+
     $scope.shouldShow = function(hero, playMode) {
-        return ($scope.selectedMode.id == playMode) && (($scope.currentHero.id === 'all') || ($scope.currentHero.id === hero));
+        if (!$scope.currentHero) {
+            if ($scope.currentHeroClass === hero.role)
+                return true;
+            return false;
+        }
+        return ($scope.selectedMode.id == playMode) && ($scope.currentHero.id === 'all') || ($scope.currentHero.id === hero.id);
     }
 
     $scope.fillOutMissingData = function(data) {
@@ -416,8 +448,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
                 $scope["myChartObject_competitive_" + hero.id] = {};
             }
                 
-            $scope["myChartObject_quickplay_" + hero.id].show = $scope.shouldShow(hero.id, 'quickplay');
-            $scope["myChartObject_competitive_" + hero.id].show = $scope.shouldShow(hero.id, 'competitive');
+            $scope["myChartObject_quickplay_" + hero.id].show = $scope.shouldShow(hero, 'quickplay');
+            $scope["myChartObject_competitive_" + hero.id].show = $scope.shouldShow(hero, 'competitive');
         }
     }
 
@@ -428,6 +460,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
     $scope.init = function () {
         $scope.clearHeroClasses();
+        $scope.clearRoleClasses();
 
         $scope.isDataReady = false;
         $scope.selectedMode = $scope.modes[0];
