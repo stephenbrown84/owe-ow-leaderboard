@@ -3,6 +3,9 @@ node_modules
 public/lib
 npm-debug.log
 
+#Web Storm
+.idea
+
 # Local development
 *.env
 *.dev
