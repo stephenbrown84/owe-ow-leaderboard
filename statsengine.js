@@ -142,7 +142,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'damage_done_average', weight: 1.0, required: true},
             {name: 'final_blows_average', weight: 1.5, required: true},
             {name: 'players_knocked_back_average', weight: 1.2, required: false },
-            {name: 'primal_rage_kills_average', weight: 1.0, required: false}
+            {name: 'primal_rage_kills__average', weight: 1.0, required: false}
         ];
     }
     else if (hero == 'roadhog') {

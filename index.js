@@ -93,7 +93,9 @@ function initOWStats() {
 }
 
 app.get('/clan/members', function (request, response) {
-    response.send(BATTLE_TAGS);
+    response.send(BATTLE_TAGS.sort(function (a, b) {
+        return a.toLowerCase().localeCompare(b.toLowerCase());
+    }));
 });
 
 /*
