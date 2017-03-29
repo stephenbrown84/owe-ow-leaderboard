@@ -1,5 +1,5 @@
 /* global angular */
-angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
+angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 'highcharts-ng'])
 .controller("GenericChartCtrl", function ($http, $scope, $timeout, $q) {
 
     $scope.ROLES = {
@@ -338,24 +338,27 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
         if (!(("myChartObject_" + playMode + "_" + hero) in $scope))
             $scope["myChartObject_" + playMode + "_" + hero] = {};
 
+        /*
         $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initChartData();
         $scope["myChartObject_" + playMode + "_" + hero].type = "ColumnChart";
+        */
+        $scope["myChartObject_" + playMode + "_" + hero].chartConfig = {};
         $scope["myChartObject_" + playMode + "_" + hero].hasData = true;
 
         if (!$scope.data || !(hero in $scope.data)) {
-            $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
+            //$scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
             $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
         }
 
         //$scope["myChartObject_" + playMode + "_" + hero].show = (playMode == 'quickplay');
+        /*
         $scope["myChartObject_" + playMode + "_" + hero].options = {};
         $scope["myChartObject_" + playMode + "_" + hero].options.title = hero;
         $scope["myChartObject_" + playMode + "_" + hero].options.chartArea = { 'left': '5%' };
         $scope["myChartObject_" + playMode + "_" + hero].options.legend = { 'position': 'right' };
         $scope["myChartObject_" + playMode + "_" + hero].options.tooltip = { 'isHTML': true };
         $scope["myChartObject_" + playMode + "_" + hero].options.vAxis = {format:'#%'};
-
-
+        */
 
         if (!$scope["myChartObject_" + playMode + "_" + hero].hasData)
             return;
@@ -367,14 +370,15 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             maxbarCount = $scope.data[hero].length;
 
         if (minbarCount > maxbarCount) {
-            $scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
+            //$scope["myChartObject_" + playMode + "_" + hero].data = $scope.initDummyChartData();
             $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
             return;
         }
 
-        $scope["myChartObject_" + playMode + "_" + hero].options.colors = $scope.getColorOrder(hero, minbarCount, maxbarCount);
+        var colors = $scope.getColorOrder(hero, minbarCount, maxbarCount);
 
         // Set up column labels
+        var categories = [];
         var keys = Object.keys($scope.data[hero][0]['stats'])
         for (var j = 0; j < keys.length; j++) {
             var weight = ''
@@ -386,32 +390,81 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             }
 
             // Data Column
-            $scope["myChartObject_" + playMode + "_" + hero].data.rows.push({ c: [{ v: "" }] });
-            $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c[0].v = keys[j].replace(/_/g, ' ') + weight;
+            categories.push(keys[j].replace(/_/g, ' ') + weight);
+            //$scope["myChartObject_" + playMode + "_" + hero].data.rows.push({ c: [{ v: "" }] });
+            //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c[0].v = keys[j].replace(/_/g, ' ') + weight;
         }
+        var xAxis = { categories: categories };
 
         // Set up number data
+        var series = [];
         for (var i = minbarCount - 1; i < maxbarCount; i++) {
 
+            var current = {};
+            current.name = $scope.data[hero][i].name + ' (' + $scope.getTimePlayedString($scope.data[hero][i]['time_played']) + ')';
+            /*
             $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
                 id: "s", label: ($scope.data[hero][i].name + ' (' + $scope.getTimePlayedString($scope.data[hero][i]['time_played']) + ')'), type: "number"
             });
 
 
+
             $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
                 role: 'tooltip', type: "string", p: { 'html': true }
             });
+                        */
 
+            var vals = [];
+            var actVals = [];
             for (var j = 0; j < keys.length; j++) {
 
                 var relValue = $scope.data[hero][i]['stats'][keys[j]]['relative'];
                 var actValue = $scope.data[hero][i]['stats'][keys[j]]['actual'];
 
-                $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: relValue });
-                $scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, keys[j], actValue) });
+                vals.push(relValue);
+                actVals.push($scope.createHTMLTooltip($scope.data[hero][i].name, keys[j], actValue));
+                //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: relValue });
+                //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, keys[j], actValue) });
 
             }
+            current.data = vals;
+            series.push(current);
         }
+
+        //$scope["myChartObject_" + playMode + "_" + hero].series = series;
+
+        $scope["myChartObject_" + playMode + "_" + hero].chartConfig =
+            new Highcharts.Chart("myChartObject_" + playMode + "_" + hero, {
+                chart: {
+                    type: 'column',
+                    height: 300,
+                    events: {
+                        click: function(e) {
+                            return $scope.changeChartOptions("myChartObject_" + playMode + "_" + hero);
+                        }
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                xAxis: xAxis,
+                colors: colors,
+                plotOptions: {
+                    colorByPoint: true,
+                    column: {
+                    },
+                    series: {
+  
+                    }
+                },
+                series: series
+            });
+    }
+
+    $scope.changeChartOptions = function(chartId) {
+        var options = $scope[chartId].chartConfig.options;
+        options.plotOptions.column.stacking = 'normal';
+        $scope[chartId] = new Highcharts.Chart(options);
     }
 
     $scope.createHTMLTooltip = function (playName, fieldName, value) {
@@ -437,6 +490,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
     }
 
     $scope.loadPlayMode = function () {
+        if (!$scope.isDataReady) return;
+
         $scope.loadCharts($scope.selectedMode.id);
         for (var i=0; i < $scope.heroes.length; i++) {
             var hero = $scope.heroes[i];
@@ -450,6 +505,10 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
                 
             $scope["myChartObject_quickplay_" + hero.id].show = $scope.shouldShow(hero, 'quickplay');
             $scope["myChartObject_competitive_" + hero.id].show = $scope.shouldShow(hero, 'competitive');
+
+            if ($scope["myChartObject_quickplay_" + hero.id].hasData && $scope["myChartObject_quickplay_" + hero.id].show) {
+                setTimeout( $scope["myChartObject_quickplay_" + hero.id].chartConfig.redraw(), 2000);
+            }
         }
     }
 
@@ -464,8 +523,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
 
         $scope.isDataReady = false;
         $scope.selectedMode = $scope.modes[0];
-        $scope.setCurrentHero($scope.heroOptions[0]);
 
+        //$scope.isDataReady = true;
         $scope.getDataFromServer();
     };
 
@@ -486,13 +545,46 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             $scope.clanMembers = responses[1].data;
             $scope.selectedClanMember = $scope.clanMembers[0];
 
-            $scope.refreshSlider();
+            //$scope.refreshSlider();
 
             $scope.isDataReady = true;
+            $scope.setCurrentHero($scope.heroOptions[0]);
         }, function errorCallback(responses) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
+    }
+
+    $scope.getInitChartConfig = function () {
+        return {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Stephen Initial'
+            },
+            subtitle: {
+                text: 'Test options by dragging the sliders below'
+            },
+            xAxis: {
+                categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'percent'
+                }
+            },
+            series: [{
+                name: 'John',
+                data: [5, 3, 4, 7, 10]
+            }, {
+                name: 'Jane',
+                data: [2, 2, 3, 2, 15]
+            }, {
+                name: 'Joe',
+                data: [3, 4, 4, 2, 5]
+            }]
+        };
     }
 
     $scope.initChartData = function() {
@@ -558,4 +650,6 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize'])
             input.push(i);
         return input;
     };
-});;
+}).config(['$qProvider', function ($qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
+}]);

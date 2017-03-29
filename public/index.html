@@ -8,12 +8,15 @@
     <title>OWE Leaderboard</title>
 
     <link rel="stylesheet" type="text/css" href="./lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./lib/highcharts-ng/dist/highcharts-ng.css">
     <link rel="stylesheet" type="text/css" href="./lib/angularjs-slider/dist/rzslider.min.css" />
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
 
-    <script src="./lib/angular/angular.min.js"></script>
+    <script src="./lib/angular/angular.js"></script>
     <script src="./lib/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="./lib/angular-google-chart/ng-google-chart.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.src.js"></script>
+    <script src="./lib/highcharts-ng/dist/highcharts-ng.min.js"></script>
     <script src="./lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="./lib/angularjs-slider/dist/rzslider.min.js"></script>
     <script src="./core.js"></script>
@@ -22,7 +25,7 @@
 <body ng-controller="GenericChartCtrl" data-ng-init="init()">
 <div class="container-fluid">
     <h2>OWE Leaderboard - Alpha 0.0.2.7</h2>
-    <div ng-show="isDataReady">
+    <div>
         <div class="row col-lg-12">
             <div class="hero-role-group">
                 <div ng-class="heroClasses[heroOptions[0].id]" style="background-image:url('imgs/heroes/{{heroOptions[0].id}}.png')" ng-click="setCurrentHero(heroOptions[0])"></div>
@@ -86,11 +89,13 @@
                 <uib-tabset active="active">
                     <uib-tab index="0" heading="Quick Play" select="changeActivePlayMode(0)">
                         <div ng-repeat="h in heroes">
-                            <div class="data-row" ng-show="(selectedMode.id=='quickplay') && myChartObject_quickplay_{{h.id}}.show">
+                            <div class="data-row"> <!--ng-show="(selectedMode.id=='quickplay') && myChartObject_quickplay_{{h.id}}.show">-->
                                 <div class="card-mask">
-                                    <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div>
+                                    <div class="card-hero-for-graph" style="background-image: url('imgs/heroes/{{h.id}}.png')"></div>
                                 </div>
-                                <div ng-if="this['myChartObject_quickplay_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_quickplay_{{h.id}}"></div>
+                                <!--<highchart class="graph-div" config="this['myChartObject_quickplay_' + h.id].chartConfig"></highchart>-->
+                                <div class="graph-div" id="myChartObject_quickplay_{{h.id}}" ></div>
+                                <!--<div ng-if="this['myChartObject_quickplay_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_quickplay_{{h.id}}"></div>-->
                                 <div ng-hide="myChartObject_quickplay_{{h.id}}.hasData" class="insufficent-data-div">Insufficient Data</div>
                             </div>
                         </div>
@@ -100,9 +105,10 @@
                         <div ng-repeat="h in heroes" ng-hide="(currentHero.id=='all') && !this['myChartObject_competitive_' + h.id].hasData">
                             <div class="data-row" ng-show="(selectedMode.id=='competitive') && myChartObject_competitive_{{h.id}}.show">
                                 <div class="card-mask">
-                                    <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div>
+                                    <div class="card-hero-for-graph" style="background-image: url('imgs/heroes/{{h.id}}.png')"></div>
                                 </div>
-                                <div ng-if="this['myChartObject_competitive_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_competitive_{{h.id}}"></div>
+                                <!--<highchart class="graph-div" config="this['myChartObject_competitive_' + h.id].chart"></highchart>-->
+                                <!--<div ng-if="this['myChartObject_competitive_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_competitive_{{h.id}}"></div>-->
                                 <div ng-hide="myChartObject_competitive_{{h.id}}.hasData" class="insufficent-data-div">Insufficient Data</div>
                             </div>
                         </div>
