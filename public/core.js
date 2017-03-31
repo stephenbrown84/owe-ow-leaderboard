@@ -301,10 +301,10 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             }
         }
 
-        $scope.getColorOrder = function(hero, minBarCount, maxBarCount) {
+        $scope.getColorOrder = function(data, hero, minBarCount, maxBarCount) {
             var colors = [];
             for (var i = minBarCount - 1; i < maxBarCount; i++) {
-                var player = $scope.data[hero][i].name;
+                var player = data[hero][i].name;
                 if (player == 'Zaralus')
                     colors.push('#F17CB0');
                 else if (player == 'NorthernYeti')
@@ -337,14 +337,27 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             //return ['red', 'blue'];
         }
 
-        $scope.loadChart = function(hero, playMode) {
+        $scope.loadChart = function (hero, playMode) {
+            var data = $scope[playMode + 'Data'];
+            /*
+            if (typeof (needsReflow) === 'undefined') needsReflow = false;
+
+            if (needsReflow)
+                $scope["myChartObject_" + playMode + "_" + hero].needsReflow = needsReflow;
+
+            if ($scope["myChartObject_" + playMode + "_" + hero].show && $scope["myChartObject_" + playMode + "_" + hero].needsReflow) {
+                $timeout(function () { $scope.doReflow(playMode, hero); }, 0, false);
+                $scope["myChartObject_" + playMode + "_" + hero].needsReflow = false;
+            }
+            */
+
 
             // Only recreate chart if the data changed since last time it was created.
             if (!('lastUpdated' in $scope["myChartObject_" + playMode + "_" + hero]) || ($scope["myChartObject_" + playMode + "_" + hero].lastUpdated !== $scope.dataLastFetched)) {
                 $scope["myChartObject_" + playMode + "_" + hero].lastUpdated = $scope.dataLastFetched;
             } else {
-                if ($scope.data && (hero in $scope.data)) {
-                    $scope.hideUnwantedPeople($scope["myChartObject_" + playMode + "_" + hero].chartConfig, hero);
+                if (data && (hero in data)) {
+                    $scope.hideUnwantedPeople(data, $scope["myChartObject_" + playMode + "_" + hero].chartConfig, hero);
                 }
                 return;
             }
@@ -352,33 +365,33 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             $scope["myChartObject_" + playMode + "_" + hero].chartConfig = {};
             $scope["myChartObject_" + playMode + "_" + hero].hasData = true;
 
-            if (!$scope.data || !(hero in $scope.data)) {
+            if (!data || !(hero in data)) {
                 $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
                 return;
             }
 
             var maxbarCount = $scope.slider.maxValue;
             var minbarCount = $scope.slider.minValue;
-            if (maxbarCount > $scope.data[hero].length)
-                maxbarCount = $scope.data[hero].length;
+            if (maxbarCount > data[hero].length)
+                maxbarCount = data[hero].length;
 
             if (minbarCount > maxbarCount) {
                 $scope["myChartObject_" + playMode + "_" + hero].hasData = false;
                 return;
             }
 
-            var colors = $scope.getColorOrder(hero, 1, $scope.data[hero].length);
+            var colors = $scope.getColorOrder(data, hero, 1, data[hero].length);
             //var colors = $scope.getColorOrder(hero, minbarCount, maxbarCount);
 
 
             // Set up column labels
             var categories = [];
-            var keys = Object.keys($scope.data[hero][0]['stats'])
+            var keys = Object.keys(data[hero][0]['stats'])
             for (var j = 0; j < keys.length; j++) {
                 var weight = ''
 
                 if (keys[j].toLocaleLowerCase() !== 'overall') {
-                    weight = $scope.data[hero][0]['fields'][keys[j]].weight.toString();
+                    weight = data[hero][0]['fields'][keys[j]].weight.toString();
                     weight = '(' + weight + ')';
                 }
 
@@ -389,10 +402,10 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
 
             // Set up number data
             var series = [];
-            for (var i = 0; i < $scope.data[hero].length; i++) {
+            for (var i = 0; i < data[hero].length; i++) {
 
                 var current = {};
-                current.name = $scope.data[hero][i].name + ' (' + $scope.getTimePlayedString($scope.data[hero][i]['time_played']) + ')';
+                current.name = data[hero][i].name + ' (' + $scope.getTimePlayedString(data[hero][i]['time_played']) + ')';
                 /*
             $scope["myChartObject_" + playMode + "_" + hero].data.cols.push({
                 id: "s", label: ($scope.data[hero][i].name + ' (' + $scope.getTimePlayedString($scope.data[hero][i]['time_played']) + ')'), type: "number"
@@ -409,11 +422,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 var actVals = [];
                 for (var j = 0; j < keys.length; j++) {
 
-                    var relValue = $scope.data[hero][i]['stats'][keys[j]]['relative'];
-                    var actValue = $scope.data[hero][i]['stats'][keys[j]]['actual'];
+                    var relValue = data[hero][i]['stats'][keys[j]]['relative'];
+                    var actValue = data[hero][i]['stats'][keys[j]]['actual'];
 
                     vals.push(relValue);
-                    actVals.push($scope.createHTMLTooltip($scope.data[hero][i].name, keys[j], actValue));
+                    actVals.push($scope.createHTMLTooltip(data[hero][i].name, keys[j], actValue));
                     //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: relValue });
                     //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, keys[j], actValue) });
 
@@ -445,18 +458,18 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     series: series
                 });
 
-            $timeout(function () { $scope.doReflow(playMode, hero); }, 0, false);
-            $scope.hideUnwantedPeople($scope["myChartObject_" + playMode + "_" + hero].chartConfig, hero);
+            $timeout($scope.doReflow, 0, false, playMode, hero);
+            $scope.hideUnwantedPeople(data, $scope["myChartObject_" + playMode + "_" + hero].chartConfig, hero);
         }
 
-        $scope.hideUnwantedPeople = function (chartConfig, hero) {
+        $scope.hideUnwantedPeople = function (data, chartConfig, hero) {
 
             var maxbarCount = $scope.slider.maxValue;
             var minbarCount = $scope.slider.minValue;
-            if (maxbarCount > $scope.data[hero].length)
-                maxbarCount = $scope.data[hero].length;
+            if (maxbarCount > data[hero].length)
+                maxbarCount = data[hero].length;
 
-            for (var i = 0; i < $scope.data[hero].length; i++) {
+            for (var i = 0; i < data[hero].length; i++) {
                 if ((i < (minbarCount - 1)) || (i >= maxbarCount)) {
                     if (chartConfig.series[i].visible) {
                         chartConfig.series[i].setVisible(false, false);
@@ -490,7 +503,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         }
 
         $scope.loadCharts = function(playMode) {
-            $scope.data = $scope[playMode + 'Data'];
+            //$scope.data = $scope[playMode + 'Data'];
             for (var i = 0; i < $scope.heroes.length; i++) {
                 var hero = $scope.heroes[i];
                 if ($scope["myChartObject_" + playMode + "_" + hero.id].show) {
@@ -507,13 +520,36 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 $scope["myChartObject_quickplay_" + hero.id].show = $scope.shouldShow(hero, 'quickplay');
                 $scope["myChartObject_competitive_" + hero.id].show = $scope.shouldShow(hero, 'competitive');
             }
+
             $scope.loadCharts($scope.selectedMode.id);
+
+            for (var i = 0; i < $scope.heroes.length; i++) {
+                var hero = $scope.heroes[i];
+                if ($scope["myChartObject_quickplay_" + hero.id].show && $scope["myChartObject_quickplay_" + hero.id].hasData) {
+                    $timeout($scope.doReflow, 0, false, 'quickplay', hero.id);
+                }
+                if ($scope["myChartObject_competitive_" + hero.id].show && $scope["myChartObject_competitive_" + hero.id].hasData) {
+                    $timeout($scope.doReflow, 0, false, 'competitive', hero.id);
+                }
+            }
         }
 
         $scope.changeActivePlayMode = function(ind) {
             $scope.selectedMode = $scope.modes[ind];
             $scope.loadVisibleCharts();
             console.log("charts loaded by changeActivePlayMode");
+        }
+
+        $scope.loadRemainingChartsAsync = function () {
+            var delay = 300;
+            var step = 300;
+            for (var i = 0; i < $scope.heroes.length; i++) {
+                var hero = $scope.heroes[i];
+                $timeout($scope.loadChart, delay, false, hero.id, 'quickplay');
+                delay += step;
+                $timeout($scope.loadChart, delay, false, hero.id, 'competitive');
+                delay += step;
+            }
         }
 
         $scope.init = function() {
@@ -530,10 +566,12 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 if (!(("myChartObject_quickplay_" + hero.id) in $scope)) {
                     $scope["myChartObject_quickplay_" + hero.id] = {};
                     $scope["myChartObject_quickplay_" + hero.id].hasData = false;
+                    $scope["myChartObject_quickplay_" + hero.id].show = false;
                 }
                 if (!(("myChartObject_competitive_" + hero.id) in $scope)) {
                     $scope["myChartObject_competitive_" + hero.id] = {};
                     $scope["myChartObject_competitive_" + hero.id].hasData = false;
+                    $scope["myChartObject_competitive_" + hero.id].show = false;
                 }
             }
             $scope.getDataFromServer();
@@ -551,16 +589,16 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
 
                 $scope.quickplayData = responses[0].data.quickplay;
                 $scope.competitiveData = responses[0].data.competitive;
-                //$scope.loadPlayMode();
 
                 $scope.clanMembers = responses[1].data;
                 $scope.selectedClanMember = $scope.clanMembers[0];
 
-                //$scope.refreshSlider();
+                $scope.refreshSlider();
 
                 $scope.isDataReady = true;
                 $scope.dataLastFetched = Date.now();
-                $scope.setCurrentHero($scope.heroOptions[0]);
+                $scope.setCurrentClass($scope.ROLES.OFFENSE);
+                $scope.loadRemainingChartsAsync();
             }, function errorCallback(responses) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.

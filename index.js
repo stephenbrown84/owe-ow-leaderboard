@@ -92,6 +92,14 @@ function initOWStats() {
     } 
 }
 
+app.get('/dirt', function(request, response) {
+    owjs.getAll('pc', 'us', 'Dirtnapper-1628')
+            .then((data) => {
+            response.send(data);
+
+        });
+});
+
 app.get('/clan/members', function (request, response) {
     response.send(BATTLE_TAGS.sort(function (a, b) {
         return a.toLowerCase().localeCompare(b.toLowerCase());
