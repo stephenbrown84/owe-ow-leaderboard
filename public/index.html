@@ -88,6 +88,9 @@
                 <!-- Tab panes -->
                 <uib-tabset active="active">
                     <uib-tab index="0" heading="Quick Play" select="changeActivePlayMode(0)">
+                        <button ng-click="doReflow()">
+                            Testing
+                        </button>
                         <div ng-repeat="h in heroes" ng-hide="(currentHero.id=='all') && !this['myChartObject_quickplay_' + h.id].hasData">
                             <div class="data-row" ng-show="(selectedMode.id=='quickplay') && myChartObject_quickplay_{{h.id}}.show">
                                 <div class="card-mask">
@@ -108,7 +111,7 @@
                                     <div class="card-hero-for-graph" style="background-image: url('imgs/heroes/{{h.id}}.png')"></div>
                                 </div>
                                 <!--<highchart class="graph-div" config="this['myChartObject_competitive_' + h.id].chart"></highchart>-->
-                                <div id="myChartObject_competitve_{{h.id}}" ng-show="myChartObject_competitive_{{h.id}}.hasData" class="graph-div"></div>
+                                <div id="myChartObject_competitive_{{h.id}}" ng-show="myChartObject_competitive_{{h.id}}.hasData" class="graph-div"></div>
                                 <!--<div ng-if="this['myChartObject_competitive_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_competitive_{{h.id}}"></div>-->
                                 <div ng-hide="myChartObject_competitive_{{h.id}}.hasData" class="insufficent-data-div">Insufficient Data</div>
                             </div>
