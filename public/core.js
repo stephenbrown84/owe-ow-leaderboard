@@ -456,6 +456,14 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     title: {
                         text: ''
                     },
+                    yAxis: {
+                        labels: {
+                            formatter: function () {
+                                var pcnt = this.value * 100;
+                                return pcnt.toString() + '%';
+                            }
+                        }
+                    },
                     xAxis: xAxis,
                     colors: colors,
                     plotOptions: {
