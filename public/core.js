@@ -447,7 +447,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                         height: 300
                     },
                     tooltip: {
-                        formatter: function () {
+                        formatter: function() {
                             var index = categories.indexOf(this.x);
                             return '<span style="color:' + this.point.color + '">\u25CF</span> ' + this.series.name + ': <b>' + $scope["myChartObject_" + playMode + "_" + hero].actualDataVals[this.series.name][index] + '</b><br/>';
                             //return 'The value for <b>' + this.x + '</b> is <b>' + this.y + '</b>, in series '+ this.series.name;
@@ -456,7 +456,20 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     title: {
                         text: ''
                     },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        floating: false,
+                        //borderWidth: 1,
+                        //backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                        //shadow: true
+                    },
                     yAxis: {
+                        title: {
+                            text: ''
+                        },
+                        tickInterval: 0.5,
                         labels: {
                             formatter: function () {
                                 var pcnt = this.value * 100;
