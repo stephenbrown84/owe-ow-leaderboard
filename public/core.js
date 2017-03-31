@@ -402,6 +402,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
 
             // Set up number data
             var series = [];
+            $scope["myChartObject_" + playMode + "_" + hero].actualDataVals = {};
             for (var i = 0; i < data[hero].length; i++) {
 
                 var current = {};
@@ -426,12 +427,13 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     var actValue = data[hero][i]['stats'][keys[j]]['actual'];
 
                     vals.push(relValue);
-                    actVals.push($scope.createHTMLTooltip(data[hero][i].name, keys[j], actValue));
+                    actVals.push($scope.formatActualDataValue(keys[j], actValue));
                     //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: relValue });
                     //$scope["myChartObject_" + playMode + "_" + hero].data.rows[j].c.push({ v: $scope.createHTMLTooltip($scope.data[hero][i].name, keys[j], actValue) });
 
                 }
                 current.data = vals;
+                $scope["myChartObject_" + playMode + "_" + hero].actualDataVals[current.name] = actVals;
                 series.push(current);
             }
 
@@ -443,6 +445,13 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                         renderTo: "myChartObject_" + playMode + "_" + hero,
                         type: 'column',
                         height: 300
+                    },
+                    tooltip: {
+                        formatter: function () {
+                            var index = categories.indexOf(this.x);
+                            return '<span style="color:' + this.point.color + '">\u25CF</span> ' + this.series.name + ': <b>' + $scope["myChartObject_" + playMode + "_" + hero].actualDataVals[this.series.name][index] + '</b><br/>';
+                            //return 'The value for <b>' + this.x + '</b> is <b>' + this.y + '</b>, in series '+ this.series.name;
+                        }
                     },
                     title: {
                         text: ''
@@ -493,13 +502,13 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             $scope[chartId] = new Highcharts.Chart(options);
         }
 
-        $scope.createHTMLTooltip = function(playName, fieldName, value) {
+        $scope.formatActualDataValue = function(fieldName, value) {
             value = value.toFixed(2);
             if ((value > 100) || (fieldName == 'win_percentage'))
                 value = Math.floor(value);
             if (fieldName == 'win_percentage')
                 value = value.toString() + '%';
-            return '' + playName + ': \n' + value.toString() //.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return value.toString() //.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
         $scope.loadCharts = function(playMode) {
