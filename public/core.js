@@ -329,6 +329,10 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     colors.push('tomato');
                 else if (player == 'Chesley')
                     colors.push('#007D75');
+                else if (player == 'Jay')
+                    colors.push('#33CCCC');
+                else if (player == 'StephyCakes')
+                    colors.push('#CC00FF');
                 else
                     colors.push('black');
             }
