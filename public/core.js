@@ -310,7 +310,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 else if (player == 'NorthernYeti')
                     colors.push('sienna');
                 else if (player == 'MegaArcon')
-                    colors.push('#9966FF');
+                    colors.push('#9b7ef1');
                 else if (player == 'noj')
                     colors.push('#5DA5DA');
                 else if (player == 'Nuuga')
@@ -330,9 +330,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 else if (player == 'Chesley')
                     colors.push('#007D75');
                 else if (player == 'Jay')
-                    colors.push('#33CCCC');
+                    colors.push('#7ef1f1');
                 else if (player == 'StephyCakes')
-                    colors.push('#CC00FF');
+                    colors.push('#f17ef1');
                 else
                     colors.push('black');
             }
