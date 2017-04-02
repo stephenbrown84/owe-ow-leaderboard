@@ -332,7 +332,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 else if (player == 'Jay')
                     colors.push('#7ef1f1');
                 else if (player == 'StephyCakes')
-                    colors.push('#f17ef1');
+                    colors.push('#b8f17e');
                 else
                     colors.push('black');
             }
