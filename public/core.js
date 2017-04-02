@@ -310,7 +310,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 else if (player == 'NorthernYeti')
                     colors.push('sienna');
                 else if (player == 'MegaArcon')
-                    colors.push('#B276B2');
+                    colors.push('#9966FF');
                 else if (player == 'noj')
                     colors.push('#5DA5DA');
                 else if (player == 'Nuuga')
