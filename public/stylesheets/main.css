@@ -277,3 +277,15 @@ h2 {
     width: 87%;
 }
 
+.btn {
+    display: inline-block;
+    background-color: #f44336;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 15px;
+    opacity: 0.8;
+}
+

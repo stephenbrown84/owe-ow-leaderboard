@@ -73,7 +73,8 @@
                 <select name="clanMemberSelect" id="clanMemberSelect" ng-model="selectedClanMember">
                     <option ng-repeat="member in clanMembers" value="{{member}}">{{member}}</option>
                 </select>
-                <a ng-href="https://playoverwatch.com/en-us/career/pc/us/{{selectedClanMember}}" target="_blank">Go to PlayOverwatch Stats</a>
+                <a ng-href="https://playoverwatch.com/en-us/career/pc/us/{{selectedClanMember}}" class="btn" target="_blank">PlayOverwatch Stats</a>
+                <a ng-href="https://www.overbuff.com/players/pc/{{selectedClanMember}}" class="btn" target="_blank">Overbuff Stats</a>
                 <!--
                 <label>
                     Include Seagull?
