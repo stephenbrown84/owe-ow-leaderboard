@@ -599,8 +599,6 @@ StatsEngine.prototype.getSortedStats = function () {
 
 StatsEngine.prototype.getCalculatedStats = function () {
     this.calculateAllStats();
-    //this.calculateStats('competitive');
-    //console.log(this.heroTotals);
     return this.calculatedStats;
 }
 
