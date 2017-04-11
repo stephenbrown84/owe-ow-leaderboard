@@ -173,10 +173,10 @@ function getImportantFieldsFor(hero, playMode) {
     }
     else if (hero == 'mercy') {
         fields = [
-            { name: 'eliminations_per_life', weight: 1.0, required: true },
-            { name: 'objective_kills_average', weight: 1.0, required: true },
-            { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'final_blows_average', weight: 1.0, required: true },
+            { name: 'eliminations_per_life', weight: 1.0, required: false },
+            { name: 'objective_kills_average', weight: 1.0, required: false },
+            { name: 'eliminations_average', weight: 1.0, required: false },
+            { name: 'final_blows_average', weight: 1.0, required: false },
             { name: 'self_healing_average', weight: 1.0, required: true },
             { name: 'healing_done_average', weight: 2.0, required: true },
             { name: 'defensive_assists_average', weight: 1.5, required: true },
