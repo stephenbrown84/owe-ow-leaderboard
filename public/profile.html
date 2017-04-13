@@ -31,6 +31,7 @@
     <select name="clanMemberSelect" id="clanMemberSelect" ng-model="selectedClanMember" ng-change="loadPlayerCharts();">
         <option ng-repeat="member in clanMembers" value="{{member}}">{{member}}</option>
     </select>
+    <label>See above average values: <input type="checkbox" ng-model="aboveAverageValues" ng-change="loadPlayerCharts();"></label><br />
     <div>
         <div ng-repeat="h in heroes" id="{{h.id}}_chart"></div>
     </div>

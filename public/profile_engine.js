@@ -153,6 +153,7 @@ angular.module("app", ['ui.bootstrap', 'highcharts-ng'])
 
         $scope.clanMembers = [];
         $scope.selectedClanMember = '';
+        $scope.aboveAverageValues = false;
 
         $scope.slider = {
             minValue: 1,
@@ -655,6 +656,7 @@ angular.module("app", ['ui.bootstrap', 'highcharts-ng'])
             }
 
             var seriesData = [];
+            var maxYValue = 0;
             for (var i = 0; i < data[hero.id].length; i++) {
                 if (data[hero.id][i].name == player) {
                     var vals = [];
@@ -667,93 +669,201 @@ angular.module("app", ['ui.bootstrap', 'highcharts-ng'])
                         var relValue = data[hero.id][i]['stats'][keys[j]]['relative'];
                         var actValue = data[hero.id][i]['stats'][keys[j]]['actual'];
 
-                        if (relValue > 1.0)
+
+                        if (!$scope.aboveAverageValues && (relValue > 1.0))
                             relValue = 1.0;
+                            
+                        if (relValue > maxYValue)
+                            maxYValue = relValue;
+
                         vals.push(relValue);
                         actVals.push($scope.formatActualDataValue(keys[j], actValue));
                     }
                     seriesData = vals;
-                    break;
                     //$scope["myChartObject_" + playMode + "_" + hero].actualDataVals[current.name] = actVals;
+                } else {
+                    for (var j = 0; j < keys.length; j++) {
+                        if (keys[j].toUpperCase() === 'OVERALL')
+                            continue;
+
+                        var relValue = data[hero.id][i]['stats'][keys[j]]['relative'];
+                        if (relValue > maxYValue)
+                            maxYValue = relValue;
+                    }
                 }
             }
 
             //$scope[hero.id + "_chart"].categories = categories;
 
-            $scope[hero.id + "_chart"] = Highcharts.chart(hero.id + '_chart', {
-                chart: {
-                    polar: true,
-                },
-                tooltip: {
-                    formatter: function() {
-                        var index = Math.floor((this.x / (360.0 / seriesData.length)));
-                        return '<span style="color:' + this.point.color + '">\u25CF<b>' + categories[index] + '</b><br/></span>';
-                        //return 'The value for <b>' + this.x + '</b> is <b>' + this.y + '</b>, in series '+ this.series.name;
-                    }
-                },
-                title: {
-                    text: hero.label + ' Chart'
-                },
-
-                pane: {
-                    startAngle: 0,
-                    endAngle: 360,
-                    background: {
-                        backgroundColor: 'lightgrey',
-                        outerRadius: '100%'
-                    }
-                    /*
-                    background: {
-                        borderWidth: 5,
-                        borderColor: 'green',
-                        innerRadius: 0,
-                        outerRadius: 0
-                    }*/
-
-                },
-
-                xAxis: {
-                    gridLineWidth: 0,
-                    tickInterval: 360.0 / seriesData.length,
-                    min: 0,
-                    max: 360,
-                    labels: {
-                        formatter: function () {
-                            return '';
-                        }
-                    }
-                },
-
-                yAxis: {
-                    gridLineWidth: 0,
-                    min: 0,
-                    max: 1,
-                    labels: {
-                        formatter: function () {
-                            return '';
-                        }
-                    }
-                },
-
-                plotOptions: {
-                    series: {
-                        pointStart: 0,
-                        pointInterval: 360.0 / seriesData.length
+            if (!$scope.aboveAverageValues) {
+                $scope[hero.id + "_chart"] = Highcharts.chart(hero.id + '_chart', {
+                    chart: {
+                        polar: true,
                     },
-                    column: {
-                        pointPadding: 0,
-                        groupPadding: 0
-                    }
-                },
+                    tooltip: {
+                        formatter: function() {
+                            var index = Math.floor((this.x / (360.0 / seriesData.length)));
+                            return '<span style="color:' + this.point.color + '">\u25CF<b>' + categories[index] + '</b><br/></span>';
+                            //return 'The value for <b>' + this.x + '</b> is <b>' + this.y + '</b>, in series '+ this.series.name;
+                        }
+                    },
+                    title: {
+                        text: hero.label + ' Chart'
+                    },
 
-                series: [{
-                    type: 'column',
-                    name: 'Column',
-                    data: seriesData,
-                    pointPlacement: 'between'
-                }]
-            });
+                    pane: {
+                        startAngle: 0,
+                        endAngle: 360,
+                        background: {
+                            backgroundColor: 'lightgrey',
+                            outerRadius: '100%'
+                        }
+                    },
+                    xAxis: {
+                        gridLineWidth: 0,
+                        tickInterval: 360.0 / seriesData.length,
+                        min: 0,
+                        max: 360,
+                        labels: {
+                            formatter: function() {
+                                return '';
+                            }
+                        }
+                    },
 
+                    yAxis: {
+                        gridLineWidth: 0,
+                        min: 0,
+                        max: 1,
+                        labels: {
+                            formatter: function() {
+                                return '';
+                            }
+                        }
+                    },
+
+                    plotOptions: {
+                        series: {
+                            pointStart: 0,
+                            pointInterval: 360.0 / seriesData.length
+                        },
+                        column: {
+                            pointPadding: 0,
+                            groupPadding: 0
+                        }
+                    },
+
+                    series: [
+                        {
+                            type: 'column',
+                            name: 'Column',
+                            data: seriesData,
+                            pointPlacement: 'between'
+                        }
+                    ]
+                });
+            } else {
+                $scope[hero.id + "_chart"] = Highcharts.chart(hero.id + '_chart', {
+                    chart: {
+                        polar: true,
+                    },
+                    tooltip: {
+                        formatter: function () {
+                            var index = Math.floor((this.x / (360.0 / seriesData.length)));
+                            return '<span style="color:' + this.point.color + '">\u25CF<b>' + categories[index] + '</b><br/></span>';
+                            //return 'The value for <b>' + this.x + '</b> is <b>' + this.y + '</b>, in series '+ this.series.name;
+                        }
+                    },
+                    title: {
+                        text: hero.label + ' Chart'
+                    },
+
+                    pane: {
+                        startAngle: 0,
+                        endAngle: 360,
+                        background: {
+                            backgroundColor: 'lightgrey',
+                            outerRadius: '90%',
+                            borderWidth: 0
+                        }
+                    },
+
+                    xAxis: {
+                        //categories: categories,
+                        //gridLineWidth: 0,
+                        tickInterval: 360.0 / seriesData.length,
+                        min: 0,
+                        max: 360,
+                        labels: {
+                            formatter: function () {
+                                return '';
+                            }
+                        }
+
+                    },
+
+                    yAxis: {
+                        //gridLineWidth: 5,
+                        min: 0,
+                        max: maxYValue,
+                        tickInterval: 0.5,
+                        endOnTick: false,
+                        labels: {
+                            formatter: function () {
+                                return '';
+                            }
+                        },
+                        plotBands: [
+                            /*
+                            {
+                                innerRadius: 0,
+                                from: 0,
+                                to: 1.0,
+                                color: 'lightgrey'
+                            },*/
+                            {
+                                innerRadius: 0,
+                                from: 1.0,
+                                to: maxYValue,
+                                borderColor: 'orange',
+                                borderWidth: 3,
+                                zIndex: 5
+                            },
+                            {
+                                innerRadius: 0,
+                                from: maxYValue,
+                                to: maxYValue,
+                                borderColor: '#F9E070',
+                                borderWidth: 3,
+                                zIndex: 6
+                            },
+                            {
+                                innerRadius: 0,
+                                from: 1.0,
+                                to: maxYValue,
+                                color: '#F9E070',
+                            }
+                        ]
+                    },
+                    plotOptions: {
+                        series: {
+                            pointStart: 0,
+                            pointInterval: 360.0 / seriesData.length
+                        },
+                        column: {
+                            pointPadding: 0,
+                            groupPadding: 0
+                        }
+                    },
+
+                    series: [{
+                        type: 'column',
+                        name: 'Column',
+                        data: seriesData,
+                        pointPlacement: 'between'
+                    }]
+                });
+            }
         }
 
         $scope.getInitChartConfig = function() {
