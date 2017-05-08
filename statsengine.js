@@ -614,8 +614,8 @@ StatsEngine.prototype.getBestPlayerFit = function(comp, players) {
     for (var i = 0; i < comp.length; i++) {
         for (var j = 0; j < players.length; j++) {
             //console.log(this.sortedStats['quickplay']);
-            var playerStatsForHero = this.sortedStats['quickplay'][comp[i]].filter(function(obj) {
-                return obj.name == players[j];
+            var playerStatsForHero = this.sortedStats['quickplay'][comp[i].toLowerCase()].filter(function(obj) {
+                return obj.name.toLowerCase() == players[j].toLowerCase();
             })[0];
 
             if (playerStatsForHero) {

@@ -95,8 +95,10 @@ app.get('/stats/sorted', function (request, response) {
 });
 
 app.get('/bestfit', function (request, response) {
-    var comp = ['winston', 'pharah', 'zarya', 'lucio', 'zenyatta', 'genji'];
-    var players = ['noj', 'Nuuga', 'Zaralus', 'Nemisari', 'Isoulle', 'Lawbringer'];
+    //var comp = ['winston', 'pharah', 'zarya', 'lucio', 'zenyatta', 'genji'];
+    //var players = ['noj', 'Nuuga', 'Zaralus', 'Nemisari', 'MegaArcon', 'Lawbringer'];
+    var comp = request.query.comp.split("_");
+    var players = request.query.players.split("_");
     var results = stats.getBestPlayerFit(comp, players);
     response.send(results);
 
