@@ -607,15 +607,49 @@ StatsEngine.prototype.getRawStats = function () {
 }
 
 StatsEngine.prototype.getBestPlayerFit = function(comp, players) {
-    if (!this.isCalculatedReady)
-        this.calculateAllStats();
+    this.calculateAllStats();
 
-    var initBestFitResults = {};
+    var bestFitResults = [];
+
+    for (var i = 0; i < comp.length; i++) {
+        for (var j = 0; j < players.length; j++) {
+            //console.log(this.sortedStats['quickplay']);
+            var playerStatsForHero = this.sortedStats['quickplay'][comp[i]].filter(function(obj) {
+                return obj.name == players[j];
+            })[0];
+
+            if (playerStatsForHero) {
+                playerStatsForHero["heroName"] = comp[i];
+                bestFitResults.push(playerStatsForHero);
+            }
+        }
+        bestFitResults.sort(function(x, y) {
+            return y.overall - x.overall;
+        })
+    }
+
+    //console.log(bestFitResults);
+
+    var takenHeroes = [];
+    var takenPlayers = [];
+    var results = [];
+    for (var k = 0; k < bestFitResults.length; k++) {
+        if (!(takenHeroes.includes(bestFitResults[k].heroName)) && !(takenPlayers.includes(bestFitResults[k].name))) {
+            takenHeroes.push(bestFitResults[k].heroName);
+            takenPlayers.push(bestFitResults[k].name);
+            delete bestFitResults[k].stats;
+            delete bestFitResults[k].fields;
+            results.push(bestFitResults[k]);
+        }
+    }
+
+    return results;
 }
 
+/*
 StatsEngine.prototype.isCalculatedReady = function() {
-    return (Object.keys(this.sortedStats).length > 0);
-}
+    return (Object.keys(this.sortedStats.quickplay).length > 0);
+}*/
 
 StatsEngine.prototype.isReady = function() {
     return (Object.keys(this.rawStats).length > 0);

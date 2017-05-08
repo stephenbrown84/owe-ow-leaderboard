@@ -94,6 +94,14 @@ app.get('/stats/sorted', function (request, response) {
     }
 });
 
+app.get('/bestfit', function (request, response) {
+    var comp = ['winston', 'pharah', 'zarya', 'lucio', 'zenyatta', 'genji'];
+    var players = ['noj', 'Nuuga', 'Zaralus', 'Nemisari', 'Isoulle', 'Lawbringer'];
+    var results = stats.getBestPlayerFit(comp, players);
+    response.send(results);
+
+});
+
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
     console.log(env);
