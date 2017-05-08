@@ -606,6 +606,17 @@ StatsEngine.prototype.getRawStats = function () {
     return this.rawStats;
 }
 
+StatsEngine.prototype.getBestPlayerFit = function(comp, players) {
+    if (!this.isCalculatedReady)
+        this.calculateAllStats();
+
+    var initBestFitResults = {};
+}
+
+StatsEngine.prototype.isCalculatedReady = function() {
+    return (Object.keys(this.sortedStats).length > 0);
+}
+
 StatsEngine.prototype.isReady = function() {
     return (Object.keys(this.rawStats).length > 0);
 }

@@ -61,6 +61,7 @@ function initOWStats() {
         stats = new Stats(JSON.parse(fs.readFileSync('ow_stats.json', 'utf8')));
         console.log("Read ow_stats.json and loaded it.");
     } catch (e) {
+        console.log("Error: " + e);
         stats = new Stats({});
         refreshOWStats();
     } 
