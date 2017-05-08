@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="app" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OWE Leaderboard - Best Fit Engine</title>
+
+    <link rel="stylesheet" type="text/css" href="./lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
+    <script src="./lib/angular/angular.js"></script>
+    <script src="./lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="./bestfit_engine.js"></script>
+</head>
+<body ng-controller="BestFitCtrl" data-ng-init="init()">
+    <div class="container-fluid">
+        <h2>OWE Leaderboard - Best Fit Engine - Alpha 0.3.0.0</h2>
+        <div>
+            <div class="row col-lg-12">
+                <div class="hero-role-group">
+                    <div class="img-circle-container">
+                        <div ng-class="roleClasses[ROLES.OFFENSE]" style="background-image: url('imgs/offense-icon.png')" ng-click="setCurrentClass(ROLES.OFFENSE)"></div>
+                    </div>
+                    <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                </div>
+                <div class="hero-role-group">
+                    <div class="img-circle-container">
+                        <div ng-class="roleClasses[ROLES.DEFENSE]" style="background-image: url('imgs/defense-icon.png')" ng-click="setCurrentClass(ROLES.DEFENSE)"></div>
+                    </div>
+                    <div ng-repeat="h in heroes | filter:{role: ROLES.DEFENSE}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                </div>
+            </div>
+            <div class="row col-lg-12">
+                <div class="hero-role-group">
+                    <div class="img-circle-container">
+                        <div ng-class="roleClasses[ROLES.TANK]" style="background-image: url('imgs/tank-icon.png')" ng-click="setCurrentClass(ROLES.TANK)"></div>
+                    </div>
+                    <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                </div>
+                <div class="hero-role-group">
+                    <div class="img-circle-container">
+                        <div ng-class="roleClasses[ROLES.SUPPORT]" style="background-image: url('imgs/support-icon.png')" ng-click="setCurrentClass(ROLES.SUPPORT)"></div>
+                    </div>
+                    <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row col-lg-12">
+            <label ng-repeat="member in clanMembers">
+                <input type="checkbox"
+                       name="selectedMembers[]"
+                       value="{{member}}"
+                       ng-checked="selectedMembers.indexOf(member) > -1"
+                       ng-click="toggleSelection(member)"> {{member}}
+            </label>
+            <br/>
+            <button ng-click="getBestFit()">Best Fit Please</button>
+        </div>
+        
+        <textarea rows="35" cols="200">{{bestfitResults}}</textarea>
+    </div>
+</body>
+</html>
