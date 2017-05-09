@@ -50,7 +50,7 @@
         <br/><br/>
         <div class="row col-lg-12">
             <h4>Clan Members</h4>
-            <div id="{{m}}_member" ng-repeat="m in clanMembers" ng-class="memberClasses[m]" style="background-image: url('imgs/members/{{m}}.jpg')" ng-click="toggleMemberSelection(m)"></div>
+            <div id="{{m}}_member" ng-repeat="m in clanMembers" ng-class="memberClasses[m]" style="background-image: url('imgs/members/{{m.toLowerCase()}}.jpg')" ng-click="toggleMemberSelection(m)"></div>
             <!--
             <label ng-repeat="member in clanMembers">
                 <input type="checkbox"
