@@ -606,7 +606,7 @@ StatsEngine.prototype.getRawStats = function () {
     return this.rawStats;
 }
 
-StatsEngine.prototype.getBestPlayerFit = function(comp, players) {
+StatsEngine.prototype.getBestPlayerFit = function(comp, players, timePlayed) {
     this.calculateAllStats();
 
     var bestFitResults = [];
@@ -618,7 +618,7 @@ StatsEngine.prototype.getBestPlayerFit = function(comp, players) {
                 return obj.name.toLowerCase() == players[j].toLowerCase();
             })[0];
 
-            if (playerStatsForHero) {
+            if (playerStatsForHero && (playerStatsForHero.time_played > timePlayed)) {
                 playerStatsForHero["heroName"] = comp[i];
                 bestFitResults.push(playerStatsForHero);
             }

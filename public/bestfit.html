@@ -18,17 +18,18 @@
         <h2>OWE Leaderboard - Best Fit Engine - Alpha 0.3.0.0</h2>
         <div>
             <div class="row col-lg-12">
+                <h4>Heroes</h4>
                 <div class="hero-role-group">
                     <div class="img-circle-container">
                         <div ng-class="roleClasses[ROLES.OFFENSE]" style="background-image: url('imgs/offense-icon.png')" ng-click="setCurrentClass(ROLES.OFFENSE)"></div>
                     </div>
-                    <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
                 </div>
                 <div class="hero-role-group">
                     <div class="img-circle-container">
                         <div ng-class="roleClasses[ROLES.DEFENSE]" style="background-image: url('imgs/defense-icon.png')" ng-click="setCurrentClass(ROLES.DEFENSE)"></div>
                     </div>
-                    <div ng-repeat="h in heroes | filter:{role: ROLES.DEFENSE}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.DEFENSE}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
                 </div>
             </div>
             <div class="row col-lg-12">
@@ -36,17 +37,21 @@
                     <div class="img-circle-container">
                         <div ng-class="roleClasses[ROLES.TANK]" style="background-image: url('imgs/tank-icon.png')" ng-click="setCurrentClass(ROLES.TANK)"></div>
                     </div>
-                    <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
                 </div>
                 <div class="hero-role-group">
                     <div class="img-circle-container">
                         <div ng-class="roleClasses[ROLES.SUPPORT]" style="background-image: url('imgs/support-icon.png')" ng-click="setCurrentClass(ROLES.SUPPORT)"></div>
                     </div>
-                    <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
                 </div>
             </div>
         </div>
+        <br/><br/>
         <div class="row col-lg-12">
+            <h4>Clan Members</h4>
+            <div id="{{m}}_member" ng-repeat="m in clanMembers" ng-class="memberClasses[m]" style="background-image: url('imgs/members/{{m}}.jpg')" ng-click="toggleMemberSelection(m)"></div>
+            <!--
             <label ng-repeat="member in clanMembers">
                 <input type="checkbox"
                        name="selectedMembers[]"
@@ -54,11 +59,23 @@
                        ng-checked="selectedMembers.indexOf(member) > -1"
                        ng-click="toggleSelection(member)"> {{member}}
             </label>
-            <br/>
+            -->
+        </div>
+        <div class="row col-lg-12">
+            <label>
+                Time Played Minimum:
+                <input data-ng-model="timePlayed" type="number" value="60"/>
+            </label>
+        </div>
+        <div class="row col-lg-12">
             <button ng-click="getBestFit()">Best Fit Please</button>
         </div>
-        
+        <div id="results">
+
+        </div>
+        <!--
         <textarea rows="35" cols="200">{{bestfitResults}}</textarea>
-    </div>
+        -->
+        </div>
 </body>
 </html>

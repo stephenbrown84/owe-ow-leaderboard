@@ -99,7 +99,8 @@ app.get('/bestfit', function (request, response) {
     //var players = ['noj', 'Nuuga', 'Zaralus', 'Nemisari', 'MegaArcon', 'Lawbringer'];
     var comp = request.query.comp.split("_");
     var players = request.query.players.split("_");
-    var results = stats.getBestPlayerFit(comp, players);
+    var timePlayed = request.query.timeplayed;
+    var results = stats.getBestPlayerFit(comp, players, timePlayed);
     response.send(results);
 
 });

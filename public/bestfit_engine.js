@@ -141,7 +141,10 @@ angular.module("app", ['ui.bootstrap'])
 
         $scope.heroClasses = {};
         $scope.roleClasses = {};
+        $scope.memberClasses = {};
+
         $scope.clanMembers = [];
+        $scope.timePlayed = 60;
 
         $scope.heroes = $scope.heroOptions.slice(1);
 
@@ -156,6 +159,18 @@ angular.module("app", ['ui.bootstrap'])
                 $scope.heroClasses[h.id] = 'card-hero-icon';
             } else {
                 $scope.heroClasses[h.id] = 'card-hero-icon-selected';
+            }
+        }
+
+        $scope.toggleMemberSelection = function (m) {
+            //$scope.currentHero = h;
+            //$scope.currentHeroClass = h.role;
+            //$scope.clearHeroClasses();
+            //$scope.clearRoleClasses();
+            if ($scope.memberClasses[m] == 'card-hero-icon-selected') {
+                $scope.memberClasses[m] = 'card-hero-icon';
+            } else {
+                $scope.memberClasses[m] = 'card-hero-icon-selected';
             }
         }
 
@@ -176,6 +191,12 @@ angular.module("app", ['ui.bootstrap'])
         $scope.clearHeroClasses = function () {
             for (var i = 0; i < $scope.heroOptions.length; i++) {
                 $scope.heroClasses[$scope.heroOptions[i].id] = 'card-hero-icon';
+            }
+        }
+
+        $scope.clearMemberClasses = function () {
+            for (var i = 0; i < $scope.clanMembers.length; i++) {
+                $scope.memberClasses[$scope.clanMembers[i]] = 'card-hero-icon';
             }
         }
 
@@ -215,17 +236,73 @@ angular.module("app", ['ui.bootstrap'])
             return selectedHeroes;
         }
 
+        $scope.getSelectedMembers = function () {
+            var selectedMembers = [];
+            for (var i = 0; i < $scope.clanMembers.length; i++) {
+                var m = $scope.clanMembers[i];
+                if ($scope.memberClasses[m] === 'card-hero-icon-selected') {
+                    selectedMembers.push(m);
+                }
+            }
+            return selectedMembers;
+        }
+
         $scope.getBestFit = function () {
-            var currPlayers = $scope.selectedMembers.join("_");
-            var currHeroes = $scope.getSelectedHeroes().join("_");
-            $http({ method: 'GET', url: '/bestfit?comp=' + currHeroes + '&players=' + currPlayers }).then(function successCallback(response) {
-                var results = '';
+            var currPlayers = $scope.getSelectedMembers();
+            var currHeroes = $scope.getSelectedHeroes();
+            var currPlayersStr = currPlayers.join("_");
+            var currHeroesStr = currHeroes.join("_");
+            $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed }).then(function successCallback(response) {
                 var data = response.data;
+                var div = angular.element(document.querySelector("#results"));
+
+                // Clear previous results
+                div.html('')
+
+                /*
+                while (div.firstChild) {
+                    div.removeChild(div.firstChild);
+                }
+                */
+
                 for (var i = 0; i < Object.keys(data).length; i++) {
-                    results += "Hero: " + data[i].heroName + '\n';
-                    results += "Player: " + data[i].name + '\n';
-                    results += "Skill: " + data[i].overall + '\n';
-                    results += "Time Player: " + data[i].time_played + ' mins\n\n';
+                    var txtResults = '';
+                    txtResults += "Hero: " + data[i].heroName + '<br/>';
+                    txtResults += "Player: " + data[i].name + '<br/>';
+                    txtResults += "Skill: " + parseFloat(data[i].overall).toFixed(4).toString() + '<br/>';
+                    txtResults += "Time: " + data[i].time_played + ' mins<br/>';
+
+                    var divLine = angular.element('<div class="result-div-line"></div>');
+                    //var heroNode = angular.element(document.querySelector("#" + data[i].heroName + "_hero"));
+                    //var memberNode = angular.element(document.querySelector("#" + data[i].name + "_member"));
+                    divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/heroes/' + data[i].heroName + '.png\')" ></div>');
+                    divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/members/' + data[i].name.toLowerCase() + '.jpg\')" ></div>');
+                    divLine.append('<p>' + txtResults + '</p>');
+
+                    div.append(divLine);
+
+                    remove(currHeroes, data[i].heroName);
+                    remove(currPlayers, data[i].name);
+
+                }
+
+                for (var i = 0; i < currHeroes.length; i++) {
+
+                    var txtResults = '';
+                    txtResults += "Hero: " + currHeroes[i] + '<br/>';
+                    txtResults += "Player: " + currPlayers[i] + '<br/>';
+                    txtResults += "Skill: N/A" + '<br/>';
+                    txtResults += "Time: N/A" + '<br/>';
+
+                    var divLine = angular.element('<div class="result-div-line"></div>');
+                    //var heroNode = angular.element(document.querySelector("#" + data[i].heroName + "_hero"));
+                    //var memberNode = angular.element(document.querySelector("#" + data[i].name + "_member"));
+                    divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/heroes/' + currHeroes[i] + '.png\')" ></div>');
+                    divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/members/' + currPlayers[i].toLowerCase() + '.jpg\')" ></div>');
+                    divLine.append('<p>' + txtResults + '</p>');
+
+                    div.append(divLine);
+
                 }
                 $scope.bestfitResults = results;
             });
@@ -244,7 +321,17 @@ angular.module("app", ['ui.bootstrap'])
                 for (var i = 0; i < tmpData.length; i++) {
                     $scope.clanMembers.push(tmpData[i].slice(0, tmpData[i].indexOf("-")));
                 }
+                $scope.clearMemberClasses();
             });
         }
 
     });
+
+function remove(arr, what) {
+    var found = arr.indexOf(what);
+
+    while (found !== -1) {
+        arr.splice(found, 1);
+        found = arr.indexOf(what);
+    }
+}

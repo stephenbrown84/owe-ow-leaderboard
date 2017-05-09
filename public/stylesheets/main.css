@@ -208,6 +208,13 @@ h2 {
     display: inline-block;
 }
 
+.result-div-line {
+    width: 12%;
+    padding-left: 15px;
+    border: 1px;
+    display: inline-block;
+}
+
 .insufficent-data-img {
     width: 637px;
     height: 300px;
