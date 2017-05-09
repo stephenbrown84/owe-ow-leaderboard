@@ -50,7 +50,7 @@
         <br/><br/>
         <div class="row col-lg-12">
             <h4>Clan Members</h4>
-            <div id="{{m}}_member" ng-repeat="m in clanMembers" ng-class="memberClasses[m]" style="background-image: url('imgs/members/{{m.toLowerCase()}}.jpg')" ng-click="toggleMemberSelection(m)"></div>
+            <div id="{{m}}_member" ng-repeat="m in clanMembers" ng-class="memberClasses[m]" title="{{m}}" style="background-image: url('imgs/members/{{m.toLowerCase()}}.jpg')" ng-click="toggleMemberSelection(m)"></div>
             <!--
             <label ng-repeat="member in clanMembers">
                 <input type="checkbox"
@@ -70,7 +70,7 @@
         <div class="row col-lg-12">
             <button ng-click="getBestFit()">Best Fit Please</button>
         </div>
-        <div id="results">
+        <div id="results" class="row col-lg-12>
 
         </div>
         <!--

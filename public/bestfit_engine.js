@@ -272,11 +272,11 @@ angular.module("app", ['ui.bootstrap'])
                     txtResults += "Skill: " + parseFloat(data[i].overall).toFixed(4).toString() + '<br/>';
                     txtResults += "Time: " + data[i].time_played + ' mins<br/>';
 
-                    var divLine = angular.element('<div class="result-div-line"></div>');
+                    var divLine = angular.element('<div class="col-md-2"></div>');
                     //var heroNode = angular.element(document.querySelector("#" + data[i].heroName + "_hero"));
                     //var memberNode = angular.element(document.querySelector("#" + data[i].name + "_member"));
                     divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/heroes/' + data[i].heroName + '.png\')" ></div>');
-                    divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/members/' + data[i].name.toLowerCase() + '.jpg\')" ></div>');
+                    divLine.append('<div class="card-hero-icon" title="' + data[i].name + '" style="background-image: url(\'imgs/members/' + data[i].name.toLowerCase() + '.jpg\')" ></div>');
                     divLine.append('<p>' + txtResults + '</p>');
 
                     div.append(divLine);
@@ -294,11 +294,11 @@ angular.module("app", ['ui.bootstrap'])
                     txtResults += "Skill: N/A" + '<br/>';
                     txtResults += "Time: N/A" + '<br/>';
 
-                    var divLine = angular.element('<div class="result-div-line"></div>');
+                    var divLine = angular.element('<div class="col-md-2"></div>');
                     //var heroNode = angular.element(document.querySelector("#" + data[i].heroName + "_hero"));
                     //var memberNode = angular.element(document.querySelector("#" + data[i].name + "_member"));
                     divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/heroes/' + currHeroes[i] + '.png\')" ></div>');
-                    divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/members/' + currPlayers[i].toLowerCase() + '.jpg\')" ></div>');
+                    divLine.append('<div class="card-hero-icon" title="' + data[i].name + '" style="background-image: url(\'imgs/members/' + currPlayers[i].toLowerCase() + '.jpg\')" ></div>');
                     divLine.append('<p>' + txtResults + '</p>');
 
                     div.append(divLine);
