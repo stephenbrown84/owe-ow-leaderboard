@@ -335,6 +335,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     colors.push('#ff1493');
                 else if (player == 'Leunam')
                     colors.push('#b8f17e');
+                else if (player == 'WiseOldGamer')
+                    colors.push('#B9264F');
                 else
                     colors.push('black');
             }
