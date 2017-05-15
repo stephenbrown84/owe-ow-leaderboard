@@ -1,5 +1,6 @@
 'use strict';
 const util = require('util');
+const Combinatorics = require('js-combinatorics');
 
 module.exports = StatsEngine;
 
@@ -606,15 +607,14 @@ StatsEngine.prototype.getRawStats = function () {
     return this.rawStats;
 }
 
-StatsEngine.prototype.getBestPlayerFit = function(comp, players, timePlayed) {
+StatsEngine.prototype.getBestPlayerFit = function (comp, players, timePlayed) {
     this.calculateAllStats();
 
     var bestFitResults = [];
 
     for (var i = 0; i < comp.length; i++) {
         for (var j = 0; j < players.length; j++) {
-            //console.log(this.sortedStats['quickplay']);
-            var playerStatsForHero = this.sortedStats['quickplay'][comp[i].toLowerCase()].filter(function(obj) {
+            var playerStatsForHero = this.sortedStats['quickplay'][comp[i].toLowerCase()].filter(function (obj) {
                 return obj.name.toLowerCase() == players[j].toLowerCase();
             })[0];
 
@@ -623,7 +623,7 @@ StatsEngine.prototype.getBestPlayerFit = function(comp, players, timePlayed) {
                 bestFitResults.push(playerStatsForHero);
             }
         }
-        bestFitResults.sort(function(x, y) {
+        bestFitResults.sort(function (x, y) {
             return y.overall - x.overall;
         })
     }
@@ -643,7 +643,62 @@ StatsEngine.prototype.getBestPlayerFit = function(comp, players, timePlayed) {
         }
     }
 
+    results.sort(function (x, y) {
+        return x.heroName.localeCompare(y.heroName);
+    });
+
     return results;
+}
+
+StatsEngine.prototype.getBestPlayerFitForMaximumOverallTeamSkill = function (comp, players, timePlayed) {
+    this.calculateAllStats();
+
+    var heroCombinations = Combinatorics.permutation(comp);
+    var heroCombinations = heroCombinations.toArray();
+    //console.log("Perms=" + heroCombinations + "--END--");
+
+    var maxOverallTeamSkill = 0.0;
+    var maxOverallTeam = [];
+
+    for (var i = 0; i < heroCombinations.length; i++) {
+        var heroComb = heroCombinations[i];
+        //console.log(heroComb);
+
+        var currTeam = [];
+        var teamSkill = 0.0;
+        for (var j = 0; j < heroComb.length; j++) {
+
+            //console.log(heroComb);
+            var playerStatsForHero = this.sortedStats['quickplay'][heroComb[j].toLowerCase()].filter(function (obj) {
+                return obj.name.toLowerCase() == players[j].toLowerCase();
+            })[0];
+
+            if (playerStatsForHero && (playerStatsForHero.time_played > timePlayed)) {
+                playerStatsForHero["heroName"] = heroComb[j];
+            }
+            else {
+                playerStatsForHero = {};
+                playerStatsForHero["heroName"] = heroComb[j];
+                playerStatsForHero["name"] = players[j];
+                playerStatsForHero["overall"] = 0.0;
+                playerStatsForHero["time_played"] = 'N/A';
+            }
+
+            currTeam.push(playerStatsForHero);
+            teamSkill += playerStatsForHero["overall"];
+
+            if (teamSkill > maxOverallTeamSkill) {
+                maxOverallTeamSkill = teamSkill;
+                maxOverallTeam = currTeam;
+            }
+        }
+    }
+
+    maxOverallTeam.sort(function (x, y) {
+        return x.heroName.localeCompare(y.heroName);
+    });
+
+    return maxOverallTeam;
 }
 
 /*

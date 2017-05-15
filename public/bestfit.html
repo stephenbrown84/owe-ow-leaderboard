@@ -64,10 +64,17 @@
         <div class="row col-lg-12">
             <label>
                 Time Played Minimum:
-                <input data-ng-model="timePlayed" type="number" value="60"/>
+                <input data-ng-model="timePlayed" type="number" value="30"/>
             </label>
         </div>
         <div class="row col-lg-12">
+            <!--
+            <label for="typeSelect"> Maximize: </label>
+            <select name="typeSelect" id="typeSelect" ng-model="selectedType">
+                <option value="maxteam">Overall Team Skill</option>
+                <option value="maxhero">Individual Hero Skill</option>
+            </select><br>
+            -->
             <button ng-click="getBestFit()">Best Fit Please</button>
         </div>
         <div id="results" class="row col-md-12>

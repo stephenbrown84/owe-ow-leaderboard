@@ -139,12 +139,13 @@ angular.module("app", ['ui.bootstrap'])
             }
         ];
 
+        $scope.selectedType = "maxteam";
         $scope.heroClasses = {};
         $scope.roleClasses = {};
         $scope.memberClasses = {};
 
         $scope.clanMembers = [];
-        $scope.timePlayed = 60;
+        $scope.timePlayed = 30;
 
         $scope.heroes = $scope.heroOptions.slice(1);
 
@@ -252,29 +253,61 @@ angular.module("app", ['ui.bootstrap'])
             var currHeroes = $scope.getSelectedHeroes();
             var currPlayersStr = currPlayers.join("_");
             var currHeroesStr = currHeroes.join("_");
-            $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed }).then(function successCallback(response) {
+
+            var div = angular.element(document.querySelector("#results"));
+
+            // Clear previous results
+            div.html('')
+
+
+            $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed + "&type=maxteam" }).then(function successCallback(response) {
                 var data = response.data;
-                var div = angular.element(document.querySelector("#results"));
 
-                // Clear previous results
-                div.html('')
-
-                /*
-                while (div.firstChild) {
-                    div.removeChild(div.firstChild);
-                }
-                */
-
+                div.append('<h3> Maximizing Overall Team Skill</h3>');
+                var teamSkill = 0.0;
                 for (var i = 0; i < Object.keys(data).length; i++) {
                     var txtResults = '';
                     txtResults += "Hero: " + data[i].heroName + '<br/>';
                     txtResults += "Player: " + data[i].name + '<br/>';
-                    txtResults += "Skill: " + parseFloat(data[i].overall).toFixed(4).toString() + '<br/>';
+
+                    var currSkill = parseFloat(data[i].overall);
+                    teamSkill += currSkill;
+
+                    txtResults += "Skill: " + currSkill.toFixed(4).toString() + '<br/>';
                     txtResults += "Time: " + data[i].time_played + ' mins<br/>';
 
-                    var divLine = angular.element('<div class="col-md-2"></div>');
                     //var heroNode = angular.element(document.querySelector("#" + data[i].heroName + "_hero"));
                     //var memberNode = angular.element(document.querySelector("#" + data[i].name + "_member"));
+                    var divLine = angular.element('<div class="col-md-2"></div>');
+                    divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/heroes/' + data[i].heroName + '.png\')" ></div>');
+                    divLine.append('<div class="card-hero-icon" title="' + data[i].name + '" style="background-image: url(\'imgs/members/' + data[i].name.toLowerCase() + '.jpg\')" ></div>');
+                    divLine.append('<p>' + txtResults + '</p>');
+
+                    div.append(divLine);
+
+                }
+                div.append('<div><b>Team Skill = </b>' + teamSkill.toFixed(4).toString() + '</div>');
+            });
+
+            $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed + "&type=maxhero" }).then(function successCallback(response) {
+                var data = response.data;
+
+                div.append('<h3> Maximizing Individaul Hero Skill</h3>');
+                var teamSkill = 0.0;
+                for (var i = 0; i < Object.keys(data).length; i++) {
+                    var txtResults = '';
+                    txtResults += "Hero: " + data[i].heroName + '<br/>';
+                    txtResults += "Player: " + data[i].name + '<br/>';
+
+                    var currSkill = parseFloat(data[i].overall);
+                    teamSkill += currSkill;
+
+                    txtResults += "Skill: " + currSkill.toFixed(4).toString() + '<br/>';
+                    txtResults += "Time: " + data[i].time_played + ' mins<br/>';
+
+                    //var heroNode = angular.element(document.querySelector("#" + data[i].heroName + "_hero"));
+                    //var memberNode = angular.element(document.querySelector("#" + data[i].name + "_member"));
+                    var divLine = angular.element('<div class="col-md-2"></div>');
                     divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/heroes/' + data[i].heroName + '.png\')" ></div>');
                     divLine.append('<div class="card-hero-icon" title="' + data[i].name + '" style="background-image: url(\'imgs/members/' + data[i].name.toLowerCase() + '.jpg\')" ></div>');
                     divLine.append('<p>' + txtResults + '</p>');
@@ -304,7 +337,8 @@ angular.module("app", ['ui.bootstrap'])
                     div.append(divLine);
 
                 }
-                $scope.bestfitResults = results;
+
+                div.append('<div><b>Team Skill = </b>' + teamSkill.toFixed(4).toString() + '</div>');
             });
         }
 

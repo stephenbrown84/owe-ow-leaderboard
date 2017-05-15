@@ -100,7 +100,17 @@ app.get('/bestfit', function (request, response) {
     var comp = request.query.comp.split("_");
     var players = request.query.players.split("_");
     var timePlayed = request.query.timeplayed;
-    var results = stats.getBestPlayerFit(comp, players, timePlayed);
+    var type = request.query.type;
+
+    var results;
+    console.log(type);
+    if (type == 'maxteam') {
+        results = stats.getBestPlayerFitForMaximumOverallTeamSkill(comp, players, timePlayed);
+    }
+    else {
+        results = stats.getBestPlayerFit(comp, players, timePlayed);
+    }
+    //console.log(results);
     response.send(results);
 
 });
