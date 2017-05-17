@@ -673,7 +673,7 @@ StatsEngine.prototype.getBestPlayerFitForMaximumOverallTeamSkill = function (com
     //console.log("Total number of things to check: " + totalCombos);
 
     if (totalCombos > 4000000) {
-        return { error: "That's " + totalCombos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " combinations! You ask to much of me I'm afraid." };
+        return { error: "That's " + totalCombos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " combinations! You ask too much of me I'm afraid." };
     }
 
     var heroCombinations = Combinatorics.combination(comp, NUM_OF_HEROES_TO_PICK);
