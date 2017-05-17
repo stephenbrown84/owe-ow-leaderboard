@@ -144,6 +144,7 @@ angular.module("app", ['ui.bootstrap'])
         $scope.roleClasses = {};
         $scope.memberClasses = {};
         $scope.gameMode = 'quickplay';
+        $scope.disableOverallSkillResult = false;
 
         $scope.clanMembers = [];
         $scope.timePlayed = 30;
@@ -151,6 +152,28 @@ angular.module("app", ['ui.bootstrap'])
         $scope.heroes = $scope.heroOptions.slice(1);
 
         $scope.bestfitResults = '';
+
+        $scope.toggleAllHeroSelection = function () {
+            //$scope.currentHero = h;
+            //$scope.currentHeroClass = h.role;
+            //$scope.clearHeroClasses();
+            //$scope.clearRoleClasses();
+            var theHeroClass = 'card-hero-icon';
+            var theRoleClass = 'img-circle-card';
+            if ($scope.heroClasses['all'] == 'card-hero-icon') {
+                theHeroClass = 'card-hero-icon-selected';
+                theRoleClass = 'img-circle-card-selected';
+            }
+            for (var i = 0; i < $scope.heroOptions.length; i++) {
+                var h = $scope.heroOptions[i];
+                $scope.heroClasses[h.id] = theHeroClass;
+            }
+
+            var roleKeys = Object.keys($scope.roleClasses);
+            for (var i = 0; i < roleKeys.length; i++) {
+                $scope.roleClasses[roleKeys[i]] = theRoleClass;
+            }
+        }
 
         $scope.toggleHeroSelection = function (h) {
             //$scope.currentHero = h;
@@ -173,6 +196,31 @@ angular.module("app", ['ui.bootstrap'])
                 $scope.memberClasses[m] = 'card-hero-icon';
             } else {
                 $scope.memberClasses[m] = 'card-hero-icon-selected';
+            }
+        }
+
+        $scope.toggleClassSelection = function (c) {
+            //$scope.currentHero = null;
+            //$scope.currentHeroClass = c;
+            //$scope.clearHeroClasses();
+            //$scope.clearRoleClasses();
+            if ($scope.roleClasses[c] == 'img-circle-card-selected') {
+                $scope.roleClasses[c] = 'img-circle-card';
+            }
+            else {
+                $scope.roleClasses[c] = 'img-circle-card-selected';
+            }
+
+            for (var i = 0; i < $scope.heroes.length; i++) {
+                var h = $scope.heroes[i];
+                if (h.role === c) {
+                    if ($scope.heroClasses[h.id] == 'card-hero-icon-selected') {
+                        $scope.heroClasses[h.id] = 'card-hero-icon';
+                    }
+                    else {
+                        $scope.heroClasses[h.id] = 'card-hero-icon-selected';
+                    } 
+                }
             }
         }
 
@@ -260,40 +308,53 @@ angular.module("app", ['ui.bootstrap'])
             // Clear previous results
             div.html('')
 
+            if (!$scope.disableOverallSkillResult) {
+                $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed + "&type=maxteam&gamemode=" + $scope.gameMode }).then(function successCallback(response) {
+                    var data = response.data;
 
-            $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed + "&type=maxteam&gamemode=" + $scope.gameMode }).then(function successCallback(response) {
-                var data = response.data;
+                    var innerDiv = angular.element('<div class="row col-lg-12"></div>');
+                    innerDiv.append('<h3> Maximizing Overall Team Skill</h3>');
 
-                div.append('<h3> Maximizing Overall Team Skill</h3>');
-                var teamSkill = 0.0;
-                for (var i = 0; i < Object.keys(data).length; i++) {
-                    var txtResults = '';
-                    txtResults += "Hero: " + data[i].heroName + '<br/>';
-                    txtResults += "Player: " + data[i].name + '<br/>';
+                    if ('error' in data) {
+                        innerDiv.append('<p class="errorMessage">' + data.error + '</p>');
+                        div.append(innerDiv);
+                        return;
+                    }
 
-                    var currSkill = parseFloat(data[i].overall);
-                    teamSkill += currSkill;
+                    
+                    
+                    var teamSkill = 0.0;
+                    for (var i = 0; i < Object.keys(data).length; i++) {
+                        var txtResults = '';
+                        txtResults += "Hero: " + data[i].heroName + '<br/>';
+                        txtResults += "Player: " + data[i].name + '<br/>';
 
-                    txtResults += "Skill: " + currSkill.toFixed(4).toString() + '<br/>';
-                    txtResults += "Time: " + data[i].time_played + ' mins<br/>';
+                        var currSkill = parseFloat(data[i].overall);
+                        teamSkill += currSkill;
 
-                    //var heroNode = angular.element(document.querySelector("#" + data[i].heroName + "_hero"));
-                    //var memberNode = angular.element(document.querySelector("#" + data[i].name + "_member"));
-                    var divLine = angular.element('<div class="col-md-2"></div>');
-                    divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/heroes/' + data[i].heroName + '.png\')" ></div>');
-                    divLine.append('<div class="card-hero-icon" title="' + data[i].name + '" style="background-image: url(\'imgs/members/' + data[i].name.toLowerCase() + '.jpg\')" ></div>');
-                    divLine.append('<p>' + txtResults + '</p>');
+                        txtResults += "Skill: " + currSkill.toFixed(4).toString() + '<br/>';
+                        txtResults += "Time: " + data[i].time_played + ' mins<br/>';
 
-                    div.append(divLine);
+                        //var heroNode = angular.element(document.querySelector("#" + data[i].heroName + "_hero"));
+                        //var memberNode = angular.element(document.querySelector("#" + data[i].name + "_member"));
+                        var divLine = angular.element('<div class="col-md-2"></div>');
+                        divLine.append('<div class="card-hero-icon" style="background-image: url(\'imgs/heroes/' + data[i].heroName + '.png\')" ></div>');
+                        divLine.append('<div class="card-hero-icon" title="' + data[i].name + '" style="background-image: url(\'imgs/members/' + data[i].name.toLowerCase() + '.jpg\')" ></div>');
+                        divLine.append('<p>' + txtResults + '</p>');
 
-                }
-                div.append('<div><b>Team Skill = </b>' + teamSkill.toFixed(4).toString() + '</div>');
-            });
+                        innerDiv.append(divLine);
+
+                    }
+                    innerDiv.append('<div><b>Team Skill = </b>' + teamSkill.toFixed(4).toString() + '</div>');
+                    div.append(innerDiv);
+                });
+            }
 
             $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed + "&type=maxhero&gamemode=" + $scope.gameMode }).then(function successCallback(response) {
                 var data = response.data;
 
-                div.append('<h3> Maximizing Individaul Hero Skill</h3>');
+                var nextInnerDiv = angular.element('<div class="row col-lg-12"></div>');
+                nextInnerDiv.append('<h3> Maximizing Individaul Hero Skill</h3>');
                 var teamSkill = 0.0;
                 for (var i = 0; i < Object.keys(data).length; i++) {
                     var txtResults = '';
@@ -313,14 +374,18 @@ angular.module("app", ['ui.bootstrap'])
                     divLine.append('<div class="card-hero-icon" title="' + data[i].name + '" style="background-image: url(\'imgs/members/' + data[i].name.toLowerCase() + '.jpg\')" ></div>');
                     divLine.append('<p>' + txtResults + '</p>');
 
-                    div.append(divLine);
+                    nextInnerDiv.append(divLine);
 
                     remove(currHeroes, data[i].heroName);
                     remove(currPlayers, data[i].name);
 
                 }
-
+ 
                 for (var i = 0; i < currHeroes.length; i++) {
+
+                    // No players left to match with remaining heroes
+                    if (i >= currPlayers.length)
+                        break;
 
                     var txtResults = '';
                     txtResults += "Hero: " + currHeroes[i] + '<br/>';
@@ -335,11 +400,12 @@ angular.module("app", ['ui.bootstrap'])
                     divLine.append('<div class="card-hero-icon" title="' + data[i].name + '" style="background-image: url(\'imgs/members/' + currPlayers[i].toLowerCase() + '.jpg\')" ></div>');
                     divLine.append('<p>' + txtResults + '</p>');
 
-                    div.append(divLine);
+                    nextInnerDiv.append(divLine);
 
                 }
 
-                div.append('<div><b>Team Skill = </b>' + teamSkill.toFixed(4).toString() + '</div>');
+                nextInnerDiv.append('<div><b>Team Skill = </b>' + teamSkill.toFixed(4).toString() + '</div>');
+                div.append(nextInnerDiv);
             });
         }
 

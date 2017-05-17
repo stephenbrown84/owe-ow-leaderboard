@@ -657,9 +657,34 @@ StatsEngine.prototype.getBestPlayerFit = function (comp, players, timePlayed, ga
 StatsEngine.prototype.getBestPlayerFitForMaximumOverallTeamSkill = function (comp, players, timePlayed, gameMode) {
     this.calculateAllStats();
 
-    var heroCombinations = Combinatorics.permutation(comp);
-    var heroCombinations = heroCombinations.toArray();
+    var NUM_OF_HEROES_TO_PICK = 0;
+    if ((players.length > comp.length) && (players.length > 5)) {
+            NUM_OF_HEROES_TO_PICK = 6;
+    }
+    else {
+        NUM_OF_HEROES_TO_PICK = players.length
+    }
+
+    if (comp.length < NUM_OF_HEROES_TO_PICK) {
+        NUM_OF_HEROES_TO_PICK = comp.length;
+    }
+
+    var heroCombinations = Combinatorics.combination(comp, NUM_OF_HEROES_TO_PICK);
+    heroCombinations = heroCombinations.toArray();
+    //.log("Hero Combinations Length=" + heroCombinations.length);
     //console.log("Perms=" + heroCombinations + "--END--");
+
+    var playerPermutations = Combinatorics.permutation(players, NUM_OF_HEROES_TO_PICK);
+    playerPermutations = playerPermutations.toArray();
+    //console.log("Player Perms Length=" + playerPermutations.length);
+    //console.log("Player Perms=" + playerCombinations + "-----------END---------");
+
+    var totalCombos = playerPermutations.length * heroCombinations.length;
+    //console.log("Total number of things to check: " + totalCombos);
+
+    if (totalCombos > 4000000) {
+        return { error: "That's " + totalCombos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " combinations! You ask to much of me I'm afraid." };
+    }
 
     var maxOverallTeamSkill = 0.0;
     var maxOverallTeam = [];
@@ -667,37 +692,43 @@ StatsEngine.prototype.getBestPlayerFitForMaximumOverallTeamSkill = function (com
     for (var i = 0; i < heroCombinations.length; i++) {
         var heroComb = heroCombinations[i];
         //console.log(heroComb);
+        for (var j = 0; j < playerPermutations.length; j++) {
 
-        var currTeam = [];
-        var teamSkill = 0.0;
-        for (var j = 0; j < heroComb.length; j++) {
+            var playerPerm = playerPermutations[j];
 
-            var playerStatsForHero = null;
-            if (heroComb[j].toLowerCase() in this.sortedStats[gameMode]) {
-                playerStatsForHero = this.sortedStats[gameMode][heroComb[j].toLowerCase()].filter(function (obj) {
-                    return obj.name.toLowerCase() == players[j].toLowerCase();
-                })[0];
-            }
+            var currTeam = [];
+            var teamSkill = 0.0;
 
-            if (playerStatsForHero && (playerStatsForHero.time_played > timePlayed)) {
-                playerStatsForHero["heroName"] = heroComb[j];
-            }
-            else {
-                playerStatsForHero = {};
-                playerStatsForHero["heroName"] = heroComb[j];
-                playerStatsForHero["name"] = players[j];
-                playerStatsForHero["overall"] = 0.0;
-                playerStatsForHero["time_played"] = 'N/A';
-            }
+            for (var k = 0; k < heroComb.length; k++) {
 
-            currTeam.push(playerStatsForHero);
-            teamSkill += playerStatsForHero["overall"];
+                var playerStatsForHero = null;
+                if (heroComb[k].toLowerCase() in this.sortedStats[gameMode]) {
+                    playerStatsForHero = this.sortedStats[gameMode][heroComb[k].toLowerCase()].filter(function (obj) {
+                        return obj.name.toLowerCase() == playerPerm[k].toLowerCase();
+                    })[0];
+                }
 
-            if (teamSkill > maxOverallTeamSkill) {
-                maxOverallTeamSkill = teamSkill;
-                maxOverallTeam = currTeam;
+                if (playerStatsForHero && (playerStatsForHero.time_played > timePlayed)) {
+                    playerStatsForHero["heroName"] = heroComb[k];
+                }
+                else {
+                    playerStatsForHero = {};
+                    playerStatsForHero["heroName"] = heroComb[k];
+                    playerStatsForHero["name"] = playerPerm[k];
+                    playerStatsForHero["overall"] = 0.0;
+                    playerStatsForHero["time_played"] = 'N/A';
+                }
+
+                currTeam.push(playerStatsForHero);
+                teamSkill += playerStatsForHero["overall"];
+
+                if (teamSkill > maxOverallTeamSkill) {
+                    maxOverallTeamSkill = teamSkill;
+                    maxOverallTeam = currTeam;
+                }
             }
         }
+
     }
 
     maxOverallTeam.sort(function (x, y) {

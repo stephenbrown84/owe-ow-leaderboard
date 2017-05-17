@@ -104,6 +104,7 @@ app.get('/bestfit', function (request, response) {
     var gameMode = request.query.gamemode;
 
     var results;
+    //console.log(type);
     if (type == 'maxteam') {
         results = stats.getBestPlayerFitForMaximumOverallTeamSkill(comp, players, timePlayed, gameMode);
     }

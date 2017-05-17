@@ -296,3 +296,7 @@ h2 {
     opacity: 0.8;
 }
 
+.errorMessage {
+    color: red;
+}
+
