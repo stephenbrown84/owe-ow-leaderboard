@@ -301,6 +301,7 @@ h2 {
 }
 
 .errorMessage {
-    color: red;
+    color: yellow;
+    font-size: 1.5em;
 }
 
