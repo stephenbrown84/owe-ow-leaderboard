@@ -143,6 +143,7 @@ angular.module("app", ['ui.bootstrap'])
         $scope.heroClasses = {};
         $scope.roleClasses = {};
         $scope.memberClasses = {};
+        $scope.gameMode = 'quickplay';
 
         $scope.clanMembers = [];
         $scope.timePlayed = 30;
@@ -260,7 +261,7 @@ angular.module("app", ['ui.bootstrap'])
             div.html('')
 
 
-            $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed + "&type=maxteam" }).then(function successCallback(response) {
+            $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed + "&type=maxteam&gamemode=" + $scope.gameMode }).then(function successCallback(response) {
                 var data = response.data;
 
                 div.append('<h3> Maximizing Overall Team Skill</h3>');
@@ -289,7 +290,7 @@ angular.module("app", ['ui.bootstrap'])
                 div.append('<div><b>Team Skill = </b>' + teamSkill.toFixed(4).toString() + '</div>');
             });
 
-            $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed + "&type=maxhero" }).then(function successCallback(response) {
+            $http({ method: 'GET', url: '/bestfit?comp=' + currHeroesStr + '&players=' + currPlayersStr + "&timeplayed=" + $scope.timePlayed + "&type=maxhero&gamemode=" + $scope.gameMode }).then(function successCallback(response) {
                 var data = response.data;
 
                 div.append('<h3> Maximizing Individaul Hero Skill</h3>');
