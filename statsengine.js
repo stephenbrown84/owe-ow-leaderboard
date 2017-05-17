@@ -669,6 +669,13 @@ StatsEngine.prototype.getBestPlayerFitForMaximumOverallTeamSkill = function (com
         NUM_OF_HEROES_TO_PICK = comp.length;
     }
 
+    var totalCombos = Combinatorics.C(comp.length, NUM_OF_HEROES_TO_PICK) * Combinatorics.P(players.length, NUM_OF_HEROES_TO_PICK);
+    //console.log("Total number of things to check: " + totalCombos);
+
+    if (totalCombos > 4000000) {
+        return { error: "That's " + totalCombos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " combinations! You ask to much of me I'm afraid." };
+    }
+
     var heroCombinations = Combinatorics.combination(comp, NUM_OF_HEROES_TO_PICK);
     heroCombinations = heroCombinations.toArray();
     //.log("Hero Combinations Length=" + heroCombinations.length);
@@ -678,13 +685,6 @@ StatsEngine.prototype.getBestPlayerFitForMaximumOverallTeamSkill = function (com
     playerPermutations = playerPermutations.toArray();
     //console.log("Player Perms Length=" + playerPermutations.length);
     //console.log("Player Perms=" + playerCombinations + "-----------END---------");
-
-    var totalCombos = playerPermutations.length * heroCombinations.length;
-    //console.log("Total number of things to check: " + totalCombos);
-
-    if (totalCombos > 4000000) {
-        return { error: "That's " + totalCombos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " combinations! You ask to much of me I'm afraid." };
-    }
 
     var maxOverallTeamSkill = 0.0;
     var maxOverallTeam = [];

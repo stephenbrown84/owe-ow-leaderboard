@@ -43,6 +43,10 @@
 }
 
 body {
+    background-color: #708090;
+}
+
+.body-background-image {
     background-image: url("../imgs/grey2-background.jpg");
 }
 
