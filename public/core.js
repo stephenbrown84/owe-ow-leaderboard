@@ -152,6 +152,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         ];
 
         $scope.clanMembers = [];
+        $scope.seasons = ['4'];
+        $scope.selectedSeason = '0';
         $scope.selectedClanMember = '';
 
         $scope.slider = {
@@ -585,8 +587,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         }
 
         $scope.loadRemainingChartsAsync = function () {
-            var delay = 300;
-            var step = 300;
+            var delay = 250;
+            var step = 250;
             for (var i = 0; i < $scope.heroes.length; i++) {
                 var hero = $scope.heroes[i];
                 $timeout($scope.loadChart, delay, false, hero.id, 'quickplay');
@@ -621,11 +623,54 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             $scope.getDataFromServer();
         };
 
-        $scope.getDataFromServer = function() {
+        $scope.changeSelectedCompetitiveSeason = function (currSelectedSeason) {
+
+            $scope.competitiveData = $scope['season' + currSelectedSeason.toString()];
+
+            $scope.dataLastFetched = Date.now();
+            $scope.loadVisibleCharts();
+            $scope.loadRemainingChartsAsync();
+
+            /*
+            var reqPromise1;
+            if (currSelectedSeason == '0') {
+                reqPromise1 = $http({ method: 'GET', url: '/stats/sorted' });
+            } else {
+                reqPromise1 = $http({ method: 'GET', url: '/stats/sorted/' + currSelectedSeason });
+            }
+
+            reqPromise1.then(function successCallback(response) {
+                if (Object.keys(response.data) < 1) {
+                    setTimeout($scope.changeSelectedCompetitiveSeason, 250);
+                    return;
+                }
+
+                $scope.competitiveData = response.data.competitive;
+                $scope.isDataReady = true;
+
+                $scope.refreshSlider();
+
+                $scope.dataLastFetched = Date.now();
+                $scope.loadRemainingChartsAsync();
+            }, function errorCallback(responses) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+            */
+
+        }
+
+        $scope.getDataFromServer = function () {
             var reqPromise1 = $http({ method: 'GET', url: '/stats/sorted' });
             var reqPromise2 = $http({ method: 'GET', url: '/clan/members' });
 
-            $q.all([reqPromise1, reqPromise2]).then(function successCallback(responses) {
+            // Previous competitive season data requests
+            var seasonReqs = [];
+            for (var i = 0; i < $scope.seasons.length; i++) {
+                seasonReqs.push($http({ method: 'GET', url: '/stats/sorted/' + $scope.seasons[i].toString() }));
+            }
+
+            $q.all([reqPromise1, reqPromise2].concat(seasonReqs)).then(function successCallback(responses) {
                 if (Object.keys(responses[0].data) < 1) {
                     setTimeout($scope.getDataFromServer, 250);
                     return;
@@ -633,6 +678,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
 
                 $scope.quickplayData = responses[0].data.quickplay;
                 $scope.competitiveData = responses[0].data.competitive;
+                $scope.season0 = $scope.competitiveData;
+
+                for (var i = 0; i < $scope.seasons.length; i++) {
+                    $scope['season' + $scope.seasons[i]] = responses[2 + i].data.competitive;
+                }
 
                 $scope.clanMembers = responses[1].data;
                 $scope.selectedClanMember = $scope.clanMembers[0];

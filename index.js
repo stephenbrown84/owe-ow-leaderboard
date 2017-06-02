@@ -86,7 +86,22 @@ app.get('/stats/raw', function (request, response) {
     response.send(stats.getRawStats());
 });
 
-app.get('/stats/sorted', function (request, response) {
+app.get('/stats/sorted/:season', function (request, response) {
+    console.log(request.params);
+    var season = request.params.season;
+
+    try {
+        fs.accessSync('stats_backup\\sorted_stats_season' + season.toString() + '.json', fs.constants.R_OK);
+        var seasonSortedStats = JSON.parse(fs.readFileSync('stats_backup\\sorted_stats_season' + season.toString() + '.json', 'utf8'));
+        console.log("Read raw_stats"+ season.toString() + ".json and loaded it.");
+        response.send(seasonSortedStats);
+    } catch (e) {
+        console.log("Error: " + e);
+        response.send({});
+    } 
+});
+
+app.get('/stats/sorted/', function (request, response) {
     if (stats.isReady()) {
         response.send(stats.getSortedStats())
     }

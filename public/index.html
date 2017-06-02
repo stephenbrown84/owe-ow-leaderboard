@@ -64,7 +64,9 @@
             -->
         </div>
         <div class="row hidden-sm hidden-md hidden-lg col-lg-12">
-            <label>Number of Places Shown:</label>
+            <div class="col-lg-2">
+                <label>Number of Places Shown:</label>
+            </div>
             <select name="placesShownSelect" id="placesShownSelect" ng-model="slider.maxValue" ng-options="n for n in [] | range:1:clanMembers.length+1"></select>
         </div>
         <div class="row col-lg-12">
@@ -77,11 +79,18 @@
                 <a ng-href="https://www.overbuff.com/players/pc/{{selectedClanMember}}" class="btn" target="_blank">Overbuff Stats</a>
                 <a href="./bestfit.html" class="btn" target="_blank">Best Fit Engine</a>
                 <!--
-                <label>
-                    Include Seagull?
-                    <input type="checkbox" ng-model="seagullAllowedModel" ng-click="loadPlayMode()">
-                </label>
-                -->
+    <label>
+        Include Seagull?
+        <input type="checkbox" ng-model="seagullAllowedModel" ng-click="loadPlayMode()">
+    </label>
+    -->
+                <div ng-hide="selectedMode.id == 'quickplay'">
+                    <label>Season:</label>
+                    <select name="seasonSelect" id="seasonSelect" ng-model="selectedSeason" ng-change="changeSelectedCompetitiveSeason(selectedSeason)">
+                        <option value="0">Current Season</option>
+                        <option ng-repeat="season in seasons" value="{{season}}">Season {{season}}</option>
+                    </select>
+                </div>
             </div>
             <!--
             Max Players: <input type="number" ng-model="maxNumOfPlayers" ng-change="loadPlayMode()" min="1" max="12"/>

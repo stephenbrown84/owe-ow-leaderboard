@@ -15,9 +15,17 @@ const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junk
 
 //const HERO_NAMES = ['pharah' ];
 
+const noPlacementsDoneThisSeason = ['Nick', 'Dirtnapper','StephyCakes', 'Chesley', 'Amara'];
+
 
 function StatsEngine(initData) {
     this.rawStats = initData;
+    for (var i = 0; i < noPlacementsDoneThisSeason.length; i++) {
+        if (noPlacementsDoneThisSeason[i] in this.rawStats) {
+            delete this.rawStats[noPlacementsDoneThisSeason[i]].competitive;
+            console.log("Deleted comp stats for " + noPlacementsDoneThisSeason[i]);
+        }
+    }
     this.resetStats();
 }
 
