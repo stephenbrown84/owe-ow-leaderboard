@@ -15,7 +15,7 @@ const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junk
 
 //const HERO_NAMES = ['pharah' ];
 
-const noPlacementsDoneThisSeason = ['Nick', 'Dirtnapper','StephyCakes', 'Chesley', 'Amara'];
+const noPlacementsDoneThisSeason = ['Nick', 'Dirtnapper', 'StephyCakes', 'Chesley', 'Amara', 'Suracis'];
 
 
 function StatsEngine(initData) {
