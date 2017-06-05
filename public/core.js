@@ -347,7 +347,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             //return ['red', 'blue'];
         }
 
-        $scope.loadChart = function (hero, playMode) {
+        $scope.loadChart = function (hero, playMode, isSeasonChange) {
             var data = $scope[playMode + 'Data'];
             /*
             if (typeof (needsReflow) === 'undefined') needsReflow = false;
@@ -365,7 +365,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             // Only recreate chart if the data changed since last time it was created.
             if (!('lastUpdated' in $scope["myChartObject_" + playMode + "_" + hero]) || ($scope["myChartObject_" + playMode + "_" + hero].lastUpdated !== $scope.dataLastFetched)) {
                 $scope["myChartObject_" + playMode + "_" + hero].lastUpdated = $scope.dataLastFetched;
-            } else {
+            }
+            else if (!isSeasonChange) {
                 if (data && (hero in data)) {
                     $scope.hideUnwantedPeople(data, $scope["myChartObject_" + playMode + "_" + hero].chartConfig, hero);
                 }
@@ -548,17 +549,19 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             return value.toString() //.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
-        $scope.loadCharts = function(playMode) {
+        $scope.loadCharts = function(playMode, isSeasonChange) {
             //$scope.data = $scope[playMode + 'Data'];
             for (var i = 0; i < $scope.heroes.length; i++) {
                 var hero = $scope.heroes[i];
                 if ($scope["myChartObject_" + playMode + "_" + hero.id].show) {
-                    $scope.loadChart($scope.heroes[i].id, playMode);
+                    $scope.loadChart($scope.heroes[i].id, playMode, isSeasonChange);
                 }
             }
         }
 
-        $scope.loadVisibleCharts = function() {
+        $scope.loadVisibleCharts = function (isSeasonChange) {
+            var isSeasonChange = isSeasonChange || false;
+
             if (!$scope.isDataReady) return;
 
             for (var i = 0; i < $scope.heroes.length; i++) {
@@ -567,7 +570,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 $scope["myChartObject_competitive_" + hero.id].show = $scope.shouldShow(hero, 'competitive');
             }
 
-            $scope.loadCharts($scope.selectedMode.id);
+            $scope.loadCharts($scope.selectedMode.id, isSeasonChange);
 
             for (var i = 0; i < $scope.heroes.length; i++) {
                 var hero = $scope.heroes[i];
@@ -586,13 +589,17 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             console.log("charts loaded by changeActivePlayMode");
         }
 
-        $scope.loadRemainingChartsAsync = function () {
+        $scope.loadRemainingChartsAsync = function (compOnly) {
+            var isCompOnly = compOnly || false;
+
             var delay = 250;
             var step = 250;
             for (var i = 0; i < $scope.heroes.length; i++) {
                 var hero = $scope.heroes[i];
-                $timeout($scope.loadChart, delay, false, hero.id, 'quickplay');
-                delay += step;
+                if (!isCompOnly) {
+                    $timeout($scope.loadChart, delay, false, hero.id, 'quickplay');
+                    delay += step;
+                }
                 $timeout($scope.loadChart, delay, false, hero.id, 'competitive');
                 delay += step;
             }
@@ -627,9 +634,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
 
             $scope.competitiveData = $scope['season' + currSelectedSeason.toString()];
 
-            $scope.dataLastFetched = Date.now();
-            $scope.loadVisibleCharts();
-            $scope.loadRemainingChartsAsync();
+            //$scope.dataLastFetched = Date.now();
+            $scope.loadVisibleCharts(true);
+            $scope.loadRemainingChartsAsync(true);
 
             /*
             var reqPromise1;
@@ -728,62 +735,6 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     }, {
                         name: 'Joe',
                         data: [3, 4, 4, 2, 5]
-                    }
-                ]
-            };
-        }
-
-        $scope.initChartData = function() {
-            return {
-                "cols": [
-                    { id: "t", label: "Pharah", type: "string" }
-                ],
-                "rows": []
-            };
-        }
-
-        $scope.initDummyChartData = function() {
-            return {
-                "cols": [
-                    { id: "t", label: "Pharah", type: "string" },
-                    { id: "t", label: "Dummy", type: "number" }
-                ],
-                "rows": [
-                    {
-                        c: [
-                            { v: "dummy" },
-                            { v: "0" }
-                        ]
-                    },
-                    {
-                        c: [
-                            { v: "dummy" },
-                            { v: "0" }
-                        ]
-                    },
-                    {
-                        c: [
-                            { v: "dummy" },
-                            { v: "0" }
-                        ]
-                    },
-                    {
-                        c: [
-                            { v: "dummy" },
-                            { v: "0" }
-                        ]
-                    },
-                    {
-                        c: [
-                            { v: "dummy" },
-                            { v: "0" }
-                        ]
-                    },
-                    {
-                        c: [
-                            { v: "dummy" },
-                            { v: "0" }
-                        ]
                     }
                 ]
             };
