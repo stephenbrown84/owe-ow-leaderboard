@@ -58,7 +58,7 @@ function refreshOWStats() {
 
 function initOWStats() {
     try {
-        fs.accessSync("ow_stats.json", fs.constants.R_OK);
+        fs.accessSync("ow_stats.json", fs.R_OK);
         stats = new Stats(JSON.parse(fs.readFileSync('ow_stats.json', 'utf8')));
         console.log("Read ow_stats.json and loaded it.");
     } catch (e) {
@@ -91,7 +91,7 @@ app.get('/stats/sorted/:season', function (request, response) {
     var season = request.params.season;
 
     try {
-        fs.accessSync('sorted_stats_season' + season.toString() + '.json', fs.constants.R_OK);
+        fs.accessSync('sorted_stats_season' + season.toString() + '.json', fs.R_OK);
         var seasonSortedStats = JSON.parse(fs.readFileSync('sorted_stats_season' + season.toString() + '.json', 'utf8'));
         console.log("Read raw_stats"+ season.toString() + ".json and loaded it.");
         response.send(seasonSortedStats);
