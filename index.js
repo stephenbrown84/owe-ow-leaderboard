@@ -18,7 +18,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 const BATTLE_TAGS = ['NorthernYeti-1308', 'MegaArcon-1653', 'noj-1818', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767',
-    'Isoulle-1235', 'Hanzo-16873', 'Nick-15366', 'Dirtnapper-1628', 'Suracis-1355', 'WiseOldGamer-1346',
+    'Isoulle-1235', 'MajorYeehaw-1139', 'Nick-15366', 'Dirtnapper-1628', 'Suracis-1355', 'WiseOldGamer-1346',
     'Jay-11736', 'StephyCakes-1653', 'Leunam-1664', 'Chesley-1524', 'Amara-1941'];
 const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'orisa'];
@@ -53,6 +53,8 @@ function refreshOWStats() {
             if (err) console.log("Unable to save ow_stats.json!");
                 console.log('ow_stats.json was saved');
         });
+    }).catch((err) => {
+        console.log("Error fetching from PlayOverwatch: " + err.message);
     });
 }
 

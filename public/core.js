@@ -321,7 +321,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     colors.push('#FAA43A');
                 else if (player == 'Lawbringer')
                     colors.push('#FFE135')
-                else if (player == 'Hanzo')
+                else if (player == 'MajorYeehaw')
                     colors.push('#FFE135')              
                 else if (player == 'Nick')
                     colors.push('#B2912F')
