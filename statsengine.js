@@ -15,7 +15,7 @@ const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junk
 
 //const HERO_NAMES = ['pharah' ];
 
-const noPlacementsDoneThisSeason = ['Nick', 'Dirtnapper', 'StephyCakes', 'Chesley', 'Amara', 'Suracis'];
+const noPlacementsDoneThisSeason = ['Nick', 'StephyCakes', 'Chesley', 'Amara'];
 
 
 function StatsEngine(initData) {
@@ -45,7 +45,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
             {name: 'objective_kills_average', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
             {name: 'eliminations_average', prettyName: 'Eliminations Average', weight: 1.0, required: true},
-            {name: 'damage_done_average', prettyName: 'Damage Done Average', weight: 1.0, required: true},
+            {name: 'all_damage_done_avg_per_10_min', prettyName: 'Damage Done Average', weight: 1.0, required: true},
             {name: 'final_blows_average', prettyName: 'Final Blows Average', weight: 1.5, required: true},
             {name: 'barrage_kills_average', prettyName: 'Barrage Kills Average', weight: 1.2, required: true}
         ];
@@ -55,7 +55,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
             {name: 'objective_kills_average', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
             {name: 'eliminations_average', prettyName: 'Eliminations Average', weight: 1.0, required: true},
-            {name: 'damage_done_average', prettyName: 'Damage Done Average', weight: 1.0, required: true},
+            {name: 'all_damage_done_avg_per_10_min', prettyName: 'Damage Done Average', weight: 1.0, required: true},
             {name: 'final_blows_average', prettyName: 'Final Blows Average', weight: 1.5, required: true},
             {name: 'death_blossom_kills_average', prettyName: 'Death Blossom Kills Average', weight: 1.2, required: true}
         ];
@@ -67,7 +67,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_average', prettyName: 'Eliminations Average', weight: 1.0, required: true},
             {name: 'healing_done_average', prettyName: 'Healing Done Average', weight: 1.0, required: true},
             {name: 'self_healing_average', prettyName: 'Self Healing Average', weight: 1.0, required: true},
-            {name: 'damage_done_average', prettyName: 'Damage Done Average', weight: 1.0, required: true},
+            {name: 'all_damage_done_avg_per_10_min', prettyName: 'Damage Done Average', weight: 1.0, required: true},
             {name: 'final_blows_average', prettyName: 'Final Blows Average', weight: 1.5, required: true},
             {name: 'helix_rockets_kills_average', prettyName: 'Helix Rockets Kills Average', weight: 1.0, required: true},
             {name: 'tactical_visor_kills_average', prettyName: 'Tactical Visor Kills Average', weight: 1.2, required: true},
@@ -78,7 +78,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_per_life', weight: 1.0, required: true},
             { name: 'objective_kills_average', weight: 1.0, required: true },
             {name: 'eliminations_average', weight: 1.0, required: true},
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'objective_time_average', weight: 1.5, required: true },
             {name: 'fire_strike_kills_average', weight: 1.0, required: true},
             {name: 'earthshatter_kills_average', weight: 1.0, required: true},
@@ -91,7 +91,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_per_life', weight: 1.5, required: true},
             { name: 'objective_kills_average', weight: 1.0, required: true },
             {name: 'eliminations_average', weight: 1.0, required: true},
-            {name: 'damage_done_average', weight: 1.2, required: true},
+            {name: 'all_damage_done_avg_per_10_min', weight: 1.2, required: true},
             {name: 'final_blows_average', weight: 1.2, required: true},
             {name: 'rip-tire_kills_average', weight: 1.0, required: true}
         ];
@@ -101,7 +101,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_per_life', weight: 1.0, required: true},
             {name: 'objective_kills_average', weight: 1.0, required: true},
             {name: 'eliminations_average', weight: 1.0, required: true},
-            {name: 'damage_done_average', weight: 1.0, required: true},
+            {name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true},
             {name: 'final_blows_average', weight: 1.2, required: true},
             {name: 'self_healing_average', prettyName: 'Self Healing Average', weight: 1.0, required: true },
             { name: 'objective_time_average', weight: 1.5, required: true },
@@ -114,7 +114,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_per_life', weight: 1.0, required: true},
             {name: 'objective_kills_average', weight: 1.0, required: true},
             {name: 'eliminations_average', weight: 1.0, required: true},
-            {name: 'damage_done_average', weight: 1.0, required: true},
+            {name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true},
             {name: 'final_blows_average', weight: 1.5, required: true},
             {name: 'self_healing_average', weight: 1.0, required: true},
             {name: 'pulse_bombs_attached_average', weight: 1.0, required: true},
@@ -126,7 +126,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_per_life', weight: 1.0, required: true},
             { name: 'objective_kills_average', weight: 1.0, required: true },
             {name: 'eliminations_average', weight: 1.0, required: true},
-            {name: 'damage_done_average', weight: 1.0, required: true},
+            {name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true},
             {name: 'final_blows_average', weight: 1.5, required: true},
             {name: 'damage_reflected_average', weight: 1.0, required: true},
             {name: 'dragonblade_kills_average', weight: 1.2, required: true}
@@ -137,7 +137,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_per_life', weight: 1.0, required: true},
             { name: 'objective_kills_average', weight: 1.0, required: true },
             {name: 'eliminations_average', weight: 1.0, required: true},
-            {name: 'damage_done_average', weight: 1.0, required: true},
+            {name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true},
             {name: 'final_blows_average', weight: 1.5, required: true},
             {name: 'fan_the_hammer_kills_average', weight: 1.2, required: true},
             {name: 'deadeye_kills_average', weight: 1.2, required: true}
@@ -148,7 +148,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_per_life', weight: 1.0, required: true},
             { name: 'objective_kills_average', weight: 1.0, required: true },
             {name: 'eliminations_average', weight: 1.0, required: true},
-            {name: 'damage_done_average', weight: 1.0, required: true},
+            {name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true},
             {name: 'final_blows_average', weight: 1.5, required: true},
             {name: 'players_knocked_back_average', weight: 1.2, required: false },
             {name: 'primal_rage_kills__average', weight: 1.0, required: false}
@@ -159,7 +159,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.5, required: true },
             { name: 'objective_time_average', weight: 1.2, required: true },
             { name: 'self_healing_average', weight: 1.0, required: true },
@@ -172,7 +172,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.2, required: true },
             { name: 'healing_done_average', weight: 2.0, required: true },
             { name: 'transcendence_healing_best', weight: 1.0, required: true },
@@ -198,7 +198,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.0, required: true },
             { name: 'self_healing_average', weight: 1.0, required: true },
             { name: 'healing_done_average', weight: 2.0, required: true },
@@ -213,7 +213,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.5, required: true },
             { name: 'offensive_assists_average', weight: 1.5, required: true },
             { name: "enemies_emp'd_average", weight: 1.5, required: true },
@@ -225,7 +225,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'healing_done_average', weight: 1.2, required: true },
             { name: 'final_blows_average', weight: 1.5, required: true },
             { name: 'sentry_kills_average', weight: 1.5, required: true },
@@ -238,7 +238,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.5, required: true },
             { name: 'recon_assists_most_in_game', weight: 1.0, required: false },
             { name: "scatter_arrow_kills_average", weight: 1.5, required: false },
@@ -250,7 +250,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.2, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 2.0, required: true },
             { name: 'recon_assists_most_in_game', weight: 1.0, required: false },
             { name: "venom_mine_kills_average", weight: 1.0, required: false }
@@ -261,7 +261,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.2, required: true },
             { name: 'objective_time_average', weight: 1.5, required: true },
             { name: 'damage_blocked_average', weight: 2.0, required: true },
@@ -273,7 +273,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.2, required: true },
             { name: 'damage_blocked_average', weight: 1.0, required: true },
             { name: 'sentry_turret_kills_average', weight: 1.0, required: false },
@@ -286,7 +286,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.2, required: true },
             { name: 'objective_time_average', weight: 1.5, required: true },
             { name: 'damage_blocked_average', weight: 1.5, required: true },
@@ -312,7 +312,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.2, required: true },
             { name: 'turret_kills_average', weight: 1.2, required: true },
             { name: "armor_packs_created_average", weight: 1.5, required: true },
@@ -324,7 +324,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'eliminations_per_life', weight: 1.0, required: true },
             { name: 'objective_time_average', weight: 1.0, required: true },
             { name: 'eliminations_average', weight: 1.0, required: true },
-            { name: 'damage_done_average', weight: 1.0, required: true },
+            { name: 'all_damage_done_avg_per_10_min', weight: 1.0, required: true },
             { name: 'final_blows_average', weight: 1.2, required: true },
             { name: 'damage_blocked_average', weight: 1.2, required: true },
             { name: 'offensive_assists_average', weight: 1.2, required: true },
@@ -336,7 +336,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
             {name: 'objective_kills_average', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
             { name: 'healing_done_average', prettyName: 'Healing Done Average', weight: 1.0, required: true },
-            {name: 'damage_done_average', prettyName: 'Damage Done Average', weight: 1.0, required: true},
+            {name: 'all_damage_done_avg_per_10_min', prettyName: 'Damage Done Average', weight: 1.0, required: true},
             {name: 'final_blows_average', prettyName: 'Final Blows Average', weight: 1.2, required: true },
             { name: 'damage_blocked_average', prettyName: 'Damage Blocked Average', weight: 1.0, required: true }
         ];

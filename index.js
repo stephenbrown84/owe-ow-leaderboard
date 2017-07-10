@@ -94,7 +94,7 @@ app.get('/stats/sorted/:season', function (request, response) {
 
     try {
         fs.accessSync('stats_backup/sorted_stats_season' + season.toString() + '.json', fs.R_OK);
-        var seasonSortedStats = JSON.parse(fs.readFileSync('stats_backup/sorted_stats_season' + season.toString() + '.json', 'utf8'));
+        var seasonSortedStats = JSON.parse(fs.readFileSync('stats_backup/sorted_stats_season' + season.toString() + '_new.json', 'utf8'));
         delete seasonSortedStats.quickplay;
         console.log("Read raw_stats"+ season.toString() + ".json and loaded it.");
         response.send(seasonSortedStats);
