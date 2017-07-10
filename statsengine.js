@@ -290,7 +290,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'final_blows_average', weight: 1.2, required: true },
             { name: 'objective_time_average', weight: 1.5, required: true },
             { name: 'damage_blocked_average', weight: 1.5, required: true },
-            { name: 'lifetime_average_energy', weight: 2.0, required: true },
+            { name: 'average_energy', weight: 2.0, required: true },
             { name: "projected_barriers_applied_average", weight: 1.0, required: true }
         ];
     }
