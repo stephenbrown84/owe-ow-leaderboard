@@ -12,10 +12,10 @@ const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'McCree', 'Winston',
     'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn', 'Orisa'];
 
-
+const LN_ADJUSTMENT = 1.0;
 //const HERO_NAMES = ['pharah' ];
 
-const noPlacementsDoneThisSeason = ['Nick', 'StephyCakes', 'Chesley', 'Amara'];
+const noPlacementsDoneThisSeason = ['Nick', 'StephyCakes', 'Chesley', 'Amara', 'Jay'];
 
 
 function StatsEngine(initData) {
@@ -343,8 +343,10 @@ function getImportantFieldsFor(hero, playMode) {
     }
 
     if (playMode == 'competitive') {
-        fields.push({ name: 'win_percentage', prettyName: 'Win Percentage', weight: 2.0, required: false })
+        fields.push({ name: 'win_percentage', prettyName: 'Win Percentage', weight: 1.5, required: false });  
     }
+
+    fields.push({ name: 'time_played', prettyName: 'Time Played', weight: 2.0, required: false });
 
     return fields;
 }
@@ -426,7 +428,11 @@ StatsEngine.prototype.resetStats = function() {
     this.sortedStats = {
         quickplay: {},
         competitive: {}
-    }
+    };
+    this.baseWeightAverages = {
+        quickplay: {},
+        competitive: {}
+    };
     this.heroTotals = {
         quickplay : {},
         competitive : {}
@@ -450,6 +456,27 @@ StatsEngine.prototype.initializeAllFieldsForPlayer = function (player, playMode,
     }
 }
 
+StatsEngine.prototype.getAdjustedTimePlayed = function (timePlayed) {
+    if (timePlayed > 300.0) {
+        return 300.0;
+    }
+    else {
+        return timePlayed;
+    }
+
+    /*
+    if (timePlayed == 0.0) {
+        return 0.0;
+    }
+    var adjustedTimePlayed = (-1 * (Math.log(timePlayed / 60.0) / 3.0)) + 1.0;
+    if (adjustedTimePlayed < 0.01) {
+        return 0.01;
+    }
+    adjustedTimePlayed = adjustedTimePlayed * 60.0;
+    return adjustedTimePlayed;
+    */
+}
+
 StatsEngine.prototype.setHeroPercentageForFieldForPlayer = function (player, hero, playMode, fieldName, heroStats) {
     if (!(player in this.calculatedStats[playMode])) {
         this.calculatedStats[playMode][player] = {};
@@ -460,6 +487,11 @@ StatsEngine.prototype.setHeroPercentageForFieldForPlayer = function (player, her
     }
 
     var amt = getAttr(heroStats, fieldName);
+
+    // Adjust played based on negative ln formula
+    if (fieldName == 'time_played') {
+        amt = this.getAdjustedTimePlayed(amt);
+    }
 
     //console.log(fieldName + "   " + amt);
     /*
@@ -483,6 +515,95 @@ StatsEngine.prototype.setHeroPercentageForFieldForPlayer = function (player, her
     this.calculatedStats[playMode][player][hero][fieldName]['actual'] = amt;
 }
 
+
+StatsEngine.prototype.trackHeroBaseWeightForHero = function (player, hero, playMode) {
+
+    var isInitial = false;
+    if (!(hero in this.baseWeightAverages[playMode])) {
+        this.baseWeightAverages[playMode][hero] = {};
+        this.baseWeightAverages[playMode][hero].totalOfWeights = 0.0;
+        this.baseWeightAverages[playMode][hero].count = 0;
+    }
+
+    var heroFields = getImportantFieldsFor(hero, playMode);
+    var heroFieldDict = getDictioanryOfImportantFieldsFor(hero, playMode);
+
+    var heroStats = this.getHeroStatsFor(player, playMode, hero);
+    var time_played = getAttr(heroStats, 'time_played');
+
+    var adjustedTimePlay = (time_played / 60.0) + 8.0;
+    var weight = Math.log(adjustedTimePlay) / 2.0;
+
+    this.baseWeightAverages[playMode][hero].totalOfWeights += weight;
+    this.baseWeightAverages[playMode][hero].count += 1;
+
+    /*
+
+    if ((playMode == 'quickplay') && (hero == 'genji'))
+        console.log("TESTING: " + hero + " : " + this.baseWeightAverages[playMode][hero].totalOfWeights + ": " + this.baseWeightAverages[playMode][hero].count);
+        */
+}
+
+/*
+StatsEngine.prototype.trackHeroBaseWeightForHeroForPlayer = function (player, hero, playMode) {
+
+    var isInitial = false;
+    if (!(hero in this.baseWeightAverages[playMode])) {
+        this.baseWeightAverages[playMode][hero] = {};
+        this.baseWeightAverages[playMode][hero].totalOfWeights = 0.0;
+        this.baseWeightAverages[playMode][hero].count = 0;
+    }
+
+    var heroFields = getImportantFieldsFor(hero, playMode);
+    var heroFieldDict = getDictioanryOfImportantFieldsFor(hero, playMode);
+
+    var heroStats = this.getHeroStatsFor(player, playMode, hero);
+    var time_played = getAttr(heroStats, 'time_played');
+
+    var adjustedTimePlay = (time_played / 60.0) + LN_ADJUSTMENT;
+    var weight = Math.log(adjustedTimePlay) / 300.0;
+
+    this.baseWeightAverages[playMode][hero].totalOfWeights += weight;
+    this.baseWeightAverages[playMode][hero].count += 1;
+
+
+    if ((playMode == 'quickplay') && (hero == 'genji'))
+        console.log("TESTING: " + hero + " : " + this.baseWeightAverages[playMode][hero].totalOfWeights + ": " +  this.baseWeightAverages[playMode][hero].count);
+}
+*/
+/*
+
+StatsEngine.prototype.trackHeroBaseWeightForFieldForPlayer = function (player, hero, playMode, fieldName) {
+
+    var isInitial = false;
+    if (!(hero in this.baseWeightAverages[playMode])) {
+        this.baseWeightAverages[playMode][hero] = {};
+    }
+
+    if (!(fieldName in this.baseWeightAverages[playMode][hero])) {
+        this.baseWeightAverages[playMode][hero][fieldName] = {};
+        this.baseWeightAverages[playMode][hero][fieldName].totalOfWeights = 0.0;
+        this.baseWeightAverages[playMode][hero][fieldName].count = 0;
+        isInitial = true;
+    }
+
+    var heroFields = getImportantFieldsFor(hero, playMode);
+    var heroFieldDict = getDictioanryOfImportantFieldsFor(hero, playMode);
+
+    var heroStats = this.getHeroStatsFor(player, playMode, hero);
+    var time_played = getAttr(heroStats, 'time_played');
+
+    var adjustedTimePlay = (time_played / 60.0) + LN_ADJUSTMENT;
+    var weight = Math.log(adjustedTimePlay);
+
+    this.baseWeightAverages[playMode][hero][fieldName].totalOfWeights += weight;
+    this.baseWeightAverages[playMode][hero][fieldName].count += 1;
+
+    if ((playMode == 'competitive') && (hero == 'genji'))
+        console.log("TESTING: " + fieldName + " : " + this.baseWeightAverages[playMode][hero][fieldName]);
+}
+*/
+
 StatsEngine.prototype.setHeroPercentageOverallForPlayer = function (player, hero, playMode, calculatedHeroStats) {
     if (!(player in this.calculatedStats[playMode])) {
         this.calculatedStats[playMode][player] = {};
@@ -495,18 +616,59 @@ StatsEngine.prototype.setHeroPercentageOverallForPlayer = function (player, hero
     var heroFields = getImportantFieldsFor(hero, playMode);
     var heroFieldDict = getDictioanryOfImportantFieldsFor(hero, playMode);
 
+    //var heroStats = this.getHeroStatsFor(player, playMode, hero);
+    //var time_played = getAttr(heroStats, 'time_played');
+
     var overallAmt = 0.0;
     var count = 0;
-    for (var i=0; i < heroFields.length; i++) {
+    for (var i = 0; i < heroFields.length; i++) {
         if (heroFields[i].name in this.calculatedStats[playMode][player][hero]) {
-            overallAmt += (this.calculatedStats[playMode][player][hero][heroFields[i].name]['relative']) * (heroFieldDict[heroFields[i].name].weight);
-            count += (1 * heroFieldDict[heroFields[i].name].weight);
+            //var adjustedTimePlay = (time_played / 60.0) + LN_ADJUSTMENT;
+            //var weight = Math.log(adjustedTimePlay);
+            //var weight = heroFieldDict[heroFields[i].name].weight;
+            var weight = heroFieldDict[heroFields[i].name].weight;
+
+            /*
+            if (heroFields[i].name == 'time_played') {
+                var adjustedTimePlay = (time_played / 60.0) + 8.0;
+                weight = Math.log(adjustedTimePlay) / 2.0;
+
+                var averageTimeplayedWeight = this.baseWeightAverages[playMode][hero].totalOfWeights / this.baseWeightAverages[playMode][hero].count;
+                count += averageTimeplayedWeight;
+            }
+            else {
+                weight = heroFieldDict[heroFields[i].name].weight;
+                count += weight;
+            }
+            */
+
+            overallAmt += (this.calculatedStats[playMode][player][hero][heroFields[i].name]['relative']) * weight;
+            count += weight;
+
+            //var baseWeightAverageForHeroField = this.baseWeightAverages[playMode][hero][heroFields[i].name].totalOfWeights / this.baseWeightAverages[playMode][hero][heroFields[i].name].count;
+            //count += weight;
         }    
     }
+    /*
+    var adjustedTimePlay = (time_played / 60.0) + LN_ADJUSTMENT;
+    var timePlayedWeight = Math.log(adjustedTimePlay) / 300.0;
+    var baseWeightAverageForHero = this.baseWeightAverages[playMode][hero].totalOfWeights / this.baseWeightAverages[playMode][hero].count;
+
+    if ((player == 'Jay') && (hero == 'genji') && (playMode == 'quickplay')) {
+        console.log("TEST: " + timePlayedWeight + ": " + baseWeightAverageForHero + ": " + overallAmt);
+    }
+    */
+
+    //overallAmt = (overallAmt / count) * (timePlayedWeight / baseWeightAverageForHero);
     overallAmt = overallAmt / count;
 
     this.calculatedStats[playMode][player][hero]['OVERALL'] = { 'relative': overallAmt, 'actual': overallAmt };
     this.addOverallForPlayerForHero(player, hero, playMode, overallAmt);
+
+    /*
+    if ((player == 'Jay') && (hero == 'genji') && (playMode == 'quickplay')) {
+        console.log("TEST: " + timePlayedWeight + ": " + baseWeightAverageForHero + ": " + overallAmt);
+    }*/
 }
 
 StatsEngine.prototype.addOverallForPlayerForHero = function (player, hero, playMode, overallAmt) {
@@ -556,6 +718,18 @@ StatsEngine.prototype.calculateStats = function (playMode) {
                     this.updateHeroTotal(hero, playMode, heroFields[k].name, heroStats);
                 }
             }
+        }
+
+        // Calculate player base weight for time_played stat
+        for (var j = 0; j < keys.length; j++) {
+            if (!this.hasHeroStatsFor(keys[j], playMode, hero))
+                continue;
+
+            var heroStats = this.getHeroStatsFor(keys[j], playMode, hero);
+            if (!hasRequiredFieldsForHero(heroStats, hero, playMode) || !hasEnoughTimePlayed(heroStats, hero)) continue;
+
+            this.trackHeroBaseWeightForHero(keys[j], hero, playMode);
+
         }
 
         // Calculate player percentage for every hero stat

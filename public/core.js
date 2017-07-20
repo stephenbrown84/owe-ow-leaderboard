@@ -404,8 +404,13 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 var weight = ''
 
                 if (keys[j].toLocaleLowerCase() !== 'overall') {
-                    weight = data[hero][0]['fields'][keys[j]].weight.toString();
-                    weight = '(' + weight + ')';
+                    if (keys[j].toLocaleLowerCase() == 'win_percentage') {
+                        weight = '(ln(tp/60 + 0.5))';
+                    }
+                    else {
+                        weight = data[hero][0]['fields'][keys[j]].weight.toString();
+                        weight = '(' + weight + ')';
+                    }
                 }
 
                 // Data Column
