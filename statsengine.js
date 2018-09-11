@@ -40,6 +40,7 @@ function getDictioanryOfImportantFieldsFor(hero, playMode) {
 
 function getImportantFieldsFor(hero, playMode) {
     var fields;
+    /*
     if (hero == 'pharah') {
         fields = [
             {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
@@ -341,12 +342,19 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'damage_blocked_average', prettyName: 'Damage Blocked Average', weight: 1.0, required: true }
         ];
     }
+    */
+
+    fields = [
+        {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
+        {name: 'all_damage_done_most_in_life', prettyName: 'All Damage Done Most In Life', weight: 1.0, required: true},
+        {name: 'hero_damage_done_most_in_life', prettyName: 'Hero Damage Done Most In Life', weight: 1.0, required: true}
+    ];
 
     if (playMode == 'competitive') {
-        fields.push({ name: 'win_percentage', prettyName: 'Win Percentage', weight: 1.5, required: false });  
+        fields.push({ name: 'win_percentage', prettyName: 'Win Percentage', weight: 1.5, required: false });
     }
 
-    fields.push({ name: 'time_played', prettyName: 'Time Played', weight: 2.0, required: false });
+    fields.push({ name: 'time_played', prettyName: 'Time Played', weight: 1.5, required: false });
 
     return fields;
 }
@@ -371,7 +379,7 @@ function hasRequiredFieldsForHero(heroStats, hero, playMode) {
     for (var i = 0; i < reqFields.length; i++) {
         if (!(reqFields[i].name in heroStats)) {
             return false;
-        }  
+        }
     }
     return true;
 }
@@ -379,6 +387,8 @@ function hasRequiredFieldsForHero(heroStats, hero, playMode) {
 function getAttr(heroStats, attr) {
     if (!(attr in heroStats))
         return 0.0;
+    else if (attr == 'time_played')
+        return heroStats[attr] / 1000.0 / 60;
     else
         return heroStats[attr];
 }
@@ -504,7 +514,7 @@ StatsEngine.prototype.setHeroPercentageForFieldForPlayer = function (player, her
     }
     */
     if (amt <= 0.0) return;
-    
+
     if (!(fieldName in this.calculatedStats[playMode][player][hero])) {
         this.calculatedStats[playMode][player][hero][fieldName] = {};
     }
@@ -647,7 +657,7 @@ StatsEngine.prototype.setHeroPercentageOverallForPlayer = function (player, hero
 
             //var baseWeightAverageForHeroField = this.baseWeightAverages[playMode][hero][heroFields[i].name].totalOfWeights / this.baseWeightAverages[playMode][hero][heroFields[i].name].count;
             //count += weight;
-        }    
+        }
     }
     /*
     var adjustedTimePlay = (time_played / 60.0) + LN_ADJUSTMENT;

@@ -17,9 +17,13 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+const BATTLE_TAGS = ['MegaArcon-1653', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767', 'Praetorian-11336',
+    'Dirtnapper-1628', 'Suracis-1355'];
+/*
 const BATTLE_TAGS = ['NorthernYeti-1308', 'MegaArcon-1653', 'noj-1818', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767',
     'Isoulle-1235', 'MajorYeehaw-1139', 'Dirtnapper-1628', 'Suracis-1355', 'WiseOldGamer-1346',
     'Leunam-1664', 'Amara-1941']; //'Nick-15366', 'Chesley-1524', 'Jay-11736', 'StephyCakes-1653',
+    */
 const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'orisa'];
 const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
@@ -67,7 +71,7 @@ function initOWStats() {
         console.log("Error: " + e);
         stats = new Stats({});
         refreshOWStats();
-    } 
+    }
 }
 
 app.get('/dirt', function(request, response) {
@@ -101,7 +105,7 @@ app.get('/stats/sorted/:season', function (request, response) {
     } catch (e) {
         console.log("Error: " + e);
         response.send({});
-    } 
+    }
 });
 
 app.get('/stats/sorted/', function (request, response) {
@@ -144,5 +148,3 @@ app.listen(app.get('port'), function() {
         setInterval(refreshOWStats, 600000);
     }
 });
-
-

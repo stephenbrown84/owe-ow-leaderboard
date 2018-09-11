@@ -6,7 +6,7 @@
   ],
   "dependencies": {
     "angular-google-chart": "~0.1.0",
-    "angularjs-slider": "^6.1.0",
+    "angularjs-slider": "6.1.0",
     "angular": "^1.6.3",
     "angular-sanitize": "^1.6.3",
     "angular-bootstrap": "^2.5.0",
