@@ -52,6 +52,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 role: $scope.ROLES.OFFENSE
             },
             {
+                id: 'doomfist',
+                label: 'Doomfist',
+                role: $scope.ROLES.OFFENSE
+            },
+            {
                 id: 'bastion',
                 label: 'Bastion',
                 role: $scope.ROLES.DEFENSE
@@ -110,6 +115,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             {
                 id: 'zarya',
                 label: 'Zarya',
+                role: $scope.ROLES.TANK
+            },
+            {
+                id: 'wrecking_ball',
+                label: 'Wrecking Ball',
                 role: $scope.ROLES.TANK
             },
             {

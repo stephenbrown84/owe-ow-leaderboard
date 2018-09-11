@@ -5,12 +5,12 @@ const Combinatorics = require('js-combinatorics');
 module.exports = StatsEngine;
 
 
-const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
-    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn', 'orisa'];
-const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'winston',
-    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn', 'orisa'];
-const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'McCree', 'Winston',
-    'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn', 'Orisa'];
+const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'doomfist', 'winston',
+    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn', 'orisa', 'wrecking_ball'];
+const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'doomfist', 'mccree', 'winston',
+    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn', 'orisa', 'wrecking_ball'];
+const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'Doomfist', 'McCree', 'Winston',
+    'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn', 'Orisa', 'Wrecking Ball'];
 
 const LN_ADJUSTMENT = 1.0;
 //const HERO_NAMES = ['pharah' ];
@@ -346,8 +346,8 @@ function getImportantFieldsFor(hero, playMode) {
 
     fields = [
         {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
-        {name: 'all_damage_done_most_in_life', prettyName: 'All Damage Done Most In Life', weight: 1.0, required: true},
-        {name: 'hero_damage_done_most_in_life', prettyName: 'Hero Damage Done Most In Life', weight: 1.0, required: true}
+        {name: 'all_damage_done_most_in_life', prettyName: 'All Damage Done Most In Life', weight: 1.0, required: false},
+        {name: 'hero_damage_done_most_in_life', prettyName: 'Hero Damage Done Most In Life', weight: 1.0, required: false}
     ];
 
     if (playMode == 'competitive') {
