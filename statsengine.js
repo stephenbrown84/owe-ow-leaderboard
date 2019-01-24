@@ -6,11 +6,14 @@ module.exports = StatsEngine;
 
 
 const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'doomfist', 'winston',
-    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn', 'orisa', 'wreckingball', 'ashe'];
+    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn',
+    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira'];
 const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'doomfist', 'mccree', 'winston',
-    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn', 'orisa', 'wreckingball', 'ashe'];
+    'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn',
+    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'Doomfist', 'McCree', 'Winston',
-    'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn', 'Orisa', 'Wrecking Ball', 'Ashe'];
+    'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn',
+    'Orisa', 'Wrecking Ball', 'Ashe', 'Brigitte', 'Moira'];
 
 const LN_ADJUSTMENT = 1.0;
 
@@ -24,7 +27,8 @@ const TIMES_1000_FIELDS = [
   'damage_blocked_avg_per_10_min',
   'health_recovered_avg_per_10_min',
   'damage_reflected_avg_per_10_min',
-  'shields_created_avg_per_10_min'
+  'shields_created_avg_per_10_min',
+  'coalescence_healing_avg_per_10_min'
 ];
 
 const TIMES_100_FIELDS = [
@@ -280,6 +284,32 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'healing_done_avg_per_10_min', prettyName: 'Healing Done Per 10 Min', weight: 2.0, required: true },
             {name: 'defensive_assists_avg_per_10_min', prettyName: 'Defensive Assists Per 10 Min', weight: 1.5, required: true },
             {name: 'offensive_assists_avg_per_10_min', prettyName: 'Offensive Assists Per 10 Min', weight: 1.5, required: true }
+        ];
+    }
+    else if (hero == 'moira') {
+        fields = [
+            {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
+            /*
+            {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
+            {name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, require: true},
+            {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
+            */
+            {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
+            {name: 'healing_done_avg_per_10_min', prettyName: 'Healing Done Per 10 Min', weight: 2.0, required: true },
+            {name: 'coalescence_healing_avg_per_10_min', prettyName: 'Coalescence Healing Per 10 Min', weight: 1.5, required: true }
+        ];
+    }
+    else if (hero == 'brigitte') {
+        fields = [
+            {name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
+            /*
+            {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
+            {name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, require: true},
+            {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
+            */
+            {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
+            {name: 'healing_done_avg_per_10_min', prettyName: 'Healing Done Per 10 Min', weight: 2.0, required: true },
+            {name: 'damage_blocked_avg_per_10_min', prettyName: 'Damage Blocked Per 10 Min', weight: 1.2, required: true }
         ];
     }
     else if (hero == 'mercy') {
