@@ -96,7 +96,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.5, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
             {name: 'direct_hit_accuracy', prettyName: 'Direct Hit Accuracy', weight: 1.5, required: true},
             {name: 'barrage_kills_avg_per_10_min', prettyName: 'Barrage Kills Average', weight: 1.2, required: false}
         ];
@@ -110,7 +110,7 @@ function getImportantFieldsFor(hero, playMode) {
           {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
           */
           {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-          {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.5, required: true}
+          {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true}
           /*
           {name: 'death_blossom_kills_avg_per_10_min', prettyName: 'Death Blossom Kils Per 10 Min', weight: 1.2, required: false}
           */
@@ -125,7 +125,7 @@ function getImportantFieldsFor(hero, playMode) {
           {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
           */
           {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-          {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.2, required: true}
+          {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true}
 
         ];
     }
@@ -138,7 +138,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
             {name: 'healing_done_avg_per_10_min', prettyName: 'Healing Done Average', weight: 1.0, required: true},
             {name: 'self_healing_avg_per_10_min', prettyName: 'Self Healing Average', weight: 1.0, required: true}
             /*
@@ -172,7 +172,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.2, required: true}
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.75, required: true}
             /*
             {name: 'concussion_mine_kills_avg_per_10_min', prettyName: 'Mine Kills Per 10 Min', weight: 1.0, required: true},
             {name: 'rip-tire_kills_avg_per_10_min', prettyName: 'Rip Tire Kills Per 10 Min', weight: 1.0, required: true}
@@ -188,7 +188,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
             {name: 'self_healing_avg_per_10_min', prettyName: 'Self Healing Average', weight: 1.0, required: true},
             {name: 'enemies_frozen_avg_per_10_min', prettyName: 'Enemies Frozen Per 10 Min', weight: 1.2, required: true},
             {name: 'blizzard_kills_avg_per_10_min', prettyName: 'Blizzard Kills Per 10 Min', weight: 1.0, required: true}
@@ -227,6 +227,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
             {name: 'fan_the_hammer_kills_avg_per_10_min', prettyName: 'Fan the Hammer Kills Per 10 Min', weight: 1.0, required: true}
         ];
     }
@@ -264,7 +265,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.2, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.75, required: true},
             {name: 'self_healing_avg_per_10_min', prettyName: 'Self Healing Average', weight: 1.0, required: true}
             /*
             {name: 'enemies_hooked_avg_per_10_min', prettyName: 'Enemies Hooked Per 10 Min', weight: 1.2, required: true }
@@ -280,7 +281,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
             {name: 'healing_done_avg_per_10_min', prettyName: 'Healing Done Per 10 Min', weight: 2.0, required: true },
             {name: 'defensive_assists_avg_per_10_min', prettyName: 'Defensive Assists Per 10 Min', weight: 1.5, required: true },
             {name: 'offensive_assists_avg_per_10_min', prettyName: 'Offensive Assists Per 10 Min', weight: 1.5, required: true }
@@ -353,7 +354,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true}
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true}
             /*
             {name: 'offensive_assists_avg_per_10_min', prettyName: 'Offensive Assits Per 10 Min', weight: 1.5, required: true },
             {name: "enemies_emp'd_avg_per_10_min", prettyName: "Enemied EMP'd Per 10 Min", weight: 1.5, required: true }
@@ -394,7 +395,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.2, required: true}
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true}
 
             /*
             { name: 'eliminations_per_life', weight: 1.0, required: true },
@@ -417,7 +418,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true}
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.25, required: true}
             /*
             { name: 'eliminations_per_life', weight: 1.2, required: true },
             { name: 'objective_kills_average', weight: 1.0, required: true },
@@ -438,7 +439,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true}
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true}
 
             /*
             { name: 'eliminations_per_life', weight: 1.0, required: true },
@@ -461,7 +462,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
             {name: 'sentry_turret_kills_avg_per_10_min', prettyName: 'Sentry Turret Kills Per 10 Min', weight: 1.0, required: true }
         ];
     }
@@ -474,7 +475,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
             {name: 'damage_blocked_avg_per_10_min', prettyName: 'Damage Blocked Per 10 Min', weight: 1.5, required: true },
             {name: 'average_energy', prettyName: 'Average Energy', weight: 2.0, required: true },
             {name: "projected_barriers_applied_avg_per_10_min", prettyName: 'Projected Barriers Applied Per 10 Min', weight: 1.0, required: true }
@@ -504,7 +505,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true}
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true}
             /*
             {name: 'turret_kills_avg_per_10_min', prettyName: 'Turret Kills Per 10 Min', weight: 1.2, required: true }
             */
@@ -519,6 +520,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.0, required: true },
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
             {name: 'damage_blocked_avg_per_10_min', prettyName: 'Damage Blocked Per 10 Min', weight: 1.5, required: true}
             /*
             { name: 'offensive_assists_avg_per_10_min', prettyName: 'Offensive Assists Per 10 Min', weight: 1.2, required: true }
@@ -534,7 +536,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.0, required: true },
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
             {name: 'players_knocked_back_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.2, required: false}
         ];
     }
