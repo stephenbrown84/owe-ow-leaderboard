@@ -1,4 +1,5 @@
 /* global angular */
+
 angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 'highcharts-ng'])
     .controller("GenericChartCtrl", function($http, $scope, $timeout, $q) {
 
@@ -54,6 +55,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             {
                 id: 'doomfist',
                 label: 'Doomfist',
+                role: $scope.ROLES.OFFENSE
+            },
+            {
+                id: 'ashe',
+                label: 'Ashe',
                 role: $scope.ROLES.OFFENSE
             },
             {
@@ -118,7 +124,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 role: $scope.ROLES.TANK
             },
             {
-                id: 'wrecking_ball',
+                id: 'wreckingball',
                 label: 'Wrecking Ball',
                 role: $scope.ROLES.TANK
             },
@@ -329,7 +335,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     colors.push('#60BD68');
                 else if (player == 'Nemisari')
                     colors.push('#FAA43A');
-                else if (player == 'Lawbringer')
+                else if (player == 'MajorYeehaw')
                     colors.push('#FFE135')
                 else if (player == 'Praetorian')
                     colors.push('#FFE135')
@@ -350,6 +356,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 else if (player == 'Leunam')
                     colors.push('#b8f17e');
                 else if (player == 'WiseOldGamer')
+                    colors.push('#B9264F');
+                else if (player == 'Crabgor')
                     colors.push('#B9264F');
                 else
                     colors.push('black');
@@ -561,8 +569,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             value = value.toFixed(2);
             if ((value > 100) || (fieldName == 'win_percentage'))
                 value = Math.floor(value);
+
             if (fieldName == 'win_percentage')
                 value = value.toString() + '%';
+            else if (value > 999)
+                value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             return value.toString() //.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
