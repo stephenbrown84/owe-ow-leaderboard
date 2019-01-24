@@ -106,8 +106,10 @@ function getImportantFieldsFor(hero, playMode) {
           {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
           */
           {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-          {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.5, required: true},
+          {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.5, required: true}
+          /*
           {name: 'death_blossom_kills_avg_per_10_min', prettyName: 'Death Blossom Kils Per 10 Min', weight: 1.2, required: false}
+          */
         ];
     }
     else if (hero == 'ashe') {
@@ -134,11 +136,12 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
             {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true},
             {name: 'healing_done_avg_per_10_min', prettyName: 'Healing Done Average', weight: 1.0, required: true},
-            {name: 'self_healing_avg_per_10_min', prettyName: 'Self Healing Average', weight: 1.0, required: true},
+            {name: 'self_healing_avg_per_10_min', prettyName: 'Self Healing Average', weight: 1.0, required: true}
+            /*
             {name: 'critical_hits_avg_per_10_min', prettyName: 'Critical Hits Per 10 Min', weight: 1.2, required: true},
-            {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             {name: 'helix_rockets_kills_avg_per_10_min', prettyName: 'Helix Rockets Kills Average', weight: 1.0, required: false},
             {name: 'tactical_visor_kills_avg_per_10_min', prettyName: 'Tactical Visor Kills Average', weight: 1.2, required: false}
+            */
         ];
     }
     else if (hero == 'reinhardt') {
@@ -150,7 +153,9 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.0, required: true },
+            /*
             {name: 'fire_strike_kills_avg_per_10_min', prettyName: 'Fire Strike Kills Per 10 Min', weight: 1.0, required: false},
+            */
             {name: 'damage_blocked_avg_per_10_min', prettyName: 'Damage Blocked Per 10 Min', weight: 1.5, required: true}
         ];
     }
@@ -163,9 +168,11 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.2, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.2, required: true}
+            /*
             {name: 'concussion_mine_kills_avg_per_10_min', prettyName: 'Mine Kills Per 10 Min', weight: 1.0, required: true},
             {name: 'rip-tire_kills_avg_per_10_min', prettyName: 'Rip Tire Kills Per 10 Min', weight: 1.0, required: true}
+            */
         ];
     }
     else if (hero == 'mei') {
@@ -254,8 +261,10 @@ function getImportantFieldsFor(hero, playMode) {
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
             {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.2, required: true},
-            {name: 'self_healing_avg_per_10_min', prettyName: 'Self Healing Average', weight: 1.0, required: true},
-            {name: 'enemies_hooked_avg_per_10_min', prettyName: 'Enemies Hooked Per 10 Min', weight: 1.2, required: true },
+            {name: 'self_healing_avg_per_10_min', prettyName: 'Self Healing Average', weight: 1.0, required: true}
+            /*
+            {name: 'enemies_hooked_avg_per_10_min', prettyName: 'Enemies Hooked Per 10 Min', weight: 1.2, required: true }
+            */
         ];
     }
     else if (hero == 'zenyatta') {
@@ -314,9 +323,11 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true}
+            /*
             {name: 'offensive_assists_avg_per_10_min', prettyName: 'Offensive Assits Per 10 Min', weight: 1.5, required: true },
             {name: "enemies_emp'd_avg_per_10_min", prettyName: "Enemied EMP'd Per 10 Min", weight: 1.5, required: true }
+            */
         ];
     }
     else if (hero == 'bastion') {
@@ -463,8 +474,10 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.0, required: true}
+            /*
             {name: 'turret_kills_avg_per_10_min', prettyName: 'Turret Kills Per 10 Min', weight: 1.2, required: true }
+            */
         ];
     }
     else if (hero == 'orisa') {
@@ -476,8 +489,10 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
             */
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hereo Damage Per 10 Min', weight: 1.0, required: true },
-            {name: 'damage_blocked_avg_per_10_min', prettyName: 'Damage Blocked Per 10 Min', weight: 1.5, required: true},
+            {name: 'damage_blocked_avg_per_10_min', prettyName: 'Damage Blocked Per 10 Min', weight: 1.5, required: true}
+            /*
             { name: 'offensive_assists_avg_per_10_min', prettyName: 'Offensive Assists Per 10 Min', weight: 1.2, required: true }
+            */
         ];
     }
     else if (hero == 'wreckingball') {
