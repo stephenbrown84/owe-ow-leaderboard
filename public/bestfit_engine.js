@@ -52,6 +52,16 @@ angular.module("app", ['ui.bootstrap'])
                 role: $scope.ROLES.OFFENSE
             },
             {
+                id: 'doomfist',
+                label: 'Doomfist',
+                role: $scope.ROLES.OFFENSE
+            },
+            {
+                id: 'ashe',
+                label: 'Ashe',
+                role: $scope.ROLES.OFFENSE
+            },
+            {
                 id: 'bastion',
                 label: 'Bastion',
                 role: $scope.ROLES.DEFENSE
@@ -113,6 +123,11 @@ angular.module("app", ['ui.bootstrap'])
                 role: $scope.ROLES.TANK
             },
             {
+                id: 'wreckingball',
+                label: 'Wrecking Ball',
+                role: $scope.ROLES.TANK
+            },
+            {
                 id: 'ana',
                 label: 'Ana',
                 role: $scope.ROLES.SUPPORT
@@ -130,6 +145,16 @@ angular.module("app", ['ui.bootstrap'])
             {
                 id: 'zenyatta',
                 label: 'Zenyatta',
+                role: $scope.ROLES.SUPPORT
+            },
+            {
+                id: 'brigitte',
+                label: 'Brigitte',
+                role: $scope.ROLES.SUPPORT
+            },
+            {
+                id: 'moira',
+                label: 'Moira',
                 role: $scope.ROLES.SUPPORT
             },
             {
@@ -219,7 +244,7 @@ angular.module("app", ['ui.bootstrap'])
                     }
                     else {
                         $scope.heroClasses[h.id] = 'card-hero-icon-selected';
-                    } 
+                    }
                 }
             }
         }
@@ -321,8 +346,8 @@ angular.module("app", ['ui.bootstrap'])
                         return;
                     }
 
-                    
-                    
+
+
                     var teamSkill = 0.0;
                     for (var i = 0; i < Object.keys(data).length; i++) {
                         var txtResults = '';
@@ -380,7 +405,7 @@ angular.module("app", ['ui.bootstrap'])
                     remove(currPlayers, data[i].name);
 
                 }
- 
+
                 for (var i = 0; i < currHeroes.length; i++) {
 
                     // No players left to match with remaining heroes
