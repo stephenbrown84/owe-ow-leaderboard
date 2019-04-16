@@ -159,6 +159,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 role: $scope.ROLES.SUPPORT
             },
             {
+                id: 'baptiste',
+                label: 'Baptiste',
+                role: $scope.ROLES.SUPPORT
+            },
+            {
                 id: 'symmetra',
                 label: 'Symmetra',
                 role: $scope.ROLES.SUPPORT
