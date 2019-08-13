@@ -159,6 +159,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 role: $scope.ROLES.SUPPORT
             },
             {
+                id: 'baptiste',
+                label: 'Baptiste',
+                role: $scope.ROLES.SUPPORT
+            },
+            {
                 id: 'symmetra',
                 label: 'Symmetra',
                 role: $scope.ROLES.SUPPORT
@@ -371,6 +376,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     colors.push('#B9264F');
                 else if (player == 'Jamie')
                     colors.push('#3ffd1c');
+                else if (player == 'Tasslehoff')
+                    colors.push('#FF33E6');
                 else
                     colors.push('black');
             }
