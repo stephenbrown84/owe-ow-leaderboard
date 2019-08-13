@@ -19,7 +19,11 @@ app.set('view engine', 'ejs');
 
 
 const BATTLE_TAGS = ['Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767', 'Dirtnapper-1628', 'Suracis-1355', 'MajorYeehaw-1782',
+<<<<<<< HEAD
                      'MegaArcon-1653', 'Isoulle-1235', 'CrackdCrayon-1269', 'Jamie-1389', 'Tasslehoff-1222'];
+=======
+                     'MegaArcon-1653', 'CrackdCrayon-1269', 'Jamie-1389'];
+>>>>>>> fa67d70ce63e72eb5204b725b782fff031b5525a
 
 /*const BATTLE_TAGS = ['Zaralus-1670'];    */
 /*
