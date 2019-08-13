@@ -7,13 +7,13 @@ module.exports = StatsEngine;
 
 const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'doomfist', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn',
-    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste'];
+    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma'];
 const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'doomfist', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn',
-    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste'];
+    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'Doomfist', 'McCree', 'Winston',
     'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn',
-    'Orisa', 'Wrecking Ball', 'Ashe', 'Brigitte', 'Moira', 'Baptiste'];
+    'Orisa', 'Wrecking Ball', 'Ashe', 'Brigitte', 'Moira', 'Baptiste', 'Sigma'];
 
 const LN_ADJUSTMENT = 1.0;
 
@@ -100,6 +100,16 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
             {name: 'direct_hit_accuracy', prettyName: 'Direct Hit Accuracy', weight: 1.5, required: true},
             {name: 'barrage_kills_avg_per_10_min', prettyName: 'Barrage Kills Average', weight: 1.2, required: false}
+        ];
+    }
+    else if (hero == 'sigma') {
+        fields = [
+          //{name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
+          {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
+          {name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, require: true},
+          {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
+          {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: true},
+          {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true}
         ];
     }
     else if (hero == 'reaper') {
