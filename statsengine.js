@@ -7,13 +7,13 @@ module.exports = StatsEngine;
 
 const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'doomfist', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn',
-    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma'];
+    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma', 'echo'];
 const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'doomfist', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn',
-    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma'];
+    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma', 'echo'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'Doomfist', 'McCree', 'Winston',
     'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn',
-    'Orisa', 'Wrecking Ball', 'Ashe', 'Brigitte', 'Moira', 'Baptiste', 'Sigma'];
+    'Orisa', 'Wrecking Ball', 'Ashe', 'Brigitte', 'Moira', 'Baptiste', 'Sigma', 'Echo'];
 
 const LN_ADJUSTMENT = 1.0;
 
@@ -133,6 +133,19 @@ function getImportantFieldsFor(hero, playMode) {
           {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
           {name: 'bob_kills_avg_per_10_min', prettyName: 'Bob Kills Per 10 Min', weight: 1.0, required: true}
 
+        ];
+    }
+    else if (hero == 'echo') {
+        fields = [
+          //{name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
+          {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
+          {name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, require: true},
+          {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
+          {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: true},
+          {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
+          {name: 'sticky_bombs_kills_avg_per_10_min', prettyName: 'Sticky Bombs Kills Per 10 Min', weight: 1.0, required: true},
+          {name: 'focusing_beam_kills_avg_per_10_min', prettyName: 'Focusing Beam Kills Per 10 Min', weight: 1.0, required: true},
+          {name: 'sticky_bombs_direct_hits_avg_per_10_min', prettyName: 'Sticky Bombs Direct Hits Per 10 Min', weight: 1.0, required: true}
         ];
     }
     else if (hero == 'soldier76') {

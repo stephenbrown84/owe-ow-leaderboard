@@ -63,6 +63,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 role: $scope.ROLES.OFFENSE
             },
             {
+                id: 'echo',
+                label: 'Echo',
+                role: $scope.ROLES.OFFENSE
+            },
+            {
                 id: 'bastion',
                 label: 'Bastion',
                 role: $scope.ROLES.DEFENSE
