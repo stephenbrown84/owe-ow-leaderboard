@@ -161,7 +161,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'healing_done_avg_per_10_min', prettyName: 'Healing Done Average', weight: 1.0, required: true},
             {name: 'self_healing_avg_per_10_min', prettyName: 'Self Healing Average', weight: 1.0, required: true},
             {name: 'critical_hits_avg_per_10_min', prettyName: 'Critical Hits Per 10 Min', weight: 1.2, required: true},
-            {name: 'helix_rockets_kills_avg_per_10_min', prettyName: 'Helix Rockets Kills Average', weight: 1.0, required: false},
+            {name: 'helix_rocket_kills_avg_per_10_min', prettyName: 'Helix Rockets Kills Average', weight: 1.0, required: false},
             {name: 'tactical_visor_kills_avg_per_10_min', prettyName: 'Tactical Visor Kills Average', weight: 1.2, required: false}
         ];
     }
