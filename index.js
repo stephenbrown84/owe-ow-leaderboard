@@ -1,4 +1,4 @@
-var owjs = require('overwatch-js');
+var owapi = require('overwatch-stats-api');
 var fs = require('fs');
 
 var express = require('express');
@@ -19,9 +19,9 @@ app.set('view engine', 'ejs');
 
 
 const BATTLE_TAGS = ['Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767', 'Dirtnapper-1628', 'Suracis-1355', 'MajorYeehaw-1782',
-                     'MegaArcon-1653', 'CrackdCrayon-1269', 'Jamie-1389', 'Tasslehoff-1222'];
+                     'MegaArcon-1653', 'Jamie-1389', 'Tasslehoff-1222', 'Shankus-1281'];
 
-/*const BATTLE_TAGS = ['Zaralus-1670'];    */
+//const BATTLE_TAGS = ['Zaralus-1670'];
 /*
 const BATTLE_TAGS = ['NorthernYeti-1308', 'MegaArcon-1653', 'noj-1818', 'Nuuga-1351', 'Zaralus-1670', 'Nemisari-1767',
     'Isoulle-1235', 'MajorYeehaw-1139', 'Dirtnapper-1628', 'Suracis-1355', 'WiseOldGamer-1346',
@@ -38,20 +38,30 @@ var stats;
 var freshRawData = {};
 
 function refreshOWStats() {
+    /*
+    (async () => {
+        const stats = await owapi.getAllStats(BATTLE_TAGS[0], 'pc');
+        fs.writeFile('ow_test.json', JSON.stringify(stats), (err) => {
+            if (err) console.log("Unable to save ow_test.json!");
+                console.log('ow_test.json was saved');
+        });
+    })();
+    */
+
     freshRawData = {};
     promises = [];
     for (var i = 0; i < BATTLE_TAGS.length; i++) {
-        promises.push(owjs.getAll('pc', 'us', BATTLE_TAGS[i]), false);
+        promises.push(owapi.getAllStats(BATTLE_TAGS[i], 'pc'), false);
     }
     Promise.all(promises).then((data) => {
         for (var j = 0; j < data.length; j++) {
             if (!data[j]) continue;
-            var battleTag = data[j].profile.nick;
-            freshRawData[battleTag] = data[j]
+            var battleTag = data[j].battletag;
+            freshRawData[battleTag.split('-')[0]] = data[j]
             console.log("Got data for: " + battleTag);
         }
         stats = new Stats(freshRawData);
-        fs.writeFile('ow_stats.json', JSON.stringify(freshRawData), (err) => {
+        fs.writeFile('ow_stats.json', JSON.stringify(stats.getRawStats()), (err) => {
             if (err) console.log("Unable to save ow_stats.json!");
                 console.log('ow_stats.json was saved');
         });
@@ -109,6 +119,15 @@ app.get('/stats/sorted/:season', function (request, response) {
 app.get('/stats/sorted/', function (request, response) {
     if (stats.isReady()) {
         response.send(stats.getSortedStats())
+    }
+    else {
+        response.send({});
+    }
+});
+
+app.get('/stats/calc/', function (request, response) {
+    if (stats.isReady()) {
+        response.send(stats.getCalculatedStats())
     }
     else {
         response.send({});

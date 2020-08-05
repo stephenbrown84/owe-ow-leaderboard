@@ -133,12 +133,14 @@ let OverwatchProvider = function() {
 
     self.getAll = (platform, region, tag, overallOnly) => {
         var baseurl = getUrl(platform, region, tag);
+        console.log(baseurl);
         return rp.xhr({url: baseurl}).then((context) => {
 
             var result = {};
             var promises = [];
+            console.log(context.responseText);
             const $ = cheerio.load(context.responseText);
-
+            
             //// Getting profile
             var p = new Promise((resolve, reject) => {
                 result.profile = parseProfile($);

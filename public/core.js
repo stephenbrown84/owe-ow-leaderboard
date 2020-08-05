@@ -388,6 +388,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     colors.push('#3ffd1c');
                 else if (player == 'Tasslehoff')
                     colors.push('#FF33E6');
+                else if (player == 'Shankus')
+                    colors.push('#004C99');
                 else
                     colors.push('black');
             }
@@ -398,6 +400,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
 
         $scope.loadChart = function (hero, playMode, isSeasonChange) {
             var data = $scope[playMode + 'Data'];
+            console.log(data);
             /*
             if (typeof (needsReflow) === 'undefined') needsReflow = false;
 

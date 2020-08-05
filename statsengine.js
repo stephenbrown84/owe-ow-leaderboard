@@ -65,7 +65,7 @@ const TIMES_10_FIELDS = [
 ];
 */
 
-const noPlacementsDoneThisSeason = ['Nick', 'StephyCakes', 'Chesley', 'Amara', 'Jay'];
+const noPlacementsDoneThisSeason = ['Shankus'];
 
 
 function StatsEngine(initData) {
@@ -76,6 +76,8 @@ function StatsEngine(initData) {
             console.log("Deleted comp stats for " + noPlacementsDoneThisSeason[i]);
         }
     }
+    //console.log(this.rawStats);
+    this.stripSubStatCategories();
     this.resetStats();
 }
 
@@ -548,22 +550,33 @@ function hasRequiredFieldsForHero(heroStats, hero, playMode) {
 function getAttr(heroStats, attr) {
     if (!(attr in heroStats))
         return 0.0;
-    /* NO LONGER NEED, PlayOverwatch FIXED THEIR STATS
-    else if (TIMES_1000_FIELDS.indexOf(attr) > -1)
-        return heroStats[attr] * 1000.0;
-    else if (TIMES_100_FIELDS.indexOf(attr) > -1)
-        return heroStats[attr] * 100.0;
-    */
-    else
-        return heroStats[attr];
+    else {
+        if (attr == 'time_played') {
+            var totalMins = 0;
+            var timeParts = heroStats[attr].split(':');
+            if (timeParts.length > 2) {
+                totalMins = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
+            }
+            else if (timeParts.length > 1) {
+                totalMins = parseInt(timeParts[0]);
+            }
+            return totalMins;
+        }
+        return parseFloat(heroStats[attr]);
+    }
 }
 
 StatsEngine.prototype.hasHeroStatsFor = function(name, playMode, hero) {
-    return ((name in this.rawStats) && (playMode in this.rawStats[name]) && ('heroes' in this.rawStats[name][playMode]) && (hero in this.rawStats[name][playMode]['heroes']));
+    return ((name in this.rawStats) && (playMode in this.rawStats[name]['heroStats'])
+        && (hero in this.rawStats[name]['heroStats'][playMode]));
 }
 
 StatsEngine.prototype.getHeroStatsFor = function(name, playMode, hero) {
-    return this.rawStats[name][playMode]['heroes'][hero];
+    var heroStats = {};
+    if (hero in this.rawStats[name]['heroStats'][playMode]) {
+        heroStats = this.rawStats[name]['heroStats'][playMode][hero];
+    }
+    return heroStats;
 }
 
 StatsEngine.prototype.updateHeroTotal = function (hero, playMode, fieldName, heroStats) {
@@ -593,6 +606,27 @@ function compareByOverall(a, b) {
     }
     // a must be equal to b
     return 0;
+}
+
+StatsEngine.prototype.stripSubStatCategories = function() {
+    var playModes = ['quickplay', 'competitive'];
+    for (var i = 0; i < 2; i++) {
+        for (var player in this.rawStats) {
+            for (var hero in this.rawStats[player]["heroStats"][playModes[i]]) {
+                var subStatCategories = [];
+                for (var subStatCat in this.rawStats[player]["heroStats"][playModes[i]][hero]) {
+                    subStatCategories.push(subStatCat);
+                }
+                for (var j = 0; j < subStatCategories.length; j++) {
+                    var subStatCat = subStatCategories[j];
+                    for (var stat in this.rawStats[player]["heroStats"][playModes[i]][hero][subStatCat]) {
+                        this.rawStats[player]["heroStats"][playModes[i]][hero][stat] = this.rawStats[player]["heroStats"][playModes[i]][hero][subStatCat][stat];
+                    }
+                    delete this.rawStats[player]["heroStats"][playModes[i]][hero][subStatCat];
+                }
+            }
+        }
+    }
 }
 
 StatsEngine.prototype.resetStats = function() {
@@ -687,6 +721,12 @@ StatsEngine.prototype.setHeroPercentageForFieldForPlayer = function (player, her
     var total = this.heroTotals[playMode][hero][fieldName].total;
     var count = this.heroTotals[playMode][hero][fieldName].count;
     this.calculatedStats[playMode][player][hero][fieldName]['relative'] = amt / (total / count);
+    //console.log(this.calculatedStats[playMode][player][hero][fieldName]['relative']);
+    if (Number.isNaN(amt / (total / count))) {
+        console.log(playMode + " : " + player + " : " + hero + " : " + fieldName);
+        console.log(amt + " : " + total + " : " + count);
+        console.log();
+    }
     this.calculatedStats[playMode][player][hero][fieldName]['actual'] = amt;
 }
 
