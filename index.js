@@ -1,8 +1,10 @@
-var owapi = require('overwatch-stats-api');
+
 var fs = require('fs');
 
 var express = require('express');
 var app = express();
+
+var owapi = require('overwatch-stats-api');
 
 var initData = require('./test.json');
 var Stats = require('./statsengine');
