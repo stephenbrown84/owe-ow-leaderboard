@@ -5,13 +5,13 @@ const Combinatorics = require('js-combinatorics');
 module.exports = StatsEngine;
 
 
-const HERO_NAMES = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'doomfist', 'winston',
+const HERO_NAMES = ['pharah', 'reaper', 'soldier', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'doomfist', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn',
     'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma', 'echo'];
-const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier76', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'doomfist', 'mccree', 'winston',
+const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'doomfist', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn',
     'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma', 'echo'];
-const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier76', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'Doomfist', 'McCree', 'Winston',
+const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'Doomfist', 'McCree', 'Winston',
     'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn',
     'Orisa', 'Wrecking Ball', 'Ashe', 'Brigitte', 'Moira', 'Baptiste', 'Sigma', 'Echo'];
 
@@ -150,7 +150,7 @@ function getImportantFieldsFor(hero, playMode) {
           {name: 'sticky_bombs_direct_hits_avg_per_10_min', prettyName: 'Sticky Bombs Direct Hits Per 10 Min', weight: 1.0, required: true}
         ];
     }
-    else if (hero == 'soldier76') {
+    else if (hero == 'soldier') {
         fields = [
             //{name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
             {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
@@ -188,7 +188,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: true},
             {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.75, required: true},
             {name: 'concussion_mine_kills_avg_per_10_min', prettyName: 'Mine Kills Per 10 Min', weight: 1.0, required: true},
-            {name: 'rip-tire_kills_avg_per_10_min', prettyName: 'Rip Tire Kills Per 10 Min', weight: 1.0, required: false}
+            {name: 'riptire_kills_avg_per_10_min', prettyName: 'Rip Tire Kills Per 10 Min', weight: 1.0, required: false}
         ];
     }
     else if (hero == 'mei') {
