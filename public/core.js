@@ -129,7 +129,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 role: $scope.ROLES.TANK
             },
             {
-                id: 'wreckingball',
+                id: 'hammond',
                 label: 'Wrecking Ball',
                 role: $scope.ROLES.TANK
             },

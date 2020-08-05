@@ -7,10 +7,10 @@ module.exports = StatsEngine;
 
 const HERO_NAMES = ['pharah', 'reaper', 'soldier', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'mccree', 'doomfist', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn',
-    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma', 'echo'];
+    'orisa', 'hammond', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma', 'echo'];
 const HERO_NAMES_CLEAN = ['pharah', 'reaper', 'soldier', 'reinhardt', 'junkrat', 'mei', 'tracer', 'genji', 'doomfist', 'mccree', 'winston',
     'roadhog', 'zenyatta', 'mercy', 'ana', 'sombra', 'bastion', 'hanzo', 'widowmaker', 'dva', 'symmetra', 'zarya', 'lucio', 'torbjorn',
-    'orisa', 'wreckingball', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma', 'echo'];
+    'orisa', 'hammond', 'ashe', 'brigitte', 'moira', 'baptiste', 'sigma', 'echo'];
 const HERO_NAMES_FRIENDLY = ['Pharah', 'Reaper', 'Soldier', 'Reinhardt', 'Junkrat', 'Mei', 'Tracer', 'Genji', 'Doomfist', 'McCree', 'Winston',
     'Roadhog', 'Zenyatta', 'Mercy', 'Ana', ' Sombra', 'Bastion', 'Hanzo', 'Widowmaker', 'D.Va', 'Symmetra', 'Zarya', 'Lucio', 'Torbjorn',
     'Orisa', 'Wrecking Ball', 'Ashe', 'Brigitte', 'Moira', 'Baptiste', 'Sigma', 'Echo'];
@@ -468,7 +468,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'damage_amplified_avg_per_10_min', prettyName: 'Daamage Amplified Per 10 Min', weight: 1.2, required: false }
         ];
     }
-    else if (hero == 'wreckingball') {
+    else if (hero == 'hammond') {
         fields = [
             //{name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
             {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
