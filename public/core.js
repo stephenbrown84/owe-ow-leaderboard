@@ -38,8 +38,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 role: $scope.ROLES.OFFENSE
             },
             {
-                id: 'soldier76',
-                label: 'Soldier76',
+                id: 'soldier',
+                label: 'Soldier',
                 role: $scope.ROLES.OFFENSE
             },
             {
