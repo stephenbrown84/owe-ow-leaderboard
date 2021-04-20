@@ -390,6 +390,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     colors.push('#FF33E6');
                 else if (player == 'Shankus')
                     colors.push('#004C99');
+                else if (player == 'NFLDPunk')
+                    colors.push('#524461');
                 else
                     colors.push('black');
             }
