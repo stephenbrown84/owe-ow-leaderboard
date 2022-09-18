@@ -318,6 +318,8 @@ angular.module("app", ['ui.bootstrap', 'highcharts-ng'])
                     colors.push('#7ef1f1');
                 else if (player == 'StephyCakes')
                     colors.push('#b8f17e');
+                else if (player == 'Dutchy')
+                    colors.push('#037bfc');
                 else
                     colors.push('black');
             }
@@ -887,7 +889,7 @@ angular.module("app", ['ui.bootstrap', 'highcharts-ng'])
                     max: 360,
                     labels: {
                         formatter: function () {
-                            return this.value + '°';
+                            return this.value + 'Â°';
                         }
                     }
                 },
