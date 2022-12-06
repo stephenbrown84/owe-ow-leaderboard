@@ -15,7 +15,7 @@
     "bower": "^1.4.1",
     "async": "^3.2.0",
     "ejs": "2.3.3",
-    "express": "4.13.3",
+    "express": "4.17.3",
     "js-combinatorics": "^0.5.2",
     "overwatch-stats-api": "^2.1.0",
     "overwatch-js": "file:./local_modules/overwatch-js",
