@@ -236,19 +236,36 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 $scope.selectedHeroes = [];
                 $scope.currentHero = $scope.heroOptions[0];
                 $scope.currentHeroClass = $scope.ROLES.ALL;
-            } else {
-                var idx = $scope.selectedHeroes.indexOf(h.id);
-                if (idx > -1) {
-                    $scope.selectedHeroes.splice(idx, 1);
-                } else {
-                    $scope.selectedHeroes.push(h.id);
-                }
+                $scope.updateHeroClassHighlights();
+                $scope.loadVisibleCharts();
+                return;
+            }
 
-                if ($scope.selectedHeroes.length === 0) {
-                    $scope.currentHero = $scope.heroOptions[0];
-                } else {
-                    $scope.currentHero = null;
+            // Sync selectedHeroes array if previously in single-select mode
+            if ((!$scope.selectedHeroes || $scope.selectedHeroes.length === 0) && $scope.currentHero && $scope.currentHero.id !== 'all') {
+                $scope.selectedHeroes = [$scope.currentHero.id];
+            }
+
+            var idx = $scope.selectedHeroes.indexOf(h.id);
+            if (idx > -1) {
+                $scope.selectedHeroes.splice(idx, 1);
+            } else {
+                $scope.selectedHeroes.push(h.id);
+            }
+
+            if ($scope.selectedHeroes.length === 1) {
+                var found = null;
+                for (var i = 0; i < $scope.heroes.length; i++) {
+                    if ($scope.heroes[i].id === $scope.selectedHeroes[0]) {
+                        found = $scope.heroes[i];
+                        break;
+                    }
                 }
+                $scope.currentHero = found;
+                $scope.currentHeroClass = found ? found.role : null;
+            } else {
+                $scope.currentHero = null;
+                $scope.currentHeroClass = null;
             }
 
             $scope.updateHeroClassHighlights();
@@ -320,7 +337,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     $scope.heroClasses[$scope.selectedHeroes[i]] = 'card-hero-icon-selected';
                 }
                 $scope.roleClasses['all'] = '';
-            } else if ($scope.currentHero) {
+            } else if ($scope.currentHero && $scope.currentHero.id !== 'all') {
                 $scope.heroClasses[$scope.currentHero.id] = 'card-hero-icon-selected';
                 $scope.roleClasses['all'] = '';
             } else {
@@ -350,8 +367,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             if ($scope.selectedHeroes && $scope.selectedHeroes.length > 0) {
                 return $scope.selectedHeroes.indexOf(hero.id) !== -1;
             }
-            if (!$scope.currentHero || $scope.currentHero.id === 'all') return true;
-            return $scope.currentHero.id === hero.id;
+            if ($scope.currentHero && $scope.currentHero.id === 'all') return true;
+            if ($scope.currentHero) return $scope.currentHero.id === hero.id;
+            return false;
         };
 
         $scope.fillOutMissingData = function(data) {

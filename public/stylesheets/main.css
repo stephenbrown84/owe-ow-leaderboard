@@ -133,6 +133,9 @@ body {
         cursor: pointer !important;
         opacity: 1 !important;
         transition: all 0.15s ease !important;
+        -webkit-tap-highlight-color: transparent !important;
+        user-select: none !important;
+        -webkit-user-select: none !important;
     }
 
     .card-hero-icon {
@@ -147,6 +150,9 @@ body {
         cursor: pointer !important;
         opacity: 0.65;
         transition: all 0.15s ease !important;
+        -webkit-tap-highlight-color: transparent !important;
+        user-select: none !important;
+        -webkit-user-select: none !important;
     }
 
     .card-hero-icon:hover {
