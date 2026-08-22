@@ -201,10 +201,43 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         $scope.isDataReady = false;
         $scope.currentHeroClass = $scope.ROLES.ALL;
 
-        $scope.selectedHeroes = [];
+        var touchTimer = null;
+        var isTouchLongPress = false;
+
+        $scope.handleTouchStart = function(h, $event) {
+            isTouchLongPress = false;
+            if (touchTimer) $timeout.cancel(touchTimer);
+
+            touchTimer = $timeout(function() {
+                isTouchLongPress = true;
+                if (navigator.vibrate) {
+                    try { navigator.vibrate(50); } catch(e) {}
+                }
+                $scope.setCurrentHero(h, { isTouchMultiSelect: true });
+            }, 350);
+        };
+
+        $scope.handleTouchEnd = function(h, $event) {
+            if (touchTimer) {
+                $timeout.cancel(touchTimer);
+                touchTimer = null;
+            }
+        };
+
+        $scope.handleTouchCancel = function() {
+            if (touchTimer) {
+                $timeout.cancel(touchTimer);
+                touchTimer = null;
+            }
+        };
 
         $scope.setCurrentHero = function(h, $event) {
-            var isCtrl = $event && ($event.ctrlKey || $event.metaKey);
+            if (isTouchLongPress && $event && !$event.isTouchMultiSelect) {
+                isTouchLongPress = false;
+                return;
+            }
+
+            var isCtrl = $event && ($event.ctrlKey || $event.metaKey || $event.isTouchMultiSelect);
 
             if (h.id === 'all') {
                 $scope.selectedHeroes = [];

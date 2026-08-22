@@ -74,11 +74,6 @@
                 <svg class="icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>&nbsp;Multi-Selection: Hold&nbsp;<strong>Ctrl + Left Click</strong>&nbsp;on hero portraits to view multiple charts at once!
             </span>
         </div>
-        <div class="mobile-only-hint">
-            <span class="hint-badge mobile-hint-badge">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>&nbsp;Mobile Tip: Tap hero portraits to select. Rotate device to <strong>Landscape Mode</strong> for best chart viewing!
-            </span>
-        </div>
     </div>
 
     <div ng-show="isDataReady">
@@ -94,19 +89,19 @@
                 <!-- DAMAGE ROLE -->
                 <div class="hero-role-group">
                     <div class="role-badge role-damage" ng-click="setCurrentClass(ROLES.OFFENSE)" title="Select All Damage Heroes"><img src="imgs/offense-icon.png" class="role-icon"> DAMAGE</div>
-                    <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h, $event)"></div>
+                    <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h, $event)" ng-touchstart="handleTouchStart(h, $event)" ng-touchend="handleTouchEnd(h, $event)" ng-touchmove="handleTouchCancel()"></div>
                 </div>
 
                 <!-- TANK ROLE -->
                 <div class="hero-role-group">
                     <div class="role-badge role-tank" ng-click="setCurrentClass(ROLES.TANK)" title="Select All Tank Heroes"><img src="imgs/tank-icon.png" class="role-icon"> TANK</div>
-                    <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h, $event)"></div>
+                    <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h, $event)" ng-touchstart="handleTouchStart(h, $event)" ng-touchend="handleTouchEnd(h, $event)" ng-touchmove="handleTouchCancel()"></div>
                 </div>
 
                 <!-- SUPPORT ROLE -->
                 <div class="hero-role-group">
                     <div class="role-badge role-support" ng-click="setCurrentClass(ROLES.SUPPORT)" title="Select All Support Heroes"><img src="imgs/support-icon.png" class="role-icon"> SUPPORT</div>
-                    <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h, $event)"></div>
+                    <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h, $event)" ng-touchstart="handleTouchStart(h, $event)" ng-touchend="handleTouchEnd(h, $event)" ng-touchmove="handleTouchCancel()"></div>
                 </div>
             </div>
 
