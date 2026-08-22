@@ -24,6 +24,28 @@
 
 </head>
 <body class="body-background-image" ng-controller="GenericChartCtrl" data-ng-init="init()">
+    <!-- LANDSCAPE ORIENTATION PROMPT OVERLAY FOR MOBILE DEVICES -->
+    <div id="landscapePromptOverlay" class="landscape-prompt-overlay">
+        <div class="landscape-prompt-card">
+            <div class="rotate-phone-animation">
+                <svg class="phone-icon" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+                </svg>
+            </div>
+            <h3 class="landscape-title">Please Rotate Your Device</h3>
+            <p class="landscape-message">For the best experience viewing high-detail hero charts, please rotate your phone to <strong>Landscape Mode</strong>.</p>
+            <button class="dismiss-prompt-btn" onclick="dismissLandscapePrompt()">Continue in Portrait</button>
+        </div>
+    </div>
+    <script>
+        function dismissLandscapePrompt() {
+            var overlay = document.getElementById('landscapePromptOverlay');
+            if (overlay) {
+                overlay.classList.add('dismissed');
+            }
+        }
+    </script>
+
 <div class="container-fluid">
     <div class="header-card">
         <h2 class="header-title">OWE Leaderboard - Alpha 0.9.9.9</h2>
