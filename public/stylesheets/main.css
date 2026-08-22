@@ -415,6 +415,23 @@ body.body-background-image {
     letter-spacing: 0.3px !important;
 }
 
+.desktop-only-hint {
+    display: inline-block !important;
+}
+
+.mobile-only-hint {
+    display: none !important;
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 1024px) {
+    .desktop-only-hint {
+        display: none !important;
+    }
+    .mobile-only-hint {
+        display: inline-block !important;
+    }
+}
+
 .icon-svg {
     width: 20px;
     height: 20px;
@@ -1024,7 +1041,7 @@ body.body-background-image {
     text-align: center;
 }
 
-@media screen and (max-width: 860px) and (orientation: portrait) {
+@media screen and (max-width: 1024px) and (orientation: portrait), (hover: none) and (pointer: coarse) and (orientation: portrait) {
     .landscape-prompt-overlay:not(.dismissed) {
         display: flex !important;
     }

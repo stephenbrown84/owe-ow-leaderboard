@@ -27,12 +27,32 @@
         </div>
     </div>
     <script>
+        function checkMobileOrientation() {
+            var isTouchMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent) || (window.innerWidth <= 1024);
+            var isPortrait = window.innerHeight > window.innerWidth;
+            var overlay = document.getElementById('landscapePromptOverlay');
+            
+            if (overlay && !overlay.classList.contains('dismissed')) {
+                if (isTouchMobile && isPortrait) {
+                    overlay.style.display = 'flex';
+                } else {
+                    overlay.style.display = 'none';
+                }
+            }
+        }
+
         function dismissLandscapePrompt() {
             var overlay = document.getElementById('landscapePromptOverlay');
             if (overlay) {
                 overlay.classList.add('dismissed');
+                overlay.style.display = 'none';
             }
         }
+
+        window.addEventListener('resize', checkMobileOrientation);
+        window.addEventListener('orientationchange', checkMobileOrientation);
+        document.addEventListener('DOMContentLoaded', checkMobileOrientation);
+        setTimeout(checkMobileOrientation, 300);
     </script>
 
     <div class="container-fluid">

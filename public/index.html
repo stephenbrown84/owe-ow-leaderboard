@@ -38,20 +38,45 @@
         </div>
     </div>
     <script>
+        function checkMobileOrientation() {
+            var isTouchMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent) || (window.innerWidth <= 1024);
+            var isPortrait = window.innerHeight > window.innerWidth;
+            var overlay = document.getElementById('landscapePromptOverlay');
+            
+            if (overlay && !overlay.classList.contains('dismissed')) {
+                if (isTouchMobile && isPortrait) {
+                    overlay.style.display = 'flex';
+                } else {
+                    overlay.style.display = 'none';
+                }
+            }
+        }
+
         function dismissLandscapePrompt() {
             var overlay = document.getElementById('landscapePromptOverlay');
             if (overlay) {
                 overlay.classList.add('dismissed');
+                overlay.style.display = 'none';
             }
         }
+
+        window.addEventListener('resize', checkMobileOrientation);
+        window.addEventListener('orientationchange', checkMobileOrientation);
+        document.addEventListener('DOMContentLoaded', checkMobileOrientation);
+        setTimeout(checkMobileOrientation, 300);
     </script>
 
 <div class="container-fluid">
     <div class="header-card">
         <h2 class="header-title">OWE Leaderboard - Alpha 0.9.9.9</h2>
-        <div class="ctrl-click-hint">
+        <div class="ctrl-click-hint desktop-only-hint">
             <span class="hint-badge">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>&nbsp;Multi-Selection: Hold&nbsp;<strong>Ctrl + Left Click</strong>&nbsp;on hero portraits to select and view multiple hero charts at once!
+                <svg class="icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>&nbsp;Multi-Selection: Hold&nbsp;<strong>Ctrl + Left Click</strong>&nbsp;on hero portraits to view multiple charts at once!
+            </span>
+        </div>
+        <div class="mobile-only-hint">
+            <span class="hint-badge mobile-hint-badge">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>&nbsp;Mobile Tip: Tap hero portraits to select. Rotate device to <strong>Landscape Mode</strong> for best chart viewing!
             </span>
         </div>
     </div>
