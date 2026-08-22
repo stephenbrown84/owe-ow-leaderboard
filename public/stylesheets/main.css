@@ -324,7 +324,7 @@ html, body.body-background-image {
     color: #e6edf3;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     min-height: 100vh;
-    font-size: 18px !important;
+    font-size: 16px !important;
     width: 100% !important;
     max-width: 100vw !important;
     overflow-x: hidden !important;
@@ -337,7 +337,7 @@ html, body.body-background-image {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
-    padding: 18px 28px;
+    padding: 14px 22px;
     margin-top: 15px;
     margin-bottom: 15px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
@@ -365,7 +365,7 @@ html, body.body-background-image {
 
 .header-title {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: -0.5px;
     background: linear-gradient(135deg, #ff9c00 0%, #00d2ff 100%);
@@ -379,9 +379,9 @@ html, body.body-background-image {
     background: rgba(0, 210, 255, 0.12) !important;
     border: 1px solid rgba(0, 210, 255, 0.35) !important;
     color: #00d2ff !important;
-    font-size: 1.05rem !important;
+    font-size: 0.95rem !important;
     font-weight: 700 !important;
-    padding: 8px 18px !important;
+    padding: 7px 16px !important;
     border-radius: 8px !important;
     text-decoration: none !important;
     display: inline-flex !important;
@@ -404,9 +404,9 @@ html, body.body-background-image {
     background: linear-gradient(135deg, rgba(20, 42, 77, 0.92) 0%, rgba(35, 68, 112, 0.92) 100%) !important;
     border: 1px solid #00d2ff !important;
     color: #f8fafc !important;
-    padding: 10px 22px !important;
+    padding: 8px 18px !important;
     border-radius: 24px !important;
-    font-size: 1.15rem !important;
+    font-size: 0.95rem !important;
     font-weight: 500 !important;
     display: inline-flex !important;
     align-items: center !important;
@@ -707,7 +707,7 @@ html, body.body-background-image {
 }
 
 .control-label {
-    font-size: 1.15rem !important;
+    font-size: 0.98rem !important;
     font-weight: 700 !important;
     color: #ffffff !important;
     margin: 0 !important;
@@ -719,8 +719,8 @@ html, body.body-background-image {
     color: #ffffff !important;
     border: 1px solid rgba(255, 255, 255, 0.35) !important;
     border-radius: 8px !important;
-    padding: 9px 16px !important;
-    font-size: 1.1rem !important;
+    padding: 7px 14px !important;
+    font-size: 0.95rem !important;
     font-weight: 700 !important;
     outline: none !important;
     transition: all 0.2s ease !important;
@@ -735,8 +735,8 @@ html, body.body-background-image {
     display: inline-flex !important;
     align-items: center !important;
     gap: 8px !important;
-    padding: 9px 20px !important;
-    font-size: 1.05rem !important;
+    padding: 7px 16px !important;
+    font-size: 0.95rem !important;
     font-weight: 600 !important;
     border-radius: 8px !important;
     text-decoration: none !important;
@@ -788,8 +788,8 @@ html, body.body-background-image {
 
 .nav-tabs {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
-    margin-top: 20px !important;
-    margin-bottom: 25px !important;
+    margin-top: 18px !important;
+    margin-bottom: 20px !important;
     display: flex !important;
     gap: 12px !important;
 }
@@ -804,8 +804,8 @@ html, body.body-background-image {
     color: #e2e8f0 !important;
     border: 1px solid rgba(255, 255, 255, 0.25) !important;
     border-radius: 10px 10px 0 0 !important;
-    padding: 12px 28px !important;
-    font-size: 1.15rem !important;
+    padding: 9px 22px !important;
+    font-size: 1.0rem !important;
     font-weight: 700 !important;
     letter-spacing: 0.5px !important;
     transition: all 0.2s ease !important;
@@ -836,9 +836,9 @@ html, body.body-background-image {
 
 .section-title {
     color: #e2e8f0 !important;
-    font-size: 1.3rem !important;
+    font-size: 1.1rem !important;
     font-weight: 700 !important;
-    margin-bottom: 14px !important;
+    margin-bottom: 12px !important;
     letter-spacing: 0.5px !important;
 }
 
@@ -846,7 +846,7 @@ html, body.body-background-image {
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: center !important;
-    gap: 24px !important;
+    gap: 20px !important;
     margin-top: 10px !important;
 }
 
@@ -865,8 +865,8 @@ html, body.body-background-image {
 }
 
 .radio-pill {
-    padding: 10px 22px !important;
-    font-size: 1.1rem !important;
+    padding: 7px 16px !important;
+    font-size: 0.95rem !important;
     font-weight: 700 !important;
     color: #94a3b8 !important;
     border-radius: 8px !important;
@@ -898,7 +898,7 @@ html, body.body-background-image {
 
 .input-label {
     color: #cbd5e1 !important;
-    font-size: 1.1rem !important;
+    font-size: 0.95rem !important;
     font-weight: 600 !important;
     display: flex !important;
     align-items: center !important;
@@ -907,13 +907,13 @@ html, body.body-background-image {
 }
 
 .time-input {
-    width: 105px !important;
+    width: 90px !important;
     background: rgba(15, 23, 42, 0.8) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     color: #f8fafc !important;
     border-radius: 8px !important;
-    padding: 8px 12px !important;
-    font-size: 1.1rem !important;
+    padding: 6px 10px !important;
+    font-size: 0.95rem !important;
     font-weight: 700 !important;
 }
 
@@ -925,9 +925,9 @@ html, body.body-background-image {
     background: linear-gradient(135deg, #ff9c00 0%, #d97706 100%) !important;
     color: #0f172a !important;
     font-weight: 800 !important;
-    font-size: 1.2rem !important;
+    font-size: 1.05rem !important;
     border: none !important;
-    padding: 12px 32px !important;
+    padding: 9px 24px !important;
     border-radius: 8px !important;
     box-shadow: 0 0 16px rgba(255, 156, 0, 0.4) !important;
     cursor: pointer !important;
@@ -953,16 +953,16 @@ html, body.body-background-image {
     backdrop-filter: blur(12px) !important;
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
     border-radius: 16px !important;
-    padding: 26px !important;
+    padding: 24px !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
 }
 
 .bestfit-section-title {
     color: #ff9c00 !important;
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
     font-weight: 800 !important;
     margin-top: 0 !important;
-    margin-bottom: 22px !important;
+    margin-bottom: 20px !important;
     letter-spacing: 0.5px !important;
 }
 

@@ -1,10 +1,10 @@
 {
   "competitive": {
-    "zarya": [
+    "ana": [
       {
-        "name": "Nuuga",
-        "overall": 0.829677117007794,
-        "time_played": 29,
+        "name": "Dirtnapper",
+        "overall": 1.0924434721041218,
+        "time_played": 150,
         "fields": {
           "objective_kills_avg_per_10_min": {
             "name": "objective_kills_avg_per_10_min",
@@ -27,32 +27,44 @@
           "hero_damage_done_avg_per_10_min": {
             "name": "hero_damage_done_avg_per_10_min",
             "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1.5,
+            "weight": 1,
             "required": true
           },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": true
-          },
-          "damage_blocked_avg_per_10_min": {
-            "name": "damage_blocked_avg_per_10_min",
-            "prettyName": "Damage Blocked Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "average_energy": {
-            "name": "average_energy",
-            "prettyName": "Average Energy",
+          "healing_done_avg_per_10_min": {
+            "name": "healing_done_avg_per_10_min",
+            "prettyName": "Healing Done Per 10 Min",
             "weight": 2,
             "required": true
           },
-          "projected_barriers_applied_avg_per_10_min": {
-            "name": "projected_barriers_applied_avg_per_10_min",
-            "prettyName": "Projected Barriers Applied Per 10 Min",
-            "weight": 1,
+          "self_healing_avg_per_10_min": {
+            "name": "self_healing_avg_per_10_min",
+            "prettyName": "Self Healing Done Per 10 Min",
+            "weight": 1.2,
             "required": true
+          },
+          "defensive_assists_avg_per_10_min": {
+            "name": "defensive_assists_avg_per_10_min",
+            "prettyName": "Defensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "offensive_assists_avg_per_10_min": {
+            "name": "offensive_assists_avg_per_10_min",
+            "prettyName": "Offensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "enemies_slept_avg_per_10_min": {
+            "name": "enemies_slept_avg_per_10_min",
+            "prettyName": "Enemies Slept Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "nano_boost_assists_avg_per_10_min": {
+            "name": "nano_boost_assists_avg_per_10_min",
+            "prettyName": "Nano Boost Assists Per 10 Min",
+            "weight": 1.5,
+            "required": false
           },
           "win_percentage": {
             "name": "win_percentage",
@@ -69,55 +81,331 @@
         },
         "stats": {
           "objective_kills_avg_per_10_min": {
-            "relative": 1.01003861003861,
-            "actual": 6.54
+            "relative": 1.2048780487804878,
+            "actual": 4.94
           },
           "eliminations_avg_per_10_min": {
-            "relative": 0.9362425616321904,
-            "actual": 16.52
+            "relative": 1.0208574739281575,
+            "actual": 8.81
           },
           "final_blows_avg_per_10_min": {
-            "relative": 0.8901453957996769,
-            "actual": 5.51
+            "relative": 0.9433962264150942,
+            "actual": 2
           },
           "hero_damage_done_avg_per_10_min": {
-            "relative": 1.0591805766312594,
-            "actual": 10470
+            "relative": 1.0032826022082961,
+            "actual": 3362
           },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 1.1026430485025391,
-            "actual": 13788
+          "healing_done_avg_per_10_min": {
+            "relative": 1.023083403538332,
+            "actual": 8096
           },
-          "damage_blocked_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
+          "self_healing_avg_per_10_min": {
+            "relative": 0.7466467958271237,
+            "actual": 167
           },
-          "average_energy": {
-            "relative": 1.098901098901099,
-            "actual": 50
+          "defensive_assists_avg_per_10_min": {
+            "relative": 1.243275199527047,
+            "actual": 14.02
           },
-          "projected_barriers_applied_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
+          "offensive_assists_avg_per_10_min": {
+            "relative": 1.243275199527047,
+            "actual": 14.02
+          },
+          "enemies_slept_avg_per_10_min": {
+            "relative": 0.845437616387337,
+            "actual": 4.54
+          },
+          "nano_boost_assists_avg_per_10_min": {
+            "relative": 1.0262172284644195,
+            "actual": 2.74
           },
           "win_percentage": {
-            "relative": 0.9736842105263158,
-            "actual": 37
+            "relative": 1.2162162162162162,
+            "actual": 45
           },
           "time_played": {
-            "relative": 1.1372549019607843,
-            "actual": 29
+            "relative": 1.530612244897959,
+            "actual": 150
           },
           "OVERALL": {
-            "relative": 0.829677117007794,
-            "actual": 0.829677117007794
+            "relative": 1.0924434721041218,
+            "actual": 1.0924434721041218
           }
         }
       },
       {
-        "name": "MegaArcon",
-        "overall": 0.7857074983768213,
-        "time_played": 22,
+        "name": "Zaralus",
+        "overall": 1.0337410173151,
+        "time_played": 124,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1,
+            "required": true
+          },
+          "healing_done_avg_per_10_min": {
+            "name": "healing_done_avg_per_10_min",
+            "prettyName": "Healing Done Per 10 Min",
+            "weight": 2,
+            "required": true
+          },
+          "self_healing_avg_per_10_min": {
+            "name": "self_healing_avg_per_10_min",
+            "prettyName": "Self Healing Done Per 10 Min",
+            "weight": 1.2,
+            "required": true
+          },
+          "defensive_assists_avg_per_10_min": {
+            "name": "defensive_assists_avg_per_10_min",
+            "prettyName": "Defensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "offensive_assists_avg_per_10_min": {
+            "name": "offensive_assists_avg_per_10_min",
+            "prettyName": "Offensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "enemies_slept_avg_per_10_min": {
+            "name": "enemies_slept_avg_per_10_min",
+            "prettyName": "Enemies Slept Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "nano_boost_assists_avg_per_10_min": {
+            "name": "nano_boost_assists_avg_per_10_min",
+            "prettyName": "Nano Boost Assists Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 0.9268292682926828,
+            "actual": 3.8
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1.1541135573580532,
+            "actual": 9.96
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1.3349056603773584,
+            "actual": 2.83
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 0.9564309161444345,
+            "actual": 3205
+          },
+          "healing_done_avg_per_10_min": {
+            "relative": 0.9102358887952823,
+            "actual": 7203
+          },
+          "self_healing_avg_per_10_min": {
+            "relative": 1.180327868852459,
+            "actual": 264
+          },
+          "defensive_assists_avg_per_10_min": {
+            "relative": 0.9905409399940882,
+            "actual": 11.17
+          },
+          "offensive_assists_avg_per_10_min": {
+            "relative": 0.9905409399940882,
+            "actual": 11.17
+          },
+          "enemies_slept_avg_per_10_min": {
+            "relative": 0.8286778398510243,
+            "actual": 4.45
+          },
+          "nano_boost_assists_avg_per_10_min": {
+            "relative": 1.2134831460674158,
+            "actual": 3.24
+          },
+          "win_percentage": {
+            "relative": 0.7027027027027027,
+            "actual": 26
+          },
+          "time_played": {
+            "relative": 1.2653061224489797,
+            "actual": 124
+          },
+          "OVERALL": {
+            "relative": 1.0337410173151,
+            "actual": 1.0337410173151
+          }
+        }
+      },
+      {
+        "name": "Dutchy",
+        "overall": 0.873815510580778,
+        "time_played": 20,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1,
+            "required": true
+          },
+          "healing_done_avg_per_10_min": {
+            "name": "healing_done_avg_per_10_min",
+            "prettyName": "Healing Done Per 10 Min",
+            "weight": 2,
+            "required": true
+          },
+          "self_healing_avg_per_10_min": {
+            "name": "self_healing_avg_per_10_min",
+            "prettyName": "Self Healing Done Per 10 Min",
+            "weight": 1.2,
+            "required": true
+          },
+          "defensive_assists_avg_per_10_min": {
+            "name": "defensive_assists_avg_per_10_min",
+            "prettyName": "Defensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "offensive_assists_avg_per_10_min": {
+            "name": "offensive_assists_avg_per_10_min",
+            "prettyName": "Offensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "enemies_slept_avg_per_10_min": {
+            "name": "enemies_slept_avg_per_10_min",
+            "prettyName": "Enemies Slept Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "nano_boost_assists_avg_per_10_min": {
+            "name": "nano_boost_assists_avg_per_10_min",
+            "prettyName": "Nano Boost Assists Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 0.8682926829268292,
+            "actual": 3.56
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 0.8250289687137891,
+            "actual": 7.12
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 0.7216981132075472,
+            "actual": 1.53
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1.0402864816472694,
+            "actual": 3486
+          },
+          "healing_done_avg_per_10_min": {
+            "relative": 1.0666807076663858,
+            "actual": 8441
+          },
+          "self_healing_avg_per_10_min": {
+            "relative": 1.0730253353204173,
+            "actual": 240
+          },
+          "defensive_assists_avg_per_10_min": {
+            "relative": 0.766183860478865,
+            "actual": 8.64
+          },
+          "offensive_assists_avg_per_10_min": {
+            "relative": 0.766183860478865,
+            "actual": 8.64
+          },
+          "enemies_slept_avg_per_10_min": {
+            "relative": 1.3258845437616387,
+            "actual": 7.12
+          },
+          "nano_boost_assists_avg_per_10_min": {
+            "relative": 0.7602996254681648,
+            "actual": 2.03
+          },
+          "win_percentage": {
+            "relative": 1.0810810810810811,
+            "actual": 40
+          },
+          "time_played": {
+            "relative": 0.20408163265306123,
+            "actual": 20
+          },
+          "OVERALL": {
+            "relative": 0.873815510580778,
+            "actual": 0.873815510580778
+          }
+        }
+      }
+    ],
+    "moira": [
+      {
+        "name": "Dirtnapper",
+        "overall": 1,
+        "time_played": 21,
         "fields": {
           "objective_kills_avg_per_10_min": {
             "name": "objective_kills_avg_per_10_min",
@@ -143,27 +431,114 @@
             "weight": 1.5,
             "required": true
           },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": true
-          },
-          "damage_blocked_avg_per_10_min": {
-            "name": "damage_blocked_avg_per_10_min",
-            "prettyName": "Damage Blocked Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "average_energy": {
-            "name": "average_energy",
-            "prettyName": "Average Energy",
+          "healing_done_avg_per_10_min": {
+            "name": "healing_done_avg_per_10_min",
+            "prettyName": "Healing Done Per 10 Min",
             "weight": 2,
             "required": true
           },
-          "projected_barriers_applied_avg_per_10_min": {
-            "name": "projected_barriers_applied_avg_per_10_min",
-            "prettyName": "Projected Barriers Applied Per 10 Min",
+          "defensive_assists_avg_per_10_min": {
+            "name": "defensive_assists_avg_per_10_min",
+            "prettyName": "Defensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "coalescence_healing_avg_per_10_min": {
+            "name": "coalescence_healing_avg_per_10_min",
+            "prettyName": "Coalescence Healing Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 4.22
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 12.65
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5.62
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5564
+          },
+          "healing_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 7881
+          },
+          "defensive_assists_avg_per_10_min": {
+            "relative": 1,
+            "actual": 8.9
+          },
+          "coalescence_healing_avg_per_10_min": {
+            "relative": 1,
+            "actual": 593
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 46
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 21
+          },
+          "OVERALL": {
+            "relative": 1,
+            "actual": 1
+          }
+        }
+      }
+    ],
+    "sojourn": [
+      {
+        "name": "Dirtnapper",
+        "overall": 0.8823529411764706,
+        "time_played": 105,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "all_damage_done_avg_per_10_min": {
+            "name": "all_damage_done_avg_per_10_min",
+            "prettyName": "Damage Done Average",
+            "weight": 1,
+            "required": true
+          },
+          "damage_blocked_average": {
+            "name": "damage_blocked_average",
+            "prettyName": "Damage Blocked Average",
             "weight": 1,
             "required": true
           },
@@ -182,48 +557,36 @@
         },
         "stats": {
           "objective_kills_avg_per_10_min": {
-            "relative": 0.98996138996139,
-            "actual": 6.41
+            "relative": 1,
+            "actual": 6.02
           },
           "eliminations_avg_per_10_min": {
-            "relative": 1.0637574383678097,
-            "actual": 18.77
+            "relative": 1,
+            "actual": 16.15
           },
           "final_blows_avg_per_10_min": {
-            "relative": 1.1098546042003232,
-            "actual": 6.87
+            "relative": 1,
+            "actual": 7.55
           },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 0.9408194233687405,
-            "actual": 9300
+          "all_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 14293
           },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 0.8973569514974609,
-            "actual": 11221
-          },
-          "damage_blocked_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
-          },
-          "average_energy": {
-            "relative": 0.9010989010989011,
-            "actual": 41
-          },
-          "projected_barriers_applied_avg_per_10_min": {
+          "damage_blocked_average": {
             "relative": 0,
             "actual": 0
           },
           "win_percentage": {
-            "relative": 1.0263157894736843,
-            "actual": 39
+            "relative": 1,
+            "actual": 30
           },
           "time_played": {
-            "relative": 0.8627450980392157,
-            "actual": 22
+            "relative": 1,
+            "actual": 105
           },
           "OVERALL": {
-            "relative": 0.7857074983768213,
-            "actual": 0.7857074983768213
+            "relative": 0.8823529411764706,
+            "actual": 0.8823529411764706
           }
         }
       }
@@ -682,274 +1045,6 @@
           "OVERALL": {
             "relative": 0.9915060651133741,
             "actual": 0.9915060651133741
-          }
-        }
-      }
-    ],
-    "ana": [
-      {
-        "name": "Zaralus",
-        "overall": 1.0987752770312535,
-        "time_played": 124,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1,
-            "required": true
-          },
-          "healing_done_avg_per_10_min": {
-            "name": "healing_done_avg_per_10_min",
-            "prettyName": "Healing Done Per 10 Min",
-            "weight": 2,
-            "required": true
-          },
-          "self_healing_avg_per_10_min": {
-            "name": "self_healing_avg_per_10_min",
-            "prettyName": "Self Healing Done Per 10 Min",
-            "weight": 1.2,
-            "required": true
-          },
-          "defensive_assists_avg_per_10_min": {
-            "name": "defensive_assists_avg_per_10_min",
-            "prettyName": "Defensive Assists Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "offensive_assists_avg_per_10_min": {
-            "name": "offensive_assists_avg_per_10_min",
-            "prettyName": "Offensive Assists Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "enemies_slept_avg_per_10_min": {
-            "name": "enemies_slept_avg_per_10_min",
-            "prettyName": "Enemies Slept Per 10 Min",
-            "weight": 1.5,
-            "required": false
-          },
-          "nano_boost_assists_avg_per_10_min": {
-            "name": "nano_boost_assists_avg_per_10_min",
-            "prettyName": "Nano Boost Assists Per 10 Min",
-            "weight": 1.5,
-            "required": false
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1.0326086956521738,
-            "actual": 3.8
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1.1662763466042154,
-            "actual": 9.96
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1.2981651376146788,
-            "actual": 2.83
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 0.9580032879988044,
-            "actual": 3205
-          },
-          "healing_done_avg_per_10_min": {
-            "relative": 0.9208642290974175,
-            "actual": 7203
-          },
-          "self_healing_avg_per_10_min": {
-            "relative": 1.0476190476190477,
-            "actual": 264
-          },
-          "defensive_assists_avg_per_10_min": {
-            "relative": 1.12771327612317,
-            "actual": 11.17
-          },
-          "offensive_assists_avg_per_10_min": {
-            "relative": 1.12771327612317,
-            "actual": 11.17
-          },
-          "enemies_slept_avg_per_10_min": {
-            "relative": 0.7692307692307693,
-            "actual": 4.45
-          },
-          "nano_boost_assists_avg_per_10_min": {
-            "relative": 1.2296015180265656,
-            "actual": 3.24
-          },
-          "win_percentage": {
-            "relative": 0.7878787878787878,
-            "actual": 26
-          },
-          "time_played": {
-            "relative": 1.7222222222222223,
-            "actual": 124
-          },
-          "OVERALL": {
-            "relative": 1.0987752770312535,
-            "actual": 1.0987752770312535
-          }
-        }
-      },
-      {
-        "name": "Dutchy",
-        "overall": 0.9012247229687466,
-        "time_played": 20,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1,
-            "required": true
-          },
-          "healing_done_avg_per_10_min": {
-            "name": "healing_done_avg_per_10_min",
-            "prettyName": "Healing Done Per 10 Min",
-            "weight": 2,
-            "required": true
-          },
-          "self_healing_avg_per_10_min": {
-            "name": "self_healing_avg_per_10_min",
-            "prettyName": "Self Healing Done Per 10 Min",
-            "weight": 1.2,
-            "required": true
-          },
-          "defensive_assists_avg_per_10_min": {
-            "name": "defensive_assists_avg_per_10_min",
-            "prettyName": "Defensive Assists Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "offensive_assists_avg_per_10_min": {
-            "name": "offensive_assists_avg_per_10_min",
-            "prettyName": "Offensive Assists Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "enemies_slept_avg_per_10_min": {
-            "name": "enemies_slept_avg_per_10_min",
-            "prettyName": "Enemies Slept Per 10 Min",
-            "weight": 1.5,
-            "required": false
-          },
-          "nano_boost_assists_avg_per_10_min": {
-            "name": "nano_boost_assists_avg_per_10_min",
-            "prettyName": "Nano Boost Assists Per 10 Min",
-            "weight": 1.5,
-            "required": false
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 0.9673913043478262,
-            "actual": 3.56
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 0.8337236533957845,
-            "actual": 7.12
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 0.7018348623853211,
-            "actual": 1.53
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1.0419967120011957,
-            "actual": 3486
-          },
-          "healing_done_avg_per_10_min": {
-            "relative": 1.0791357709025824,
-            "actual": 8441
-          },
-          "self_healing_avg_per_10_min": {
-            "relative": 0.9523809523809523,
-            "actual": 240
-          },
-          "defensive_assists_avg_per_10_min": {
-            "relative": 0.8722867238768298,
-            "actual": 8.64
-          },
-          "offensive_assists_avg_per_10_min": {
-            "relative": 0.8722867238768298,
-            "actual": 8.64
-          },
-          "enemies_slept_avg_per_10_min": {
-            "relative": 1.2307692307692308,
-            "actual": 7.12
-          },
-          "nano_boost_assists_avg_per_10_min": {
-            "relative": 0.7703984819734345,
-            "actual": 2.03
-          },
-          "win_percentage": {
-            "relative": 1.2121212121212122,
-            "actual": 40
-          },
-          "time_played": {
-            "relative": 0.2777777777777778,
-            "actual": 20
-          },
-          "OVERALL": {
-            "relative": 0.9012247229687466,
-            "actual": 0.9012247229687466
           }
         }
       }
@@ -2237,6 +2332,234 @@
           "OVERALL": {
             "relative": 0.7727272727272727,
             "actual": 0.7727272727272727
+          }
+        }
+      }
+    ],
+    "zarya": [
+      {
+        "name": "Nuuga",
+        "overall": 0.829677117007794,
+        "time_played": 29,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 0.5,
+            "required": true
+          },
+          "damage_blocked_avg_per_10_min": {
+            "name": "damage_blocked_avg_per_10_min",
+            "prettyName": "Damage Blocked Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "average_energy": {
+            "name": "average_energy",
+            "prettyName": "Average Energy",
+            "weight": 2,
+            "required": true
+          },
+          "projected_barriers_applied_avg_per_10_min": {
+            "name": "projected_barriers_applied_avg_per_10_min",
+            "prettyName": "Projected Barriers Applied Per 10 Min",
+            "weight": 1,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1.01003861003861,
+            "actual": 6.54
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 0.9362425616321904,
+            "actual": 16.52
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 0.8901453957996769,
+            "actual": 5.51
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1.0591805766312594,
+            "actual": 10470
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 1.1026430485025391,
+            "actual": 13788
+          },
+          "damage_blocked_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "average_energy": {
+            "relative": 1.098901098901099,
+            "actual": 50
+          },
+          "projected_barriers_applied_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 0.9736842105263158,
+            "actual": 37
+          },
+          "time_played": {
+            "relative": 1.1372549019607843,
+            "actual": 29
+          },
+          "OVERALL": {
+            "relative": 0.829677117007794,
+            "actual": 0.829677117007794
+          }
+        }
+      },
+      {
+        "name": "MegaArcon",
+        "overall": 0.7857074983768213,
+        "time_played": 22,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 0.5,
+            "required": true
+          },
+          "damage_blocked_avg_per_10_min": {
+            "name": "damage_blocked_avg_per_10_min",
+            "prettyName": "Damage Blocked Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "average_energy": {
+            "name": "average_energy",
+            "prettyName": "Average Energy",
+            "weight": 2,
+            "required": true
+          },
+          "projected_barriers_applied_avg_per_10_min": {
+            "name": "projected_barriers_applied_avg_per_10_min",
+            "prettyName": "Projected Barriers Applied Per 10 Min",
+            "weight": 1,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 0.98996138996139,
+            "actual": 6.41
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1.0637574383678097,
+            "actual": 18.77
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1.1098546042003232,
+            "actual": 6.87
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 0.9408194233687405,
+            "actual": 9300
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 0.8973569514974609,
+            "actual": 11221
+          },
+          "damage_blocked_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "average_energy": {
+            "relative": 0.9010989010989011,
+            "actual": 41
+          },
+          "projected_barriers_applied_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 1.0263157894736843,
+            "actual": 39
+          },
+          "time_played": {
+            "relative": 0.8627450980392157,
+            "actual": 22
+          },
+          "OVERALL": {
+            "relative": 0.7857074983768213,
+            "actual": 0.7857074983768213
           }
         }
       }
