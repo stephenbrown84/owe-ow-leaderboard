@@ -40,6 +40,63 @@ var stats;
 var freshRawData = {};
 var activeSeasonNumber = 17;
 
+async function commitFileToGitHub(filePath, contentString, message) {
+    const token = process.env.GITHUB_TOKEN;
+    const repo = process.env.GITHUB_REPOSITORY || 'stephenbrown84/owe-ow-leaderboard';
+    if (!token) {
+        console.log(`[GitHub Commit] GITHUB_TOKEN environment variable not set. Skipping GitHub auto-commit for ${filePath}.`);
+        return;
+    }
+
+    try {
+        const url = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+        const base64Content = Buffer.from(contentString, 'utf8').toString('base64');
+
+        let sha = undefined;
+        const checkRes = await fetch(url, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/vnd.github+json',
+                'User-Agent': 'Overwatch-Leaderboard-App'
+            }
+        });
+
+        if (checkRes.ok) {
+            const checkData = await checkRes.json();
+            sha = checkData.sha;
+        }
+
+        const body = {
+            message: message || `Auto-update ${filePath}`,
+            content: base64Content,
+            branch: 'main'
+        };
+        if (sha) {
+            body.sha = sha;
+        }
+
+        const putRes = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/vnd.github+json',
+                'Content-Type': 'application/json',
+                'User-Agent': 'Overwatch-Leaderboard-App'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (putRes.ok) {
+            console.log(`[GitHub Commit] Successfully committed ${filePath} to GitHub repo ${repo}!`);
+        } else {
+            const errText = await putRes.text();
+            console.error(`[GitHub Commit Error] Failed to commit ${filePath}: ${putRes.status} ${errText}`);
+        }
+    } catch (err) {
+        console.error(`[GitHub Commit Error] Exception committing ${filePath}:`, err.message);
+    }
+}
+
 function saveSeasonSnapshot() {
     if (!stats || !stats.isReady()) {
         console.log("[Snapshot] Stats engine not ready yet.");
@@ -61,11 +118,13 @@ function saveSeasonSnapshot() {
     };
 
     var filename = 'stats_backup/sorted_stats_season' + activeSeasonNumber + '_new.json';
-    fs.writeFile(filename, JSON.stringify(snapshotObj, null, 2), (err) => {
+    var contentString = JSON.stringify(snapshotObj, null, 2);
+    fs.writeFile(filename, contentString, (err) => {
         if (err) {
             console.error("[Snapshot Error] Failed to save " + filename + ":", err);
         } else {
             console.log("[Snapshot] Automatically saved OW2 Season " + activeSeasonNumber + " snapshot to " + filename);
+            commitFileToGitHub(filename, contentString, `[Auto Snapshot] Season ${activeSeasonNumber} update`);
         }
     });
 }
@@ -108,10 +167,12 @@ async function refreshOWStats() {
     }
     stats = new Stats(freshRawData);
     var targetPath = fs.existsSync('stats_backup') ? 'stats_backup/ow_stats.json' : 'ow_stats.json';
-    fs.writeFile(targetPath, JSON.stringify(stats.getRawStats()), (err) => {
+    var rawStatsString = JSON.stringify(stats.getRawStats());
+    fs.writeFile(targetPath, rawStatsString, (err) => {
         if (err) console.log("Unable to save " + targetPath + "!");
         else {
             console.log(targetPath + ' was saved');
+            commitFileToGitHub(targetPath, rawStatsString, `[Auto Update] ow_stats.json raw data`);
             saveSeasonSnapshot();
         }
     });
