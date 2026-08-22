@@ -963,7 +963,37 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 $qProvider.errorOnUnhandledRejections(false);
             }
         }
-    ]);
+    ])
+    .directive('ngTouchstart', function($parse) {
+        return function(scope, element, attrs) {
+            var fn = $parse(attrs.ngTouchstart);
+            element.bind('touchstart', function(event) {
+                scope.$apply(function() {
+                    fn(scope, {$event: event});
+                });
+            });
+        };
+    })
+    .directive('ngTouchend', function($parse) {
+        return function(scope, element, attrs) {
+            var fn = $parse(attrs.ngTouchend);
+            element.bind('touchend', function(event) {
+                scope.$apply(function() {
+                    fn(scope, {$event: event});
+                });
+            });
+        };
+    })
+    .directive('ngTouchmove', function($parse) {
+        return function(scope, element, attrs) {
+            var fn = $parse(attrs.ngTouchmove);
+            element.bind('touchmove', function(event) {
+                scope.$apply(function() {
+                    fn(scope, {$event: event});
+                });
+            });
+        };
+    });
 
 window.addEventListener('orientationchange', function() {
     setTimeout(function() {

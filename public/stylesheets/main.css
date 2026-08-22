@@ -134,8 +134,10 @@ body {
         opacity: 1 !important;
         transition: all 0.15s ease !important;
         -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
         user-select: none !important;
         -webkit-user-select: none !important;
+        touch-action: manipulation !important;
     }
 
     .card-hero-icon {
@@ -151,8 +153,10 @@ body {
         opacity: 0.65;
         transition: all 0.15s ease !important;
         -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
         user-select: none !important;
         -webkit-user-select: none !important;
+        touch-action: manipulation !important;
     }
 
     .card-hero-icon:hover {
