@@ -225,12 +225,14 @@ app.get('/bestfit', function (request, response) {
 
 });
 
+app.get('/', function(request, response) {
+    response.sendFile(__dirname + '/public/index.html');
+});
+
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
     console.log(env);
     initOWStats();
-    if ((env == 'release') || (env == 'devproxy')) {
-        refreshOWStats();
-        setInterval(refreshOWStats, 600000);
-    }
+    refreshOWStats();
+    setInterval(refreshOWStats, 600000);
 });
