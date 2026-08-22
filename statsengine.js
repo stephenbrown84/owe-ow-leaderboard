@@ -500,6 +500,33 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'immortality_field_deaths_prevented_avg_per_10_min', prettyName: 'Deaths Prevented Per 10 Min', weight: 1.5, required: true }
         ];
     }
+    else if (hero == 'shion') {
+        fields = [
+            { name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: false },
+            { name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, required: false },
+            { name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: false },
+            { name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: false },
+            { name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: false },
+            { name: 'joyride_damage_done_avg_per_10_min', prettyName: 'Joyride Damage Per 10 Min', weight: 1.25, required: false },
+            { name: 'joyride_air_launch_accuracy', prettyName: 'Joyride Air Launch Accuracy', weight: 1.25, required: false },
+            { name: 'execution_accuracy', prettyName: 'Execution Accuracy', weight: 1.25, required: false },
+            { name: 'satsuriku_spree_kills_avg_per_10_min', prettyName: 'Satsuriku Spree Kills Per 10 Min', weight: 1.5, required: false }
+        ];
+    }
+    else if (hero == 'anran') {
+        fields = [
+            { name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: false },
+            { name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, required: false },
+            { name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: false },
+            { name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: false },
+            { name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: false },
+            { name: 'dancing_blaze_kills_avg_per_10_min', prettyName: 'Dancing Blaze Kills Per 10 Min', weight: 1.0, required: false },
+            { name: 'enemies_ignited_avg_per_10_min', prettyName: 'Enemies Ignited Per 10 Min', weight: 1.0, required: false },
+            { name: 'fan_the_flames_accuracy', prettyName: 'Fan the Flames Accuracy', weight: 1.0, required: false },
+            { name: 'critical_hit_damage_avg_per_10_min', prettyName: 'Critical Hit Damage Per 10 Min', weight: 1.25, required: false },
+            { name: 'ultimate_kills_avg_per_10_min', prettyName: 'Ultimate Kills Per 10 Min', weight: 1.25, required: false }
+        ];
+    }
     else {
         fields = [
             //{name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
