@@ -344,6 +344,21 @@ body.body-background-image {
     gap: 12px;
 }
 
+.header-title-link {
+    text-decoration: none !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+}
+
+.header-title-link:hover {
+    text-decoration: none !important;
+}
+
+.header-title-link:hover .header-title {
+    opacity: 0.9 !important;
+    transform: translateY(-1px) !important;
+}
+
 .header-title {
     margin: 0;
     font-size: 2.2rem;
@@ -353,25 +368,59 @@ body.body-background-image {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 156, 0, 0.25);
+    transition: all 0.2s ease !important;
+}
+
+.nav-back-btn {
+    background: rgba(0, 210, 255, 0.12) !important;
+    border: 1px solid rgba(0, 210, 255, 0.35) !important;
+    color: #00d2ff !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    padding: 8px 18px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+.nav-back-btn:hover {
+    background: rgba(0, 210, 255, 0.25) !important;
+    color: #ffffff !important;
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 16px rgba(0, 210, 255, 0.4) !important;
+    transform: translateY(-2px) !important;
+    text-decoration: none !important;
 }
 
 .hint-badge {
-    background: rgba(0, 210, 255, 0.12);
-    border: 1px solid rgba(0, 210, 255, 0.3);
-    color: #7ce3ff;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-size: 1.0rem;
-    display: inline-flex;
-    align-items: center;
+    background: linear-gradient(135deg, rgba(20, 42, 77, 0.92) 0%, rgba(35, 68, 112, 0.92) 100%) !important;
+    border: 1px solid #00d2ff !important;
+    color: #f8fafc !important;
+    padding: 10px 22px !important;
+    border-radius: 24px !important;
+    font-size: 1.15rem !important;
+    font-weight: 500 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    box-shadow: 0 4px 16px rgba(0, 210, 255, 0.25) !important;
+}
+
+.hint-badge strong {
+    color: #ff9c00 !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.3px !important;
 }
 
 .icon-svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     vertical-align: middle;
     fill: currentColor;
-    margin-right: 6px;
+    margin-right: 8px;
 }
 
 .top-controls-card {
@@ -637,62 +686,73 @@ body.body-background-image {
 }
 
 .control-label {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: #cad5e2;
-    margin: 0;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    letter-spacing: 0.3px !important;
 }
 
 .custom-select {
-    background: #161b22;
-    color: #f0f6fc;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 1.0rem;
-    outline: none;
-    transition: border-color 0.2s;
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 8px !important;
+    padding: 9px 16px !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
 }
 
 .custom-select:focus {
-    border-color: #ff9c00;
+    border-color: #ff9c00 !important;
+    box-shadow: 0 0 12px rgba(255, 156, 0, 0.4) !important;
 }
 
 .modern-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 18px;
-    font-size: 1.0rem;
-    font-weight: 600;
-    border-radius: 8px;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 9px 20px !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
     text-decoration: none !important;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
+    transition: all 0.2s ease !important;
+    letter-spacing: 0.4px !important;
 }
 
 .btn-blizzard {
-    background: rgba(0, 170, 255, 0.18);
-    color: #66ccff;
-    border-color: rgba(0, 170, 255, 0.35);
+    background: #0b192e !important;
+    color: #38bdf8 !important;
+    border: 1.5px solid #00aaff !important;
+    box-shadow: 0 4px 14px rgba(0, 170, 255, 0.2) !important;
 }
 
 .btn-blizzard:hover {
-    background: #00aaff;
-    color: #fff;
-    box-shadow: 0 0 14px rgba(0, 170, 255, 0.5);
+    background: #0080ff !important;
+    color: #ffffff !important;
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+    text-decoration: none !important;
 }
 
 .btn-bestfit {
-    background: rgba(168, 85, 247, 0.18);
-    color: #c084fc;
-    border-color: rgba(168, 85, 247, 0.35);
+    background: #1e112a !important;
+    color: #c084fc !important;
+    border: 1.5px solid #a855f7 !important;
+    box-shadow: 0 4px 14px rgba(168, 85, 247, 0.2) !important;
 }
 
 .btn-bestfit:hover {
-    background: #a855f7;
-    color: #fff;
-    box-shadow: 0 0 14px rgba(168, 85, 247, 0.5);
+    background: #9333ea !important;
+    color: #ffffff !important;
+    border-color: #c084fc !important;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.6) !important;
+    transform: translateY(-2px) !important;
+    text-decoration: none !important;
 }
 
 .season-selector-wrapper {
@@ -719,9 +779,9 @@ body.body-background-image {
 }
 
 .nav-tabs > li > a {
-    background: rgba(22, 27, 38, 0.7) !important;
-    color: #94a3b8 !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: rgba(30, 41, 59, 0.85) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
     border-radius: 10px 10px 0 0 !important;
     padding: 12px 28px !important;
     font-size: 1.15rem !important;
@@ -732,9 +792,9 @@ body.body-background-image {
 }
 
 .nav-tabs > li > a:hover {
-    background: rgba(30, 38, 54, 0.9) !important;
-    color: #00d2ff !important;
-    border-color: rgba(0, 210, 255, 0.4) !important;
+    background: rgba(51, 65, 85, 0.95) !important;
+    color: #ffffff !important;
+    border-color: #00d2ff !important;
     transform: translateY(-2px);
 }
 
