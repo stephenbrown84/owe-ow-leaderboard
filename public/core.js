@@ -891,3 +891,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             }
         }
     ]);
+
+window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
+        window.dispatchEvent(new Event('resize'));
+    }, 300);
+});

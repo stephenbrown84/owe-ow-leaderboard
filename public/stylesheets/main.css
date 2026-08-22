@@ -1158,13 +1158,18 @@ html, body.body-background-image {
         height: 48px !important;
     }
 
-    .graph-div {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
     .data-row {
         width: 100% !important;
+        height: 300px !important;
+    }
+
+    .card-mask {
+        width: 10% !important;
+    }
+
+    .graph-div {
+        width: 86% !important;
+        height: 100% !important;
     }
 }
 
