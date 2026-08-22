@@ -120,30 +120,40 @@ body {
     }
 }
 
-@media screen and (min-width:768px) {
-      .card-hero-icon-selected {
+    .card-hero-icon-selected {
         width: 48px;
         height: 60px;
-        background: #83F52C;
         background-size: cover;
         background-position: center;
-        border-radius: 15px;
-        border-color: #83F52C;
-        border-style: solid;
-        border-width: 4px;
-        margin: 2px;
+        border-radius: 10px;
+        border: 3px solid #ff9c00 !important;
+        margin: 3px;
         display: inline-block;
+        box-shadow: 0 0 14px rgba(255, 156, 0, 0.7) !important;
+        cursor: pointer !important;
+        opacity: 1 !important;
+        transition: all 0.15s ease !important;
     }
 
     .card-hero-icon {
-      width: 48px;
-      height: 60px;
-      background: #ccc;
-      background-size: cover;
-      background-position: center;
-      border-radius: 10px;
-      margin: 2px;
-      display: inline-block;
+        width: 48px;
+        height: 60px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        margin: 3px;
+        display: inline-block;
+        cursor: pointer !important;
+        opacity: 0.65;
+        transition: all 0.15s ease !important;
+    }
+
+    .card-hero-icon:hover {
+        opacity: 1 !important;
+        border-color: #00d2ff !important;
+        transform: translateY(-2px) scale(1.05) !important;
+        box-shadow: 0 0 10px rgba(0, 210, 255, 0.5) !important;
     }
 
     .img-circle-container {
@@ -314,7 +324,7 @@ body.body-background-image {
     color: #e6edf3;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     min-height: 100vh;
-    font-size: 16px !important;
+    font-size: 18px !important;
 }
 
 .header-card {
@@ -736,5 +746,207 @@ body.body-background-image {
     border: 1px solid #ff9c00 !important;
     border-bottom-color: transparent !important;
     box-shadow: 0 0 16px rgba(255, 156, 0, 0.35) !important;
+}
+
+/* BEST FIT ENGINE STYLES */
+.mt-4 {
+    margin-top: 24px !important;
+}
+
+.section-title {
+    color: #e2e8f0 !important;
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 14px !important;
+    letter-spacing: 0.5px !important;
+}
+
+.query-options-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 24px !important;
+    margin-top: 10px !important;
+}
+
+.mode-pill-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.radio-pill-group {
+    display: inline-flex !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    padding: 4px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.radio-pill {
+    padding: 10px 22px !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: #94a3b8 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    margin-bottom: 0 !important;
+    transition: all 0.2s ease !important;
+    user-select: none !important;
+}
+
+.radio-pill:hover {
+    color: #00d2ff !important;
+}
+
+.radio-pill.active {
+    background: linear-gradient(135deg, rgba(255, 156, 0, 0.3) 0%, rgba(0, 210, 255, 0.3) 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid #ff9c00 !important;
+    box-shadow: 0 0 12px rgba(255, 156, 0, 0.35) !important;
+}
+
+.hidden-radio {
+    display: none !important;
+}
+
+.time-played-container {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.input-label {
+    color: #cbd5e1 !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 0 !important;
+}
+
+.time-input {
+    width: 105px !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #f8fafc !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+}
+
+.checkbox-label {
+    cursor: pointer !important;
+}
+
+.bestfit-primary-btn {
+    background: linear-gradient(135deg, #ff9c00 0%, #d97706 100%) !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    font-size: 1.2rem !important;
+    border: none !important;
+    padding: 12px 32px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 16px rgba(255, 156, 0, 0.4) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    letter-spacing: 0.5px !important;
+}
+
+.bestfit-primary-btn:hover {
+    background: linear-gradient(135deg, #ffaa2b 0%, #f59e0b 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 24px rgba(255, 156, 0, 0.6) !important;
+}
+
+.bestfit-results-card {
+    margin-top: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+}
+
+.bestfit-section-card {
+    background: rgba(15, 23, 42, 0.75) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 16px !important;
+    padding: 26px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+.bestfit-section-title {
+    color: #ff9c00 !important;
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+    margin-top: 0 !important;
+    margin-bottom: 22px !important;
+    letter-spacing: 0.5px !important;
+}
+
+.bestfit-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 18px !important;
+}
+
+.bestfit-match-item {
+    background: rgba(30, 41, 59, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 18px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 190px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+.bestfit-icons-row {
+    display: flex !important;
+    gap: 12px !important;
+    margin-bottom: 12px !important;
+}
+
+.bestfit-details {
+    text-align: center !important;
+    color: #cbd5e1 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.55 !important;
+}
+
+.bestfit-hero-name {
+    color: #f8fafc !important;
+    font-weight: 800 !important;
+    font-size: 1.15rem !important;
+}
+
+.bestfit-player-name {
+    color: #00d2ff !important;
+    font-weight: 800 !important;
+    font-size: 1.2rem !important;
+}
+
+.bestfit-skill-score {
+    color: #33ffc2 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+.bestfit-team-total {
+    margin-top: 22px !important;
+    padding-top: 18px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    font-size: 1.3rem !important;
+    color: #f8fafc !important;
+}
+
+.bestfit-team-total b {
+    color: #ff9c00 !important;
+}
+
+.bestfit-team-total b {
+    color: #ff9c00 !important;
 }
 

@@ -1,6 +1,6 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
-<html ng-app="app" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,86 +10,92 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
 
     <script src="./lib/angular/angular.js"></script>
-    <script src="./lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="./bestfit_engine.js"></script>
 </head>
-<body ng-controller="BestFitCtrl" data-ng-init="init()">
+<body class="body-background-image" ng-app="app" ng-controller="BestFitCtrl" data-ng-init="init()">
     <div class="container-fluid">
-        <h2>OWE Leaderboard - Best Fit Engine - Alpha 0.3.0.0</h2>
-        <div>
-            <div class="row col-lg-12">
-                <h4>Heroes</h4>
-                <div class="hero-role-group">
-                    <div ng-class="heroClasses[heroOptions[0].id]" style="background-image:url('imgs/heroes/{{heroOptions[0].id}}.png')" ng-click="toggleAllHeroSelection()"></div>
-                    <div class="img-circle-container">
-                        <div ng-class="roleClasses[ROLES.OFFENSE]" style="background-image: url('imgs/offense-icon.png')" ng-click="toggleClassSelection(ROLES.OFFENSE)"></div>
-                    </div>
-                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
-                </div>
-                <div class="hero-role-group">
-                    <div class="img-circle-container">
-                        <div ng-class="roleClasses[ROLES.DEFENSE]" style="background-image: url('imgs/defense-icon.png')" ng-click="toggleClassSelection(ROLES.DEFENSE)"></div>
-                    </div>
-                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.DEFENSE}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
-                </div>
-            </div>
-            <div class="row col-lg-12">
-                <div class="hero-role-group">
-                    <div class="img-circle-container">
-                        <div ng-class="roleClasses[ROLES.TANK]" style="background-image: url('imgs/tank-icon.png')" ng-click="toggleClassSelection(ROLES.TANK)"></div>
-                    </div>
-                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
-                </div>
-                <div class="hero-role-group">
-                    <div class="img-circle-container">
-                        <div ng-class="roleClasses[ROLES.SUPPORT]" style="background-image: url('imgs/support-icon.png')" ng-click="toggleClassSelection(ROLES.SUPPORT)"></div>
-                    </div>
-                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
-                </div>
-            </div>
+        <!-- HEADER CARD -->
+        <div class="header-card">
+            <h2 class="header-title">OWE Leaderboard - Best Fit Engine - Alpha 0.9.9.9</h2>
         </div>
-        <br/><br/>
-        <div class="row col-lg-12">
-            <h4>Clan Members</h4>
-            <div id="{{m}}_member" ng-repeat="m in clanMembers" ng-class="memberClasses[m]" title="{{m}}" style="background-image: url('imgs/members/{{m.toLowerCase()}}.jpg')" ng-click="toggleMemberSelection(m)"></div>
-            <!--
-            <label ng-repeat="member in clanMembers">
-                <input type="checkbox"
-                       name="selectedMembers[]"
-                       value="{{member}}"
-                       ng-checked="selectedMembers.indexOf(member) > -1"
-                       ng-click="toggleSelection(member)"> {{member}}
-            </label>
-            -->
-        </div>
-        <div class="col-lg-12">
-            <label>
-                <input type="radio" ng-model="gameMode" value="quickplay">
-                Quickplay
-            </label>
-            <label>
-                <input type="radio" ng-model="gameMode" value="competitive">
-                Competitive
-            </label>
-        </div>
-        <div class="col-lg-12">
-            <label>
-                <input type="checkbox"
-                       name="disableOverallSkillResult"
-                       ng-model="disableOverallSkillResult">
-                Disable Overall Skill Results
-            </label>
-        </div>
-        <div class="row col-lg-12">
-            <label>
-                Time Played Minimum:
-                <input data-ng-model="timePlayed" type="number" value="30"/>
-            </label>
-            <button ng-click="getBestFit()">Best Fit Please</button>
-        </div>
-        <div id="results" class="row col-md-12">
 
+        <!-- HERO SELECTOR CARD -->
+        <div class="top-controls-card">
+            <h4 class="section-title">Select Team Heroes</h4>
+            <div class="hero-selector-section">
+                <!-- ALL HEROES ROW -->
+                <div class="hero-role-group">
+                    <div class="role-badge role-all" ng-class="{'role-all-selected': isAllSelected()}" ng-click="toggleAllHeroSelection()" title="Toggle All {{heroes.length}} Heroes">
+                        <img src="imgs/heroes/all.png" class="role-icon"> TOGGLE ALL {{heroes.length}} HEROES
+                    </div>
+                </div>
+
+                <!-- DAMAGE ROLE -->
+                <div class="hero-role-group">
+                    <div class="role-badge role-damage" ng-click="toggleClassSelection(ROLES.OFFENSE)" title="Toggle All Damage Heroes"><img src="imgs/offense-icon.png" class="role-icon"> DAMAGE</div>
+                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                </div>
+
+                <!-- TANK ROLE -->
+                <div class="hero-role-group">
+                    <div class="role-badge role-tank" ng-click="toggleClassSelection(ROLES.TANK)" title="Toggle All Tank Heroes"><img src="imgs/tank-icon.png" class="role-icon"> TANK</div>
+                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                </div>
+
+                <!-- SUPPORT ROLE -->
+                <div class="hero-role-group">
+                    <div class="role-badge role-support" ng-click="toggleClassSelection(ROLES.SUPPORT)" title="Toggle All Support Heroes"><img src="imgs/support-icon.png" class="role-icon"> SUPPORT</div>
+                    <div id="{{h.id}}_hero" ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image: url('imgs/heroes/{{h.id}}.png')" ng-click="toggleHeroSelection(h)"></div>
+                </div>
+            </div>
         </div>
+
+        <!-- CLAN MEMBERS CARD -->
+        <div class="top-controls-card mt-4">
+            <h4 class="section-title">Select Clan Members (Up to 5)</h4>
+            <div class="hero-role-group">
+                <div id="{{m}}_member" ng-repeat="m in clanMembers" ng-class="memberClasses[m]" title="{{m}}" style="background-image: url('imgs/members/{{m.toLowerCase()}}.jpg')" ng-click="toggleMemberSelection(m)"></div>
+            </div>
+        </div>
+
+        <!-- QUERY CONFIGURATION CARD -->
+        <div class="top-controls-card mt-4">
+            <h4 class="section-title">Query Options</h4>
+            <div class="query-options-row">
+                <div class="mode-pill-container">
+                    <span class="input-label">Game Mode:</span>
+                    <div class="radio-pill-group">
+                        <label class="radio-pill" ng-class="{active: gameMode === 'quickplay'}" ng-click="gameMode = 'quickplay'">
+                            <input type="radio" ng-model="gameMode" value="quickplay" class="hidden-radio"> Quick Play
+                        </label>
+                        <label class="radio-pill" ng-class="{active: gameMode === 'competitive'}" ng-click="gameMode = 'competitive'">
+                            <input type="radio" ng-model="gameMode" value="competitive" class="hidden-radio"> Competitive
+                        </label>
+                    </div>
+                </div>
+
+                <div class="time-played-container">
+                    <label class="input-label">
+                        Min. Time Played (Mins):
+                        <input data-ng-model="timePlayed" type="number" class="form-control time-input" min="0"/>
+                    </label>
+                </div>
+
+                <div class="checkbox-container">
+                    <label class="input-label checkbox-label">
+                        <input type="checkbox" name="disableOverallSkillResult" ng-model="disableOverallSkillResult">
+                        Disable Overall Skill Results
+                    </label>
+                </div>
+
+                <button class="bestfit-primary-btn" ng-click="getBestFit()">
+                    Find Best Fit
+                </button>
+            </div>
+        </div>
+
+        <!-- RESULTS CONTAINER -->
+        <div id="results" class="bestfit-results-card"></div>
     </div>
 </body>
 </html>
