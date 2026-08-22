@@ -90,6 +90,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         $scope.selectedSeason = '0';
         $scope.selectedClanMember = '';
 
+        var sliderUpdateTimer = null;
         $scope.slider = {
             minValue: 1,
             maxValue: 4,
@@ -105,6 +106,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                     if (value == 2) return '2nd';
                     if (value == 3) return '3rd';
                     return value + 'th';
+                },
+                onChange: function() {
+                    $scope.updateAllChartsVisibility();
                 }
             }
         };
@@ -158,17 +162,22 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         };
 
         $scope.updateAllChartsVisibility = function () {
-            for (var i = 0; i < $scope.heroes.length; i++) {
-                var heroId = $scope.heroes[i].id;
-                for (var m = 0; m < $scope.modes.length; m++) {
-                    var playMode = $scope.modes[m].id;
+            if (sliderUpdateTimer) {
+                $timeout.cancel(sliderUpdateTimer);
+            }
+            sliderUpdateTimer = $timeout(function () {
+                var playMode = $scope.selectedMode.id;
+                var data = $scope[playMode + 'Data'];
+                if (!data) return;
+
+                for (var i = 0; i < $scope.heroes.length; i++) {
+                    var heroId = $scope.heroes[i].id;
                     var chartObj = $scope["myChartObject_" + playMode + "_" + heroId];
-                    var data = $scope[playMode + 'Data'];
-                    if (chartObj && chartObj.chartConfig && data && data[heroId]) {
+                    if (chartObj && chartObj.show && chartObj.chartConfig && data[heroId]) {
                         $scope.hideUnwantedPeople(data, chartObj.chartConfig, heroId);
                     }
                 }
-            }
+            }, 80);
         };
 
         $scope.$watch('slider.minValue', function(newVal, oldVal) {
@@ -547,21 +556,20 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             if (maxbarCount > data[hero].length)
                 maxbarCount = data[hero].length;
 
+            var changed = false;
             for (var i = 0; i < data[hero].length; i++) {
                 if (!chartConfig.series[i]) continue;
-                if ((i < (minbarCount - 1)) || (i >= maxbarCount)) {
-                    if (chartConfig.series[i].visible) {
-                        chartConfig.series[i].setVisible(false, false);
-                    }
-                } else if (!chartConfig.series[i].visible) {
-                    chartConfig.series[i].setVisible(true, false);
+                var shouldBeVisible = (i >= (minbarCount - 1)) && (i < maxbarCount);
+                if (chartConfig.series[i].visible !== shouldBeVisible) {
+                    chartConfig.series[i].setVisible(shouldBeVisible, false);
+                    changed = true;
                 }
             }
 
-            if (typeof chartConfig.redraw === 'function') {
+            if (changed && typeof chartConfig.redraw === 'function') {
                 chartConfig.redraw();
             }
-        }
+        };
 
         $scope.doReflow = function(playMode, hero) {
             $scope["myChartObject_" + playMode + "_" + hero].chartConfig.reflow();
