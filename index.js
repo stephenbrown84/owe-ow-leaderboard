@@ -122,15 +122,15 @@ function saveSeasonSnapshot() {
     var availableSeasons = Object.keys(seasonSet).map(function(n) { return parseInt(n); }).sort(function(a, b) { return a - b; });
 
     availableSeasons.forEach(function(targetSeason) {
-        var cumulativeRawData = {};
+        var strictRawData = {};
         for (var p in rawData) {
             var pSeason = rawData[p].currentSeason || 24;
-            if (pSeason <= targetSeason) {
-                cumulativeRawData[p] = rawData[p];
+            if (pSeason === targetSeason) {
+                strictRawData[p] = rawData[p];
             }
         }
 
-        var seasonEngine = new Stats(cumulativeRawData);
+        var seasonEngine = new Stats(strictRawData);
         var sorted = seasonEngine.getSortedStats();
         if (sorted && sorted.competitive) {
             var snapshotObj = { competitive: sorted.competitive };
