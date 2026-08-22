@@ -95,20 +95,16 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             maxValue: 4,
             options: {
                 floor: 1,
-                ceil: 12,
+                ceil: 11,
                 step: 1,
+                showTicks: true,
                 showTicksValues: true,
                 translate: function(value) {
-                    if (isNaN(value))
-                        return 'NaN';
-                    else if (value == 1)
-                        return value + '<sup>st</sup>';
-                    else if (value == 2)
-                        return value + '<sup>nd</sup>';
-                    else if (value == 3)
-                        return value + '<sup>rd</sup>';
-                    else
-                        return value + '<sup>th</sup>';
+                    if (isNaN(value)) return '';
+                    if (value == 1) return '1st';
+                    if (value == 2) return '2nd';
+                    if (value == 3) return '3rd';
+                    return value + 'th';
                 }
             }
         };
