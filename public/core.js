@@ -202,16 +202,15 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         $scope.currentHeroClass = $scope.ROLES.ALL;
 
         var touchTimer = null;
-        var isTouchLongPress = false;
+        var lastLongPressTimestamp = 0;
 
         $scope.handleTouchStart = function(h, $event) {
-            isTouchLongPress = false;
             if (touchTimer) $timeout.cancel(touchTimer);
 
             touchTimer = $timeout(function() {
-                isTouchLongPress = true;
+                lastLongPressTimestamp = Date.now();
                 if (navigator.vibrate) {
-                    try { navigator.vibrate(50); } catch(e) {}
+                    try { navigator.vibrate(60); } catch(e) {}
                 }
                 $scope.setCurrentHero(h, { isTouchMultiSelect: true });
             }, 350);
@@ -232,8 +231,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         };
 
         $scope.setCurrentHero = function(h, $event) {
-            if (isTouchLongPress && $event && !$event.isTouchMultiSelect) {
-                isTouchLongPress = false;
+            // Prevent synthetic post-longpress click event from resetting multi-selection!
+            if ($event && !$event.isTouchMultiSelect && (Date.now() - lastLongPressTimestamp < 600)) {
                 return;
             }
 
