@@ -192,53 +192,111 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         $scope.isDataReady = false;
         $scope.currentHeroClass = $scope.ROLES.ALL;
 
-        $scope.setCurrentHero = function(h) {
-            $scope.currentHero = h;
-            $scope.currentHeroClass = h.role;
-            $scope.clearHeroClasses();
-            $scope.clearRoleClasses();
-            $scope.heroClasses[h.id] = 'card-hero-icon-selected';
+        $scope.selectedHeroes = [];
+
+        $scope.setCurrentHero = function(h, $event) {
+            var isCtrl = $event && ($event.ctrlKey || $event.metaKey);
+
+            if (h.id === 'all') {
+                $scope.selectedHeroes = [];
+                $scope.currentHero = $scope.heroOptions[0];
+                $scope.currentHeroClass = $scope.ROLES.ALL;
+                $scope.updateHeroClassHighlights();
+                $scope.loadVisibleCharts();
+                return;
+            }
+
+            if (isCtrl) {
+                var idx = $scope.selectedHeroes.indexOf(h.id);
+                if (idx > -1) {
+                    $scope.selectedHeroes.splice(idx, 1);
+                } else {
+                    $scope.selectedHeroes.push(h.id);
+                }
+
+                if ($scope.selectedHeroes.length === 0) {
+                    $scope.currentHero = $scope.heroOptions[0];
+                } else {
+                    $scope.currentHero = null;
+                }
+            } else {
+                $scope.selectedHeroes = [h.id];
+                $scope.currentHero = h;
+                $scope.currentHeroClass = h.role;
+            }
+
+            $scope.updateHeroClassHighlights();
             $scope.loadVisibleCharts();
-            console.log("charts loaded by setCurrentHero");
-        }
+        };
 
         $scope.setCurrentClass = function(c) {
-            $scope.currentHero = null;
-            $scope.currentHeroClass = c;
-            $scope.clearHeroClasses();
-            $scope.clearRoleClasses();
-            $scope.roleClasses[c] = 'img-circle-card-selected';
+            $scope.selectedHeroes = [];
             for (var i = 0; i < $scope.heroes.length; i++) {
                 var h = $scope.heroes[i];
                 if (h.role === c) {
-                    $scope.heroClasses[h.id] = 'card-hero-icon-selected';
+                    $scope.selectedHeroes.push(h.id);
                 }
             }
+            $scope.currentHero = null;
+            $scope.currentHeroClass = c;
+            $scope.updateHeroClassHighlights();
             $scope.loadVisibleCharts();
-            console.log("charts loaded by setCurrentClass");
-        }
+        };
+
+        $scope.isAllSelected = function() {
+            if ($scope.selectedHeroes && $scope.selectedHeroes.length > 0) {
+                return $scope.selectedHeroes.length === $scope.heroes.length;
+            }
+            return !!($scope.currentHero && $scope.currentHero.id === 'all');
+        };
+
+        $scope.updateHeroClassHighlights = function() {
+            $scope.clearHeroClasses();
+            $scope.clearRoleClasses();
+
+            if ($scope.isAllSelected()) {
+                for (var i = 0; i < $scope.heroOptions.length; i++) {
+                    $scope.heroClasses[$scope.heroOptions[i].id] = 'card-hero-icon-selected';
+                }
+                $scope.roleClasses['all'] = 'role-all-selected';
+            } else if ($scope.selectedHeroes && $scope.selectedHeroes.length > 0) {
+                for (var i = 0; i < $scope.selectedHeroes.length; i++) {
+                    $scope.heroClasses[$scope.selectedHeroes[i]] = 'card-hero-icon-selected';
+                }
+                $scope.roleClasses['all'] = '';
+            } else if ($scope.currentHero) {
+                $scope.heroClasses[$scope.currentHero.id] = 'card-hero-icon-selected';
+                $scope.roleClasses['all'] = '';
+            } else {
+                $scope.roleClasses['all'] = '';
+            }
+
+            if ($scope.currentHeroClass && !$scope.isAllSelected()) {
+                $scope.roleClasses[$scope.currentHeroClass] = 'img-circle-card-selected';
+            }
+        };
 
         $scope.clearHeroClasses = function() {
             for (var i = 0; i < $scope.heroOptions.length; i++) {
                 $scope.heroClasses[$scope.heroOptions[i].id] = 'card-hero-icon';
             }
-        }
+        };
 
         $scope.clearRoleClasses = function() {
             var keys = Object.keys($scope.ROLES);
             for (var i = 0; i < keys.length; i++) {
                 $scope.roleClasses[$scope.ROLES[keys[i]]] = 'img-circle-card';
             }
-        }
+        };
 
         $scope.shouldShow = function(hero, playMode) {
-            if (!$scope.currentHero) {
-                if ($scope.currentHeroClass === hero.role)
-                    return true;
-                return false;
+            if ($scope.selectedMode.id !== playMode) return false;
+            if ($scope.selectedHeroes && $scope.selectedHeroes.length > 0) {
+                return $scope.selectedHeroes.indexOf(hero.id) !== -1;
             }
-            return ($scope.selectedMode.id == playMode) && ($scope.currentHero.id === 'all') || ($scope.currentHero.id === hero.id);
-        }
+            if (!$scope.currentHero || $scope.currentHero.id === 'all') return true;
+            return $scope.currentHero.id === hero.id;
+        };
 
         $scope.fillOutMissingData = function(data) {
             var count = data.length;

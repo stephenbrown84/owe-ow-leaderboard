@@ -25,57 +25,87 @@
 </head>
 <body class="body-background-image" ng-controller="GenericChartCtrl" data-ng-init="init()">
 <div class="container-fluid">
-    <h2>OWE Leaderboard - Alpha 0.3.0.0</h2>
-    <div ng-show="isDataReady">
-        <div class="row col-lg-12">
-            <div class="hero-role-group">
-                <div ng-class="heroClasses[heroOptions[0].id]" style="background-image:url('imgs/heroes/{{heroOptions[0].id}}.png')" ng-click="setCurrentHero(heroOptions[0])"></div>
-                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.OFFENSE]" style="background-image:url('imgs/offense-icon.png')" ng-click="setCurrentClass(ROLES.OFFENSE)"></div></div>
-                <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
-            </div>
-            <div class="hero-role-group">
-                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.TANK]" style="background-image:url('imgs/tank-icon.png')" ng-click="setCurrentClass(ROLES.TANK)"></div></div>
-                <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
-            </div>
-            <div class="hero-role-group">
-                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.SUPPORT]" style="background-image:url('imgs/support-icon.png')" ng-click="setCurrentClass(ROLES.SUPPORT)"></div></div>
-                <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
-            </div>
+    <div class="header-card">
+        <h2 class="header-title">OWE Leaderboard - Alpha 0.9.9.9</h2>
+        <div class="ctrl-click-hint">
+            <span class="hint-badge">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>&nbsp;Multi-Selection: Hold&nbsp;<strong>Ctrl + Left Click</strong>&nbsp;on hero portraits to select and view multiple hero charts at once!
+            </span>
         </div>
+    </div>
 
-        <div class="row col-lg-12" style="margin-bottom:15px;">
-            <label>Show Places Range:</label>
-            <div id="placementSliderDiv" style="display:inline-block; width:50%; vertical-align:middle; margin-left:15px; margin-right:15px;">
-                <rzslider rz-slider-model="slider.minValue"
-                          rz-slider-high="slider.maxValue"
-                          rz-slider-options="slider.options"></rzslider>
-            </div>
-            <label>Top Places Shown:</label>
-            <select name="placesShownSelect" id="placesShownSelect" ng-model="slider.maxValue" ng-options="n for n in [] | range:1:(clanMembers.length+1)" style="padding:4px 8px; font-size:14px; color:#000; border-radius:4px; margin-left:8px;"></select>
-        </div>
-        <div class="row col-lg-12">
-            <div>
-                <label>Clan Members:</label>
-                <select name="clanMemberSelect" id="clanMemberSelect" ng-model="selectedClanMember" ng-options="member for member in clanMembers">
-                </select>
-                <a ng-href="https://overwatch.blizzard.com/en-us/career/{{selectedClanMember}}/" class="btn" target="_blank">PlayOverwatch Stats</a>
-                <a ng-href="https://www.overbuff.com/players/{{selectedClanMember}}" class="btn" target="_blank">Overbuff Stats</a>
-                <a href="./bestfit.html" class="btn" target="_blank">Best Fit Engine</a>
-                <!--
-    <label>
-        Include Seagull?
-        <input type="checkbox" ng-model="seagullAllowedModel" ng-click="loadPlayMode()">
-    </label>
-    -->
-                <div ng-hide="selectedMode.id == 'quickplay'">
-                    <label>Season:</label>
-                    <select name="seasonSelect" id="seasonSelect" ng-model="selectedSeason" ng-change="changeSelectedCompetitiveSeason(selectedSeason)">
-                        <option value="0">Current Season</option>
-                        <option value="all">All Seasons</option>
-                        <option ng-repeat="season in seasons" value="{{season}}">Season {{season}}</option>
-                    </select>
+    <div ng-show="isDataReady">
+        <div class="top-controls-card">
+            <div class="hero-selector-section">
+                <!-- ALL HEROES ROW -->
+                <div class="hero-role-group">
+                    <div class="role-badge role-all" ng-class="{'role-all-selected': isAllSelected()}" ng-click="setCurrentHero(heroOptions[0], $event)" title="Show All {{heroes.length}} Heroes Across All Roles">
+                        <img src="imgs/heroes/all.png" class="role-icon"> SHOW ALL {{heroes.length}} HEROES
+                    </div>
+                </div>
+
+                <!-- DAMAGE ROLE -->
+                <div class="hero-role-group">
+                    <div class="role-badge role-damage" ng-click="setCurrentClass(ROLES.OFFENSE)" title="Select All Damage Heroes"><img src="imgs/offense-icon.png" class="role-icon"> DAMAGE</div>
+                    <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h, $event)"></div>
+                </div>
+
+                <!-- TANK ROLE -->
+                <div class="hero-role-group">
+                    <div class="role-badge role-tank" ng-click="setCurrentClass(ROLES.TANK)" title="Select All Tank Heroes"><img src="imgs/tank-icon.png" class="role-icon"> TANK</div>
+                    <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h, $event)"></div>
+                </div>
+
+                <!-- SUPPORT ROLE -->
+                <div class="hero-role-group">
+                    <div class="role-badge role-support" ng-click="setCurrentClass(ROLES.SUPPORT)" title="Select All Support Heroes"><img src="imgs/support-icon.png" class="role-icon"> SUPPORT</div>
+                    <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" title="{{h.label}}" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h, $event)"></div>
                 </div>
             </div>
+
+            <!-- CONTROLS PANEL -->
+            <div class="controls-panel">
+                <!-- DEDICATED SLIDER ROW -->
+                <div class="slider-control-row">
+                    <div class="slider-label-group">
+                        <label class="control-label">Show Places Range:</label>
+                    </div>
+                    <div id="placementSliderDiv" class="slider-container">
+                        <rzslider rz-slider-model="slider.minValue"
+                                  rz-slider-high="slider.maxValue"
+                                  rz-slider-options="slider.options"></rzslider>
+                    </div>
+                    <div class="top-places-group">
+                        <label class="control-label">Top Places:</label>
+                        <select name="placesShownSelect" id="placesShownSelect" class="custom-select" ng-model="slider.maxValue" ng-options="n for n in [] | range:1:(clanMembers.length+1)"></select>
+                    </div>
+                </div>
+
+                <!-- MEMBER & SEASON SELECTORS ROW -->
+                <div class="actions-control-row">
+                    <div class="member-selector-group">
+                        <label class="control-label">Clan Member:</label>
+                        <select name="clanMemberSelect" id="clanMemberSelect" class="custom-select" ng-model="selectedClanMember" ng-options="member for member in clanMembers">
+                        </select>
+                        <a ng-href="https://overwatch.blizzard.com/en-us/career/{{selectedClanMember}}/" class="modern-btn btn-blizzard" target="_blank">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> PlayOverwatch
+                        </a>
+                        <a href="./bestfit.html" class="modern-btn btn-bestfit" target="_blank">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg> Best Fit Engine
+                        </a>
+                    </div>
+
+                    <div ng-hide="selectedMode.id == 'quickplay'" class="season-selector-wrapper">
+                        <label class="control-label">Season:</label>
+                        <select name="seasonSelect" id="seasonSelect" class="custom-select" ng-model="selectedSeason" ng-change="changeSelectedCompetitiveSeason(selectedSeason)">
+                            <option value="0">Current Season</option>
+                            <option value="all">All Seasons</option>
+                            <option ng-repeat="season in seasons" value="{{season}}">Season {{season}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
             <!--
             Max Players: <input type="number" ng-model="maxNumOfPlayers" ng-change="loadPlayMode()" min="1" max="12"/>
                 -->

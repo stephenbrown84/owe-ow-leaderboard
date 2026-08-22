@@ -1769,6 +1769,121 @@
         }
       }
     ],
+    "reinhardt": [
+      {
+        "name": "Nemisari",
+        "overall": 0.8636363636363636,
+        "time_played": 20,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1,
+            "required": true
+          },
+          "fire_strike_kills_avg_per_10_min": {
+            "name": "fire_strike_kills_avg_per_10_min",
+            "prettyName": "Fire Strike Kills Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "damage_blocked_avg_per_10_min": {
+            "name": "damage_blocked_avg_per_10_min",
+            "prettyName": "Damage Blocked Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "charge_kills_avg_per_10_min": {
+            "name": "charge_kills_avg_per_10_min",
+            "prettyName": "Chaarge Kills Per 10 Min",
+            "weight": 0.5,
+            "required": true
+          },
+          "earthshatter_kills_avg_per_10_min": {
+            "name": "earthshatter_kills_avg_per_10_min",
+            "prettyName": "Earthshatter Kills Per 10 Min",
+            "weight": 0.5,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5.59
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 15.75
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 7.11
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 8338
+          },
+          "fire_strike_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 8.13
+          },
+          "damage_blocked_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "charge_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 4.07
+          },
+          "earthshatter_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5.59
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 100
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 20
+          },
+          "OVERALL": {
+            "relative": 0.8636363636363636,
+            "actual": 0.8636363636363636
+          }
+        }
+      }
+    ],
     "hanzo": [
       {
         "name": "MajorYeehaw",
@@ -2345,121 +2460,6 @@
           "OVERALL": {
             "relative": 0.8823529411764706,
             "actual": 0.8823529411764706
-          }
-        }
-      }
-    ],
-    "reinhardt": [
-      {
-        "name": "Nemisari",
-        "overall": 0.8636363636363636,
-        "time_played": 20,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1,
-            "required": true
-          },
-          "fire_strike_kills_avg_per_10_min": {
-            "name": "fire_strike_kills_avg_per_10_min",
-            "prettyName": "Fire Strike Kills Per 10 Min",
-            "weight": 1,
-            "required": false
-          },
-          "damage_blocked_avg_per_10_min": {
-            "name": "damage_blocked_avg_per_10_min",
-            "prettyName": "Damage Blocked Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "charge_kills_avg_per_10_min": {
-            "name": "charge_kills_avg_per_10_min",
-            "prettyName": "Chaarge Kills Per 10 Min",
-            "weight": 0.5,
-            "required": true
-          },
-          "earthshatter_kills_avg_per_10_min": {
-            "name": "earthshatter_kills_avg_per_10_min",
-            "prettyName": "Earthshatter Kills Per 10 Min",
-            "weight": 0.5,
-            "required": false
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 5.59
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 15.75
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 7.11
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 8338
-          },
-          "fire_strike_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 8.13
-          },
-          "damage_blocked_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
-          },
-          "charge_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 4.07
-          },
-          "earthshatter_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 5.59
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 100
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 20
-          },
-          "OVERALL": {
-            "relative": 0.8636363636363636,
-            "actual": 0.8636363636363636
           }
         }
       }

@@ -305,3 +305,436 @@ h2 {
     font-size: 1.5em;
 }
 
+/* ==========================================
+   Modern Aesthetic & Layout Enhancements
+   ========================================== */
+
+body.body-background-image {
+    background: #0d1117 linear-gradient(180deg, #0d1117 0%, #161b22 100%) !important;
+    color: #e6edf3;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    font-size: 16px !important;
+}
+
+.header-card {
+    background: rgba(22, 27, 38, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 18px 28px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.header-title {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ff9c00 0%, #00d2ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 156, 0, 0.25);
+}
+
+.hint-badge {
+    background: rgba(0, 210, 255, 0.12);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    color: #7ce3ff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 1.0rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.icon-svg {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-right: 6px;
+}
+
+.top-controls-card {
+    background: rgba(22, 27, 38, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hero-selector-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.all-heroes-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.all-heroes-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: 10px !important;
+    padding: 6px 16px !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    user-select: none !important;
+    width: auto !important;
+    height: auto !important;
+    opacity: 0.8;
+}
+
+.all-heroes-btn:hover {
+    background: rgba(0, 210, 255, 0.15) !important;
+    border-color: #00d2ff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 14px rgba(0, 210, 255, 0.4) !important;
+    opacity: 1 !important;
+}
+
+.all-heroes-btn.card-hero-icon-selected {
+    background: linear-gradient(135deg, rgba(255, 156, 0, 0.25) 0%, rgba(0, 210, 255, 0.25) 100%) !important;
+    border: 2px solid #ff9c00 !important;
+    box-shadow: 0 0 16px rgba(255, 156, 0, 0.9) !important;
+    opacity: 1 !important;
+}
+
+.all-heroes-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.all-heroes-label {
+    font-size: 1.0rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: #ffffff;
+}
+
+.role-all {
+    background: rgba(168, 85, 247, 0.22) !important;
+    color: #e2b6ff !important;
+    border: 1px solid rgba(168, 85, 247, 0.45) !important;
+    padding: 8px 16px !important;
+    min-height: 42px !important;
+    font-size: 0.92rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.6px !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.role-all .role-icon {
+    width: 26px !important;
+    height: 26px !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
+}
+
+.role-all:hover {
+    background: rgba(168, 85, 247, 0.4) !important;
+    border-color: #c084fc !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 16px rgba(168, 85, 247, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+.role-all-selected {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.45) 0%, rgba(0, 210, 255, 0.35) 100%) !important;
+    border: 2px solid #c084fc !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.9) !important;
+}
+
+.hero-role-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.role-badge {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.role-badge .role-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.role-damage {
+    background: rgba(249, 158, 26, 0.2);
+    color: #ffaa33;
+    border: 1px solid rgba(249, 158, 26, 0.4);
+}
+
+.role-tank {
+    background: rgba(0, 170, 255, 0.2);
+    color: #33bbff;
+    border: 1px solid rgba(0, 170, 255, 0.4);
+}
+
+.role-support {
+    background: rgba(0, 230, 168, 0.2);
+    color: #33ffc2;
+    border: 1px solid rgba(0, 230, 168, 0.4);
+}
+
+.card-hero-icon {
+    width: 48px !important;
+    height: 56px !important;
+    border-radius: 8px !important;
+    border: 2px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    cursor: pointer !important;
+    opacity: 0.65;
+    margin: 0 !important;
+    display: inline-block !important;
+}
+
+.card-hero-icon:hover {
+    transform: translateY(-3px) scale(1.12);
+    border-color: #00d2ff !important;
+    opacity: 1 !important;
+    box-shadow: 0 0 14px rgba(0, 210, 255, 0.6) !important;
+    z-index: 10;
+}
+
+.card-hero-icon-selected {
+    width: 48px !important;
+    height: 56px !important;
+    border-radius: 8px !important;
+    border: 2.5px solid #ff9c00 !important;
+    box-shadow: 0 0 16px rgba(255, 156, 0, 0.95), inset 0 0 6px rgba(255, 156, 0, 0.5) !important;
+    transform: scale(1.08);
+    opacity: 1 !important;
+    margin: 0 !important;
+    display: inline-block !important;
+    z-index: 5;
+}
+
+.controls-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.slider-control-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 14px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+}
+
+.slider-container {
+    flex: 1;
+    min-width: 260px;
+    padding: 0 10px;
+}
+
+.rzslider {
+    margin: 15px 0 10px 0 !important;
+}
+
+.rzslider .rz-bar {
+    background: rgba(255, 255, 255, 0.2) !important;
+    height: 6px !important;
+    border-radius: 3px !important;
+}
+
+.rzslider .rz-selection {
+    background: linear-gradient(90deg, #ff9c00 0%, #00d2ff 100%) !important;
+}
+
+.rzslider .rz-pointer {
+    width: 20px !important;
+    height: 20px !important;
+    top: -7px !important;
+    background-color: #ff9c00 !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 10px rgba(255, 156, 0, 0.9) !important;
+    outline: none !important;
+}
+
+.rzslider .rz-pointer:after {
+    display: none !important;
+}
+
+.rzslider .rz-bubble {
+    color: #00d2ff !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+}
+
+.actions-control-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.member-selector-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.control-label {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #cad5e2;
+    margin: 0;
+}
+
+.custom-select {
+    background: #161b22;
+    color: #f0f6fc;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 1.0rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.custom-select:focus {
+    border-color: #ff9c00;
+}
+
+.modern-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    font-size: 1.0rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.btn-blizzard {
+    background: rgba(0, 170, 255, 0.18);
+    color: #66ccff;
+    border-color: rgba(0, 170, 255, 0.35);
+}
+
+.btn-blizzard:hover {
+    background: #00aaff;
+    color: #fff;
+    box-shadow: 0 0 14px rgba(0, 170, 255, 0.5);
+}
+
+.btn-bestfit {
+    background: rgba(168, 85, 247, 0.18);
+    color: #c084fc;
+    border-color: rgba(168, 85, 247, 0.35);
+}
+
+.btn-bestfit:hover {
+    background: #a855f7;
+    color: #fff;
+    box-shadow: 0 0 14px rgba(168, 85, 247, 0.5);
+}
+
+.season-selector-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ==========================================
+   Modern Aesthetic Navigation Tabs (QP / Comp)
+   ========================================== */
+
+.nav-tabs {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+    margin-top: 20px !important;
+    margin-bottom: 25px !important;
+    display: flex !important;
+    gap: 12px !important;
+}
+
+.nav-tabs > li {
+    width: auto !important;
+    float: none !important;
+}
+
+.nav-tabs > li > a {
+    background: rgba(22, 27, 38, 0.7) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 10px 10px 0 0 !important;
+    padding: 12px 28px !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.2s ease !important;
+    margin-right: 0 !important;
+}
+
+.nav-tabs > li > a:hover {
+    background: rgba(30, 38, 54, 0.9) !important;
+    color: #00d2ff !important;
+    border-color: rgba(0, 210, 255, 0.4) !important;
+    transform: translateY(-2px);
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    background: linear-gradient(135deg, rgba(255, 156, 0, 0.25) 0%, rgba(0, 210, 255, 0.25) 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid #ff9c00 !important;
+    border-bottom-color: transparent !important;
+    box-shadow: 0 0 16px rgba(255, 156, 0, 0.35) !important;
+}
+
