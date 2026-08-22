@@ -150,19 +150,41 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         }
 
         $scope.refreshSlider = function() {
+            if ($scope.clanMembers && $scope.clanMembers.length > 0) {
+                $scope.slider.options.ceil = $scope.clanMembers.length;
+                if ($scope.slider.maxValue > $scope.clanMembers.length) {
+                    $scope.slider.maxValue = $scope.clanMembers.length;
+                }
+            }
             $timeout(function() {
                 $scope.$broadcast('rzSliderForceRender');
             });
         };
 
-        $scope.$watch('slider.minValue', function() {
-            $scope.loadVisibleCharts();
-            console.log('Charts loaded from slider.minValue');
+        $scope.updateAllChartsVisibility = function () {
+            for (var i = 0; i < $scope.heroes.length; i++) {
+                var heroId = $scope.heroes[i].id;
+                for (var m = 0; m < $scope.modes.length; m++) {
+                    var playMode = $scope.modes[m].id;
+                    var chartObj = $scope["myChartObject_" + playMode + "_" + heroId];
+                    var data = $scope[playMode + 'Data'];
+                    if (chartObj && chartObj.chartConfig && data && data[heroId]) {
+                        $scope.hideUnwantedPeople(data, chartObj.chartConfig, heroId);
+                    }
+                }
+            }
+        };
+
+        $scope.$watch('slider.minValue', function(newVal, oldVal) {
+            if (newVal !== oldVal) {
+                $scope.updateAllChartsVisibility();
+            }
         });
 
-        $scope.$watch('slider.maxValue', function() {
-            $scope.loadVisibleCharts();
-            console.log('Charts loaded from slider.maxValue');
+        $scope.$watch('slider.maxValue', function(newVal, oldVal) {
+            if (newVal !== oldVal) {
+                $scope.updateAllChartsVisibility();
+            }
         });
 
         $scope.selectedMode = $scope.modes[0];
@@ -464,6 +486,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         }
 
         $scope.hideUnwantedPeople = function (data, chartConfig, hero) {
+            if (!data || !data[hero] || !chartConfig || !chartConfig.series) return;
 
             var maxbarCount = $scope.slider.maxValue;
             var minbarCount = $scope.slider.minValue;
@@ -471,6 +494,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 maxbarCount = data[hero].length;
 
             for (var i = 0; i < data[hero].length; i++) {
+                if (!chartConfig.series[i]) continue;
                 if ((i < (minbarCount - 1)) || (i >= maxbarCount)) {
                     if (chartConfig.series[i].visible) {
                         chartConfig.series[i].setVisible(false, false);
@@ -480,8 +504,9 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 }
             }
 
-            //chartConfig.options.colors = chartConfig.options.colors.slice(minbarCount - 1, maxbarCount);
-            chartConfig.redraw();
+            if (typeof chartConfig.redraw === 'function') {
+                chartConfig.redraw();
+            }
         }
 
         $scope.doReflow = function(playMode, hero) {
