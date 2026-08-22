@@ -103,9 +103,9 @@ function saveSeasonSnapshot() {
         return;
     }
 
-    var sorted = stats.getSortedStats();
-    if (!sorted || !sorted.competitive || Object.keys(sorted.competitive).length === 0) {
-        console.log("[Snapshot] No competitive stats available to snapshot.");
+    var rawData = stats.getRawStats();
+    if (!rawData || Object.keys(rawData).length === 0) {
+        console.log("[Snapshot] No raw stats available to snapshot.");
         return;
     }
 
@@ -113,18 +113,37 @@ function saveSeasonSnapshot() {
         fs.mkdirSync('stats_backup', { recursive: true });
     }
 
-    var snapshotObj = {
-        competitive: sorted.competitive
-    };
+    var seasonSet = {};
+    for (var player in rawData) {
+        var pSeason = rawData[player].currentSeason || 24;
+        seasonSet[pSeason] = true;
+    }
 
-    var filename = 'stats_backup/sorted_stats_season' + activeSeasonNumber + '_new.json';
-    var contentString = JSON.stringify(snapshotObj, null, 2);
-    fs.writeFile(filename, contentString, (err) => {
-        if (err) {
-            console.error("[Snapshot Error] Failed to save " + filename + ":", err);
-        } else {
-            console.log("[Snapshot] Automatically saved OW2 Season " + activeSeasonNumber + " snapshot to " + filename);
-            commitFileToGitHub(filename, contentString, `[Auto Snapshot] Season ${activeSeasonNumber} update`);
+    var availableSeasons = Object.keys(seasonSet).map(function(n) { return parseInt(n); }).sort(function(a, b) { return a - b; });
+
+    availableSeasons.forEach(function(targetSeason) {
+        var cumulativeRawData = {};
+        for (var p in rawData) {
+            var pSeason = rawData[p].currentSeason || 24;
+            if (pSeason <= targetSeason) {
+                cumulativeRawData[p] = rawData[p];
+            }
+        }
+
+        var seasonEngine = new Stats(cumulativeRawData);
+        var sorted = seasonEngine.getSortedStats();
+        if (sorted && sorted.competitive) {
+            var snapshotObj = { competitive: sorted.competitive };
+            var filename = 'stats_backup/sorted_stats_season' + targetSeason + '_new.json';
+            var contentString = JSON.stringify(snapshotObj, null, 2);
+            fs.writeFile(filename, contentString, function(err) {
+                if (err) {
+                    console.error("[Snapshot Error] Failed to save " + filename + ":", err);
+                } else {
+                    console.log("[Snapshot] Saved OW2 Season " + targetSeason + " snapshot to " + filename);
+                    commitFileToGitHub(filename, contentString, `[Auto Snapshot] Season ${targetSeason} update`);
+                }
+            });
         }
     });
 }
