@@ -202,17 +202,18 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         $scope.currentHeroClass = $scope.ROLES.ALL;
 
         var touchTimer = null;
-        var lastLongPressTimestamp = 0;
+        var longPressActive = false;
 
         $scope.handleTouchStart = function(h, $event) {
+            longPressActive = false;
             if (touchTimer) $timeout.cancel(touchTimer);
 
             touchTimer = $timeout(function() {
-                lastLongPressTimestamp = Date.now();
+                longPressActive = true;
                 if (navigator.vibrate) {
-                    try { navigator.vibrate(60); } catch(e) {}
+                    try { navigator.vibrate(65); } catch(e) {}
                 }
-                $scope.setCurrentHero(h, { isTouchMultiSelect: true });
+                $scope.toggleHeroMultiSelect(h);
             }, 350);
         };
 
@@ -230,24 +231,12 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             }
         };
 
-        $scope.setCurrentHero = function(h, $event) {
-            // Prevent synthetic post-longpress click event from resetting multi-selection!
-            if ($event && !$event.isTouchMultiSelect && (Date.now() - lastLongPressTimestamp < 600)) {
-                return;
-            }
-
-            var isCtrl = $event && ($event.ctrlKey || $event.metaKey || $event.isTouchMultiSelect);
-
+        $scope.toggleHeroMultiSelect = function(h) {
             if (h.id === 'all') {
                 $scope.selectedHeroes = [];
                 $scope.currentHero = $scope.heroOptions[0];
                 $scope.currentHeroClass = $scope.ROLES.ALL;
-                $scope.updateHeroClassHighlights();
-                $scope.loadVisibleCharts();
-                return;
-            }
-
-            if (isCtrl) {
+            } else {
                 var idx = $scope.selectedHeroes.indexOf(h.id);
                 if (idx > -1) {
                     $scope.selectedHeroes.splice(idx, 1);
@@ -260,6 +249,32 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 } else {
                     $scope.currentHero = null;
                 }
+            }
+
+            $scope.updateHeroClassHighlights();
+            $scope.loadVisibleCharts();
+        };
+
+        $scope.setCurrentHero = function(h, $event) {
+            if (longPressActive) {
+                longPressActive = false;
+                if ($event && typeof $event.preventDefault === 'function') {
+                    $event.preventDefault();
+                }
+                return;
+            }
+
+            var isCtrl = $event && ($event.ctrlKey || $event.metaKey);
+
+            if (isCtrl) {
+                $scope.toggleHeroMultiSelect(h);
+                return;
+            }
+
+            if (h.id === 'all') {
+                $scope.selectedHeroes = [];
+                $scope.currentHero = $scope.heroOptions[0];
+                $scope.currentHeroClass = $scope.ROLES.ALL;
             } else {
                 $scope.selectedHeroes = [h.id];
                 $scope.currentHero = h;
