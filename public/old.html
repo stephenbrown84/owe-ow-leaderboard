@@ -1,0 +1,120 @@
+﻿﻿<!DOCTYPE html>
+
+<html ng-app="app" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>OWE Leaderboard</title>
+
+    <link rel="stylesheet" type="text/css" href="./lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./lib/angularjs-slider/dist/rzslider.min.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
+    <script src="./lib/angular/angular.min.js"></script>
+    <script src="./lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="./lib/angular-google-chart/ng-google-chart.min.js"></script>
+    <script src="./lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="./lib/angularjs-slider/dist/rzslider.min.js"></script>
+    <script src="./core_old.js"></script>
+
+</head>
+<body ng-controller="GenericChartCtrl" data-ng-init="init()">
+<div class="container-fluid">
+    <h2>OWE Leaderboard - Alpha 0.0.2.7</h2>
+    <div ng-show="isDataReady">
+        <div class="row col-lg-12">
+            <div class="hero-role-group">
+                <div ng-class="heroClasses[heroOptions[0].id]" style="background-image:url('imgs/heroes/{{heroOptions[0].id}}.png')" ng-click="setCurrentHero(heroOptions[0])"></div>
+                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.OFFENSE]" style="background-image:url('imgs/offense-icon.png')" ng-click="setCurrentClass(ROLES.OFFENSE)"></div></div>
+                <div ng-repeat="h in heroes | filter:{role: ROLES.OFFENSE}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+            </div>
+            <div class="hero-role-group">
+                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.DEFENSE]" style="background-image:url('imgs/defense-icon.png')" ng-click="setCurrentClass(ROLES.DEFENSE)"></div></div>
+                <div ng-repeat="h in heroes | filter:{role: ROLES.DEFENSE}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+            </div>
+        </div>
+        <div class="row col-lg-12">
+            <div class="hero-role-group">
+                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.TANK]" style="background-image:url('imgs/tank-icon.png')" ng-click="setCurrentClass(ROLES.TANK)"></div></div>
+                <div ng-repeat="h in heroes | filter:{role: ROLES.TANK}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+            </div>
+            <div class="hero-role-group">
+                <div class="img-circle-container"><div ng-class="roleClasses[ROLES.SUPPORT]" style="background-image:url('imgs/support-icon.png')" ng-click="setCurrentClass(ROLES.SUPPORT)"></div></div>
+                <div ng-repeat="h in heroes | filter:{role: ROLES.SUPPORT}" ng-class="heroClasses[h.id]" style="background-image:url('imgs/heroes/{{h.id}}.png')" ng-click="setCurrentHero(h)"></div>
+            </div>
+        </div>
+
+        <div class="row hidden-xs col-lg-12">
+            <label>Show Places:</label>
+            <div id="placementSliderDiv">
+                <rzslider rz-slider-model="slider.minValue"
+                          rz-slider-high="slider.maxValue"
+                          rz-slider-options="slider.options"
+                          rz-slider-tpl-url="rzSliderTemplates/dualPlacementSlider.html"></rzslider>
+            </div>
+            <!--
+            <label>
+                Include Seagull?
+                <input type="checkbox" ng-model="seagullAllowedModel" ng-click="loadPlayMode()">
+            </label>
+            -->
+        </div>
+        <div class="row hidden-sm hidden-md hidden-lg col-lg-12">
+            <label>Number of Places Shown:</label>
+            <select name="placesShownSelect" id="placesShownSelect" ng-model="slider.maxValue" ng-options="n for n in [] | range:1:clanMembers.length+1">
+            </select>
+        </div>
+        <div class="row col-lg-12">
+            <div>
+                <label>Clan Members:</label>
+                <select name="clanMemberSelect" id="clanMemberSelect" ng-model="selectedClanMember">
+                    <option ng-repeat="member in clanMembers" value="{{member}}">{{member}}</option>
+                </select>
+                <a ng-href="https://playoverwatch.com/en-us/career/pc/us/{{selectedClanMember}}" target="_blank">Go to PlayOverwatch Stats</a>
+                <!--
+        <label>
+            Include Seagull?
+            <input type="checkbox" ng-model="seagullAllowedModel" ng-click="loadPlayMode()">
+        </label>
+        -->
+            </div>
+                <!--
+        Max Players: <input type="number" ng-model="maxNumOfPlayers" ng-change="loadPlayMode()" min="1" max="12"/>
+            -->
+                <!-- Tab panes -->
+                <uib-tabset active="active">
+                    <uib-tab index="0" heading="Quick Play" select="changeActivePlayMode(0)">
+                        <div ng-repeat="h in heroes">
+                            <div class="data-row" ng-show="(selectedMode.id=='quickplay') && myChartObject_quickplay_{{h.id}}.show">
+                                <div class="card-mask">
+                                    <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div>
+                                </div>
+                                <div ng-if="this['myChartObject_quickplay_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_quickplay_{{h.id}}"></div>
+                                <div ng-hide="myChartObject_quickplay_{{h.id}}.hasData" class="insufficent-data-div">Insufficient Data</div>
+                            </div>
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab index="1" heading="Competitive" select="changeActivePlayMode(1)">
+                        <div ng-repeat="h in heroes" ng-hide="(currentHero.id=='all') && !this['myChartObject_competitive_' + h.id].hasData">
+                            <div class="data-row" ng-show="(selectedMode.id=='competitive') && myChartObject_competitive_{{h.id}}.show">
+                                <div class="card-mask">
+                                    <div class="card-hero-for-graph" style="background-image:url('imgs/heroes/{{h.id}}.png')"></div>
+                                </div>
+                                <div ng-if="this['myChartObject_competitive_' + h.id].hasData" class="graph-div" google-chart chart="myChartObject_competitive_{{h.id}}"></div>
+                                <div ng-hide="myChartObject_competitive_{{h.id}}.hasData" class="insufficent-data-div">Insufficient Data</div>
+                            </div>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+    </div>
+
+    <div ng-hide="isDataReady">
+        <p>Data not ready. Please wait a minute and your data will arrive automagically...</p>
+    </div>
+
+</div>
+</body>
+</html>

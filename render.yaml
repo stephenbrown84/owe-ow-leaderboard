@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: owe-ow-leaderboard
+    env: node
+    region: oregon
+    plan: starter
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: leaderboard-data
+      mountPath: /app/stats_backup
+      sizeGB: 1

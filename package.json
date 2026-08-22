@@ -1,0 +1,17 @@
+{
+  "name": "owe-ow-leaderboard",
+  "version": "1.0.0",
+  "description": "Overwatch Stat Leaderboard",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "async": "^3.2.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "js-combinatorics": "^0.5.5",
+    "jsdom": "^30.0.1"
+  },
+  "license": "MIT"
+}

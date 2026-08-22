@@ -1,0 +1,22 @@
+{
+  "name": "overwatch-js",
+  "main": "index.js",
+  "version": "0.2.5",
+  "description": "A sample module for scraping data from playoverwatch.com",
+  "engines": {
+    "node": "6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "lodash": "^4.17.4",
+    "request": "^2.79.0",
+    "request-light": "^0.2.0"
+  },
+  "keywords": [
+    "overwatch"
+  ],
+    "license": "MIT"
+}
