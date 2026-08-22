@@ -217,14 +217,24 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
             }, 350);
         };
 
+        function clearTouchFocus() {
+            if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                document.activeElement.blur();
+            }
+            if (document.body && typeof document.body.focus === 'function') {
+                document.body.focus();
+            }
+            if (window.getSelection) {
+                try { window.getSelection().removeAllRanges(); } catch(e) {}
+            }
+        }
+
         $scope.handleTouchEnd = function(h, $event) {
             if (touchTimer) {
                 $timeout.cancel(touchTimer);
                 touchTimer = null;
             }
-            if (document.activeElement && typeof document.activeElement.blur === 'function') {
-                document.activeElement.blur();
-            }
+            clearTouchFocus();
         };
 
         $scope.handleTouchCancel = function() {
@@ -232,15 +242,11 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 $timeout.cancel(touchTimer);
                 touchTimer = null;
             }
-            if (document.activeElement && typeof document.activeElement.blur === 'function') {
-                document.activeElement.blur();
-            }
+            clearTouchFocus();
         };
 
         $scope.toggleHeroMultiSelect = function(h) {
-            if (document.activeElement && typeof document.activeElement.blur === 'function') {
-                document.activeElement.blur();
-            }
+            clearTouchFocus();
             if (h.id === 'all') {
                 $scope.selectedHeroes = [];
                 $scope.currentHero = $scope.heroOptions[0];

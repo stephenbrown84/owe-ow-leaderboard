@@ -160,21 +160,31 @@ body {
     }
 
     .card-hero-icon:focus,
-    .card-hero-icon:active {
+    .card-hero-icon:focus-visible,
+    .card-hero-icon:active,
+    .card-hero-icon:focus-within {
         outline: none !important;
+        outline-style: none !important;
+        outline-width: 0 !important;
         border: 1px solid rgba(255, 255, 255, 0.25) !important;
         box-shadow: none !important;
         opacity: 0.65 !important;
         -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
     }
 
     .card-hero-icon-selected:focus,
-    .card-hero-icon-selected:active {
+    .card-hero-icon-selected:focus-visible,
+    .card-hero-icon-selected:active,
+    .card-hero-icon-selected:focus-within {
         outline: none !important;
+        outline-style: none !important;
+        outline-width: 0 !important;
         border: 3px solid #ff9c00 !important;
         box-shadow: 0 0 14px rgba(255, 156, 0, 0.7) !important;
         opacity: 1 !important;
         -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
     }
 
 @media (hover: hover) and (pointer: fine) {
