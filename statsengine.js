@@ -194,7 +194,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: true},
             {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.75, required: true},
             {name: 'concussion_mine_kills_avg_per_10_min', prettyName: 'Mine Kills Per 10 Min', weight: 1.0, required: true},
-            {name: 'riptire_kills_avg_per_10_min', prettyName: 'Rip Tire Kills Per 10 Min', weight: 1.0, required: false}
+            {name: 'rip_tire_kills_avg_per_10_min', prettyName: 'Rip Tire Kills Per 10 Min', weight: 1.0, required: false}
         ];
     }
     else if (hero == 'mei') {
@@ -604,6 +604,10 @@ function getAttr(heroStats, attr) {
         }
         if (attr === 'self_healing_avg_per_10_min') {
             if ('healing_done_avg_per_10_min' in heroStats) return parseFloat(heroStats['healing_done_avg_per_10_min']);
+        }
+        if (attr === 'rip_tire_kills_avg_per_10_min' || attr === 'riptire_kills_avg_per_10_min') {
+            if ('rip_tire_kills_avg_per_10_min' in heroStats) return parseFloat(heroStats['rip_tire_kills_avg_per_10_min']);
+            if ('riptire_kills_avg_per_10_min' in heroStats) return parseFloat(heroStats['riptire_kills_avg_per_10_min']);
         }
         return 0.0;
     }
