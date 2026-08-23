@@ -356,7 +356,8 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: false},
             {name: 'offensive_assists_avg_per_10_min', prettyName: 'Offensive Assists Per 10 Min', weight: 1.5, required: false},
             {name: 'enemies_hacked_avg_per_10_min', prettyName: 'Enemies Hacked Per 10 Min', weight: 1.0, required: false},
-            {name: 'emp_kills_avg_per_10_min', prettyName: 'EMP Kills Per 10 Min', weight: 1.5, required: false}
+            {name: 'emp_kills_avg_per_10_min', prettyName: 'EMP Kills Per 10 Min', weight: 1.5, required: false},
+            {name: 'virus_kills_avg_per_10_min', prettyName: 'Virus Kills Per 10 Min', weight: 1.25, required: false}
         ];
     }
     else if (hero == 'bastion') {
