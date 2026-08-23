@@ -2339,7 +2339,7 @@
     "reinhardt": [
       {
         "name": "Nemisari",
-        "overall": 0.9259259259259259,
+        "overall": 1,
         "time_played": 20,
         "fields": {
           "objective_kills_avg_per_10_min": {
@@ -2366,22 +2366,16 @@
             "weight": 1,
             "required": false
           },
-          "damage_blocked_avg_per_10_min": {
-            "name": "damage_blocked_avg_per_10_min",
-            "prettyName": "Damage Blocked Per 10 Min",
-            "weight": 1,
-            "required": false
-          },
-          "players_protected_avg_per_10_min": {
-            "name": "players_protected_avg_per_10_min",
-            "prettyName": "Players Protected Per 10 Min",
-            "weight": 1.5,
-            "required": false
-          },
           "fire_strike_kills_avg_per_10_min": {
             "name": "fire_strike_kills_avg_per_10_min",
             "prettyName": "Fire Strike Kills Per 10 Min",
             "weight": 1,
+            "required": false
+          },
+          "fire_strike_accuracy": {
+            "name": "fire_strike_accuracy",
+            "prettyName": "Fire Strike Accuracy",
+            "weight": 1.25,
             "required": false
           },
           "earthshatter_stuns_avg_per_10_min": {
@@ -2432,17 +2426,13 @@
             "relative": 1,
             "actual": 8338
           },
-          "damage_blocked_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
-          },
-          "players_protected_avg_per_10_min": {
-            "relative": 1,
-            "actual": 6.1
-          },
           "fire_strike_kills_avg_per_10_min": {
             "relative": 1,
             "actual": 8.13
+          },
+          "fire_strike_accuracy": {
+            "relative": 1,
+            "actual": 42
           },
           "earthshatter_stuns_avg_per_10_min": {
             "relative": 1,
@@ -2465,8 +2455,8 @@
             "actual": 20
           },
           "OVERALL": {
-            "relative": 0.9259259259259259,
-            "actual": 0.9259259259259259
+            "relative": 1,
+            "actual": 1
           }
         }
       }

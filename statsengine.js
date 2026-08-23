@@ -177,9 +177,8 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, required: false},
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: false},
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.0, required: false},
-            {name: 'damage_blocked_avg_per_10_min', prettyName: 'Damage Blocked Per 10 Min', weight: 1.0, required: false},
-            {name: 'players_protected_avg_per_10_min', prettyName: 'Players Protected Per 10 Min', weight: 1.5, required: false},
             {name: 'fire_strike_kills_avg_per_10_min', prettyName: 'Fire Strike Kills Per 10 Min', weight: 1.0, required: false},
+            {name: 'fire_strike_accuracy', prettyName: 'Fire Strike Accuracy', weight: 1.25, required: false},
             {name: 'earthshatter_stuns_avg_per_10_min', prettyName: 'Earthshatter Stuns Per 10 Min', weight: 1.5, required: false},
             {name: 'charge_kills_avg_per_10_min', prettyName: 'Charge Kills Per 10 Min', weight: 0.5, required: false},
             {name: 'earthshatter_kills_avg_per_10_min', prettyName: 'Earthshatter Kills Per 10 Min', weight: 0.5, required: false}
