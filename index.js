@@ -267,7 +267,30 @@ app.get('/stats/sorted/:season', function (request, response) {
 
 app.get('/stats/sorted/', function (request, response) {
     if (stats.isReady()) {
-        response.send(stats.getSortedStats())
+        var rawData = stats.getRawStats();
+        var latestSeason = 24;
+        for (var player in rawData) {
+            var s = rawData[player].currentSeason;
+            if (s && s > latestSeason) {
+                latestSeason = s;
+            }
+        }
+
+        var filePath = 'stats_backup/sorted_stats_season' + latestSeason + '_new.json';
+        if (fs.existsSync(filePath)) {
+            try {
+                var seasonSortedStats = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+                var fullSorted = stats.getSortedStats();
+                response.send({
+                    quickplay: fullSorted.quickplay,
+                    competitive: seasonSortedStats.competitive || {}
+                });
+                return;
+            } catch(e) {
+                console.error("Error reading latest season snapshot for /stats/sorted/:", e);
+            }
+        }
+        response.send(stats.getSortedStats());
     }
     else {
         response.send({});
