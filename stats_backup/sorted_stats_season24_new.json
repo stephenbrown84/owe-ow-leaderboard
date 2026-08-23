@@ -2919,43 +2919,43 @@
             "name": "objective_kills_avg_per_10_min",
             "prettyName": "Objective Kills Average",
             "weight": 1,
-            "required": true
+            "required": false
           },
           "eliminations_avg_per_10_min": {
             "name": "eliminations_avg_per_10_min",
             "prettyName": "Eliminations Per 10 Min",
             "weight": 1,
-            "require": true
+            "required": false
           },
           "final_blows_avg_per_10_min": {
             "name": "final_blows_avg_per_10_min",
             "prettyName": "Final Blows Per 10 Min",
             "weight": 1.5,
-            "required": true
+            "required": false
           },
           "hero_damage_done_avg_per_10_min": {
             "name": "hero_damage_done_avg_per_10_min",
             "prettyName": "Hero Damage Per 10 Min",
             "weight": 1.5,
-            "required": true
+            "required": false
           },
           "barrier_damage_done_avg_per_10_min": {
             "name": "barrier_damage_done_avg_per_10_min",
             "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": true
+            "weight": 0.75,
+            "required": false
           },
           "turret_kills_avg_per_10_min": {
             "name": "turret_kills_avg_per_10_min",
             "prettyName": "Turret Kills Per 10 Min",
             "weight": 1.2,
-            "required": true
+            "required": false
           },
           "molten_core_kills_avg_per_10_min": {
             "name": "molten_core_kills_avg_per_10_min",
             "prettyName": "Molten Core Kills Per 10 Min",
             "weight": 1.2,
-            "required": true
+            "required": false
           },
           "win_percentage": {
             "name": "win_percentage",
