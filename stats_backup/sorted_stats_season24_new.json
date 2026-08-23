@@ -3315,7 +3315,7 @@
     "ramattra": [
       {
         "name": "MegaArcon",
-        "overall": 0.8823529411764706,
+        "overall": 0.9258639990390823,
         "time_played": 34,
         "fields": {
           "objective_kills_avg_per_10_min": {
@@ -3363,19 +3363,19 @@
         },
         "stats": {
           "objective_kills_avg_per_10_min": {
-            "relative": 1,
+            "relative": 1.1499448732083792,
             "actual": 10.43
           },
           "eliminations_avg_per_10_min": {
-            "relative": 1,
+            "relative": 1.1129634952572578,
             "actual": 19.36
           },
           "final_blows_avg_per_10_min": {
-            "relative": 1,
+            "relative": 1.1750477402928072,
             "actual": 9.23
           },
           "all_damage_done_avg_per_10_min": {
-            "relative": 1,
+            "relative": 1.3221652814262952,
             "actual": 15351
           },
           "damage_blocked_average": {
@@ -3383,16 +3383,99 @@
             "actual": 0
           },
           "win_percentage": {
-            "relative": 1,
+            "relative": 0.6511627906976745,
             "actual": 28
           },
           "time_played": {
-            "relative": 1,
+            "relative": 1.0303030303030303,
             "actual": 34
           },
           "OVERALL": {
-            "relative": 0.8823529411764706,
-            "actual": 0.8823529411764706
+            "relative": 0.9258639990390823,
+            "actual": 0.9258639990390823
+          }
+        }
+      },
+      {
+        "name": "Jamie",
+        "overall": 0.8388418833138589,
+        "time_played": 32,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "all_damage_done_avg_per_10_min": {
+            "name": "all_damage_done_avg_per_10_min",
+            "prettyName": "Damage Done Average",
+            "weight": 1,
+            "required": true
+          },
+          "damage_blocked_average": {
+            "name": "damage_blocked_average",
+            "prettyName": "Damage Blocked Average",
+            "weight": 1,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 0.8500551267916207,
+            "actual": 7.71
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 0.8870365047427422,
+            "actual": 15.43
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 0.8249522597071929,
+            "actual": 6.48
+          },
+          "all_damage_done_avg_per_10_min": {
+            "relative": 0.6778347185737048,
+            "actual": 7870
+          },
+          "damage_blocked_average": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 1.3488372093023255,
+            "actual": 58
+          },
+          "time_played": {
+            "relative": 0.9696969696969697,
+            "actual": 32
+          },
+          "OVERALL": {
+            "relative": 0.8388418833138589,
+            "actual": 0.8388418833138589
           }
         }
       }
