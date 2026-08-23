@@ -208,7 +208,9 @@ function saveSeasonSnapshot() {
 }
 
 async function refreshOWStats() {
-    freshRawData = {};
+    var existingRawData = (stats && stats.getRawStats()) ? stats.getRawStats() : {};
+    freshRawData = JSON.parse(JSON.stringify(existingRawData));
+
     for (var i = 0; i < BATTLE_TAGS.length; i++) {
         try {
             var data = await owapi.getAllStats(BATTLE_TAGS[i]);
@@ -219,10 +221,12 @@ async function refreshOWStats() {
                     activeSeasonNumber = data.currentSeason;
                 }
                 console.log("Got data for: " + battleTag + " (Season " + activeSeasonNumber + ")");
+            } else {
+                console.log("No new API data for: " + BATTLE_TAGS[i] + ". Retaining existing data.");
             }
             await new Promise(r => setTimeout(r, 1000));
         } catch (err) {
-            console.log("Error fetching " + BATTLE_TAGS[i] + ": " + err.message);
+            console.log("Error fetching " + BATTLE_TAGS[i] + ": " + err.message + ". Retaining existing data.");
         }
     }
     stats = new Stats(freshRawData);
