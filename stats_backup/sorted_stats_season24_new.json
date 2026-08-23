@@ -1195,48 +1195,60 @@
     "bastion": [
       {
         "name": "Zaralus",
-        "overall": 0.8078602620087336,
+        "overall": 1,
         "time_played": 21,
         "fields": {
           "objective_kills_avg_per_10_min": {
             "name": "objective_kills_avg_per_10_min",
             "prettyName": "Objective Kills Average",
             "weight": 1,
-            "required": true
+            "required": false
           },
           "eliminations_avg_per_10_min": {
             "name": "eliminations_avg_per_10_min",
             "prettyName": "Eliminations Per 10 Min",
             "weight": 1,
-            "require": true
+            "required": false
           },
           "final_blows_avg_per_10_min": {
             "name": "final_blows_avg_per_10_min",
             "prettyName": "Final Blows Per 10 Min",
             "weight": 1.5,
-            "required": true
+            "required": false
           },
           "hero_damage_done_avg_per_10_min": {
             "name": "hero_damage_done_avg_per_10_min",
             "prettyName": "Hero Damage Per 10 Min",
             "weight": 1.5,
-            "required": true
+            "required": false
           },
           "barrier_damage_done_avg_per_10_min": {
             "name": "barrier_damage_done_avg_per_10_min",
             "prettyName": "Barrier Damage Per 10 Min",
             "weight": 1.25,
-            "required": true
+            "required": false
           },
-          "self_healing_avg_per_10_min": {
-            "name": "self_healing_avg_per_10_min",
-            "prettyName": "Self Healing Per 10 Min",
+          "assault_kills_avg_per_10_min": {
+            "name": "assault_kills_avg_per_10_min",
+            "prettyName": "Assault Kills Per 10 Min",
             "weight": 1.2,
-            "required": true
+            "required": false
           },
-          "tank_kills_avg_per_10_min": {
-            "name": "tank_kills_avg_per_10_min",
-            "prettyName": "Tank Kills Per 10 Min",
+          "artillery_kills_avg_per_10_min": {
+            "name": "artillery_kills_avg_per_10_min",
+            "prettyName": "Artillery Kills Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "tactical_grenade_kills_avg_per_10_min": {
+            "name": "tactical_grenade_kills_avg_per_10_min",
+            "prettyName": "Grenade Kills Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "recon_kills_avg_per_10_min": {
+            "name": "recon_kills_avg_per_10_min",
+            "prettyName": "Recon Kills Per 10 Min",
             "weight": 1,
             "required": false
           },
@@ -1274,13 +1286,21 @@
             "relative": 1,
             "actual": 15860
           },
-          "self_healing_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
+          "assault_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 8.64
           },
-          "tank_kills_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
+          "artillery_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 0.96
+          },
+          "tactical_grenade_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 7.2
+          },
+          "recon_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 11.04
           },
           "win_percentage": {
             "relative": 1,
@@ -1291,8 +1311,8 @@
             "actual": 21
           },
           "OVERALL": {
-            "relative": 0.8078602620087336,
-            "actual": 0.8078602620087336
+            "relative": 1,
+            "actual": 1
           }
         }
       }

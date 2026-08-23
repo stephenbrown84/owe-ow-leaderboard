@@ -362,14 +362,15 @@ function getImportantFieldsFor(hero, playMode) {
     }
     else if (hero == 'bastion') {
         fields = [
-            //{name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
-            {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
-            {name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, require: true},
-            {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
-            {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.25, required: true},
-            {name: 'self_healing_avg_per_10_min', prettyName: 'Self Healing Per 10 Min', weight: 1.2, required: true},
-            {name: 'tank_kills_avg_per_10_min', prettyName: 'Tank Kills Per 10 Min', weight: 1.0, required: false }
+            {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: false},
+            {name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, required: false},
+            {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: false},
+            {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: false},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 1.25, required: false},
+            {name: 'assault_kills_avg_per_10_min', prettyName: 'Assault Kills Per 10 Min', weight: 1.2, required: false},
+            {name: 'artillery_kills_avg_per_10_min', prettyName: 'Artillery Kills Per 10 Min', weight: 1.0, required: false},
+            {name: 'tactical_grenade_kills_avg_per_10_min', prettyName: 'Grenade Kills Per 10 Min', weight: 1.0, required: false},
+            {name: 'recon_kills_avg_per_10_min', prettyName: 'Recon Kills Per 10 Min', weight: 1.0, required: false}
         ];
     }
     else if (hero == 'hanzo') {
