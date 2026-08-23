@@ -624,11 +624,11 @@ function getAttr(heroStats, attr) {
             if ('riptire_kills_avg_per_10_min' in heroStats) return parseFloat(heroStats['riptire_kills_avg_per_10_min']);
         }
         if (attr === 'critical_hits_avg_per_10_min') {
-            if ('critical_hits' in heroStats && 'time_played' in heroStats && heroStats['time_played'] > 0) {
-                return (parseFloat(heroStats['critical_hits']) / parseFloat(heroStats['time_played'])) * 600.0;
-            }
             if ('critical_hit_kills_avg_per_10_min' in heroStats) {
                 return parseFloat(heroStats['critical_hit_kills_avg_per_10_min']);
+            }
+            if ('critical_hits' in heroStats && 'time_played' in heroStats && heroStats['time_played'] > 0) {
+                return (parseFloat(heroStats['critical_hits']) / parseFloat(heroStats['time_played'])) * 600.0;
             }
         }
         return 0.0;
