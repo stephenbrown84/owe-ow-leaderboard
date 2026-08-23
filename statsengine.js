@@ -423,7 +423,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: false},
             {name: 'sentry_turret_kills_avg_per_10_min', prettyName: 'Sentry Turret Kills Per 10 Min', weight: 1.0, required: false},
             {name: 'secondary_direct_hits_avg_per_10_min', prettyName: 'Alt-Fire Direct Hits Per 10 Min', weight: 1.25, required: false},
-            {name: 'players_teleported_avg_per_10_min', prettyName: 'Players Teleported Per 10 Min', weight: 1.0, required: false}
+            {name: 'players_teleported_avg_per_10_min', prettyName: 'Players Teleported Per 10 Min', weight: 0.5, required: false}
         ];
     }
     else if (hero == 'zarya') {
