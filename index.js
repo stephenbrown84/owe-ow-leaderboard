@@ -97,6 +97,49 @@ async function commitFileToGitHub(filePath, contentString, message) {
     }
 }
 
+function mergeHistoricalSeasonStats(existingComp, newComp) {
+    if (!existingComp) return newComp || {};
+    if (!newComp) return existingComp;
+
+    var merged = JSON.parse(JSON.stringify(existingComp));
+
+    for (var hero in newComp) {
+        if (!merged[hero]) {
+            merged[hero] = newComp[hero];
+        } else {
+            var existingPlayers = merged[hero];
+            var newPlayers = newComp[hero];
+
+            var playerMap = {};
+            for (var i = 0; i < existingPlayers.length; i++) {
+                var p = existingPlayers[i];
+                if (p && p.name) {
+                    playerMap[p.name] = p;
+                }
+            }
+
+            for (var j = 0; j < newPlayers.length; j++) {
+                var np = newPlayers[j];
+                if (np && np.name) {
+                    if (!playerMap[np.name]) {
+                        playerMap[np.name] = np;
+                    }
+                }
+            }
+
+            var mergedList = Object.keys(playerMap).map(function(k) { return playerMap[k]; });
+            mergedList.sort(function(a, b) {
+                var aOv = (a.stats && a.stats.OVERALL) ? (a.stats.OVERALL.actual || 0) : (a.overall || 0);
+                var bOv = (b.stats && b.stats.OVERALL) ? (b.stats.OVERALL.actual || 0) : (b.overall || 0);
+                return bOv - aOv;
+            });
+
+            merged[hero] = mergedList;
+        }
+    }
+    return merged;
+}
+
 function saveSeasonSnapshot() {
     if (!stats || !stats.isReady()) {
         console.log("[Snapshot] Stats engine not ready yet.");
@@ -120,6 +163,7 @@ function saveSeasonSnapshot() {
     }
 
     var availableSeasons = Object.keys(seasonSet).map(function(n) { return parseInt(n); }).sort(function(a, b) { return a - b; });
+    var latestSeason = availableSeasons.length > 0 ? availableSeasons[availableSeasons.length - 1] : 24;
 
     availableSeasons.forEach(function(targetSeason) {
         var strictRawData = {};
@@ -133,8 +177,23 @@ function saveSeasonSnapshot() {
         var seasonEngine = new Stats(strictRawData);
         var sorted = seasonEngine.getSortedStats();
         if (sorted && sorted.competitive) {
-            var snapshotObj = { competitive: sorted.competitive };
             var filename = 'stats_backup/sorted_stats_season' + targetSeason + '_new.json';
+            var finalCompStats = sorted.competitive;
+
+            // For older historical seasons (< latestSeason), merge additively with existing disk file so historical player data is NEVER lost!
+            if (targetSeason < latestSeason && fs.existsSync(filename)) {
+                try {
+                    var existingFileContent = JSON.parse(fs.readFileSync(filename, 'utf8'));
+                    if (existingFileContent && existingFileContent.competitive) {
+                        finalCompStats = mergeHistoricalSeasonStats(existingFileContent.competitive, sorted.competitive);
+                        console.log("[Snapshot] Merged historical data for Season " + targetSeason + " preserving existing player records.");
+                    }
+                } catch(e) {
+                    console.error("[Snapshot Error] Error reading existing " + filename + " for merging:", e.message);
+                }
+            }
+
+            var snapshotObj = { competitive: finalCompStats };
             var contentString = JSON.stringify(snapshotObj, null, 2);
             fs.writeFile(filename, contentString, function(err) {
                 if (err) {
