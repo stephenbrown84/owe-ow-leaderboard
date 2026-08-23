@@ -2339,32 +2339,32 @@
     "reinhardt": [
       {
         "name": "Nemisari",
-        "overall": 0.8636363636363636,
+        "overall": 1,
         "time_played": 20,
         "fields": {
           "objective_kills_avg_per_10_min": {
             "name": "objective_kills_avg_per_10_min",
             "prettyName": "Objective Kills Average",
             "weight": 1,
-            "required": true
+            "required": false
           },
           "eliminations_avg_per_10_min": {
             "name": "eliminations_avg_per_10_min",
             "prettyName": "Eliminations Per 10 Min",
             "weight": 1,
-            "require": true
+            "required": false
           },
           "final_blows_avg_per_10_min": {
             "name": "final_blows_avg_per_10_min",
             "prettyName": "Final Blows Per 10 Min",
             "weight": 1.5,
-            "required": true
+            "required": false
           },
           "hero_damage_done_avg_per_10_min": {
             "name": "hero_damage_done_avg_per_10_min",
             "prettyName": "Hero Damage Per 10 Min",
             "weight": 1,
-            "required": true
+            "required": false
           },
           "fire_strike_kills_avg_per_10_min": {
             "name": "fire_strike_kills_avg_per_10_min",
@@ -2372,17 +2372,17 @@
             "weight": 1,
             "required": false
           },
-          "damage_blocked_avg_per_10_min": {
-            "name": "damage_blocked_avg_per_10_min",
-            "prettyName": "Damage Blocked Per 10 Min",
+          "earthshatter_stuns_avg_per_10_min": {
+            "name": "earthshatter_stuns_avg_per_10_min",
+            "prettyName": "Earthshatter Stuns Per 10 Min",
             "weight": 1.5,
-            "required": true
+            "required": false
           },
           "charge_kills_avg_per_10_min": {
             "name": "charge_kills_avg_per_10_min",
-            "prettyName": "Chaarge Kills Per 10 Min",
+            "prettyName": "Charge Kills Per 10 Min",
             "weight": 0.5,
-            "required": true
+            "required": false
           },
           "earthshatter_kills_avg_per_10_min": {
             "name": "earthshatter_kills_avg_per_10_min",
@@ -2424,9 +2424,9 @@
             "relative": 1,
             "actual": 8.13
           },
-          "damage_blocked_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
+          "earthshatter_stuns_avg_per_10_min": {
+            "relative": 1,
+            "actual": 7.62
           },
           "charge_kills_avg_per_10_min": {
             "relative": 1,
@@ -2445,8 +2445,8 @@
             "actual": 20
           },
           "OVERALL": {
-            "relative": 0.8636363636363636,
-            "actual": 0.8636363636363636
+            "relative": 1,
+            "actual": 1
           }
         }
       }
