@@ -535,6 +535,7 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: false},
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: false},
             {name: 'charged_shot_kills_avg_per_10_min', prettyName: 'Railgun Charged Kills Per 10 Min', weight: 1.25, required: false},
+            {name: 'charged_shot_accuracy', prettyName: 'Railgun Charged Accuracy', weight: 1.25, required: false},
             {name: 'overclock_kills_avg_per_10_min', prettyName: 'Overclock Kills Per 10 Min', weight: 1.2, required: false},
             {name: 'disruptor_shot_kills_avg_per_10_min', prettyName: 'Disruptor Shot Kills Per 10 Min', weight: 1.0, required: false},
             {name: 'critical_hits_avg_per_10_min', prettyName: 'Critical Hits Per 10 Min', weight: 1.0, required: false}

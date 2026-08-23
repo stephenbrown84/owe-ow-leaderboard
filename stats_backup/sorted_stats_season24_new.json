@@ -2592,6 +2592,12 @@
             "weight": 1.25,
             "required": false
           },
+          "charged_shot_accuracy": {
+            "name": "charged_shot_accuracy",
+            "prettyName": "Railgun Charged Accuracy",
+            "weight": 1.25,
+            "required": false
+          },
           "overclock_kills_avg_per_10_min": {
             "name": "overclock_kills_avg_per_10_min",
             "prettyName": "Overclock Kills Per 10 Min",
@@ -2643,6 +2649,10 @@
           "charged_shot_kills_avg_per_10_min": {
             "relative": 1,
             "actual": 8.31
+          },
+          "charged_shot_accuracy": {
+            "relative": 1,
+            "actual": 48
           },
           "overclock_kills_avg_per_10_min": {
             "relative": 1,
