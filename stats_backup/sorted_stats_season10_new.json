@@ -1,3 +1,119 @@
 {
-  "competitive": {}
+  "competitive": {
+    "mercy": [
+      {
+        "name": "Suracis",
+        "overall": 0.8401826484018264,
+        "time_played": 9,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 0.25,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 0.25,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 0.25,
+            "required": true
+          },
+          "healing_done_avg_per_10_min": {
+            "name": "healing_done_avg_per_10_min",
+            "prettyName": "Healing Done Per 10 Min",
+            "weight": 2,
+            "required": true
+          },
+          "self_healing_avg_per_10_min": {
+            "name": "self_healing_avg_per_10_min",
+            "prettyName": "Self Healing Done Per 10 Min",
+            "weight": 1.2,
+            "required": true
+          },
+          "defensive_assists_avg_per_10_min": {
+            "name": "defensive_assists_avg_per_10_min",
+            "prettyName": "Defensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "offensive_assists_avg_per_10_min": {
+            "name": "offensive_assists_avg_per_10_min",
+            "prettyName": "Offensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "players_resurrected_avg_per_10_min": {
+            "name": "players_resurrected_avg_per_10_min",
+            "prettyName": "Players Resurrected Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 1.15
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 1.15
+          },
+          "healing_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5423
+          },
+          "self_healing_avg_per_10_min": {
+            "relative": 1,
+            "actual": 259
+          },
+          "defensive_assists_avg_per_10_min": {
+            "relative": 1,
+            "actual": 12.69
+          },
+          "offensive_assists_avg_per_10_min": {
+            "relative": 1,
+            "actual": 12.69
+          },
+          "players_resurrected_avg_per_10_min": {
+            "relative": 1,
+            "actual": 4.61
+          },
+          "win_percentage": {
+            "relative": 0,
+            "actual": 0
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 9
+          },
+          "OVERALL": {
+            "relative": 0.8401826484018264,
+            "actual": 0.8401826484018264
+          }
+        }
+      }
+    ]
+  }
 }
