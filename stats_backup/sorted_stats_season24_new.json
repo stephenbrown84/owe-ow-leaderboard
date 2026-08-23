@@ -2339,7 +2339,7 @@
     "reinhardt": [
       {
         "name": "Nemisari",
-        "overall": 1,
+        "overall": 0.9259259259259259,
         "time_played": 20,
         "fields": {
           "objective_kills_avg_per_10_min": {
@@ -2368,7 +2368,13 @@
           },
           "damage_blocked_avg_per_10_min": {
             "name": "damage_blocked_avg_per_10_min",
-            "prettyName": "Damage Blocked / Mitigated Per 10 Min",
+            "prettyName": "Damage Blocked Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "players_protected_avg_per_10_min": {
+            "name": "players_protected_avg_per_10_min",
+            "prettyName": "Players Protected Per 10 Min",
             "weight": 1.5,
             "required": false
           },
@@ -2427,6 +2433,10 @@
             "actual": 8338
           },
           "damage_blocked_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "players_protected_avg_per_10_min": {
             "relative": 1,
             "actual": 6.1
           },
@@ -2455,8 +2465,8 @@
             "actual": 20
           },
           "OVERALL": {
-            "relative": 1,
-            "actual": 1
+            "relative": 0.9259259259259259,
+            "actual": 0.9259259259259259
           }
         }
       }

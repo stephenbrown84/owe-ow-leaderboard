@@ -177,7 +177,8 @@ function getImportantFieldsFor(hero, playMode) {
             {name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, required: false},
             {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: false},
             {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.0, required: false},
-            {name: 'damage_blocked_avg_per_10_min', prettyName: 'Damage Blocked / Mitigated Per 10 Min', weight: 1.5, required: false},
+            {name: 'damage_blocked_avg_per_10_min', prettyName: 'Damage Blocked Per 10 Min', weight: 1.0, required: false},
+            {name: 'players_protected_avg_per_10_min', prettyName: 'Players Protected Per 10 Min', weight: 1.5, required: false},
             {name: 'fire_strike_kills_avg_per_10_min', prettyName: 'Fire Strike Kills Per 10 Min', weight: 1.0, required: false},
             {name: 'earthshatter_stuns_avg_per_10_min', prettyName: 'Earthshatter Stuns Per 10 Min', weight: 1.5, required: false},
             {name: 'charge_kills_avg_per_10_min', prettyName: 'Charge Kills Per 10 Min', weight: 0.5, required: false},
@@ -620,13 +621,19 @@ function getAttr(heroStats, attr) {
         if (attr === 'self_healing_avg_per_10_min') {
             if ('healing_done_avg_per_10_min' in heroStats) return parseFloat(heroStats['healing_done_avg_per_10_min']);
         }
-        if (attr === 'damage_blocked_avg_per_10_min' || attr === 'damage_mitigated_avg_per_10_min' || attr === 'players_protected_avg_per_10_min') {
-            if ('damage_mitigated_avg_per_10_min' in heroStats) return parseFloat(heroStats['damage_mitigated_avg_per_10_min']);
+        if (attr === 'players_protected_avg_per_10_min') {
             if ('players_protected_avg_per_10_min' in heroStats) return parseFloat(heroStats['players_protected_avg_per_10_min']);
+            if ('players_protected' in heroStats && 'time_played' in heroStats && heroStats['time_played'] > 0) {
+                return (parseFloat(heroStats['players_protected']) / parseFloat(heroStats['time_played'])) * 600.0;
+            }
+            if ('damage_mitigated_avg_per_10_min' in heroStats) return parseFloat(heroStats['damage_mitigated_avg_per_10_min']);
+        }
+        if (attr === 'damage_blocked_avg_per_10_min') {
             if ('damage_blocked_avg_per_10_min' in heroStats) return parseFloat(heroStats['damage_blocked_avg_per_10_min']);
             if ('damage_blocked' in heroStats && 'time_played' in heroStats && heroStats['time_played'] > 0) {
                 return (parseFloat(heroStats['damage_blocked']) / parseFloat(heroStats['time_played'])) * 600.0;
             }
+            if ('damage_mitigated_avg_per_10_min' in heroStats) return parseFloat(heroStats['damage_mitigated_avg_per_10_min']);
         }
         if (attr === 'rip_tire_kills_avg_per_10_min' || attr === 'riptire_kills_avg_per_10_min') {
             if ('rip_tire_kills_avg_per_10_min' in heroStats) return parseFloat(heroStats['rip_tire_kills_avg_per_10_min']);
