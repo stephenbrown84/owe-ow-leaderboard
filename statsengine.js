@@ -349,15 +349,14 @@ function getImportantFieldsFor(hero, playMode) {
     }
     else if (hero == 'sombra') {
         fields = [
-            //{name: 'eliminations_per_life', prettyName: 'Eliminations Per Life', weight: 1.0, required: true},
-            {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: true},
-            {name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, require: true},
-            {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: true},
-            {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: true},
-            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: true},
-            {name: 'offensive_assists_avg_per_10_min', prettyName: 'Offensive Assits Per 10 Min', weight: 1.5, required: true },
-            {name: "enemies_hacked_avg_per_10_min", prettyName: "Enemied Hacked Per 10 Min", weight: 1.0, required: true },
-            {name: "enemies_emp'd_avg_per_10_min", prettyName: "Enemied EMP'd Per 10 Min", weight: 1.5, required: true }
+            {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: false},
+            {name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, required: false},
+            {name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: false},
+            {name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: false},
+            {name: 'barrier_damage_done_avg_per_10_min', prettyName: 'Barrier Damage Per 10 Min', weight: 0.5, required: false},
+            {name: 'offensive_assists_avg_per_10_min', prettyName: 'Offensive Assists Per 10 Min', weight: 1.5, required: false},
+            {name: 'enemies_hacked_avg_per_10_min', prettyName: 'Enemies Hacked Per 10 Min', weight: 1.0, required: false},
+            {name: 'emp_kills_avg_per_10_min', prettyName: 'EMP Kills Per 10 Min', weight: 1.5, required: false}
         ];
     }
     else if (hero == 'bastion') {
@@ -630,6 +629,10 @@ function getAttr(heroStats, attr) {
             if ('critical_hits' in heroStats && 'time_played' in heroStats && heroStats['time_played'] > 0) {
                 return (parseFloat(heroStats['critical_hits']) / parseFloat(heroStats['time_played'])) * 600.0;
             }
+        }
+        if (attr === 'emp_kills_avg_per_10_min' || attr === "enemies_emp'd_avg_per_10_min") {
+            if ('emp_kills_avg_per_10_min' in heroStats) return parseFloat(heroStats['emp_kills_avg_per_10_min']);
+            if ("enemies_emp'd_avg_per_10_min" in heroStats) return parseFloat(heroStats["enemies_emp'd_avg_per_10_min"]);
         }
         return 0.0;
     }
