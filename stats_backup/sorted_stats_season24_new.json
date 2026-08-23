@@ -2044,38 +2044,56 @@
     "dmon": [
       {
         "name": "Zaralus",
-        "overall": 0.8823529411764706,
+        "overall": 1,
         "time_played": 131,
         "fields": {
           "objective_kills_avg_per_10_min": {
             "name": "objective_kills_avg_per_10_min",
             "prettyName": "Objective Kills Average",
             "weight": 1,
-            "required": true
+            "required": false
           },
           "eliminations_avg_per_10_min": {
             "name": "eliminations_avg_per_10_min",
             "prettyName": "Eliminations Per 10 Min",
             "weight": 1,
-            "require": true
+            "required": false
           },
           "final_blows_avg_per_10_min": {
             "name": "final_blows_avg_per_10_min",
             "prettyName": "Final Blows Per 10 Min",
             "weight": 1.5,
-            "required": true
+            "required": false
           },
-          "all_damage_done_avg_per_10_min": {
-            "name": "all_damage_done_avg_per_10_min",
-            "prettyName": "Damage Done Average",
-            "weight": 1,
-            "required": true
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": false
           },
-          "damage_blocked_average": {
-            "name": "damage_blocked_average",
-            "prettyName": "Damage Blocked Average",
-            "weight": 1,
-            "required": true
+          "fusion_repeater_kills_avg_per_10_min": {
+            "name": "fusion_repeater_kills_avg_per_10_min",
+            "prettyName": "Fusion Repeater Kills Per 10 Min",
+            "weight": 1.2,
+            "required": false
+          },
+          "fusion_repeater_accuracy": {
+            "name": "fusion_repeater_accuracy",
+            "prettyName": "Fusion Repeater Accuracy",
+            "weight": 1.25,
+            "required": false
+          },
+          "damage_amplified_avg_per_10_min": {
+            "name": "damage_amplified_avg_per_10_min",
+            "prettyName": "Damage Amplified Per 10 Min",
+            "weight": 1.2,
+            "required": false
+          },
+          "limit_break_kills_avg_per_10_min": {
+            "name": "limit_break_kills_avg_per_10_min",
+            "prettyName": "Limit Break Kills Per 10 Min",
+            "weight": 1.25,
+            "required": false
           },
           "win_percentage": {
             "name": "win_percentage",
@@ -2103,13 +2121,25 @@
             "relative": 1,
             "actual": 9.4
           },
-          "all_damage_done_avg_per_10_min": {
+          "hero_damage_done_avg_per_10_min": {
             "relative": 1,
-            "actual": 12447
+            "actual": 10592
           },
-          "damage_blocked_average": {
-            "relative": 0,
-            "actual": 0
+          "fusion_repeater_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 7.72
+          },
+          "fusion_repeater_accuracy": {
+            "relative": 1,
+            "actual": 40
+          },
+          "damage_amplified_avg_per_10_min": {
+            "relative": 1,
+            "actual": 192
+          },
+          "limit_break_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 2.52
           },
           "win_percentage": {
             "relative": 1,
@@ -2120,8 +2150,8 @@
             "actual": 131
           },
           "OVERALL": {
-            "relative": 0.8823529411764706,
-            "actual": 0.8823529411764706
+            "relative": 1,
+            "actual": 1
           }
         }
       }

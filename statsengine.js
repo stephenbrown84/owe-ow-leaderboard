@@ -529,6 +529,18 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'ultimate_kills_avg_per_10_min', prettyName: 'Ultimate Kills Per 10 Min', weight: 1.25, required: false }
         ];
     }
+    else if (hero == 'dmon') {
+        fields = [
+            { name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: false },
+            { name: 'eliminations_avg_per_10_min', prettyName: 'Eliminations Per 10 Min', weight: 1.0, required: false },
+            { name: 'final_blows_avg_per_10_min', prettyName: 'Final Blows Per 10 Min', weight: 1.5, required: false },
+            { name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: false },
+            { name: 'fusion_repeater_kills_avg_per_10_min', prettyName: 'Fusion Repeater Kills Per 10 Min', weight: 1.2, required: false },
+            { name: 'fusion_repeater_accuracy', prettyName: 'Fusion Repeater Accuracy', weight: 1.25, required: false },
+            { name: 'damage_amplified_avg_per_10_min', prettyName: 'Damage Amplified Per 10 Min', weight: 1.2, required: false },
+            { name: 'limit_break_kills_avg_per_10_min', prettyName: 'Limit Break Kills Per 10 Min', weight: 1.25, required: false }
+        ];
+    }
     else if (hero == 'sojourn') {
         fields = [
             {name: 'objective_kills_avg_per_10_min', prettyName: 'Objective Kills Average', weight: 1.0, required: false},
