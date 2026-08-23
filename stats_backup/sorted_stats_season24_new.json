@@ -2366,6 +2366,12 @@
             "weight": 1,
             "required": false
           },
+          "damage_blocked_avg_per_10_min": {
+            "name": "damage_blocked_avg_per_10_min",
+            "prettyName": "Damage Blocked / Mitigated Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
           "fire_strike_kills_avg_per_10_min": {
             "name": "fire_strike_kills_avg_per_10_min",
             "prettyName": "Fire Strike Kills Per 10 Min",
@@ -2419,6 +2425,10 @@
           "hero_damage_done_avg_per_10_min": {
             "relative": 1,
             "actual": 8338
+          },
+          "damage_blocked_avg_per_10_min": {
+            "relative": 1,
+            "actual": 6.1
           },
           "fire_strike_kills_avg_per_10_min": {
             "relative": 1,
