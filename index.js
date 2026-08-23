@@ -207,55 +207,6 @@ function saveSeasonSnapshot() {
     });
 }
 
-function scheduleDailyMidnightSnapshot() {
-    var now = new Date();
-    var night = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 1,
-        0, 0, 0
-    );
-    var msToMidnight = night.getTime() - now.getTime();
-    console.log("[Snapshot] Scheduled next daily midnight snapshot in " + Math.round(msToMidnight / 60000) + " minutes.");
-
-    setTimeout(function() {
-        console.log("[Midnight Snapshot] Triggering daily midnight season snapshot...");
-        saveSeasonSnapshot();
-        setInterval(saveSeasonSnapshot, 24 * 60 * 60 * 1000);
-    }, msToMidnight);
-}
-
-async function refreshOWStats() {
-    freshRawData = {};
-    for (var i = 0; i < BATTLE_TAGS.length; i++) {
-        try {
-            var data = await owapi.getAllStats(BATTLE_TAGS[i]);
-            if (data) {
-                var battleTag = data.battletag;
-                freshRawData[battleTag.split('-')[0]] = data;
-                if (data.currentSeason) {
-                    activeSeasonNumber = data.currentSeason;
-                }
-                console.log("Got data for: " + battleTag + " (Season " + activeSeasonNumber + ")");
-            }
-            await new Promise(r => setTimeout(r, 1000));
-        } catch (err) {
-            console.log("Error fetching " + BATTLE_TAGS[i] + ": " + err.message);
-        }
-    }
-    stats = new Stats(freshRawData);
-    var targetPath = fs.existsSync('stats_backup') ? 'stats_backup/ow_stats.json' : 'ow_stats.json';
-    var rawStatsString = JSON.stringify(stats.getRawStats());
-    fs.writeFile(targetPath, rawStatsString, (err) => {
-        if (err) console.log("Unable to save " + targetPath + "!");
-        else {
-            console.log(targetPath + ' was saved');
-            commitFileToGitHub(targetPath, rawStatsString, `[Auto Update] ow_stats.json raw data`);
-            saveSeasonSnapshot();
-        }
-    });
-}
-
 function initOWStats() {
     try {
         var owStatsPath = fs.existsSync('stats_backup/ow_stats.json') ? 'stats_backup/ow_stats.json' : 'ow_stats.json';
@@ -268,7 +219,6 @@ function initOWStats() {
         stats = new Stats({});
         refreshOWStats();
     }
-    scheduleDailyMidnightSnapshot();
 }
 
 app.get('/dirt', function(request, response) {
@@ -396,5 +346,4 @@ app.listen(app.get('port'), function() {
     console.log(env);
     initOWStats();
     refreshOWStats();
-    setInterval(refreshOWStats, 600000);
 });

@@ -1,455 +1,5 @@
 {
   "competitive": {
-    "pharah": [
-      {
-        "name": "Zaralus",
-        "overall": 1,
-        "time_played": 47,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": true
-          },
-          "direct_hit_accuracy": {
-            "name": "direct_hit_accuracy",
-            "prettyName": "Direct Hit Accuracy",
-            "weight": 1.5,
-            "required": true
-          },
-          "barrage_kills_avg_per_10_min": {
-            "name": "barrage_kills_avg_per_10_min",
-            "prettyName": "Barrage Kills Average",
-            "weight": 1.2,
-            "required": false
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 5.78
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 25.68
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 13.48
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 11856
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 14494
-          },
-          "direct_hit_accuracy": {
-            "relative": 1,
-            "actual": 25
-          },
-          "barrage_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 4.28
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 49
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 47
-          },
-          "OVERALL": {
-            "relative": 1,
-            "actual": 1
-          }
-        }
-      }
-    ],
-    "reaper": [
-      {
-        "name": "Zaralus",
-        "overall": 1,
-        "time_played": 59,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": true
-          },
-          "death_blossom_kills_avg_per_10_min": {
-            "name": "death_blossom_kills_avg_per_10_min",
-            "prettyName": "Death Blossom Kils Per 10 Min",
-            "weight": 1.2,
-            "required": false
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 6.61
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 24.92
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 16.95
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 9051
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 10192
-          },
-          "death_blossom_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 6.1
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 26
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 59
-          },
-          "OVERALL": {
-            "relative": 1,
-            "actual": 1
-          }
-        }
-      }
-    ],
-    "soldier": [
-      {
-        "name": "Zaralus",
-        "overall": 1,
-        "time_played": 22,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": true
-          },
-          "healing_done_avg_per_10_min": {
-            "name": "healing_done_avg_per_10_min",
-            "prettyName": "Healing Done Average",
-            "weight": 1,
-            "required": true
-          },
-          "self_healing_avg_per_10_min": {
-            "name": "self_healing_avg_per_10_min",
-            "prettyName": "Self Healing Average",
-            "weight": 1,
-            "required": true
-          },
-          "critical_hits_avg_per_10_min": {
-            "name": "critical_hits_avg_per_10_min",
-            "prettyName": "Critical Hits Per 10 Min",
-            "weight": 1.2,
-            "required": true
-          },
-          "helix_rocket_kills_avg_per_10_min": {
-            "name": "helix_rocket_kills_avg_per_10_min",
-            "prettyName": "Helix Rockets Kills Average",
-            "weight": 1,
-            "required": false
-          },
-          "tactical_visor_kills_avg_per_10_min": {
-            "name": "tactical_visor_kills_avg_per_10_min",
-            "prettyName": "Tactical Visor Kills Average",
-            "weight": 1.2,
-            "required": false
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 7.83
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 20.72
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 12.43
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 10029
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 11191
-          },
-          "healing_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 1873
-          },
-          "self_healing_avg_per_10_min": {
-            "relative": 1,
-            "actual": 1061
-          },
-          "critical_hits_avg_per_10_min": {
-            "relative": 1,
-            "actual": 42.82
-          },
-          "helix_rocket_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 11.05
-          },
-          "tactical_visor_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 2.3
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 19
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 22
-          },
-          "OVERALL": {
-            "relative": 1,
-            "actual": 1
-          }
-        }
-      }
-    ],
-    "zenyatta": [
-      {
-        "name": "Zaralus",
-        "overall": 1,
-        "time_played": 58,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": true
-          },
-          "healing_done_avg_per_10_min": {
-            "name": "healing_done_avg_per_10_min",
-            "prettyName": "Healing Done Per 10 Min",
-            "weight": 2,
-            "required": true
-          },
-          "defensive_assists_avg_per_10_min": {
-            "name": "defensive_assists_avg_per_10_min",
-            "prettyName": "Defensive Assists Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "offensive_assists_avg_per_10_min": {
-            "name": "offensive_assists_avg_per_10_min",
-            "prettyName": "Offensive Assists Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 4.46
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 15.77
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 5.83
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 5127
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 6757
-          },
-          "healing_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 6165
-          },
-          "defensive_assists_avg_per_10_min": {
-            "relative": 1,
-            "actual": 21.25
-          },
-          "offensive_assists_avg_per_10_min": {
-            "relative": 1,
-            "actual": 21.25
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 49
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 58
-          },
-          "OVERALL": {
-            "relative": 1,
-            "actual": 1
-          }
-        }
-      }
-    ],
     "ana": [
       {
         "name": "Dirtnapper",
@@ -714,1079 +264,6 @@
           "OVERALL": {
             "relative": 0.972769847893791,
             "actual": 0.972769847893791
-          }
-        }
-      }
-    ],
-    "bastion": [
-      {
-        "name": "Zaralus",
-        "overall": 0.8078602620087336,
-        "time_played": 21,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 1.25,
-            "required": true
-          },
-          "self_healing_avg_per_10_min": {
-            "name": "self_healing_avg_per_10_min",
-            "prettyName": "Self Healing Per 10 Min",
-            "weight": 1.2,
-            "required": true
-          },
-          "tank_kills_avg_per_10_min": {
-            "name": "tank_kills_avg_per_10_min",
-            "prettyName": "Tank Kills Per 10 Min",
-            "weight": 1,
-            "required": false
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 3.84
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 21.13
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 14.41
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 12011
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 15860
-          },
-          "self_healing_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
-          },
-          "tank_kills_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 40
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 21
-          },
-          "OVERALL": {
-            "relative": 0.8078602620087336,
-            "actual": 0.8078602620087336
-          }
-        }
-      }
-    ],
-    "sigma": [
-      {
-        "name": "Zaralus",
-        "overall": 1,
-        "time_played": 23,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": true
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 11.1
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 22.19
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 10.67
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 11943
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 14115
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 27
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 23
-          },
-          "OVERALL": {
-            "relative": 1,
-            "actual": 1
-          }
-        }
-      }
-    ],
-    "kiriko": [
-      {
-        "name": "Zaralus",
-        "overall": 0.8823529411764706,
-        "time_played": 43,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "all_damage_done_avg_per_10_min": {
-            "name": "all_damage_done_avg_per_10_min",
-            "prettyName": "Damage Done Average",
-            "weight": 1,
-            "required": true
-          },
-          "damage_blocked_average": {
-            "name": "damage_blocked_average",
-            "prettyName": "Damage Blocked Average",
-            "weight": 1,
-            "required": true
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 6.46
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 9.46
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 2.54
-          },
-          "all_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 3674
-          },
-          "damage_blocked_average": {
-            "relative": 0,
-            "actual": 0
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 27
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 43
-          },
-          "OVERALL": {
-            "relative": 0.8823529411764706,
-            "actual": 0.8823529411764706
-          }
-        }
-      }
-    ],
-    "mauga": [
-      {
-        "name": "Zaralus",
-        "overall": 0.9762373936489094,
-        "time_played": 28,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "all_damage_done_avg_per_10_min": {
-            "name": "all_damage_done_avg_per_10_min",
-            "prettyName": "Damage Done Average",
-            "weight": 1,
-            "required": true
-          },
-          "damage_blocked_average": {
-            "name": "damage_blocked_average",
-            "prettyName": "Damage Blocked Average",
-            "weight": 1,
-            "required": true
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1.0590200445434297,
-            "actual": 9.51
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1.0536001840349667,
-            "actual": 22.9
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1.1883720930232557,
-            "actual": 10.22
-          },
-          "all_damage_done_avg_per_10_min": {
-            "relative": 1.0294129044758769,
-            "actual": 13282
-          },
-          "damage_blocked_average": {
-            "relative": 0,
-            "actual": 0
-          },
-          "win_percentage": {
-            "relative": 1.2307692307692308,
-            "actual": 32
-          },
-          "time_played": {
-            "relative": 1.018181818181818,
-            "actual": 28
-          },
-          "OVERALL": {
-            "relative": 0.9762373936489094,
-            "actual": 0.9762373936489094
-          }
-        }
-      },
-      {
-        "name": "Nemisari",
-        "overall": 0.7884684887040317,
-        "time_played": 27,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "all_damage_done_avg_per_10_min": {
-            "name": "all_damage_done_avg_per_10_min",
-            "prettyName": "Damage Done Average",
-            "weight": 1,
-            "required": true
-          },
-          "damage_blocked_average": {
-            "name": "damage_blocked_average",
-            "prettyName": "Damage Blocked Average",
-            "weight": 1,
-            "required": true
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 0.94097995545657,
-            "actual": 8.45
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 0.9463998159650334,
-            "actual": 20.57
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 0.8116279069767441,
-            "actual": 6.98
-          },
-          "all_damage_done_avg_per_10_min": {
-            "relative": 0.9705870955241233,
-            "actual": 12523
-          },
-          "damage_blocked_average": {
-            "relative": 0,
-            "actual": 0
-          },
-          "win_percentage": {
-            "relative": 0.7692307692307693,
-            "actual": 20
-          },
-          "time_played": {
-            "relative": 0.9818181818181818,
-            "actual": 27
-          },
-          "OVERALL": {
-            "relative": 0.7884684887040317,
-            "actual": 0.7884684887040317
-          }
-        }
-      }
-    ],
-    "juno": [
-      {
-        "name": "Zaralus",
-        "overall": 0.8823529411764706,
-        "time_played": 22,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "all_damage_done_avg_per_10_min": {
-            "name": "all_damage_done_avg_per_10_min",
-            "prettyName": "Damage Done Average",
-            "weight": 1,
-            "required": true
-          },
-          "damage_blocked_average": {
-            "name": "damage_blocked_average",
-            "prettyName": "Damage Blocked Average",
-            "weight": 1,
-            "required": true
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 4.16
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 14.33
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 2.31
-          },
-          "all_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 4616
-          },
-          "damage_blocked_average": {
-            "relative": 0,
-            "actual": 0
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 100
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 22
-          },
-          "OVERALL": {
-            "relative": 0.8823529411764706,
-            "actual": 0.8823529411764706
-          }
-        }
-      }
-    ],
-    "anran": [
-      {
-        "name": "Zaralus",
-        "overall": 1,
-        "time_played": 25,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": false
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "required": false
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": false
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1.5,
-            "required": false
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": false
-          },
-          "dancing_blaze_kills_avg_per_10_min": {
-            "name": "dancing_blaze_kills_avg_per_10_min",
-            "prettyName": "Dancing Blaze Kills Per 10 Min",
-            "weight": 1,
-            "required": false
-          },
-          "enemies_ignited_avg_per_10_min": {
-            "name": "enemies_ignited_avg_per_10_min",
-            "prettyName": "Enemies Ignited Per 10 Min",
-            "weight": 1,
-            "required": false
-          },
-          "fan_the_flames_accuracy": {
-            "name": "fan_the_flames_accuracy",
-            "prettyName": "Fan the Flames Accuracy",
-            "weight": 1,
-            "required": false
-          },
-          "critical_hit_damage_avg_per_10_min": {
-            "name": "critical_hit_damage_avg_per_10_min",
-            "prettyName": "Critical Hit Damage Per 10 Min",
-            "weight": 1.25,
-            "required": false
-          },
-          "ultimate_kills_avg_per_10_min": {
-            "name": "ultimate_kills_avg_per_10_min",
-            "prettyName": "Ultimate Kills Per 10 Min",
-            "weight": 1.25,
-            "required": false
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 3.22
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 14.9
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 7.25
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 7996
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 8742
-          },
-          "dancing_blaze_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 5.24
-          },
-          "enemies_ignited_avg_per_10_min": {
-            "relative": 1,
-            "actual": 31.42
-          },
-          "fan_the_flames_accuracy": {
-            "relative": 1,
-            "actual": 50
-          },
-          "critical_hit_damage_avg_per_10_min": {
-            "relative": 1,
-            "actual": 2559
-          },
-          "ultimate_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 2.82
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 50
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 25
-          },
-          "OVERALL": {
-            "relative": 1,
-            "actual": 1
-          }
-        }
-      }
-    ],
-    "dmon": [
-      {
-        "name": "Zaralus",
-        "overall": 0.8823529411764706,
-        "time_played": 131,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "all_damage_done_avg_per_10_min": {
-            "name": "all_damage_done_avg_per_10_min",
-            "prettyName": "Damage Done Average",
-            "weight": 1,
-            "required": true
-          },
-          "damage_blocked_average": {
-            "name": "damage_blocked_average",
-            "prettyName": "Damage Blocked Average",
-            "weight": 1,
-            "required": true
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 3.82
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 19.1
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 9.4
-          },
-          "all_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 12447
-          },
-          "damage_blocked_average": {
-            "relative": 0,
-            "actual": 0
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 58
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 131
-          },
-          "OVERALL": {
-            "relative": 0.8823529411764706,
-            "actual": 0.8823529411764706
-          }
-        }
-      }
-    ],
-    "mizuki": [
-      {
-        "name": "Zaralus",
-        "overall": 0.8823529411764706,
-        "time_played": 74,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "all_damage_done_avg_per_10_min": {
-            "name": "all_damage_done_avg_per_10_min",
-            "prettyName": "Damage Done Average",
-            "weight": 1,
-            "required": true
-          },
-          "damage_blocked_average": {
-            "name": "damage_blocked_average",
-            "prettyName": "Damage Blocked Average",
-            "weight": 1,
-            "required": true
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 3.23
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 10.23
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 2.15
-          },
-          "all_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 5032
-          },
-          "damage_blocked_average": {
-            "relative": 0,
-            "actual": 0
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 61
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 74
-          },
-          "OVERALL": {
-            "relative": 0.8823529411764706,
-            "actual": 0.8823529411764706
-          }
-        }
-      }
-    ],
-    "shion": [
-      {
-        "name": "Zaralus",
-        "overall": 1,
-        "time_played": 178,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": false
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "required": false
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": false
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1.5,
-            "required": false
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": false
-          },
-          "joyride_damage_done_avg_per_10_min": {
-            "name": "joyride_damage_done_avg_per_10_min",
-            "prettyName": "Joyride Damage Per 10 Min",
-            "weight": 1.25,
-            "required": false
-          },
-          "joyride_air_launch_accuracy": {
-            "name": "joyride_air_launch_accuracy",
-            "prettyName": "Joyride Air Launch Accuracy",
-            "weight": 1.25,
-            "required": false
-          },
-          "execution_accuracy": {
-            "name": "execution_accuracy",
-            "prettyName": "Execution Accuracy",
-            "weight": 1.25,
-            "required": false
-          },
-          "satsuriku_spree_kills_avg_per_10_min": {
-            "name": "satsuriku_spree_kills_avg_per_10_min",
-            "prettyName": "Satsuriku Spree Kills Per 10 Min",
-            "weight": 1.5,
-            "required": false
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 6.59
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 17.12
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 8.73
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 8159
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 10002
-          },
-          "joyride_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 1620
-          },
-          "joyride_air_launch_accuracy": {
-            "relative": 1,
-            "actual": 49
-          },
-          "execution_accuracy": {
-            "relative": 1,
-            "actual": 29
-          },
-          "satsuriku_spree_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 2.98
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 33
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 178
-          },
-          "OVERALL": {
-            "relative": 1,
-            "actual": 1
-          }
-        }
-      }
-    ],
-    "reinhardt": [
-      {
-        "name": "Nemisari",
-        "overall": 0.8636363636363636,
-        "time_played": 20,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1,
-            "required": true
-          },
-          "fire_strike_kills_avg_per_10_min": {
-            "name": "fire_strike_kills_avg_per_10_min",
-            "prettyName": "Fire Strike Kills Per 10 Min",
-            "weight": 1,
-            "required": false
-          },
-          "damage_blocked_avg_per_10_min": {
-            "name": "damage_blocked_avg_per_10_min",
-            "prettyName": "Damage Blocked Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "charge_kills_avg_per_10_min": {
-            "name": "charge_kills_avg_per_10_min",
-            "prettyName": "Chaarge Kills Per 10 Min",
-            "weight": 0.5,
-            "required": true
-          },
-          "earthshatter_kills_avg_per_10_min": {
-            "name": "earthshatter_kills_avg_per_10_min",
-            "prettyName": "Earthshatter Kills Per 10 Min",
-            "weight": 0.5,
-            "required": false
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 5.59
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 15.75
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 7.11
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 8338
-          },
-          "fire_strike_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 8.13
-          },
-          "damage_blocked_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
-          },
-          "charge_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 4.07
-          },
-          "earthshatter_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 5.59
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 100
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 20
-          },
-          "OVERALL": {
-            "relative": 0.8636363636363636,
-            "actual": 0.8636363636363636
           }
         }
       }
@@ -2367,6 +844,1529 @@
           "OVERALL": {
             "relative": 0.8823529411764706,
             "actual": 0.8823529411764706
+          }
+        }
+      }
+    ],
+    "reinhardt": [
+      {
+        "name": "Nemisari",
+        "overall": 0.8636363636363636,
+        "time_played": 20,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1,
+            "required": true
+          },
+          "fire_strike_kills_avg_per_10_min": {
+            "name": "fire_strike_kills_avg_per_10_min",
+            "prettyName": "Fire Strike Kills Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "damage_blocked_avg_per_10_min": {
+            "name": "damage_blocked_avg_per_10_min",
+            "prettyName": "Damage Blocked Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "charge_kills_avg_per_10_min": {
+            "name": "charge_kills_avg_per_10_min",
+            "prettyName": "Chaarge Kills Per 10 Min",
+            "weight": 0.5,
+            "required": true
+          },
+          "earthshatter_kills_avg_per_10_min": {
+            "name": "earthshatter_kills_avg_per_10_min",
+            "prettyName": "Earthshatter Kills Per 10 Min",
+            "weight": 0.5,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5.59
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 15.75
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 7.11
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 8338
+          },
+          "fire_strike_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 8.13
+          },
+          "damage_blocked_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "charge_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 4.07
+          },
+          "earthshatter_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5.59
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 100
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 20
+          },
+          "OVERALL": {
+            "relative": 0.8636363636363636,
+            "actual": 0.8636363636363636
+          }
+        }
+      }
+    ],
+    "mauga": [
+      {
+        "name": "Zaralus",
+        "overall": 0.9762373936489094,
+        "time_played": 28,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "all_damage_done_avg_per_10_min": {
+            "name": "all_damage_done_avg_per_10_min",
+            "prettyName": "Damage Done Average",
+            "weight": 1,
+            "required": true
+          },
+          "damage_blocked_average": {
+            "name": "damage_blocked_average",
+            "prettyName": "Damage Blocked Average",
+            "weight": 1,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1.0590200445434297,
+            "actual": 9.51
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1.0536001840349667,
+            "actual": 22.9
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1.1883720930232557,
+            "actual": 10.22
+          },
+          "all_damage_done_avg_per_10_min": {
+            "relative": 1.0294129044758769,
+            "actual": 13282
+          },
+          "damage_blocked_average": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 1.2307692307692308,
+            "actual": 32
+          },
+          "time_played": {
+            "relative": 1.018181818181818,
+            "actual": 28
+          },
+          "OVERALL": {
+            "relative": 0.9762373936489094,
+            "actual": 0.9762373936489094
+          }
+        }
+      },
+      {
+        "name": "Nemisari",
+        "overall": 0.7884684887040317,
+        "time_played": 27,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "all_damage_done_avg_per_10_min": {
+            "name": "all_damage_done_avg_per_10_min",
+            "prettyName": "Damage Done Average",
+            "weight": 1,
+            "required": true
+          },
+          "damage_blocked_average": {
+            "name": "damage_blocked_average",
+            "prettyName": "Damage Blocked Average",
+            "weight": 1,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 0.94097995545657,
+            "actual": 8.45
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 0.9463998159650334,
+            "actual": 20.57
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 0.8116279069767441,
+            "actual": 6.98
+          },
+          "all_damage_done_avg_per_10_min": {
+            "relative": 0.9705870955241233,
+            "actual": 12523
+          },
+          "damage_blocked_average": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 0.7692307692307693,
+            "actual": 20
+          },
+          "time_played": {
+            "relative": 0.9818181818181818,
+            "actual": 27
+          },
+          "OVERALL": {
+            "relative": 0.7884684887040317,
+            "actual": 0.7884684887040317
+          }
+        }
+      }
+    ],
+    "pharah": [
+      {
+        "name": "Zaralus",
+        "overall": 1,
+        "time_played": 47,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 0.5,
+            "required": true
+          },
+          "direct_hit_accuracy": {
+            "name": "direct_hit_accuracy",
+            "prettyName": "Direct Hit Accuracy",
+            "weight": 1.5,
+            "required": true
+          },
+          "barrage_kills_avg_per_10_min": {
+            "name": "barrage_kills_avg_per_10_min",
+            "prettyName": "Barrage Kills Average",
+            "weight": 1.2,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5.78
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 25.68
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 13.48
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 11856
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 14494
+          },
+          "direct_hit_accuracy": {
+            "relative": 1,
+            "actual": 25
+          },
+          "barrage_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 4.28
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 49
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 47
+          },
+          "OVERALL": {
+            "relative": 1,
+            "actual": 1
+          }
+        }
+      }
+    ],
+    "reaper": [
+      {
+        "name": "Zaralus",
+        "overall": 1,
+        "time_played": 59,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 0.5,
+            "required": true
+          },
+          "death_blossom_kills_avg_per_10_min": {
+            "name": "death_blossom_kills_avg_per_10_min",
+            "prettyName": "Death Blossom Kils Per 10 Min",
+            "weight": 1.2,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 6.61
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 24.92
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 16.95
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 9051
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 10192
+          },
+          "death_blossom_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 6.1
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 26
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 59
+          },
+          "OVERALL": {
+            "relative": 1,
+            "actual": 1
+          }
+        }
+      }
+    ],
+    "soldier": [
+      {
+        "name": "Zaralus",
+        "overall": 1,
+        "time_played": 22,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 0.5,
+            "required": true
+          },
+          "healing_done_avg_per_10_min": {
+            "name": "healing_done_avg_per_10_min",
+            "prettyName": "Healing Done Average",
+            "weight": 1,
+            "required": true
+          },
+          "self_healing_avg_per_10_min": {
+            "name": "self_healing_avg_per_10_min",
+            "prettyName": "Self Healing Average",
+            "weight": 1,
+            "required": true
+          },
+          "critical_hits_avg_per_10_min": {
+            "name": "critical_hits_avg_per_10_min",
+            "prettyName": "Critical Hits Per 10 Min",
+            "weight": 1.2,
+            "required": true
+          },
+          "helix_rocket_kills_avg_per_10_min": {
+            "name": "helix_rocket_kills_avg_per_10_min",
+            "prettyName": "Helix Rockets Kills Average",
+            "weight": 1,
+            "required": false
+          },
+          "tactical_visor_kills_avg_per_10_min": {
+            "name": "tactical_visor_kills_avg_per_10_min",
+            "prettyName": "Tactical Visor Kills Average",
+            "weight": 1.2,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 7.83
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 20.72
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 12.43
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 10029
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 11191
+          },
+          "healing_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 1873
+          },
+          "self_healing_avg_per_10_min": {
+            "relative": 1,
+            "actual": 1061
+          },
+          "critical_hits_avg_per_10_min": {
+            "relative": 1,
+            "actual": 42.82
+          },
+          "helix_rocket_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 11.05
+          },
+          "tactical_visor_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 2.3
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 19
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 22
+          },
+          "OVERALL": {
+            "relative": 1,
+            "actual": 1
+          }
+        }
+      }
+    ],
+    "zenyatta": [
+      {
+        "name": "Zaralus",
+        "overall": 1,
+        "time_played": 58,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 0.5,
+            "required": true
+          },
+          "healing_done_avg_per_10_min": {
+            "name": "healing_done_avg_per_10_min",
+            "prettyName": "Healing Done Per 10 Min",
+            "weight": 2,
+            "required": true
+          },
+          "defensive_assists_avg_per_10_min": {
+            "name": "defensive_assists_avg_per_10_min",
+            "prettyName": "Defensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "offensive_assists_avg_per_10_min": {
+            "name": "offensive_assists_avg_per_10_min",
+            "prettyName": "Offensive Assists Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 4.46
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 15.77
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5.83
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5127
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 6757
+          },
+          "healing_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 6165
+          },
+          "defensive_assists_avg_per_10_min": {
+            "relative": 1,
+            "actual": 21.25
+          },
+          "offensive_assists_avg_per_10_min": {
+            "relative": 1,
+            "actual": 21.25
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 49
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 58
+          },
+          "OVERALL": {
+            "relative": 1,
+            "actual": 1
+          }
+        }
+      }
+    ],
+    "bastion": [
+      {
+        "name": "Zaralus",
+        "overall": 0.8078602620087336,
+        "time_played": 21,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 1.25,
+            "required": true
+          },
+          "self_healing_avg_per_10_min": {
+            "name": "self_healing_avg_per_10_min",
+            "prettyName": "Self Healing Per 10 Min",
+            "weight": 1.2,
+            "required": true
+          },
+          "tank_kills_avg_per_10_min": {
+            "name": "tank_kills_avg_per_10_min",
+            "prettyName": "Tank Kills Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 3.84
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 21.13
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 14.41
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 12011
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 15860
+          },
+          "self_healing_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "tank_kills_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 40
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 21
+          },
+          "OVERALL": {
+            "relative": 0.8078602620087336,
+            "actual": 0.8078602620087336
+          }
+        }
+      }
+    ],
+    "sigma": [
+      {
+        "name": "Zaralus",
+        "overall": 1,
+        "time_played": 23,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 0.5,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 11.1
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 22.19
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 10.67
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 11943
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 14115
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 27
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 23
+          },
+          "OVERALL": {
+            "relative": 1,
+            "actual": 1
+          }
+        }
+      }
+    ],
+    "kiriko": [
+      {
+        "name": "Zaralus",
+        "overall": 0.8823529411764706,
+        "time_played": 43,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "all_damage_done_avg_per_10_min": {
+            "name": "all_damage_done_avg_per_10_min",
+            "prettyName": "Damage Done Average",
+            "weight": 1,
+            "required": true
+          },
+          "damage_blocked_average": {
+            "name": "damage_blocked_average",
+            "prettyName": "Damage Blocked Average",
+            "weight": 1,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 6.46
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 9.46
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 2.54
+          },
+          "all_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 3674
+          },
+          "damage_blocked_average": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 27
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 43
+          },
+          "OVERALL": {
+            "relative": 0.8823529411764706,
+            "actual": 0.8823529411764706
+          }
+        }
+      }
+    ],
+    "juno": [
+      {
+        "name": "Zaralus",
+        "overall": 0.8823529411764706,
+        "time_played": 22,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "all_damage_done_avg_per_10_min": {
+            "name": "all_damage_done_avg_per_10_min",
+            "prettyName": "Damage Done Average",
+            "weight": 1,
+            "required": true
+          },
+          "damage_blocked_average": {
+            "name": "damage_blocked_average",
+            "prettyName": "Damage Blocked Average",
+            "weight": 1,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 4.16
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 14.33
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 2.31
+          },
+          "all_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 4616
+          },
+          "damage_blocked_average": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 100
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 22
+          },
+          "OVERALL": {
+            "relative": 0.8823529411764706,
+            "actual": 0.8823529411764706
+          }
+        }
+      }
+    ],
+    "anran": [
+      {
+        "name": "Zaralus",
+        "overall": 1,
+        "time_played": 25,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": false
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 0.5,
+            "required": false
+          },
+          "dancing_blaze_kills_avg_per_10_min": {
+            "name": "dancing_blaze_kills_avg_per_10_min",
+            "prettyName": "Dancing Blaze Kills Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "enemies_ignited_avg_per_10_min": {
+            "name": "enemies_ignited_avg_per_10_min",
+            "prettyName": "Enemies Ignited Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "fan_the_flames_accuracy": {
+            "name": "fan_the_flames_accuracy",
+            "prettyName": "Fan the Flames Accuracy",
+            "weight": 1,
+            "required": false
+          },
+          "critical_hit_damage_avg_per_10_min": {
+            "name": "critical_hit_damage_avg_per_10_min",
+            "prettyName": "Critical Hit Damage Per 10 Min",
+            "weight": 1.25,
+            "required": false
+          },
+          "ultimate_kills_avg_per_10_min": {
+            "name": "ultimate_kills_avg_per_10_min",
+            "prettyName": "Ultimate Kills Per 10 Min",
+            "weight": 1.25,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 3.22
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 14.9
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 7.25
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 7996
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 8742
+          },
+          "dancing_blaze_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5.24
+          },
+          "enemies_ignited_avg_per_10_min": {
+            "relative": 1,
+            "actual": 31.42
+          },
+          "fan_the_flames_accuracy": {
+            "relative": 1,
+            "actual": 50
+          },
+          "critical_hit_damage_avg_per_10_min": {
+            "relative": 1,
+            "actual": 2559
+          },
+          "ultimate_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 2.82
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 50
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 25
+          },
+          "OVERALL": {
+            "relative": 1,
+            "actual": 1
+          }
+        }
+      }
+    ],
+    "dmon": [
+      {
+        "name": "Zaralus",
+        "overall": 0.8823529411764706,
+        "time_played": 131,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "all_damage_done_avg_per_10_min": {
+            "name": "all_damage_done_avg_per_10_min",
+            "prettyName": "Damage Done Average",
+            "weight": 1,
+            "required": true
+          },
+          "damage_blocked_average": {
+            "name": "damage_blocked_average",
+            "prettyName": "Damage Blocked Average",
+            "weight": 1,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 3.82
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 19.1
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 9.4
+          },
+          "all_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 12447
+          },
+          "damage_blocked_average": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 58
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 131
+          },
+          "OVERALL": {
+            "relative": 0.8823529411764706,
+            "actual": 0.8823529411764706
+          }
+        }
+      }
+    ],
+    "mizuki": [
+      {
+        "name": "Zaralus",
+        "overall": 0.8823529411764706,
+        "time_played": 74,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "all_damage_done_avg_per_10_min": {
+            "name": "all_damage_done_avg_per_10_min",
+            "prettyName": "Damage Done Average",
+            "weight": 1,
+            "required": true
+          },
+          "damage_blocked_average": {
+            "name": "damage_blocked_average",
+            "prettyName": "Damage Blocked Average",
+            "weight": 1,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 3.23
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 10.23
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 2.15
+          },
+          "all_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5032
+          },
+          "damage_blocked_average": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 61
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 74
+          },
+          "OVERALL": {
+            "relative": 0.8823529411764706,
+            "actual": 0.8823529411764706
+          }
+        }
+      }
+    ],
+    "shion": [
+      {
+        "name": "Zaralus",
+        "overall": 1,
+        "time_played": 178,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": false
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "required": false
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 0.5,
+            "required": false
+          },
+          "joyride_damage_done_avg_per_10_min": {
+            "name": "joyride_damage_done_avg_per_10_min",
+            "prettyName": "Joyride Damage Per 10 Min",
+            "weight": 1.25,
+            "required": false
+          },
+          "joyride_air_launch_accuracy": {
+            "name": "joyride_air_launch_accuracy",
+            "prettyName": "Joyride Air Launch Accuracy",
+            "weight": 1.25,
+            "required": false
+          },
+          "execution_accuracy": {
+            "name": "execution_accuracy",
+            "prettyName": "Execution Accuracy",
+            "weight": 1.25,
+            "required": false
+          },
+          "satsuriku_spree_kills_avg_per_10_min": {
+            "name": "satsuriku_spree_kills_avg_per_10_min",
+            "prettyName": "Satsuriku Spree Kills Per 10 Min",
+            "weight": 1.5,
+            "required": false
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 6.59
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 17.12
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 8.73
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 8159
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 10002
+          },
+          "joyride_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 1620
+          },
+          "joyride_air_launch_accuracy": {
+            "relative": 1,
+            "actual": 49
+          },
+          "execution_accuracy": {
+            "relative": 1,
+            "actual": 29
+          },
+          "satsuriku_spree_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 2.98
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 33
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 178
+          },
+          "OVERALL": {
+            "relative": 1,
+            "actual": 1
           }
         }
       }

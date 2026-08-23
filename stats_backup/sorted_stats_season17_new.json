@@ -1,120 +1,5 @@
 {
   "competitive": {
-    "zarya": [
-      {
-        "name": "Nuuga",
-        "overall": 0.8076923076923077,
-        "time_played": 29,
-        "fields": {
-          "objective_kills_avg_per_10_min": {
-            "name": "objective_kills_avg_per_10_min",
-            "prettyName": "Objective Kills Average",
-            "weight": 1,
-            "required": true
-          },
-          "eliminations_avg_per_10_min": {
-            "name": "eliminations_avg_per_10_min",
-            "prettyName": "Eliminations Per 10 Min",
-            "weight": 1,
-            "require": true
-          },
-          "final_blows_avg_per_10_min": {
-            "name": "final_blows_avg_per_10_min",
-            "prettyName": "Final Blows Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "name": "hero_damage_done_avg_per_10_min",
-            "prettyName": "Hero Damage Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "name": "barrier_damage_done_avg_per_10_min",
-            "prettyName": "Barrier Damage Per 10 Min",
-            "weight": 0.5,
-            "required": true
-          },
-          "damage_blocked_avg_per_10_min": {
-            "name": "damage_blocked_avg_per_10_min",
-            "prettyName": "Damage Blocked Per 10 Min",
-            "weight": 1.5,
-            "required": true
-          },
-          "average_energy": {
-            "name": "average_energy",
-            "prettyName": "Average Energy",
-            "weight": 2,
-            "required": true
-          },
-          "projected_barriers_applied_avg_per_10_min": {
-            "name": "projected_barriers_applied_avg_per_10_min",
-            "prettyName": "Projected Barriers Applied Per 10 Min",
-            "weight": 1,
-            "required": true
-          },
-          "win_percentage": {
-            "name": "win_percentage",
-            "prettyName": "Win Percentage",
-            "weight": 1.5,
-            "required": false
-          },
-          "time_played": {
-            "name": "time_played",
-            "prettyName": "Time Played",
-            "weight": 1.5,
-            "required": false
-          }
-        },
-        "stats": {
-          "objective_kills_avg_per_10_min": {
-            "relative": 1,
-            "actual": 6.54
-          },
-          "eliminations_avg_per_10_min": {
-            "relative": 1,
-            "actual": 16.52
-          },
-          "final_blows_avg_per_10_min": {
-            "relative": 1,
-            "actual": 5.51
-          },
-          "hero_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 10470
-          },
-          "barrier_damage_done_avg_per_10_min": {
-            "relative": 1,
-            "actual": 13788
-          },
-          "damage_blocked_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
-          },
-          "average_energy": {
-            "relative": 1,
-            "actual": 50
-          },
-          "projected_barriers_applied_avg_per_10_min": {
-            "relative": 0,
-            "actual": 0
-          },
-          "win_percentage": {
-            "relative": 1,
-            "actual": 37
-          },
-          "time_played": {
-            "relative": 1,
-            "actual": 29
-          },
-          "OVERALL": {
-            "relative": 0.8076923076923077,
-            "actual": 0.8076923076923077
-          }
-        }
-      }
-    ],
     "mei": [
       {
         "name": "Dutchy",
@@ -1221,6 +1106,121 @@
           "OVERALL": {
             "relative": 0.8823529411764706,
             "actual": 0.8823529411764706
+          }
+        }
+      }
+    ],
+    "zarya": [
+      {
+        "name": "Nuuga",
+        "overall": 0.8076923076923077,
+        "time_played": 29,
+        "fields": {
+          "objective_kills_avg_per_10_min": {
+            "name": "objective_kills_avg_per_10_min",
+            "prettyName": "Objective Kills Average",
+            "weight": 1,
+            "required": true
+          },
+          "eliminations_avg_per_10_min": {
+            "name": "eliminations_avg_per_10_min",
+            "prettyName": "Eliminations Per 10 Min",
+            "weight": 1,
+            "require": true
+          },
+          "final_blows_avg_per_10_min": {
+            "name": "final_blows_avg_per_10_min",
+            "prettyName": "Final Blows Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "name": "barrier_damage_done_avg_per_10_min",
+            "prettyName": "Barrier Damage Per 10 Min",
+            "weight": 0.5,
+            "required": true
+          },
+          "damage_blocked_avg_per_10_min": {
+            "name": "damage_blocked_avg_per_10_min",
+            "prettyName": "Damage Blocked Per 10 Min",
+            "weight": 1.5,
+            "required": true
+          },
+          "average_energy": {
+            "name": "average_energy",
+            "prettyName": "Average Energy",
+            "weight": 2,
+            "required": true
+          },
+          "projected_barriers_applied_avg_per_10_min": {
+            "name": "projected_barriers_applied_avg_per_10_min",
+            "prettyName": "Projected Barriers Applied Per 10 Min",
+            "weight": 1,
+            "required": true
+          },
+          "win_percentage": {
+            "name": "win_percentage",
+            "prettyName": "Win Percentage",
+            "weight": 1.5,
+            "required": false
+          },
+          "time_played": {
+            "name": "time_played",
+            "prettyName": "Time Played",
+            "weight": 1.5,
+            "required": false
+          }
+        },
+        "stats": {
+          "objective_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 6.54
+          },
+          "eliminations_avg_per_10_min": {
+            "relative": 1,
+            "actual": 16.52
+          },
+          "final_blows_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5.51
+          },
+          "hero_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 10470
+          },
+          "barrier_damage_done_avg_per_10_min": {
+            "relative": 1,
+            "actual": 13788
+          },
+          "damage_blocked_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "average_energy": {
+            "relative": 1,
+            "actual": 50
+          },
+          "projected_barriers_applied_avg_per_10_min": {
+            "relative": 0,
+            "actual": 0
+          },
+          "win_percentage": {
+            "relative": 1,
+            "actual": 37
+          },
+          "time_played": {
+            "relative": 1,
+            "actual": 29
+          },
+          "OVERALL": {
+            "relative": 0.8076923076923077,
+            "actual": 0.8076923076923077
           }
         }
       }
