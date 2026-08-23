@@ -145,7 +145,6 @@
                     <div ng-hide="selectedMode.id == 'quickplay'" class="season-selector-wrapper">
                         <label class="control-label">Season:</label>
                         <select name="seasonSelect" id="seasonSelect" class="custom-select" ng-model="selectedSeason" ng-change="changeSelectedCompetitiveSeason(selectedSeason)">
-                            <option value="0">Current Season</option>
                             <option value="all">All Seasons</option>
                             <option ng-repeat="season in seasons" value="{{season}}">Season {{season}}</option>
                         </select>

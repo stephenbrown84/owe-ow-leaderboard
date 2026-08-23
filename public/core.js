@@ -86,8 +86,8 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         ];
 
         $scope.clanMembers = [];
-        $scope.seasons = ['4'];
-        $scope.selectedSeason = '0';
+        $scope.seasons = [];
+        $scope.selectedSeason = 'all';
         $scope.selectedClanMember = '';
 
         var sliderUpdateTimer = null;
@@ -755,18 +755,15 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
         };
 
         $scope.changeSelectedCompetitiveSeason = function (currSelectedSeason) {
-
             if (currSelectedSeason === 'all') {
                 $scope.competitiveData = $scope.combineAllSeasonsStats();
-            } else if (currSelectedSeason === '0') {
-                $scope.competitiveData = $scope.season0;
             } else {
                 $scope.competitiveData = $scope['season' + currSelectedSeason.toString()] || {};
             }
 
             $scope.loadVisibleCharts(true);
             $scope.loadRemainingChartsAsync(true);
-        }
+        };
 
         $scope.combineAllSeasonsStats = function() {
             var allSeasonsData = {};
@@ -902,7 +899,7 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 $scope.selectedClanMember = $scope.clanMembers[0] || '';
 
                 if (responses[2] && Array.isArray(responses[2].data) && responses[2].data.length > 0) {
-                    $scope.seasons = responses[2].data;
+                    $scope.seasons = responses[2].data.map(function(s) { return parseInt(s); }).sort(function(a, b) { return b - a; });
                 }
 
                 // Fetch historical seasons data
@@ -914,6 +911,10 @@ angular.module("app", ["googlechart", "rzModule", 'ui.bootstrap', 'ngSanitize', 
                 $q.all(seasonReqs).then(function(sResponses) {
                     for (var i = 0; i < $scope.seasons.length; i++) {
                         $scope['season' + $scope.seasons[i]] = (sResponses[i] && sResponses[i].data) ? sResponses[i].data.competitive : {};
+                    }
+
+                    if ($scope.selectedSeason === 'all') {
+                        $scope.competitiveData = $scope.combineAllSeasonsStats();
                     }
 
                     $scope.refreshSlider();
