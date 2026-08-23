@@ -2083,6 +2083,12 @@
             "weight": 1.25,
             "required": false
           },
+          "knockback_kills_avg_per_10_min": {
+            "name": "knockback_kills_avg_per_10_min",
+            "prettyName": "Knockback / Slam Kills Per 10 Min",
+            "weight": 1.2,
+            "required": false
+          },
           "damage_amplified_avg_per_10_min": {
             "name": "damage_amplified_avg_per_10_min",
             "prettyName": "Damage Amplified Per 10 Min",
@@ -2132,6 +2138,10 @@
           "fusion_repeater_accuracy": {
             "relative": 1,
             "actual": 40
+          },
+          "knockback_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 12.15
           },
           "damage_amplified_avg_per_10_min": {
             "relative": 1,

@@ -537,6 +537,7 @@ function getImportantFieldsFor(hero, playMode) {
             { name: 'hero_damage_done_avg_per_10_min', prettyName: 'Hero Damage Per 10 Min', weight: 1.5, required: false },
             { name: 'fusion_repeater_kills_avg_per_10_min', prettyName: 'Fusion Repeater Kills Per 10 Min', weight: 1.2, required: false },
             { name: 'fusion_repeater_accuracy', prettyName: 'Fusion Repeater Accuracy', weight: 1.25, required: false },
+            { name: 'knockback_kills_avg_per_10_min', prettyName: 'Knockback / Slam Kills Per 10 Min', weight: 1.2, required: false },
             { name: 'damage_amplified_avg_per_10_min', prettyName: 'Damage Amplified Per 10 Min', weight: 1.2, required: false },
             { name: 'limit_break_kills_avg_per_10_min', prettyName: 'Limit Break Kills Per 10 Min', weight: 1.25, required: false }
         ];
