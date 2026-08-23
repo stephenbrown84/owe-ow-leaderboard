@@ -2559,38 +2559,56 @@
     "sojourn": [
       {
         "name": "Dirtnapper",
-        "overall": 0.8823529411764706,
+        "overall": 1,
         "time_played": 105,
         "fields": {
           "objective_kills_avg_per_10_min": {
             "name": "objective_kills_avg_per_10_min",
             "prettyName": "Objective Kills Average",
             "weight": 1,
-            "required": true
+            "required": false
           },
           "eliminations_avg_per_10_min": {
             "name": "eliminations_avg_per_10_min",
             "prettyName": "Eliminations Per 10 Min",
             "weight": 1,
-            "require": true
+            "required": false
           },
           "final_blows_avg_per_10_min": {
             "name": "final_blows_avg_per_10_min",
             "prettyName": "Final Blows Per 10 Min",
             "weight": 1.5,
-            "required": true
+            "required": false
           },
-          "all_damage_done_avg_per_10_min": {
-            "name": "all_damage_done_avg_per_10_min",
-            "prettyName": "Damage Done Average",
-            "weight": 1,
-            "required": true
+          "hero_damage_done_avg_per_10_min": {
+            "name": "hero_damage_done_avg_per_10_min",
+            "prettyName": "Hero Damage Per 10 Min",
+            "weight": 1.5,
+            "required": false
           },
-          "damage_blocked_average": {
-            "name": "damage_blocked_average",
-            "prettyName": "Damage Blocked Average",
+          "charged_shot_kills_avg_per_10_min": {
+            "name": "charged_shot_kills_avg_per_10_min",
+            "prettyName": "Railgun Charged Kills Per 10 Min",
+            "weight": 1.25,
+            "required": false
+          },
+          "overclock_kills_avg_per_10_min": {
+            "name": "overclock_kills_avg_per_10_min",
+            "prettyName": "Overclock Kills Per 10 Min",
+            "weight": 1.2,
+            "required": false
+          },
+          "disruptor_shot_kills_avg_per_10_min": {
+            "name": "disruptor_shot_kills_avg_per_10_min",
+            "prettyName": "Disruptor Shot Kills Per 10 Min",
             "weight": 1,
-            "required": true
+            "required": false
+          },
+          "critical_hits_avg_per_10_min": {
+            "name": "critical_hits_avg_per_10_min",
+            "prettyName": "Critical Hits Per 10 Min",
+            "weight": 1,
+            "required": false
           },
           "win_percentage": {
             "name": "win_percentage",
@@ -2618,13 +2636,25 @@
             "relative": 1,
             "actual": 7.55
           },
-          "all_damage_done_avg_per_10_min": {
+          "hero_damage_done_avg_per_10_min": {
             "relative": 1,
-            "actual": 14293
+            "actual": 10226
           },
-          "damage_blocked_average": {
-            "relative": 0,
-            "actual": 0
+          "charged_shot_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 8.31
+          },
+          "overclock_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 1.72
+          },
+          "disruptor_shot_kills_avg_per_10_min": {
+            "relative": 1,
+            "actual": 5.07
+          },
+          "critical_hits_avg_per_10_min": {
+            "relative": 1,
+            "actual": 64.89
           },
           "win_percentage": {
             "relative": 1,
@@ -2635,8 +2665,8 @@
             "actual": 105
           },
           "OVERALL": {
-            "relative": 0.8823529411764706,
-            "actual": 0.8823529411764706
+            "relative": 1,
+            "actual": 1
           }
         }
       }
