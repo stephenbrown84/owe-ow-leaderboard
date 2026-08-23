@@ -2945,6 +2945,12 @@
             "weight": 0.75,
             "required": false
           },
+          "critical_hits_avg_per_10_min": {
+            "name": "critical_hits_avg_per_10_min",
+            "prettyName": "Critical Hits Per 10 Min",
+            "weight": 1.25,
+            "required": false
+          },
           "turret_kills_avg_per_10_min": {
             "name": "turret_kills_avg_per_10_min",
             "prettyName": "Turret Kills Per 10 Min",
@@ -2990,6 +2996,10 @@
           "barrier_damage_done_avg_per_10_min": {
             "relative": 1,
             "actual": 11348
+          },
+          "critical_hits_avg_per_10_min": {
+            "relative": 1,
+            "actual": 13.41
           },
           "turret_kills_avg_per_10_min": {
             "relative": 1,
